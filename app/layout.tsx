@@ -1,15 +1,36 @@
+import type { Metadata } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
 
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
-import { cn } from "@/lib/utils";
+import { Header } from "@/components/layout/header"
+import { Footer } from "@/components/layout/footer"
+import { JsonLd } from "@/components/seo/json-ld"
+import { websiteSchema, SITE_NAME } from "@/lib/schema"
+import { cn } from "@/lib/utils"
 
-const geist = Geist({subsets:['latin'],variable:'--font-sans'})
+const geist = Geist({ subsets: ["latin"], variable: "--font-sans" })
 
 const fontMono = Geist_Mono({
   subsets: ["latin"],
   variable: "--font-mono",
 })
+
+export const metadata: Metadata = {
+  title: {
+    template: `%s | ${SITE_NAME}`,
+    default: `${SITE_NAME} - Free Online Tools`,
+  },
+  description:
+    "100+ free online tools for text, development, calculations, conversions, and more. No signup required. All tools run in your browser.",
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL || "https://seotools.example.com"
+  ),
+  openGraph: {
+    type: "website",
+    siteName: SITE_NAME,
+  },
+}
 
 export default function RootLayout({
   children,
@@ -20,10 +41,20 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={cn("antialiased", fontMono.variable, "font-sans", geist.variable)}
+      className={cn(
+        "antialiased",
+        fontMono.variable,
+        "font-sans",
+        geist.variable
+      )}
     >
       <body>
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider>
+          <JsonLd data={websiteSchema()} />
+          <Header />
+          <main className="min-h-[calc(100svh-3.5rem)]">{children}</main>
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   )

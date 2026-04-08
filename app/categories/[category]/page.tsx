@@ -1,0 +1,68 @@
+import type { Metadata } from "next"
+import { notFound } from "next/navigation"
+import { CATEGORIES, getCategoryBySlug } from "@/data/categories"
+import { getToolsByCategory } from "@/lib/tools"
+import { JsonLd } from "@/components/seo/json-ld"
+import { categorySchema } from "@/lib/schema"
+import { Breadcrumb } from "@/components/layout/breadcrumb"
+import { ToolsGrid } from "@/components/tools-grid"
+
+export function generateStaticParams() {
+  return CATEGORIES.map((cat) => ({ category: cat.slug }))
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ category: string }>
+}): Promise<Metadata> {
+  const { category: slug } = await params
+  const category = getCategoryBySlug(slug)
+  if (!category) return {}
+
+  return {
+    title: `Free ${category.name} Online`,
+    description: category.description,
+  }
+}
+
+export default async function CategoryPage({
+  params,
+}: {
+  params: Promise<{ category: string }>
+}) {
+  const { category: slug } = await params
+  const category = getCategoryBySlug(slug)
+  if (!category) notFound()
+
+  const tools = getToolsByCategory(slug)
+
+  return (
+    <>
+      <JsonLd data={categorySchema(category, tools)} />
+
+      <div className="mx-auto max-w-7xl px-4 py-8">
+        <Breadcrumb
+          items={[
+            { label: "Home", href: "/" },
+            { label: "Categories", href: "/tools" },
+            { label: category.name },
+          ]}
+        />
+
+        <h1 className="font-heading mb-2 text-3xl font-bold">
+          Free {category.name} Online
+        </h1>
+        <p className="mb-8 text-lg text-muted-foreground">
+          {category.description}
+        </p>
+
+        <ToolsGrid
+          tools={tools}
+          showSearch
+          showCategoryFilter={false}
+        />
+      </div>
+    </>
+  )
+}
