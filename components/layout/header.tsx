@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 import { useTheme } from "next-themes"
 import { HugeiconsIcon } from "@hugeicons/react"
 import { Sun01Icon, MoonIcon, Menu01Icon } from "@hugeicons/core-free-icons"
@@ -29,8 +30,21 @@ export function Header() {
     <header className="sticky top-0 z-40 w-full border-b bg-background/80 backdrop-blur-lg">
       <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4">
         <div className="flex items-center gap-6">
-          <Link href="/" className="font-heading text-lg font-bold">
-            FreeToolPark
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/images/FreeToolpark-namelogo.png"
+              alt="FreeToolPark"
+              width={120}
+              height={40}
+              className="hidden h-10 w-auto dark:block"
+            />
+            <Image
+              src="/images/FreeToolpark-balcktext-lighttheme.png"
+              alt="FreeToolPark"
+              width={120}
+              height={40}
+              className="block h-10 w-auto dark:hidden"
+            />
           </Link>
           <nav className="hidden items-center gap-1 md:flex">
             <Button variant="ghost" size="sm" asChild>

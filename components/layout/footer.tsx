@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 import { CATEGORIES } from "@/data/categories"
 
 export function Footer() {
@@ -7,7 +8,22 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-4 py-12">
         <div className="grid grid-cols-2 gap-8 md:grid-cols-3">
           <div>
-            <h3 className="mb-3 text-sm font-semibold">FreeToolPark</h3>
+            <div className="mb-3">
+              <Image
+                src="/images/FreeToolpark-namelogo.png"
+                alt="FreeToolPark"
+                width={100}
+                height={32}
+                className="hidden h-9 w-auto dark:block"
+              />
+              <Image
+                src="/images/FreeToolpark-balcktext-lighttheme.png"
+                alt="FreeToolPark"
+                width={100}
+                height={32}
+                className="block h-9 w-auto dark:hidden"
+              />
+            </div>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li>
                 <Link href="/" className="hover:text-foreground">
