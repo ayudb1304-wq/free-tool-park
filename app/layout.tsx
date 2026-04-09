@@ -19,29 +19,57 @@ const fontMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    template: `%s | ${SITE_NAME}`,
-    default: `${SITE_NAME} - Free Online Tools`,
+    template: `%s | ${SITE_NAME} — Free Privacy-First Tools`,
+    default: `Free Online Tools — No Tracking, No Limits | ${SITE_NAME}`,
   },
   description:
-    "100+ free online tools for text, development, calculations, conversions, and more. No signup required. All tools run in your browser.",
+    "100+ free browser-based tools that respect your privacy. No data collection, no sign-ups, no limits. Calculators, converters, dev tools & more.",
+  keywords: [
+    "free online tools",
+    "privacy-focused tools",
+    "no tracking tools",
+    "browser-based calculator",
+    "free converter",
+    "developer tools online",
+  ],
+  authors: [{ name: `${SITE_NAME} Team` }],
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_SITE_URL || "https://www.freetoolpark.com"
   ),
   openGraph: {
     type: "website",
+    locale: "en_US",
     siteName: SITE_NAME,
+    title: "Free Online Tools — No Tracking, No Limits",
+    description:
+      "100+ free browser-based tools. Your data never leaves your browser. No sign-ups required.",
     images: [
       {
         url: "/images/og-default.png",
         width: 1200,
         height: 630,
-        alt: "FreeToolPark - 100+ Free Browser-Based Tools",
+        alt: `${SITE_NAME} — Free Privacy-First Online Tools`,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
+    title: "Free Online Tools — No Tracking, No Limits",
+    description: "100+ free browser-based tools that respect your privacy.",
     images: ["/images/og-default.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large" as const,
+      "max-snippet": -1,
+    },
   },
 }
 
