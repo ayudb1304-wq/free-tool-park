@@ -6,7 +6,7 @@ export function Footer() {
   return (
     <footer className="border-t bg-muted/30">
       <div className="mx-auto max-w-7xl px-4 py-12">
-        <div className="grid grid-cols-2 gap-8 md:grid-cols-3">
+        <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
           <div>
             <div className="mb-3">
               <Image
@@ -53,8 +53,51 @@ export function Footer() {
             </ul>
           </div>
           <div>
-            <h3 className="mb-3 text-sm font-semibold">Legal</h3>
+            <h3 className="mb-3 text-sm font-semibold">For You</h3>
             <ul className="space-y-2 text-sm text-muted-foreground">
+              <li>
+                <Link href="/for/developers" className="hover:text-foreground">
+                  For Developers
+                </Link>
+              </li>
+              <li>
+                <Link href="/for/writers" className="hover:text-foreground">
+                  For Writers
+                </Link>
+              </li>
+              <li>
+                <Link href="/for/students" className="hover:text-foreground">
+                  For Students
+                </Link>
+              </li>
+              <li>
+                <Link href="/for/designers" className="hover:text-foreground">
+                  For Designers
+                </Link>
+              </li>
+              <li>
+                <Link href="/for/finance" className="hover:text-foreground">
+                  For Finance
+                </Link>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="mb-3 text-sm font-semibold">More</h3>
+            <ul className="space-y-2 text-sm text-muted-foreground">
+              <li>
+                <Link href="/embed" className="hover:text-foreground">
+                  Embed Widgets
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/request-a-tool"
+                  className="hover:text-foreground"
+                >
+                  Request a Tool
+                </Link>
+              </li>
               <li>
                 <Link href="/privacy" className="hover:text-foreground">
                   Privacy Policy
