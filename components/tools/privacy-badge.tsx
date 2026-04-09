@@ -70,7 +70,7 @@ export function PrivacyBadge({
         </span>
         <span className="text-green-700 dark:text-green-300">
           {" "}
-          &mdash; This tool runs entirely in your browser. Your data never
+          - This tool runs entirely in your browser. Your data never
           touches our servers.{" "}
         </span>
         <Link

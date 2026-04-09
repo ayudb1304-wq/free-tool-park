@@ -19,8 +19,8 @@ const fontMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    template: `%s | ${SITE_NAME} — Free Privacy-First Tools`,
-    default: `Free Online Tools — No Tracking, No Limits | ${SITE_NAME}`,
+    template: `%s | ${SITE_NAME} -Free Privacy-First Tools`,
+    default: `Free Online Tools -No Tracking, No Limits | ${SITE_NAME}`,
   },
   description:
     "100+ free browser-based tools that respect your privacy. No data collection, no sign-ups, no limits. Calculators, converters, dev tools & more.",
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     siteName: SITE_NAME,
-    title: "Free Online Tools — No Tracking, No Limits",
+    title: "Free Online Tools -No Tracking, No Limits",
     description:
       "100+ free browser-based tools. Your data never leaves your browser. No sign-ups required.",
     images: [
@@ -50,13 +50,13 @@ export const metadata: Metadata = {
         url: "/images/og-default.png",
         width: 1200,
         height: 630,
-        alt: `${SITE_NAME} — Free Privacy-First Online Tools`,
+        alt: `${SITE_NAME} -Free Privacy-First Online Tools`,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Free Online Tools — No Tracking, No Limits",
+    title: "Free Online Tools -No Tracking, No Limits",
     description: "100+ free browser-based tools that respect your privacy.",
     images: ["/images/og-default.png"],
   },

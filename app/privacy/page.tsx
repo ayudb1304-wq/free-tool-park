@@ -4,7 +4,7 @@ import { SITE_URL } from "@/lib/schema"
 import { Breadcrumb } from "@/components/layout/breadcrumb"
 
 export const metadata: Metadata = {
-  title: "Privacy Policy — How We Protect Your Data",
+  title: "Privacy Policy -How We Protect Your Data",
   description:
     "Learn why FreeToolPark is the most privacy-focused tool site online. 100% client-side processing, no tracking, no data collection. Your data never leaves your browser.",
   keywords: [
@@ -31,7 +31,7 @@ export default function PrivacyPage() {
 
       <article className="prose prose-neutral dark:prose-invert max-w-none">
         <h1 className="font-heading mb-6 text-3xl font-bold">
-          Privacy Policy — How We Protect Your Data
+          Privacy Policy -How We Protect Your Data
         </h1>
 
         <p className="text-lg leading-relaxed">

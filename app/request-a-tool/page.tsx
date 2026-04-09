@@ -5,7 +5,7 @@ import { Breadcrumb } from "@/components/layout/breadcrumb"
 import { ToolRequestForm } from "@/components/community/tool-request-form"
 
 export const metadata: Metadata = {
-  title: "Request a Tool — Help Us Build What You Need",
+  title: "Request a Tool -Help Us Build What You Need",
   description:
     "Can't find the tool you need? Request it! We build the most-requested tools first. Vote on ideas from the community.",
   keywords: [
