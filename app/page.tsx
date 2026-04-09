@@ -39,7 +39,7 @@ export default function HomePage() {
             src="/images/FreeToolpark-namelogo.png"
             alt=""
             width={400}
-            height={200}
+            height={400}
             className="mx-auto hidden h-auto w-[280px] sm:w-[400px] dark:block"
             priority
           />
@@ -47,7 +47,7 @@ export default function HomePage() {
             src="/images/FreeToolpark-balcktext-lighttheme.png"
             alt=""
             width={400}
-            height={200}
+            height={400}
             className="mx-auto block h-auto w-[280px] sm:w-[400px] dark:hidden"
             priority
           />
