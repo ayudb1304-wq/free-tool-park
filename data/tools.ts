@@ -21,6 +21,18 @@ import {
   SecurityCheckIcon,
   ShuffleIcon,
   TextFontIcon,
+  Dollar01Icon,
+  TextNumberSignIcon,
+  TemperatureIcon,
+  RulerIcon,
+  WeightScaleIcon,
+  TimeZoneIcon,
+  School01Icon,
+  NaturalFoodIcon,
+  LeftToRightListNumberIcon,
+  Globe02Icon,
+  CursorTextIcon,
+  LetterSpacingIcon,
 } from "@hugeicons/core-free-icons"
 import type { CategorySlug } from "./categories"
 
@@ -1287,5 +1299,785 @@ export const TOOLS: Tool[] = [
     ],
     relatedSlugs: ["json-formatter", "uuid-generator", "base64-encoder-decoder"],
     keywords: ["unix timestamp converter", "epoch time converter", "timestamp to date", "date to timestamp", "unix time converter", "epoch converter online"],
+  },
+
+  // 21. Interest Calculator
+  {
+    slug: "interest-calculator",
+    name: "Interest Calculator",
+    category: "calculators",
+    icon: Dollar01Icon,
+    componentName: "interest-calculator",
+    h1: "Interest Calculator - Free Compound & Simple Interest Calculator",
+    titleTag: "Interest Calculator - Compound & Simple | FreeToolPark",
+    metaDescription:
+      "Calculate compound interest and simple interest instantly. Free interest calculator with yearly breakdown, growth chart, and multiple compounding options. No signup needed.",
+    introduction:
+      "The Interest Calculator lets you figure out how your savings or investments will grow over time using both compound interest and simple interest formulas. Whether you are planning a fixed deposit, comparing savings accounts, or projecting long-term investment returns, this free tool gives you a clear year-by-year breakdown of your earnings. Just enter your principal amount, annual interest rate, time period, and compounding frequency to see exactly how much your money will grow. It works great for students learning about finance, investors modeling portfolio returns, and anyone who wants to understand how compound interest works in practice. Everything runs in your browser with zero data collection.",
+    whyUse: [
+      "Switch between compound interest and simple interest calculations in one click",
+      "Choose from annual, semi-annual, quarterly, monthly, or daily compounding",
+      "View a full year-by-year breakdown table showing interest earned and running balance",
+      "100% browser-based with no data stored or shared with anyone",
+      "Completely free with no signup, no ads, and no usage limits",
+    ],
+    whyUseSummary:
+      "Interest Calculator is the fastest way to project savings growth online. Key advantages include compound and simple interest modes, flexible compounding frequencies, and a detailed yearly breakdown table.",
+    steps: [
+      { title: "Choose your interest type", description: "Select either Compound Interest or Simple Interest at the top of the tool depending on which formula you want to use." },
+      { title: "Enter your financial details", description: "Type in the principal amount, annual interest rate, and the number of years. For compound interest, also pick your preferred compounding frequency such as monthly or annually." },
+      { title: "Click Calculate Interest", description: "Hit the Calculate button to see your total interest earned, final balance, and a complete year-by-year breakdown of how your money grows." },
+      { title: "Copy your results", description: "Use the copy button to grab a summary of your principal, total interest, and final balance for use in spreadsheets, documents, or financial plans." },
+    ],
+    faqs: [
+      { question: "What is the difference between compound interest and simple interest?", answer: "Simple interest is calculated only on your original principal. Compound interest is calculated on your principal plus all previously earned interest. Over time, compound interest grows your money significantly faster because you earn interest on interest. For example, $10,000 at 5% for 10 years gives you $15,000 with simple interest but $16,288.95 with annual compounding." },
+      { question: "How does compounding frequency affect my returns?", answer: "The more frequently interest compounds, the more you earn. Monthly compounding earns slightly more than annual compounding because interest gets added to your balance more often, which means each new calculation uses a slightly larger base. Daily compounding earns even more, though the difference between daily and monthly is usually small." },
+      { question: "Can I use this calculator for loan interest?", answer: "Yes. The same formulas apply to loans. Enter your loan principal, annual interest rate, and term to see how much total interest you will pay. This helps you compare different loan offers and understand the true cost of borrowing over time." },
+      { question: "What is the compound interest formula?", answer: "The compound interest formula is A = P(1 + r/n)^(nt), where A is the final amount, P is the principal, r is the annual interest rate as a decimal, n is the number of times interest compounds per year, and t is the number of years. This calculator handles all the math for you automatically." },
+      { question: "Is my financial data safe with this calculator?", answer: "Absolutely. All calculations happen directly in your web browser using JavaScript. No data is sent to any server, stored in any database, or shared with any third party. You can even use this tool offline once the page has loaded." },
+    ],
+    relatedSlugs: ["mortgage-calculator", "emi-calculator", "percentage-calculator"],
+    keywords: ["compound interest calculator", "simple interest calculator", "interest calculator", "savings calculator", "investment calculator", "compound interest formula calculator"],
+  },
+
+  // 22. Character Counter
+  {
+    slug: "character-counter",
+    name: "Character Counter",
+    category: "text-tools",
+    icon: LetterSpacingIcon,
+    componentName: "character-counter",
+    h1: "Character Counter - Free Online Character & Letter Counter",
+    titleTag: "Character Counter - Count Characters Online | FreeToolPark",
+    metaDescription:
+      "Count characters, letters, words, sentences, and paragraphs instantly. Free character counter with letter frequency analysis. Great for Twitter, essays, and SEO.",
+    introduction:
+      "The Character Counter gives you a real-time breakdown of your text the moment you start typing or paste content. It counts total characters, characters without spaces, words, sentences, paragraphs, lines, letters, digits, spaces, and special characters all at once. This tool is perfect for writers working within character limits on platforms like Twitter (280 characters), Instagram bios (150 characters), or meta descriptions (155 characters). Students can use it to check essay length requirements, and SEO professionals can track title tag and description lengths. It even includes a letter frequency analysis feature that shows how often each letter appears in your text. Everything runs locally in your browser with no data stored anywhere.",
+    whyUse: [
+      "Real-time counting that updates as you type with zero delay",
+      "Tracks 10 different metrics including characters, words, sentences, paragraphs, and more",
+      "Built-in letter frequency analysis to see which letters appear most in your text",
+      "Perfect for checking character limits on Twitter, Instagram, Google meta tags, and more",
+      "100% private with no text stored or transmitted to any server",
+    ],
+    whyUseSummary:
+      "Character Counter is the fastest way to count characters and letters online. Key advantages include real-time updates, 10 different text metrics, letter frequency analysis, and full privacy with no data collection.",
+    steps: [
+      { title: "Paste or type your text", description: "Enter your content in the text area at the top. The tool immediately starts counting characters, words, sentences, and all other metrics as you type." },
+      { title: "Review your text statistics", description: "Check the grid of stat cards below the text area. You will see total characters, characters without spaces, words, sentences, paragraphs, lines, letters, digits, spaces, and special characters." },
+      { title: "View letter frequency", description: "Click the Show Letter Frequency button to see a breakdown of how many times each letter appears in your text. Letters are sorted from most to least frequent." },
+      { title: "Copy your stats", description: "Click the Copy Stats button to copy a formatted summary of your character count, word count, and other metrics to your clipboard." },
+    ],
+    faqs: [
+      { question: "What is the difference between characters and characters without spaces?", answer: "Characters counts every single character in your text including spaces, punctuation, and line breaks. Characters without spaces counts only the visible characters, excluding all whitespace. Many platforms like Twitter count spaces as characters, so the total character count is usually the number you need." },
+      { question: "How many characters are allowed on Twitter?", answer: "Twitter (now X) allows up to 280 characters per tweet for regular users. URLs count as 23 characters regardless of their actual length. This character counter helps you stay within that limit by showing your exact character count in real time as you type your tweet." },
+      { question: "What character limit should I use for SEO meta descriptions?", answer: "Google typically displays up to 155-160 characters for meta descriptions on desktop and around 120 characters on mobile. For title tags, aim for 50-60 characters. Use this counter to make sure your SEO content fits within these limits so nothing gets cut off in search results." },
+      { question: "How does the letter frequency analysis work?", answer: "The letter frequency feature scans your entire text and counts how many times each letter (A through Z) appears. Results are sorted from most frequent to least frequent. This is useful for cryptography exercises, linguistic analysis, or just satisfying your curiosity about your writing patterns." },
+      { question: "Can I count characters in other languages?", answer: "Yes. This tool counts all Unicode characters, so it works with text in any language including Chinese, Japanese, Korean, Arabic, Hindi, and more. Each Unicode character counts as one character regardless of its byte size." },
+    ],
+    relatedSlugs: ["word-counter", "case-converter", "text-to-slug"],
+    keywords: ["character counter", "letter counter", "character count online", "count characters in text", "twitter character counter", "online character counter"],
+  },
+
+  // 23. HEX to RGB Converter
+  {
+    slug: "hex-to-rgb",
+    name: "HEX to RGB Converter",
+    category: "developer-tools",
+    icon: ColorsIcon,
+    componentName: "hex-to-rgb",
+    h1: "HEX to RGB Converter - Free Color Code Converter",
+    titleTag: "HEX to RGB Converter - Free Online | FreeToolPark",
+    metaDescription:
+      "Convert HEX color codes to RGB and HSL values instantly. Free color converter with live preview, color picker, and one-click copy. Works both ways.",
+    introduction:
+      "The HEX to RGB Converter translates color codes between HEX, RGB, and HSL formats in real time. Designers and developers constantly need to switch between these color formats when working across CSS, design tools, and graphics software. Just type a HEX code like #3b82f6 and instantly see the matching RGB and HSL values, or enter RGB values to get the HEX code back. The built-in color picker lets you visually select any color, and the live preview swatch shows you exactly what the color looks like. Every output has a one-click copy button so you can paste color values directly into your CSS, Figma, or Sketch files. No signup, no ads, and everything processes locally in your browser.",
+    whyUse: [
+      "Convert between HEX, RGB, and HSL color formats in both directions instantly",
+      "Live color preview swatch updates as you type or adjust values",
+      "Built-in native color picker for visual color selection",
+      "One-click copy for every color format output",
+      "Completely free and private with no data sent to any server",
+    ],
+    whyUseSummary:
+      "HEX to RGB Converter is the fastest way to convert color codes online. Key advantages include bidirectional conversion, live preview, a built-in color picker, and instant copy for all formats.",
+    steps: [
+      { title: "Enter a HEX color code", description: "Type or paste your HEX color code (with or without the # symbol) in the HEX input field. Supports both 3-digit and 6-digit HEX values like #fff or #3b82f6." },
+      { title: "Or enter RGB values", description: "If you already have RGB values, enter them in the R, G, and B fields (0 to 255 each). The HEX code updates automatically as you change any value." },
+      { title: "Use the color picker", description: "Click the color swatch next to the HEX input to open the native color picker. Select any color visually and all values update in real time." },
+      { title: "Copy the format you need", description: "Each output row shows the color in HEX, RGB, and HSL format with its own copy button. Click to copy the value you need directly to your clipboard." },
+    ],
+    faqs: [
+      { question: "What is a HEX color code?", answer: "A HEX color code is a six-digit hexadecimal number used in web design and CSS to represent colors. It starts with a # symbol followed by six characters (0-9 and A-F). The first two characters represent red, the middle two represent green, and the last two represent blue. For example, #FF0000 is pure red and #00FF00 is pure green." },
+      { question: "What is the difference between HEX and RGB?", answer: "HEX and RGB represent the same colors in different notation. HEX uses a base-16 format (#RRGGBB) while RGB uses decimal values from 0 to 255 for each channel (rgb(R, G, B)). HEX is more common in CSS and design tools. RGB is used in programming and image processing. Both produce identical colors when converted correctly." },
+      { question: "What is HSL color format?", answer: "HSL stands for Hue, Saturation, and Lightness. Hue is the color angle on a 360-degree wheel (0 is red, 120 is green, 240 is blue). Saturation is the intensity from 0% (gray) to 100% (vivid). Lightness goes from 0% (black) to 100% (white). Many designers prefer HSL because adjusting colors is more intuitive than changing individual RGB channels." },
+      { question: "Can I convert RGB back to HEX?", answer: "Yes. This tool works in both directions. Enter your RGB values in the R, G, and B input fields, and the matching HEX code and HSL value will generate automatically. You can also use the color picker to select a color and get all three formats at once." },
+      { question: "Do 3-digit HEX codes work?", answer: "Yes. Three-digit HEX shorthand like #f00 is expanded to its full form #ff0000 automatically. Each digit is doubled, so #abc becomes #aabbcc. This shorthand is commonly used in CSS when both digits of each color channel are the same." },
+    ],
+    relatedSlugs: ["color-picker", "css-gradient-generator", "css-minifier"],
+    keywords: ["hex to rgb", "hex to rgb converter", "color code converter", "hex color to rgb", "rgb to hex", "hex to hsl converter"],
+  },
+
+  // 24. Markdown to HTML Converter
+  {
+    slug: "markdown-to-html",
+    name: "Markdown to HTML",
+    category: "developer-tools",
+    icon: CodeIcon,
+    componentName: "markdown-to-html",
+    h1: "Markdown to HTML Converter - Free Online Converter",
+    titleTag: "Markdown to HTML Converter - Free | FreeToolPark",
+    metaDescription:
+      "Convert Markdown to clean HTML code instantly. Free Markdown to HTML converter with live preview, syntax highlighting, and one-click copy. No signup required.",
+    introduction:
+      "The Markdown to HTML Converter transforms your Markdown text into clean, standards-compliant HTML in real time. Whether you are writing blog posts, documentation, README files, or email newsletters, this tool helps you convert Markdown syntax into production-ready HTML with a single paste. It handles headings, bold and italic text, links, images, code blocks, blockquotes, lists, horizontal rules, and more. The side-by-side layout lets you edit Markdown on the left and see the generated HTML code or a rendered preview on the right. One-click copy grabs the full HTML output so you can paste it directly into your CMS, email builder, or any HTML editor. Everything runs in your browser with no server processing.",
+    whyUse: [
+      "Instant conversion with a side-by-side Markdown editor and HTML output",
+      "Switch between raw HTML code view and rendered preview with one click",
+      "Supports headings, bold, italic, links, images, code blocks, lists, and blockquotes",
+      "One-click copy button to grab the full HTML output",
+      "100% client-side processing with no data uploaded to any server",
+    ],
+    whyUseSummary:
+      "Markdown to HTML Converter is the fastest way to turn Markdown into clean HTML online. Key advantages include real-time conversion, live preview, and support for all common Markdown syntax.",
+    steps: [
+      { title: "Enter your Markdown", description: "Type or paste your Markdown content in the left text area. The tool comes preloaded with sample Markdown so you can see how the conversion works right away." },
+      { title: "View the HTML output", description: "The right panel shows the generated HTML code by default. You can see exactly what HTML tags your Markdown produces, including properly nested elements." },
+      { title: "Switch to Preview mode", description: "Click the Preview button above the output panel to see a rendered version of your HTML. This shows you how the content will actually look in a browser." },
+      { title: "Copy the HTML", description: "Click the Copy HTML button to copy the entire HTML output to your clipboard. Paste it into your CMS, blog editor, email template, or any tool that accepts HTML." },
+    ],
+    faqs: [
+      { question: "What Markdown syntax does this converter support?", answer: "This converter supports all standard Markdown elements: headings (# through ######), bold (**text**), italic (*text*), strikethrough (~~text~~), links, images, inline code, fenced code blocks with language hints, blockquotes, ordered and unordered lists, horizontal rules, and line breaks. It covers everything you need for typical blog posts, docs, and README files." },
+      { question: "Can I use this for converting README files to HTML?", answer: "Absolutely. Paste your GitHub README.md content directly into the editor and get clean HTML output. This is useful when you want to display your README on a website, in an email, or anywhere else that requires HTML instead of Markdown." },
+      { question: "Is the HTML output clean and standards-compliant?", answer: "Yes. The converter generates semantic HTML using proper tags like h1-h6, p, strong, em, ul, ol, li, blockquote, pre, code, and more. The output is clean and lightweight without unnecessary wrapper divs or inline styles." },
+      { question: "Does it support GitHub Flavored Markdown?", answer: "This tool supports the most commonly used GitHub Flavored Markdown features including fenced code blocks with language syntax hints, strikethrough text, and standard tables. It covers the syntax that 95% of users need for everyday Markdown conversion." },
+      { question: "Can I convert HTML back to Markdown?", answer: "This tool is designed for Markdown to HTML conversion only. For converting HTML back to Markdown, you would need a dedicated HTML to Markdown converter. We have one in our tools collection that handles the reverse conversion." },
+    ],
+    relatedSlugs: ["json-formatter", "html-minifier", "css-minifier"],
+    keywords: ["markdown to html converter", "markdown to html", "convert markdown to html", "markdown converter online", "md to html", "markdown to html online"],
+  },
+
+  // 25. Lorem Ipsum Generator
+  {
+    slug: "lorem-ipsum-generator",
+    name: "Lorem Ipsum Generator",
+    category: "generators",
+    icon: TextFontIcon,
+    componentName: "lorem-ipsum-generator",
+    h1: "Lorem Ipsum Generator - Free Placeholder Text Generator",
+    titleTag: "Lorem Ipsum Generator - Free Placeholder Text | FreeToolPark",
+    metaDescription:
+      "Generate lorem ipsum placeholder text in paragraphs, sentences, or words. Free dummy text generator for web design, mockups, and prototyping. Copy with one click.",
+    introduction:
+      "The Lorem Ipsum Generator creates placeholder text you can use in web designs, mockups, print layouts, and wireframes. Choose how many paragraphs, sentences, or individual words you need, and the tool generates realistic-looking dummy text based on the classic lorem ipsum passage. You can start with the traditional \"Lorem ipsum dolor sit amet\" opening or generate fully randomized text. The word count display tells you exactly how much content was generated, and the one-click copy button lets you paste it straight into Figma, WordPress, Webflow, or any design tool. Designers, developers, and content creators use lorem ipsum daily to fill layouts before the real copy is ready. This tool makes it fast and easy.",
+    whyUse: [
+      "Generate paragraphs, sentences, or specific word counts of placeholder text",
+      "Option to start with the classic \"Lorem ipsum dolor sit amet\" opening or go fully random",
+      "Shows total word count of generated text for quick content planning",
+      "One-click copy to paste directly into design tools, CMS, or code editors",
+      "Free, fast, and runs entirely in your browser with no server requests",
+    ],
+    whyUseSummary:
+      "Lorem Ipsum Generator is the fastest way to create placeholder text online. Key advantages include flexible output modes, classic or random starting text, word count display, and instant one-click copy.",
+    steps: [
+      { title: "Set your quantity", description: "Enter the number of paragraphs, sentences, or words you want to generate using the count field. You can generate anywhere from 1 to 100 units." },
+      { title: "Choose your output type", description: "Select Paragraphs for full blocks of text, Sentences for individual sentences, or Words for a specific word count. Each mode produces differently structured output." },
+      { title: "Toggle the lorem ipsum start", description: "Check or uncheck the 'Start with Lorem ipsum' option. When enabled, the generated text begins with the classic opening phrase that designers recognize instantly." },
+      { title: "Generate and copy", description: "Click Generate Lorem Ipsum to create your placeholder text. Review it in the output area, check the word count, and click Copy Text to grab it for your project." },
+    ],
+    faqs: [
+      { question: "What is lorem ipsum and why do designers use it?", answer: "Lorem ipsum is placeholder text derived from a work by Cicero written in 45 BC. Designers use it because it looks like natural language without being distracting readable content. This lets clients and stakeholders focus on the layout, typography, and visual design rather than getting caught up reading the text itself." },
+      { question: "Is lorem ipsum just random Latin words?", answer: "Not exactly. The original lorem ipsum passage comes from sections 1.10.32 and 1.10.33 of Cicero's De Finibus Bonorum et Malorum. While it contains real Latin, the passage has been altered over the centuries, and modern generators mix in additional Latin-sounding words to create natural-looking filler text." },
+      { question: "How many words should I generate for a web page mockup?", answer: "A typical blog post mockup needs about 300 to 800 words. A homepage hero section uses 20 to 50 words. Product descriptions usually need 100 to 200 words. A full page layout might need 1,000 to 2,000 words depending on the design. This tool shows you the word count so you can generate exactly what you need." },
+      { question: "Can I use lorem ipsum in production?", answer: "Lorem ipsum should only be used as placeholder text during the design and development phase. Before launching any website or application, all placeholder text should be replaced with real, meaningful content. Search engines like Google may flag pages with lorem ipsum as low-quality or incomplete." },
+      { question: "Are there alternatives to lorem ipsum?", answer: "Yes. Some designers prefer using real content from the start, which is called content-first design. Others use alternative dummy text generators that produce text in English or other languages. However, lorem ipsum remains the industry standard because it is language-neutral and visually approximates natural text patterns." },
+    ],
+    relatedSlugs: ["word-counter", "character-counter", "case-converter"],
+    keywords: ["lorem ipsum generator", "placeholder text generator", "dummy text generator", "lorem ipsum", "generate lorem ipsum", "filler text generator"],
+  },
+
+  // 26. Calorie Calculator
+  {
+    slug: "calorie-calculator",
+    name: "Calorie Calculator",
+    category: "calculators",
+    icon: NaturalFoodIcon,
+    componentName: "calorie-calculator",
+    h1: "Calorie Calculator - Free Daily Calorie Intake Calculator",
+    titleTag: "Calorie Calculator - Daily Intake | FreeToolPark",
+    metaDescription:
+      "Calculate your daily calorie needs based on age, gender, weight, height, and activity level. Free TDEE and BMR calculator for weight loss, maintenance, and muscle gain.",
+    introduction:
+      "The Calorie Calculator estimates how many calories you need each day based on your age, gender, weight, height, and activity level. It uses the Mifflin-St Jeor equation, which is considered the most accurate formula for estimating Basal Metabolic Rate (BMR) by nutrition researchers. Once your BMR is calculated, the tool multiplies it by your activity level to give you your Total Daily Energy Expenditure (TDEE). You get calorie targets for weight loss, mild weight loss, maintenance, mild weight gain, and weight gain so you can pick the right number for your goals. The tool supports both metric (kg/cm) and imperial (lbs/inches) units. Whether you are starting a diet, bulking at the gym, or just curious about your energy needs, this calculator gives you a science-backed starting point.",
+    whyUse: [
+      "Uses the Mifflin-St Jeor equation, the gold standard for BMR estimation",
+      "Shows calorie targets for weight loss, maintenance, and weight gain in one view",
+      "Supports both metric and imperial units for global users",
+      "Five activity level options from sedentary to extra active for accurate TDEE",
+      "Free, private, and runs entirely in your browser with no health data stored",
+    ],
+    whyUseSummary:
+      "Calorie Calculator is the fastest way to estimate daily calorie needs online. Key advantages include the accurate Mifflin-St Jeor formula, multiple goal targets, dual unit support, and complete privacy.",
+    steps: [
+      { title: "Choose your unit system", description: "Select Metric (kg and cm) or Imperial (lbs and inches) depending on what you are comfortable with. The tool adjusts all input labels and calculations automatically." },
+      { title: "Enter your personal details", description: "Fill in your gender, age, weight, and height. These values are used to calculate your Basal Metabolic Rate, which is the number of calories your body burns at complete rest." },
+      { title: "Select your activity level", description: "Pick the option that best describes your typical weekly activity, from Sedentary (desk job, little exercise) to Extra Active (intense training or physical labor every day)." },
+      { title: "Review your calorie targets", description: "Click Calculate to see your BMR and five different daily calorie targets. Choose the one that matches your goal, whether it is losing weight, maintaining, or building muscle." },
+    ],
+    faqs: [
+      { question: "What is BMR and why does it matter?", answer: "BMR stands for Basal Metabolic Rate. It is the number of calories your body burns just to keep you alive while at complete rest, covering breathing, circulation, cell production, and other basic functions. BMR typically accounts for 60-75% of your total daily calorie burn. Knowing your BMR is the foundation for calculating accurate calorie targets for any fitness goal." },
+      { question: "How accurate is the Mifflin-St Jeor equation?", answer: "The Mifflin-St Jeor equation is considered the most reliable formula for estimating BMR in healthy adults. Studies published in the Journal of the American Dietetic Association found it to be accurate within 10% for most people. It is more accurate than the older Harris-Benedict equation and is recommended by most dietitians and nutrition professionals." },
+      { question: "How many calories should I eat to lose weight?", answer: "A safe and sustainable calorie deficit is 500 calories below your maintenance level, which typically leads to about 0.5 kg (1 pound) of weight loss per week. This calculator shows you a 500-calorie deficit option and a milder 250-calorie deficit option. Avoid going below 1,200 calories per day for women or 1,500 for men without medical supervision." },
+      { question: "Should I eat back the calories I burn during exercise?", answer: "It depends on your goal. If you are trying to lose weight, eating back all exercise calories can slow your progress. If you are maintaining or gaining weight, you should account for exercise calories. A good middle ground is to eat back about half of your exercise calories to prevent underfueling while still creating a deficit." },
+      { question: "How often should I recalculate my calorie needs?", answer: "Recalculate every time your weight changes by 5 kg (10 lbs) or more, when your activity level changes significantly, or every 4 to 6 weeks during an active diet. As you lose weight, your body needs fewer calories, so your targets should be updated to keep making progress." },
+    ],
+    relatedSlugs: ["bmi-calculator", "percentage-calculator", "age-calculator"],
+    keywords: ["calorie calculator", "daily calorie calculator", "TDEE calculator", "BMR calculator", "calorie intake calculator", "how many calories should I eat"],
+  },
+
+  // 27. Grade Calculator
+  {
+    slug: "grade-calculator",
+    name: "Grade Calculator",
+    category: "calculators",
+    icon: School01Icon,
+    componentName: "grade-calculator",
+    h1: "Grade Calculator - Free Final Grade Calculator",
+    titleTag: "Grade Calculator - Final Grade Calculator | FreeToolPark",
+    metaDescription:
+      "Calculate your final grade with simple or weighted averages. Free grade calculator for students with letter grade conversion. Add unlimited assignments.",
+    introduction:
+      "The Grade Calculator helps students figure out their current grade and final grade by averaging assignment scores. It supports both simple averaging, where all assignments count equally, and weighted averaging, where different assignments carry different percentages of your total grade. Add as many assignments as you need, enter your scores, and instantly see your overall percentage and letter grade. This is perfect for students who want to know where they stand before finals, teachers who need a quick way to calculate student averages, and parents tracking their children's academic performance. The standard US letter grade scale (A+ through F) is used for conversion. No signup, no data collection, and completely free to use.",
+    whyUse: [
+      "Supports both simple and weighted grade averaging methods",
+      "Add unlimited assignments with custom names, scores, and weights",
+      "Instant letter grade conversion using the standard US grading scale",
+      "Clean, easy-to-read results with percentage and letter grade side by side",
+      "Free and private with no student data stored or shared",
+    ],
+    whyUseSummary:
+      "Grade Calculator is the fastest way to calculate your class grade online. Key advantages include simple and weighted modes, unlimited assignments, and instant letter grade conversion.",
+    steps: [
+      { title: "Choose your averaging method", description: "Select Simple Average if all assignments count equally toward your grade, or Weighted Average if different categories like homework, exams, and projects have different weights." },
+      { title: "Enter your assignments", description: "For each assignment, enter a name (optional), your score, the total points possible, and the weight percentage if using weighted mode. Click Add Assignment to include more rows." },
+      { title: "Review your grade", description: "Your final percentage and letter grade appear automatically as you enter scores. The calculation updates in real time every time you change a value." },
+      { title: "Copy your results", description: "Use the copy button next to the result to grab your grade percentage and letter grade for your records." },
+    ],
+    faqs: [
+      { question: "What is the difference between simple and weighted grade calculation?", answer: "Simple averaging treats every assignment equally regardless of point value. If you scored 80, 90, and 100, your average is 90%. Weighted averaging assigns different importance to categories. If homework is worth 30% and exams are 70%, a 100% homework average and 80% exam average gives you 86% overall, not 90%. Most college courses use weighted grading." },
+      { question: "What letter grade scale does this calculator use?", answer: "This calculator uses the standard US letter grade scale: A (93-100%), A- (90-92%), B+ (87-89%), B (83-86%), B- (80-82%), C+ (77-79%), C (73-76%), C- (70-72%), D+ (67-69%), D (63-66%), D- (60-62%), and F (below 60%). Some schools may use slightly different cutoffs." },
+      { question: "Can I use this to figure out what I need on my final exam?", answer: "Yes. Enter all your current assignments with their scores and weights, then add a row for your final exam with the weight it carries. Try different scores for the final exam to see what overall grade each score would give you. This is a great way to figure out the minimum final exam score needed for your target grade." },
+      { question: "How do weighted grades work when the weights do not add up to 100%?", answer: "If your weights do not total 100%, the calculator normalizes them proportionally. For example, if you only have categories totaling 60% entered so far (because the final exam has not happened), the calculator divides by the total weight entered to give you your current standing based on completed work." },
+      { question: "Can I calculate grades for multiple classes?", answer: "This tool calculates one class at a time. To calculate grades for multiple classes, finish one class, copy the results, clear the fields, and start entering assignments for the next class. For overall GPA across classes, use our GPA Calculator tool instead." },
+    ],
+    relatedSlugs: ["gpa-calculator", "percentage-calculator", "interest-calculator"],
+    keywords: ["grade calculator", "final grade calculator", "weighted grade calculator", "calculate my grade", "grade average calculator", "class grade calculator"],
+  },
+
+  // 28. GPA Calculator
+  {
+    slug: "gpa-calculator",
+    name: "GPA Calculator",
+    category: "calculators",
+    icon: School01Icon,
+    componentName: "gpa-calculator",
+    h1: "GPA Calculator - Free College GPA Calculator",
+    titleTag: "GPA Calculator - College GPA Calculator | FreeToolPark",
+    metaDescription:
+      "Calculate your college GPA on a 4.0 scale. Free GPA calculator with letter grades, credit hours, and quality points. Add unlimited courses instantly.",
+    introduction:
+      "The GPA Calculator helps you compute your Grade Point Average on the standard 4.0 scale used by most US colleges and universities. Enter your courses, select the letter grade you earned, and specify the credit hours for each class. The tool instantly calculates your cumulative GPA, total credit hours, and quality points. You can add as many courses as you need for a single semester or combine multiple semesters. This is essential for college students tracking their academic standing, planning for graduate school applications, checking scholarship eligibility, or figuring out how future grades will affect their overall GPA. The calculator uses the standard grade point values from A+ (4.0) through F (0.0) and handles plus/minus grades. Everything runs locally with no data stored.",
+    whyUse: [
+      "Standard 4.0 scale with A+ through F including plus and minus grades",
+      "Add unlimited courses with custom credit hours for accurate GPA calculation",
+      "Shows GPA, total credits, and quality points all in one clear dashboard",
+      "Perfect for semester GPA or cumulative GPA across all semesters",
+      "Free, fast, and private with zero data collection",
+    ],
+    whyUseSummary:
+      "GPA Calculator is the fastest way to calculate your college GPA online. Key advantages include standard 4.0 scale support, unlimited courses, and a clear display of GPA, credits, and quality points.",
+    steps: [
+      { title: "Add your courses", description: "Enter a name for each course (optional), the number of credit hours, and select the letter grade you received from the dropdown menu. The tool starts with four course rows." },
+      { title: "Add more courses if needed", description: "Click the Add Course button to include additional classes. You can add as many as you need to cover a full semester or even multiple semesters." },
+      { title: "Review your GPA", description: "Your cumulative GPA, total credit hours, and quality points update automatically as you enter grades. The GPA is displayed prominently with two decimal places." },
+      { title: "Copy your results", description: "Click the Copy Results button to grab a formatted summary of your GPA, total credits, and quality points for your records or applications." },
+    ],
+    faqs: [
+      { question: "How is GPA calculated on a 4.0 scale?", answer: "GPA is calculated by multiplying each course's grade points (A=4.0, B=3.0, C=2.0, etc.) by its credit hours to get quality points. Then you divide total quality points by total credit hours. For example, an A (4.0) in a 3-credit course gives 12 quality points. A B (3.0) in a 4-credit course gives 12 quality points. Total is 24 quality points divided by 7 credits equals a 3.43 GPA." },
+      { question: "What GPA do I need for graduate school?", answer: "Most graduate programs require a minimum GPA of 3.0 on a 4.0 scale. Competitive programs at top universities often expect 3.5 or higher. Medical schools typically look for 3.7 or above. However, GPA is just one factor in admissions along with test scores, research experience, letters of recommendation, and personal statements." },
+      { question: "What is the difference between semester GPA and cumulative GPA?", answer: "Semester GPA is calculated using only the courses from a single semester. Cumulative GPA includes all courses across every semester of your college career. You can use this calculator for either by entering just one semester of courses or all courses across multiple semesters." },
+      { question: "Do plus and minus grades affect GPA?", answer: "Yes. An A- is worth 3.7 instead of 4.0, and a B+ is worth 3.3 instead of 3.0. The difference between an A and A- in a 3-credit course is 0.9 quality points, which can noticeably affect your GPA. This calculator accounts for all plus and minus variants." },
+      { question: "How can I raise a low GPA?", answer: "Focus on courses with more credit hours since they carry more weight in the calculation. Retaking courses where you earned low grades can help if your school replaces the old grade. Taking lighter course loads can help you focus more on each class. Use this calculator to model different grade scenarios and see what GPA you would get." },
+    ],
+    relatedSlugs: ["grade-calculator", "percentage-calculator", "interest-calculator"],
+    keywords: ["gpa calculator", "college gpa calculator", "gpa calculator 4.0 scale", "calculate gpa", "cumulative gpa calculator", "grade point average calculator"],
+  },
+
+  // 29. Text to Slug Converter
+  {
+    slug: "text-to-slug",
+    name: "Text to Slug",
+    category: "text-tools",
+    icon: CursorTextIcon,
+    componentName: "text-to-slug",
+    h1: "Text to Slug Converter - Free URL Slug Generator",
+    titleTag: "Text to Slug Converter - URL Slug Generator | FreeToolPark",
+    metaDescription:
+      "Convert any text into a clean URL slug instantly. Free slug generator with custom separators, SEO length check, and URL preview. Great for blogs and web development.",
+    introduction:
+      "The Text to Slug Converter turns any title, heading, or text into a clean, URL-friendly slug. It removes special characters, converts spaces to hyphens, strips accented characters, and lowercases everything to produce slugs that work perfectly in web addresses. Choose between hyphens, underscores, or dots as your separator. The tool shows you a live URL preview, the character count, and an SEO length recommendation so you know if your slug is the right size for search engines. Bloggers, web developers, and content managers use this daily when creating new pages, posts, or product URLs. Having clean, readable slugs is a key part of technical SEO because search engines and users both prefer short, descriptive URLs. The tool works instantly as you type.",
+    whyUse: [
+      "Instantly converts text to URL-safe slugs with proper formatting",
+      "Choose between hyphen, underscore, or dot separators",
+      "Real-time SEO length indicator tells you if your slug is too long",
+      "Live URL preview shows exactly how the final address will look",
+      "Handles accented characters, special symbols, and Unicode text cleanly",
+    ],
+    whyUseSummary:
+      "Text to Slug Converter is the fastest way to create URL-friendly slugs online. Key advantages include multiple separator options, SEO length checking, live URL preview, and automatic handling of special characters.",
+    steps: [
+      { title: "Enter your text", description: "Type or paste a title, heading, or any text you want to convert into a URL slug. The conversion happens in real time as you type." },
+      { title: "Choose your separator", description: "Select Hyphen (-), Underscore (_), or Dot (.) as the separator between words. Hyphens are the most common and recommended by Google for URL slugs." },
+      { title: "Check the SEO length", description: "Review the character count and SEO recommendation shown below the slug. Slugs under 60 characters are ideal for search engine optimization and readability." },
+      { title: "Copy your slug", description: "Click the Copy Slug button to grab the generated slug. You can also reference the URL preview to see exactly how it will look in a complete web address." },
+    ],
+    faqs: [
+      { question: "What is a URL slug?", answer: "A URL slug is the part of a web address that comes after the domain name and identifies a specific page. For example, in example.com/my-blog-post, the slug is my-blog-post. Good slugs are short, descriptive, lowercase, and use hyphens to separate words. They help both users and search engines understand what the page is about." },
+      { question: "Why are hyphens better than underscores in URLs?", answer: "Google treats hyphens as word separators but treats underscores as word joiners. So my-blog-post is read as three separate words (my, blog, post), while my_blog_post might be read as one compound word. Google's own John Mueller has confirmed that hyphens are the recommended separator for URLs." },
+      { question: "How long should a URL slug be for SEO?", answer: "Keep your URL slugs under 60 characters for best SEO results. Shorter slugs are easier to read, share, and remember. They also display fully in search results without being truncated. Remove stop words like a, the, and, is, and of to keep slugs concise while retaining meaning." },
+      { question: "Does this tool handle accented characters?", answer: "Yes. The converter strips diacritical marks from accented characters using Unicode normalization. Characters like e with an accent, u with an umlaut, and n with a tilde are converted to their plain ASCII equivalents (e, u, n). This ensures your slugs work in all browsers and web servers without encoding issues." },
+      { question: "Can I use this for file names too?", answer: "Absolutely. The same rules that make good URL slugs also make good file names. Using lowercase letters, numbers, and hyphens produces file names that work across all operating systems without issues from special characters or spaces." },
+    ],
+    relatedSlugs: ["case-converter", "word-counter", "character-counter"],
+    keywords: ["text to slug converter", "url slug generator", "slug generator", "url friendly text", "text to url converter", "permalink generator"],
+  },
+
+  // 30. CSS Minifier
+  {
+    slug: "css-minifier",
+    name: "CSS Minifier",
+    category: "developer-tools",
+    icon: CodeIcon,
+    componentName: "css-minifier",
+    h1: "CSS Minifier - Free Online CSS Compressor",
+    titleTag: "CSS Minifier - Compress CSS Online | FreeToolPark",
+    metaDescription:
+      "Minify CSS code instantly to reduce file size and improve page speed. Free CSS minifier that removes comments, whitespace, and redundant code. One-click copy.",
+    introduction:
+      "The CSS Minifier compresses your CSS code by removing comments, extra whitespace, line breaks, and unnecessary semicolons. The result is a smaller file that loads faster in the browser without changing how your styles look or work. Page speed is a direct Google ranking factor, and every kilobyte you shave off your CSS files helps your site load quicker, which improves both SEO and user experience. Just paste your CSS on the left side and instantly see the minified version on the right. The tool shows you exactly how many bytes you saved and the compression percentage. One-click copy lets you grab the minified output and drop it into your production build. Everything processes in your browser with no server uploads.",
+    whyUse: [
+      "Instantly removes comments, whitespace, and redundant semicolons from CSS",
+      "Side-by-side editor shows original and minified code for easy comparison",
+      "Real-time file size comparison with compression percentage",
+      "One-click copy to grab minified CSS for production deployment",
+      "100% browser-based with no code uploaded to any server",
+    ],
+    whyUseSummary:
+      "CSS Minifier is the fastest way to compress CSS online. Key advantages include instant minification, side-by-side comparison, file size savings display, and complete privacy.",
+    steps: [
+      { title: "Paste your CSS code", description: "Copy your CSS from your code editor or browser dev tools and paste it into the left text area. The tool accepts any valid CSS including media queries, keyframes, and custom properties." },
+      { title: "View the minified output", description: "The right panel instantly shows the compressed CSS with all comments, extra spaces, and line breaks removed. The code is functionally identical to the original." },
+      { title: "Check your savings", description: "Review the three stat cards below the editor showing original size, minified size, and the percentage saved. Typical CSS files see 20-40% compression from minification alone." },
+      { title: "Copy and deploy", description: "Click the Copy CSS button to grab the minified code. Replace your existing CSS file with the minified version or use it in your build pipeline for production deployment." },
+    ],
+    faqs: [
+      { question: "What does CSS minification actually do?", answer: "CSS minification removes everything that is not needed for the browser to interpret your styles. This includes comments (/* */), extra whitespace and line breaks, trailing semicolons before closing braces, and unnecessary spaces around selectors and properties. The browser reads minified and unminified CSS identically, but the minified version is smaller in file size." },
+      { question: "How much file size reduction can I expect?", answer: "Typical CSS files see 20-40% size reduction from minification. Files with lots of comments or verbose formatting save even more. A 50KB stylesheet might drop to 30-35KB after minification. Combined with gzip compression on your server, the total transfer size can be 70-80% smaller than the original." },
+      { question: "Will minifying CSS break my styles?", answer: "No. CSS minification only removes characters that have no effect on how browsers parse and apply styles. Your layout, colors, fonts, animations, and every other style rule will work exactly the same way. The only thing you lose is human readability, which is why you should always keep your unminified source files for development." },
+      { question: "Should I minify CSS for every website?", answer: "Yes. Google uses page speed as a ranking factor, and the PageSpeed Insights tool specifically flags unminified CSS as an issue. Even small sites benefit from minification because it reduces bandwidth, speeds up page rendering, and provides a better experience for users on slow connections or mobile data." },
+      { question: "How does this compare to build tools like PostCSS or cssnano?", answer: "Build tools like cssnano and PostCSS can do advanced optimizations like merging duplicate rules, shortening color values, and removing unused selectors. This online minifier focuses on basic but effective minification: removing whitespace, comments, and redundant characters. For quick one-off tasks or small projects, this tool is faster and easier than setting up a build pipeline." },
+    ],
+    relatedSlugs: ["js-minifier", "html-minifier", "css-gradient-generator"],
+    keywords: ["css minifier", "minify css", "css compressor", "compress css online", "css minifier online", "css minification tool"],
+  },
+
+  // 31. JavaScript Minifier
+  {
+    slug: "js-minifier",
+    name: "JavaScript Minifier",
+    category: "developer-tools",
+    icon: CodeIcon,
+    componentName: "js-minifier",
+    h1: "JavaScript Minifier - Free Online JS Compressor",
+    titleTag: "JavaScript Minifier - Compress JS Online | FreeToolPark",
+    metaDescription:
+      "Minify JavaScript code to reduce file size and boost page speed. Free JS minifier that strips comments and whitespace. One-click copy for production use.",
+    introduction:
+      "The JavaScript Minifier compresses your JS code by stripping out comments, extra whitespace, and line breaks without changing how the code executes. Smaller JavaScript files load faster, parse quicker, and reduce the time to interactive for your web pages. Since JavaScript is typically the largest render-blocking resource on most websites, minifying it has a direct impact on Core Web Vitals scores and Google rankings. Paste your code on the left, see the compressed version on the right, and check how many bytes you saved. The one-click copy button makes it easy to grab the output and use it in production. Great for quick minification tasks when you do not want to set up a full build tool like Webpack or Rollup. Everything runs in your browser so your code stays private.",
+    whyUse: [
+      "Strips single-line comments, multi-line comments, and unnecessary whitespace from JS",
+      "Side-by-side input and output panels for easy comparison",
+      "Shows original size, minified size, and compression percentage in real time",
+      "One-click copy button for fast production deployment",
+      "Completely browser-based so your JavaScript code never leaves your machine",
+    ],
+    whyUseSummary:
+      "JavaScript Minifier is the fastest way to compress JS code online. Key advantages include instant minification, real-time size comparison, one-click copy, and full privacy.",
+    steps: [
+      { title: "Paste your JavaScript", description: "Copy your JS code from your editor, browser console, or any file and paste it into the left input panel. The tool handles ES6+, arrow functions, template literals, and all modern JavaScript syntax." },
+      { title: "Review the minified output", description: "The right panel shows the compressed JavaScript with all comments and unnecessary whitespace removed. The code is functionally identical to your original." },
+      { title: "Check file size savings", description: "The stats cards below the editor show original size in bytes, minified size, and the percentage of space saved. JavaScript files typically see 20-50% savings from comment and whitespace removal." },
+      { title: "Copy for production", description: "Click Copy JS to grab the minified code. Use it in your production builds, CDN uploads, or inline script tags to deliver faster-loading pages." },
+    ],
+    faqs: [
+      { question: "What does JavaScript minification remove?", answer: "JavaScript minification removes single-line comments (//), multi-line comments (/* */), extra whitespace and indentation, unnecessary line breaks, and redundant spaces around operators and brackets. The minified code behaves exactly the same as the original because browsers ignore whitespace and comments during parsing." },
+      { question: "How much smaller will my JavaScript file be after minification?", answer: "Typical savings range from 20% to 50% depending on how much your code is commented and formatted. A heavily commented 100KB file could drop to 50-60KB. When combined with gzip or Brotli compression on your web server, the actual transfer size can be 80-90% smaller than the original unminified file." },
+      { question: "Can minification break my JavaScript code?", answer: "Basic minification that removes comments and whitespace should never break your code. However, more aggressive minification techniques like variable renaming (which this tool does not do) can occasionally cause issues with code that relies on function names or dynamic property access. This tool performs safe, conservative minification." },
+      { question: "Should I minify JavaScript even if I use gzip compression?", answer: "Yes. Minification and gzip work together. Minification removes characters that do not affect execution, while gzip compresses the remaining characters using pattern-based algorithms. A minified and gzipped file is always smaller than a gzipped-only file. Both are recommended by Google PageSpeed Insights." },
+      { question: "What is the difference between minification and obfuscation?", answer: "Minification makes code smaller by removing non-functional characters while keeping the logic readable. Obfuscation deliberately makes code hard to understand by renaming variables, encoding strings, and adding dead code. This tool performs minification only, which is safe, reversible, and recommended for production websites." },
+    ],
+    relatedSlugs: ["css-minifier", "html-minifier", "json-formatter"],
+    keywords: ["javascript minifier", "minify javascript", "js minifier", "js compressor", "compress javascript online", "javascript minifier online"],
+  },
+
+  // 32. HTML Minifier
+  {
+    slug: "html-minifier",
+    name: "HTML Minifier",
+    category: "developer-tools",
+    icon: CodeIcon,
+    componentName: "html-minifier",
+    h1: "HTML Minifier - Free Online HTML Compressor",
+    titleTag: "HTML Minifier - Compress HTML Online | FreeToolPark",
+    metaDescription:
+      "Minify HTML code to reduce page size and improve load times. Free HTML minifier removes comments, whitespace, and redundant tags. Copy minified HTML instantly.",
+    introduction:
+      "The HTML Minifier reduces the size of your HTML files by removing comments, extra whitespace between tags, and unnecessary spaces. This makes your web pages lighter and faster to download, which directly impacts your Core Web Vitals scores, Google search rankings, and user experience. Even though HTML is usually smaller than CSS and JavaScript files, large pages with lots of content, comments, and formatting can benefit significantly from minification. Paste your HTML on the left side and see the compressed output on the right with real-time file size comparison. The tool handles all standard HTML including DOCTYPE, meta tags, script tags, style blocks, and any valid markup. One-click copy lets you grab the minified output instantly. No server processing required.",
+    whyUse: [
+      "Removes HTML comments, extra whitespace between tags, and redundant spaces",
+      "Side-by-side editor for comparing original and minified HTML",
+      "Real-time display of original size, minified size, and percentage saved",
+      "One-click copy for quick deployment of minified HTML",
+      "Runs entirely in your browser with no code sent to any server",
+    ],
+    whyUseSummary:
+      "HTML Minifier is the fastest way to compress HTML online. Key advantages include instant comment and whitespace removal, real-time size comparison, and complete browser-based privacy.",
+    steps: [
+      { title: "Paste your HTML code", description: "Copy your HTML from your code editor, CMS, or browser source view and paste it into the left text area. The tool accepts any valid HTML including full pages and code snippets." },
+      { title: "View the minified output", description: "The right panel instantly displays compressed HTML with comments stripped and whitespace between tags removed. The rendered result in a browser will be identical to the original." },
+      { title: "Review size savings", description: "Check the stats cards below the editor to see the original file size, minified size, and the percentage reduction. HTML files typically save 10-30% from minification." },
+      { title: "Copy the minified HTML", description: "Click Copy HTML to grab the compressed output. Use it directly in your production HTML files, templates, or CMS for faster-loading web pages." },
+    ],
+    faqs: [
+      { question: "What does HTML minification remove?", answer: "HTML minification removes HTML comments (<!-- -->), extra whitespace and line breaks between tags, unnecessary spaces around tag attributes, and redundant whitespace inside tag content. It does not remove or modify any actual HTML elements, attributes, or content that affects how the page renders in a browser." },
+      { question: "Will minifying HTML affect my page layout?", answer: "No. HTML minification only removes characters that browsers ignore during rendering. Your page will look exactly the same after minification. The only visual difference you might notice is that inline elements separated only by whitespace may appear slightly closer together, but this is the same as removing manual spacing in your source code." },
+      { question: "How much can HTML minification reduce file size?", answer: "HTML files typically see 10-30% size reduction from minification. Pages with lots of comments, indentation, and whitespace save more. A 200KB HTML page might drop to 150-170KB. The savings are particularly noticeable on content-heavy pages like documentation sites, landing pages, and e-commerce product listings." },
+      { question: "Should I minify HTML along with CSS and JavaScript?", answer: "Yes. Minifying all three file types together gives you the best overall page speed improvement. CSS and JavaScript typically offer larger percentage savings, but HTML minification is still worthwhile because the HTML document is the first file the browser downloads and must be parsed before anything else loads." },
+      { question: "Can I minify HTML that contains inline CSS and JavaScript?", answer: "Yes. This tool processes the full HTML document including inline style blocks and script tags. However, for best results, minify your CSS and JavaScript separately using our dedicated CSS Minifier and JavaScript Minifier tools, which apply format-specific optimizations." },
+    ],
+    relatedSlugs: ["css-minifier", "js-minifier", "markdown-to-html"],
+    keywords: ["html minifier", "minify html", "html compressor", "compress html online", "html minifier online", "html minification tool"],
+  },
+
+  // 33. Binary to Decimal Converter
+  {
+    slug: "binary-to-decimal",
+    name: "Binary to Decimal",
+    category: "converters",
+    icon: BinaryCodeIcon,
+    componentName: "binary-to-decimal",
+    h1: "Binary to Decimal Converter - Free Number System Converter",
+    titleTag: "Binary to Decimal Converter - Free | FreeToolPark",
+    metaDescription:
+      "Convert binary numbers to decimal, octal, and hexadecimal instantly. Free binary to decimal converter with bidirectional conversion. Great for students and programmers.",
+    introduction:
+      "The Binary to Decimal Converter translates binary numbers (base 2) into decimal (base 10), octal (base 8), and hexadecimal (base 16) in real time. Type a binary number on the left and see the decimal equivalent on the right, or enter a decimal number and get the binary representation instantly. The tool also shows octal and hexadecimal conversions for every input, giving you four number bases in one view. This is essential for computer science students learning number systems, programmers working with low-level code and bitwise operations, and anyone who needs to quickly convert between binary and decimal for networking, electronics, or digital systems. Every output has a copy button for fast use.",
+    whyUse: [
+      "Converts between binary, decimal, octal, and hexadecimal in real time",
+      "Bidirectional conversion: enter binary or decimal and the other updates automatically",
+      "Shows all four number bases at once for comprehensive reference",
+      "Input validation ensures only valid binary digits (0 and 1) are accepted",
+      "Completely free and runs in your browser with no server processing",
+    ],
+    whyUseSummary:
+      "Binary to Decimal Converter is the fastest way to convert between number systems online. Key advantages include bidirectional conversion, four simultaneous number base outputs, and real-time validation.",
+    steps: [
+      { title: "Enter a binary number", description: "Type a binary number using only 0s and 1s in the Binary Number field. The tool validates your input and shows an error if you include any other digits." },
+      { title: "Or enter a decimal number", description: "If you already know the decimal value, type it in the Decimal Number field instead. The binary representation generates automatically along with octal and hexadecimal." },
+      { title: "View all number bases", description: "The results section shows your number in binary, decimal, octal, and hexadecimal. All four formats update in real time as you change either input field." },
+      { title: "Copy any format", description: "Each number base output has its own copy button. Click it to copy that specific value to your clipboard for use in your code, homework, or documentation." },
+    ],
+    faqs: [
+      { question: "How do you convert binary to decimal manually?", answer: "Each digit in a binary number represents a power of 2, starting from the rightmost digit at 2^0. To convert, multiply each binary digit by its power of 2 and add the results. For example, binary 1011 = (1 x 8) + (0 x 4) + (1 x 2) + (1 x 1) = 8 + 0 + 2 + 1 = 11 in decimal." },
+      { question: "What is the difference between binary and decimal number systems?", answer: "Binary (base 2) uses only two digits: 0 and 1. It is the fundamental language of computers because electronic circuits have two states: on and off. Decimal (base 10) uses ten digits: 0 through 9. It is the number system humans use in everyday life. Both systems can represent the same values, just with different notation." },
+      { question: "Why do computers use binary instead of decimal?", answer: "Computers use binary because digital circuits are built with transistors that have two stable states: on (1) and off (0). It is much simpler and more reliable to design electronic components with two states than ten. All the math, logic, and data processing inside a computer ultimately reduces to binary operations." },
+      { question: "What is hexadecimal and why is it related to binary?", answer: "Hexadecimal (base 16) uses digits 0-9 and letters A-F. Each hex digit represents exactly 4 binary digits (bits), making it a compact way to write binary values. For example, binary 11111111 is FF in hex and 255 in decimal. Programmers use hex extensively for memory addresses, color codes, and data representation because it is shorter than binary but easily convertible." },
+      { question: "What is the largest binary number this tool can handle?", answer: "This tool uses JavaScript's native number handling, which accurately represents integers up to 2^53 - 1 (9,007,199,254,740,991). That is a 53-bit binary number. For most practical purposes including computer science coursework, networking, and programming tasks, this range is more than sufficient." },
+    ],
+    relatedSlugs: ["decimal-to-binary", "number-to-words", "roman-numeral-converter"],
+    keywords: ["binary to decimal converter", "binary to decimal", "convert binary to decimal", "binary converter", "binary to decimal calculator", "base 2 to base 10"],
+  },
+
+  // 34. Decimal to Binary Converter
+  {
+    slug: "decimal-to-binary",
+    name: "Decimal to Binary",
+    category: "converters",
+    icon: BinaryCodeIcon,
+    componentName: "decimal-to-binary",
+    h1: "Decimal to Binary Converter - Free Number Base Converter",
+    titleTag: "Decimal to Binary Converter - Free | FreeToolPark",
+    metaDescription:
+      "Convert decimal numbers to binary, octal, and hexadecimal instantly. Free decimal to binary converter with grouped bit display. Perfect for students and developers.",
+    introduction:
+      "The Decimal to Binary Converter transforms any decimal number into its binary equivalent along with octal and hexadecimal representations. Enter a decimal value and instantly see the binary output formatted in neat 4-bit groups for easy reading. The tool also shows how many bits are needed to represent your number, which is useful for understanding data types and memory allocation in programming. Whether you are a computer science student working through number system homework, a developer debugging bit flags, or an electronics hobbyist working with microcontrollers, this converter makes number base translation effortless. It works bidirectionally too, so you can type in binary and get the decimal back.",
+    whyUse: [
+      "Instant decimal to binary conversion with neatly grouped 4-bit output",
+      "Also shows octal and hexadecimal equivalents for every number",
+      "Displays the total number of bits needed to represent your value",
+      "Bidirectional conversion: enter decimal or binary and both fields update",
+      "Free, fast, and private with no data processing on any server",
+    ],
+    whyUseSummary:
+      "Decimal to Binary Converter is the fastest way to convert numbers between bases online. Key advantages include 4-bit grouped display, multi-base output, bit count display, and bidirectional conversion.",
+    steps: [
+      { title: "Enter a decimal number", description: "Type any non-negative whole number in the Decimal Number field. The binary equivalent generates instantly as you type." },
+      { title: "Or enter a binary number", description: "If you have a binary value, type it in the Binary Number field instead. The decimal and other number base representations update automatically." },
+      { title: "Read the grouped binary output", description: "The main result shows your binary number with digits grouped into sets of four (nibbles) for easy reading. Below that, you will find decimal, binary, octal, and hexadecimal values all displayed together." },
+      { title: "Copy any value", description: "Click the copy button next to any number format to grab it for your code, documentation, or homework." },
+    ],
+    faqs: [
+      { question: "How do you convert decimal to binary manually?", answer: "Divide the decimal number by 2 repeatedly, recording the remainder each time. Read the remainders from bottom to top to get the binary representation. For example, decimal 13: 13 / 2 = 6 remainder 1, 6 / 2 = 3 remainder 0, 3 / 2 = 1 remainder 1, 1 / 2 = 0 remainder 1. Reading bottom to top: 1101 in binary." },
+      { question: "What are 4-bit groups and why are they useful?", answer: "A 4-bit group (also called a nibble) contains four binary digits. Grouping binary numbers into nibbles makes them much easier to read and directly corresponds to one hexadecimal digit. For example, 11111111 is hard to read, but 1111 1111 clearly shows two groups that each equal F in hex, giving FF." },
+      { question: "How many bits do I need for a specific number?", answer: "The number of bits needed equals the position of the highest set bit plus one. For decimal 255, you need 8 bits (11111111). For decimal 256, you need 9 bits (100000000). This tool shows the bit count automatically, which is helpful when choosing data types in programming (8-bit byte, 16-bit short, 32-bit int, 64-bit long)." },
+      { question: "Can this convert negative numbers?", answer: "This tool works with non-negative integers (0 and positive whole numbers). Negative numbers in binary require a representation scheme like two's complement, which depends on the specific bit width (8-bit, 16-bit, 32-bit, etc.). For negative number conversions, you would need to specify the bit width and apply two's complement rules." },
+      { question: "What is the relationship between binary, octal, and hexadecimal?", answer: "All three are positional number systems used in computing. Binary (base 2) is the most fundamental. Octal (base 8) groups binary into 3-bit chunks, so each octal digit equals three binary digits. Hexadecimal (base 16) groups binary into 4-bit chunks, so each hex digit equals four binary digits. This is why programmers commonly use hex as a shorter way to write binary values." },
+    ],
+    relatedSlugs: ["binary-to-decimal", "number-to-words", "roman-numeral-converter"],
+    keywords: ["decimal to binary converter", "decimal to binary", "convert decimal to binary", "number to binary", "decimal to binary calculator", "base 10 to base 2"],
+  },
+
+  // 35. Number to Words Converter
+  {
+    slug: "number-to-words",
+    name: "Number to Words",
+    category: "converters",
+    icon: TextNumberSignIcon,
+    componentName: "number-to-words",
+    h1: "Number to Words Converter - Free Number Spelling Tool",
+    titleTag: "Number to Words Converter - Free | FreeToolPark",
+    metaDescription:
+      "Convert any number to words instantly. Free number to words converter that spells out numbers in English. Perfect for checks, legal documents, and invoices.",
+    introduction:
+      "The Number to Words Converter spells out any number in plain English. Type a number and instantly see it written in words, which is essential for writing checks, legal documents, invoices, contracts, and formal correspondence. The tool handles numbers from zero up to quadrillions, including negative numbers. It provides both lowercase and capitalized versions so you can grab whichever format you need. You also see the digit count, word count, and character count of the spelled-out number. Accountants, lawyers, teachers, and anyone who needs to write numbers in word form will find this tool saves time and eliminates errors. No more second-guessing how to spell out 1,234,567 in words.",
+    whyUse: [
+      "Converts any number up to quadrillions into properly spelled English words",
+      "Provides both lowercase and capitalized versions for different use cases",
+      "Shows digit count, word count, and character count of the output",
+      "Perfect for checks, legal documents, invoices, and contracts",
+      "Free, instant, and runs entirely in your browser",
+    ],
+    whyUseSummary:
+      "Number to Words Converter is the fastest way to spell out numbers in English online. Key advantages include support for massive numbers, dual output formats, and practical use for financial and legal documents.",
+    steps: [
+      { title: "Enter a number", description: "Type any number in the input field. The tool accepts whole numbers, negative numbers, and values up to the quadrillions. The conversion happens instantly as you type." },
+      { title: "Read the lowercase version", description: "The first output shows the number spelled out in all lowercase letters. This is the standard format for most written documents and check amounts." },
+      { title: "Read the capitalized version", description: "The second output shows the same text with the first letter capitalized. This format is commonly used at the start of sentences and in formal legal documents." },
+      { title: "Copy the version you need", description: "Each output has its own copy button. Click to copy the lowercase or capitalized version directly to your clipboard for pasting into your document." },
+    ],
+    faqs: [
+      { question: "Why do checks require numbers to be written in words?", answer: "Writing the amount in words on a check provides a safeguard against fraud and errors. If someone alters the numeric amount, the written amount serves as the legal record of the intended payment. Banks use the written amount as the authoritative value when there is a discrepancy between the numbers and the words." },
+      { question: "What is the largest number this tool can convert?", answer: "This tool can convert numbers up to the quadrillions (10^15 range). It supports all standard English number scales including thousand, million, billion, trillion, and quadrillion. For everyday use including financial amounts, population figures, and scientific values, this range covers virtually any number you need to spell out." },
+      { question: "Does it handle negative numbers?", answer: "Yes. Negative numbers are converted with the word 'negative' at the beginning. For example, -42 becomes 'negative forty two'. This is useful for financial reports, temperature readings, and other contexts where negative values need to be expressed in words." },
+      { question: "How does it handle numbers with 'and' in them?", answer: "The converter follows the standard convention of using 'and' after the hundreds place within each three-digit group. For example, 150 becomes 'one hundred and fifty'. While some style guides omit the 'and', including it is the most common practice in American and British English for everyday documents." },
+      { question: "Can I use this for currency amounts?", answer: "Yes. Type the dollar amount and the tool converts it to words. For checks, you typically write the cents as a fraction (like 50/100) after the dollar amount in words. For example, for $1,234.50, type 1234 to get 'one thousand, two hundred and thirty four' and then add 'and 50/100 dollars' manually." },
+    ],
+    relatedSlugs: ["roman-numeral-converter", "binary-to-decimal", "decimal-to-binary"],
+    keywords: ["number to words converter", "number to words", "number spelling", "convert number to words", "write number in words", "spell out numbers"],
+  },
+
+  // 36. Roman Numeral Converter
+  {
+    slug: "roman-numeral-converter",
+    name: "Roman Numeral Converter",
+    category: "converters",
+    icon: LeftToRightListNumberIcon,
+    componentName: "roman-numeral-converter",
+    h1: "Roman Numeral Converter - Free Roman to Decimal Converter",
+    titleTag: "Roman Numeral Converter - Free | FreeToolPark",
+    metaDescription:
+      "Convert between Roman numerals and decimal numbers instantly. Free Roman numeral converter with a reference chart. Supports numbers 1 to 3999.",
+    introduction:
+      "The Roman Numeral Converter translates between Roman numerals and decimal numbers in both directions. Type a number from 1 to 3999 and get the Roman numeral equivalent, or type a Roman numeral and see the decimal value. The tool works bidirectionally with real-time updates as you type. A built-in reference chart shows all Roman numeral symbols and their values for quick lookup. This is perfect for students studying history or math, writers formatting outlines and chapter numbers, event planners working with dates (like Super Bowl numbering), and anyone who encounters Roman numerals in clocks, buildings, or documents. The tool validates your input and handles subtractive notation (like IV for 4 and IX for 9) correctly.",
+    whyUse: [
+      "Bidirectional conversion between Roman numerals and decimal numbers",
+      "Real-time results that update as you type in either field",
+      "Built-in reference chart showing all Roman numeral symbols and values",
+      "Handles subtractive notation (IV, IX, XL, XC, CD, CM) correctly",
+      "Free and instant with no signup required",
+    ],
+    whyUseSummary:
+      "Roman Numeral Converter is the fastest way to convert between Roman and decimal numbers online. Key advantages include bidirectional conversion, real-time updates, and a built-in reference chart.",
+    steps: [
+      { title: "Enter a decimal number", description: "Type any number from 1 to 3999 in the Decimal Number field. The Roman numeral equivalent appears instantly in the Roman Numeral field next to it." },
+      { title: "Or enter a Roman numeral", description: "Type Roman numerals (I, V, X, L, C, D, M) in the Roman Numeral field. The decimal value updates automatically as you type. Both uppercase and lowercase letters are accepted." },
+      { title: "Use the reference chart", description: "Scroll down to the Quick Reference section to see all 13 Roman numeral values including subtractive combinations like IV (4), IX (9), XL (40), and CM (900)." },
+      { title: "Copy the result", description: "Click the copy button between the two values to copy the full conversion (for example '2024 = MMXXIV') to your clipboard." },
+    ],
+    faqs: [
+      { question: "What are the basic Roman numeral symbols?", answer: "The seven basic Roman numeral symbols are: I (1), V (5), X (10), L (50), C (100), D (500), and M (1000). All Roman numerals are written using combinations of these symbols, either by adding them together (III = 3) or using subtractive notation where a smaller symbol before a larger one means subtraction (IV = 4)." },
+      { question: "What is subtractive notation in Roman numerals?", answer: "Subtractive notation places a smaller symbol before a larger one to indicate subtraction. The six subtractive combinations are: IV (4), IX (9), XL (40), XC (90), CD (400), and CM (900). This notation exists to avoid four repeated symbols, so 4 is written as IV instead of IIII. However, on many clock faces, you will see IIII used for 4, which is an accepted tradition." },
+      { question: "Why is the maximum value 3999?", answer: "Standard Roman numeral notation can only represent numbers up to 3999 (MMMCMXCIX). To write 4000, you would need four M's in a row, which violates the rule of not using the same symbol more than three times consecutively. Extended Roman numeral systems use bars over letters to represent multiplication by 1000, but the standard system used in everyday contexts is limited to 3999." },
+      { question: "What year is MMXXIV in Roman numerals?", answer: "MMXXIV is 2024 in decimal. Breaking it down: MM = 2000, XX = 20, IV = 4. Together, 2000 + 20 + 4 = 2024. Roman numerals are commonly used for years in movie credits, building cornerstones, Super Bowl numbering, and formal documents." },
+      { question: "Where are Roman numerals still used today?", answer: "Roman numerals are still used in many places: clock and watch faces, Super Bowl numbering (Super Bowl LVIII), movie sequel titles, book chapter numbering, outlines and lists, monarch names (King Charles III), building construction dates, copyright years in film credits, and academic paper sections. Understanding them remains a practical skill." },
+    ],
+    relatedSlugs: ["number-to-words", "binary-to-decimal", "decimal-to-binary"],
+    keywords: ["roman numeral converter", "roman numerals", "roman to decimal converter", "decimal to roman numerals", "roman numeral calculator", "convert roman numerals"],
+  },
+
+  // 37. Temperature Converter
+  {
+    slug: "temperature-converter",
+    name: "Temperature Converter",
+    category: "converters",
+    icon: TemperatureIcon,
+    componentName: "temperature-converter",
+    h1: "Temperature Converter - Celsius, Fahrenheit & Kelvin",
+    titleTag: "Temperature Converter - C to F to K | FreeToolPark",
+    metaDescription:
+      "Convert temperatures between Celsius, Fahrenheit, and Kelvin instantly. Free temperature converter with common reference points. Fast and easy to use.",
+    introduction:
+      "The Temperature Converter lets you switch between Celsius, Fahrenheit, and Kelvin in a single click. Select your input unit, type a temperature, and see both other scales calculated instantly. Whether you are converting a recipe from a European cookbook (Celsius to Fahrenheit for your oven), checking weather forecasts from different countries, or doing science homework that requires Kelvin, this tool gives you accurate results right away. A handy reference table shows common temperatures like water freezing, body temperature, water boiling, and absolute zero so you always have context for your conversions. The tool handles negative temperatures, decimal values, and all edge cases. Everything runs in your browser.",
+    whyUse: [
+      "Convert between Celsius, Fahrenheit, and Kelvin in real time",
+      "Shows both converted values at once so you see all three scales together",
+      "Built-in common temperature reference table for quick context",
+      "Handles negative temperatures, decimals, and extreme values accurately",
+      "Free, instant, and completely browser-based with no data collection",
+    ],
+    whyUseSummary:
+      "Temperature Converter is the fastest way to convert temperatures online. Key advantages include three-scale conversion, a reference table, and accurate handling of all temperature values.",
+    steps: [
+      { title: "Select your input unit", description: "Click Celsius, Fahrenheit, or Kelvin to choose which temperature scale you are starting with. The tool adjusts the conversion formulas automatically." },
+      { title: "Enter a temperature value", description: "Type the temperature you want to convert. The tool accepts whole numbers, decimals, and negative values. Results appear instantly as you type." },
+      { title: "Read the converted values", description: "Both other temperature scales are displayed in highlighted cards below your input. You see all three values side by side for easy comparison." },
+      { title: "Copy or reference", description: "Click Copy Results to grab a formatted string showing the full conversion. Use the Common Temperatures table below for quick reference points." },
+    ],
+    faqs: [
+      { question: "How do you convert Celsius to Fahrenheit?", answer: "Multiply the Celsius temperature by 9/5 (or 1.8) and then add 32. The formula is F = (C x 9/5) + 32. For example, 100 degrees Celsius equals (100 x 1.8) + 32 = 212 degrees Fahrenheit. A quick mental shortcut: double the Celsius value and add 30 for a rough Fahrenheit estimate." },
+      { question: "How do you convert Fahrenheit to Celsius?", answer: "Subtract 32 from the Fahrenheit temperature and then multiply by 5/9. The formula is C = (F - 32) x 5/9. For example, 72 degrees Fahrenheit equals (72 - 32) x 5/9 = 22.2 degrees Celsius. A quick estimate: subtract 30 and divide by 2." },
+      { question: "What is the Kelvin scale used for?", answer: "Kelvin is the standard unit of temperature in science and engineering. It starts at absolute zero (0K = -273.15 degrees Celsius), which is the lowest possible temperature where all molecular motion stops. Kelvin is used in physics, chemistry, astronomy, and any scientific context where an absolute temperature scale is needed. It uses the same degree size as Celsius." },
+      { question: "What temperature is the same in Celsius and Fahrenheit?", answer: "The two scales intersect at -40 degrees. At -40 degrees Celsius, the temperature is also -40 degrees Fahrenheit. You can verify this with the formula: (-40 x 9/5) + 32 = -72 + 32 = -40. This is one of the most commonly asked temperature trivia questions." },
+      { question: "Why does the US use Fahrenheit while most countries use Celsius?", answer: "The Fahrenheit scale was created in 1724 by Daniel Gabriel Fahrenheit and was widely adopted in English-speaking countries. Most of the world switched to Celsius (also called Centigrade) during the metrication movement in the 1960s and 1970s. The United States, along with a few other countries, kept Fahrenheit for everyday use, though Celsius and Kelvin are used in US science and medicine." },
+    ],
+    relatedSlugs: ["length-converter", "weight-converter", "percentage-calculator"],
+    keywords: ["temperature converter", "celsius to fahrenheit", "fahrenheit to celsius", "temperature conversion", "celsius to fahrenheit converter", "convert temperature"],
+  },
+
+  // 38. Length Converter
+  {
+    slug: "length-converter",
+    name: "Length Converter",
+    category: "converters",
+    icon: RulerIcon,
+    componentName: "length-converter",
+    h1: "Length Converter - Free Distance & Length Unit Converter",
+    titleTag: "Length Converter - Convert Length Units | FreeToolPark",
+    metaDescription:
+      "Convert between meters, feet, inches, kilometers, miles, and more. Free length converter with 9 units and instant results. Perfect for construction, travel, and science.",
+    introduction:
+      "The Length Converter transforms measurements between 9 different length and distance units: millimeters, centimeters, meters, kilometers, inches, feet, yards, miles, and nautical miles. Select your starting unit, enter a value, and instantly see the equivalent in every other unit. This is the tool you need when converting building measurements between metric and imperial, calculating distances for travel planning, converting height from centimeters to feet, or doing science homework with metric units. The primary conversion result is highlighted at the top, and a complete table below shows all 8 other unit conversions at once. Every result has a copy button for quick use. The converter uses precise conversion factors and handles very large and very small numbers with scientific notation when needed.",
+    whyUse: [
+      "Converts between 9 length units including metric, imperial, and nautical",
+      "Shows all unit conversions at once so you never need to convert twice",
+      "Handles very large and very small values with automatic scientific notation",
+      "One-click copy for every conversion result",
+      "Free, instant, and runs entirely in your browser",
+    ],
+    whyUseSummary:
+      "Length Converter is the fastest way to convert between length units online. Key advantages include 9 unit options, a complete conversion table, scientific notation support, and instant copy for every result.",
+    steps: [
+      { title: "Select your starting unit", description: "Choose the unit you are converting from using the From dropdown. Options include millimeters, centimeters, meters, kilometers, inches, feet, yards, miles, and nautical miles." },
+      { title: "Enter the value", description: "Type the length or distance value you want to convert. The tool accepts whole numbers, decimals, and very large or small values." },
+      { title: "Select your target unit", description: "Choose the unit you want to convert to using the To dropdown. The primary conversion result appears in the highlighted box to the right." },
+      { title: "View all conversions", description: "Below the main conversion, a grid shows your value converted to every other unit at once. Each result has a copy button for easy use." },
+    ],
+    faqs: [
+      { question: "How many feet are in a meter?", answer: "One meter equals approximately 3.28084 feet. Conversely, one foot equals 0.3048 meters exactly. This conversion is one of the most common in construction, architecture, and everyday life when switching between the metric and imperial systems." },
+      { question: "How many kilometers are in a mile?", answer: "One mile equals approximately 1.60934 kilometers. One kilometer equals about 0.621371 miles. A quick mental shortcut: multiply miles by 1.6 to get kilometers, or multiply kilometers by 0.6 to get a rough miles estimate." },
+      { question: "How do I convert my height from cm to feet and inches?", answer: "Divide your height in centimeters by 2.54 to get inches, then divide the inches by 12 to get feet. The remainder is the extra inches. For example, 175 cm divided by 2.54 = 68.9 inches. That is 5 feet and 8.9 inches (since 68.9 / 12 = 5 with a remainder of 8.9). This converter makes it even easier by showing all conversions at once." },
+      { question: "What is a nautical mile?", answer: "A nautical mile equals 1,852 meters or approximately 1.151 regular (statute) miles. It is used in aviation and maritime navigation because one nautical mile corresponds to one minute of latitude on the Earth's surface, making it extremely practical for navigation with charts and maps." },
+      { question: "What is the difference between metric and imperial length units?", answer: "The metric system (millimeters, centimeters, meters, kilometers) is based on powers of 10, making conversions straightforward. The imperial system (inches, feet, yards, miles) uses different conversion factors (12 inches in a foot, 3 feet in a yard, 5,280 feet in a mile). Most countries use metric, while the US primarily uses imperial for everyday measurements." },
+    ],
+    relatedSlugs: ["weight-converter", "temperature-converter", "percentage-calculator"],
+    keywords: ["length converter", "length unit converter", "meters to feet", "km to miles", "inches to cm", "distance converter online"],
+  },
+
+  // 39. Weight Converter
+  {
+    slug: "weight-converter",
+    name: "Weight Converter",
+    category: "converters",
+    icon: WeightScaleIcon,
+    componentName: "weight-converter",
+    h1: "Weight Converter - Free Mass & Weight Unit Converter",
+    titleTag: "Weight Converter - Convert Weight Units | FreeToolPark",
+    metaDescription:
+      "Convert between kilograms, pounds, ounces, grams, stones, and more. Free weight converter with 7 units and instant results. Great for cooking, fitness, and shipping.",
+    introduction:
+      "The Weight Converter transforms measurements between 7 commonly used weight and mass units: milligrams, grams, kilograms, metric tons, ounces, pounds, and stones. Pick your starting unit, type a value, and see every other unit calculated instantly. This is the tool you reach for when converting recipe ingredients between grams and ounces, tracking your weight in kilograms versus pounds for fitness apps, calculating shipping weights for international packages, or doing chemistry homework with metric mass units. The main conversion result is highlighted at the top, and below it a full table shows all other unit conversions simultaneously. Each result has a dedicated copy button. The converter uses precise conversion factors and supports both very large and very small values.",
+    whyUse: [
+      "Converts between 7 weight units including metric and imperial systems",
+      "Shows all unit conversions at once for complete reference",
+      "Supports very small (milligrams) and very large (metric tons) values",
+      "Copy button on every result for fast use in recipes, apps, and documents",
+      "Free, private, and runs entirely in your browser with no data collection",
+    ],
+    whyUseSummary:
+      "Weight Converter is the fastest way to convert between weight units online. Key advantages include 7 unit options, complete conversion tables, wide range support, and one-click copy.",
+    steps: [
+      { title: "Select your starting unit", description: "Choose the weight unit you are converting from using the From dropdown. Options include milligrams, grams, kilograms, metric tons, ounces, pounds, and stones." },
+      { title: "Enter the weight", description: "Type the value you want to convert. The tool accepts decimals and handles both tiny values (like milligrams for supplements) and large values (like metric tons for shipping)." },
+      { title: "Select your target unit", description: "Choose the unit to convert to using the To dropdown. The converted result appears highlighted in the box to the right of your input." },
+      { title: "View all conversions", description: "Below the main result, a grid displays your weight in every other available unit. Each conversion has its own copy button." },
+    ],
+    faqs: [
+      { question: "How many pounds are in a kilogram?", answer: "One kilogram equals approximately 2.20462 pounds. One pound equals approximately 0.453592 kilograms. A quick mental shortcut for rough estimates: multiply kilograms by 2.2 to get pounds, or divide pounds by 2.2 to get kilograms." },
+      { question: "How many grams are in an ounce?", answer: "One ounce equals approximately 28.3495 grams. This conversion comes up constantly in cooking when following recipes from different countries. American recipes typically use ounces and cups, while European and Asian recipes use grams. Having this converter handy in the kitchen saves time and improves accuracy." },
+      { question: "What is a stone and where is it used?", answer: "A stone is a unit of weight equal to 14 pounds or approximately 6.35 kilograms. It is commonly used in the United Kingdom and Ireland for measuring body weight. When someone in the UK says they weigh '11 stone', that means 154 pounds or about 70 kilograms." },
+      { question: "What is the difference between weight and mass?", answer: "Mass measures the amount of matter in an object and is constant regardless of location (measured in kilograms). Weight is the force of gravity on that mass and changes with gravitational pull (measured in newtons). On Earth's surface, we use weight and mass interchangeably in everyday language. A person with 70 kg of mass weighs about 686 newtons on Earth but only 113 newtons on the Moon." },
+      { question: "Can I convert very small weights like milligrams?", answer: "Yes. This converter handles milligrams and shows results in scientific notation for very small conversions. For example, 500 milligrams converts to 0.5 grams, 0.0005 kilograms, 0.017637 ounces, and so on. This is useful for pharmaceutical dosages, supplement measurements, and laboratory work." },
+    ],
+    relatedSlugs: ["length-converter", "temperature-converter", "bmi-calculator"],
+    keywords: ["weight converter", "kg to lbs", "pounds to kg", "weight conversion", "ounces to grams", "weight unit converter online"],
+  },
+
+  // 40. Time Zone Converter
+  {
+    slug: "time-zone-converter",
+    name: "Time Zone Converter",
+    category: "converters",
+    icon: TimeZoneIcon,
+    componentName: "time-zone-converter",
+    h1: "Time Zone Converter - Free World Time Zone Converter",
+    titleTag: "Time Zone Converter - World Time Zones | FreeToolPark",
+    metaDescription:
+      "Convert time between world time zones instantly. Free time zone converter with 27 zones, date picker, and popular city quick view. Schedule meetings across the globe.",
+    introduction:
+      "The Time Zone Converter helps you figure out what time it is in any part of the world relative to your local time or any other time zone. Select a source time zone, pick a time and date, and choose a destination time zone to see the converted time instantly. The tool covers 27 time zones from UTC-12 to UTC+12, including half-hour offsets like India (UTC+5:30) and Adelaide (UTC+9:30). A quick view section shows the converted time in six popular time zones at once, which is perfect for scheduling meetings with international teams. Whether you are coordinating calls with colleagues in London, Tokyo, and New York, planning travel across time zones, or just wondering what time it is where your friend lives, this tool gives you the answer in seconds.",
+    whyUse: [
+      "Covers 27 time zones worldwide including half-hour offset zones",
+      "Pick any date and time for future or past time zone conversions",
+      "Quick view shows six popular time zones at once for meeting scheduling",
+      "Shows the time difference in hours between selected zones",
+      "Free, accurate, and works entirely in your browser",
+    ],
+    whyUseSummary:
+      "Time Zone Converter is the fastest way to convert between time zones online. Key advantages include 27 zone coverage, date and time selection, popular zone quick view, and clear time difference display.",
+    steps: [
+      { title: "Select the source time zone", description: "Choose the time zone you are converting from using the From dropdown. Each zone shows the UTC offset and a recognizable city name, like UTC-05:00 (Eastern, EST)." },
+      { title: "Set the time and date", description: "Enter the time using the time picker and the date using the date selector. These default to the current time and date but can be changed to convert future or past times." },
+      { title: "Select the destination time zone", description: "Choose the time zone you want to convert to using the To dropdown. The converted time and date appear instantly in the highlighted result box." },
+      { title: "Check popular zones or copy", description: "Review the Popular Time Zones section to see your selected time converted to PST, EST, GMT, IST, SGT, and JST simultaneously. Click Copy Result to grab the full conversion." },
+    ],
+    faqs: [
+      { question: "What is UTC and why is it the standard?", answer: "UTC (Coordinated Universal Time) is the primary time standard used to regulate clocks worldwide. It replaced GMT (Greenwich Mean Time) as the international reference point. All time zones are defined as offsets from UTC: EST is UTC-5, IST is UTC+5:30, JST is UTC+9. UTC does not observe daylight saving time, making it the most stable reference for scheduling across time zones." },
+      { question: "What is the time difference between EST and PST?", answer: "Eastern Standard Time (EST) is UTC-5 and Pacific Standard Time (PST) is UTC-8, so PST is 3 hours behind EST. When it is 3:00 PM in New York (EST), it is 12:00 PM (noon) in Los Angeles (PST). During daylight saving time, both zones shift forward by one hour but the 3-hour difference remains." },
+      { question: "Why do some countries have half-hour time zones?", answer: "Countries like India (UTC+5:30), Iran (UTC+3:30), and parts of Australia (UTC+9:30) use half-hour offsets because their geographic position falls between two standard hourly zones. India chose UTC+5:30 as a compromise to cover its wide east-west span with a single time zone. Nepal goes even further with a UTC+5:45 offset." },
+      { question: "How do I schedule a meeting across multiple time zones?", answer: "Use the popular zones quick view to see your proposed meeting time in all major time zones at once. Look for a window where the time falls within normal working hours (roughly 9 AM to 6 PM) for all participants. A common approach for US-Europe meetings is morning Eastern time, which is afternoon in Europe. For US-Asia meetings, early morning Pacific time works as evening in Asia." },
+      { question: "Does this tool account for daylight saving time?", answer: "This tool uses fixed UTC offsets, which represent standard time for each zone. Daylight saving time (DST) shifts clocks forward by one hour in many regions during summer months. When DST is active, use the next offset (for example, use UTC-4 instead of UTC-5 for Eastern Daylight Time). DST schedules vary by country and change periodically." },
+    ],
+    relatedSlugs: ["timestamp-converter", "age-calculator", "temperature-converter"],
+    keywords: ["time zone converter", "world time zone converter", "time zone conversion", "convert time zones", "time difference calculator", "world clock converter"],
   },
 ]

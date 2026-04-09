@@ -90,6 +90,86 @@ const registry: Record<string, ComponentType> = {
     () => import("@/components/tools/timestamp-converter"),
     { ssr: false, loading: Loading }
   ),
+  "interest-calculator": dynamic(
+    () => import("@/components/tools/interest-calculator"),
+    { ssr: false, loading: Loading }
+  ),
+  "character-counter": dynamic(
+    () => import("@/components/tools/character-counter"),
+    { ssr: false, loading: Loading }
+  ),
+  "hex-to-rgb": dynamic(
+    () => import("@/components/tools/hex-to-rgb"),
+    { ssr: false, loading: Loading }
+  ),
+  "markdown-to-html": dynamic(
+    () => import("@/components/tools/markdown-to-html"),
+    { ssr: false, loading: Loading }
+  ),
+  "lorem-ipsum-generator": dynamic(
+    () => import("@/components/tools/lorem-ipsum-generator"),
+    { ssr: false, loading: Loading }
+  ),
+  "calorie-calculator": dynamic(
+    () => import("@/components/tools/calorie-calculator"),
+    { ssr: false, loading: Loading }
+  ),
+  "grade-calculator": dynamic(
+    () => import("@/components/tools/grade-calculator"),
+    { ssr: false, loading: Loading }
+  ),
+  "gpa-calculator": dynamic(
+    () => import("@/components/tools/gpa-calculator"),
+    { ssr: false, loading: Loading }
+  ),
+  "text-to-slug": dynamic(
+    () => import("@/components/tools/text-to-slug"),
+    { ssr: false, loading: Loading }
+  ),
+  "css-minifier": dynamic(
+    () => import("@/components/tools/css-minifier"),
+    { ssr: false, loading: Loading }
+  ),
+  "js-minifier": dynamic(
+    () => import("@/components/tools/js-minifier"),
+    { ssr: false, loading: Loading }
+  ),
+  "html-minifier": dynamic(
+    () => import("@/components/tools/html-minifier"),
+    { ssr: false, loading: Loading }
+  ),
+  "binary-to-decimal": dynamic(
+    () => import("@/components/tools/binary-to-decimal"),
+    { ssr: false, loading: Loading }
+  ),
+  "decimal-to-binary": dynamic(
+    () => import("@/components/tools/decimal-to-binary"),
+    { ssr: false, loading: Loading }
+  ),
+  "number-to-words": dynamic(
+    () => import("@/components/tools/number-to-words"),
+    { ssr: false, loading: Loading }
+  ),
+  "roman-numeral-converter": dynamic(
+    () => import("@/components/tools/roman-numeral-converter"),
+    { ssr: false, loading: Loading }
+  ),
+  "temperature-converter": dynamic(
+    () => import("@/components/tools/temperature-converter"),
+    { ssr: false, loading: Loading }
+  ),
+  "length-converter": dynamic(
+    () => import("@/components/tools/length-converter"),
+    { ssr: false, loading: Loading }
+  ),
+  "weight-converter": dynamic(
+    () => import("@/components/tools/weight-converter"),
+    { ssr: false, loading: Loading }
+  ),
+  "time-zone-converter": dynamic(
+    () => import("@/components/tools/time-zone-converter"),
+    { ssr: false, loading: Loading }
+  ),
 }
 
 export function ToolRenderer({
