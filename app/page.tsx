@@ -10,6 +10,7 @@ import {
 import { getAllTools } from "@/lib/tools"
 import { ToolsGrid } from "@/components/tools-grid"
 import { RecentlyAdded } from "@/components/home/recently-added"
+import { MostVisitedTools } from "@/components/home/most-visited-tools"
 import { BrowseByCategory } from "@/components/home/browse-by-category"
 import { JsonLd } from "@/components/seo/json-ld"
 import { SITE_URL, SITE_NAME } from "@/lib/schema"
@@ -113,6 +114,9 @@ export default function HomePage() {
           </Link>
         </div>
       </section>
+
+      {/* Most Visited Tools — top of homepage, above all other categories */}
+      <MostVisitedTools />
 
       {/* Browse by Category — links to all category hub pages for crawl depth */}
       <BrowseByCategory />
