@@ -9,9 +9,12 @@ import {
 } from "@hugeicons/core-free-icons"
 import { getAllTools } from "@/lib/tools"
 import { ToolsGrid } from "@/components/tools-grid"
+import { RecentlyAdded } from "@/components/home/recently-added"
+import { BrowseByCategory } from "@/components/home/browse-by-category"
 
 export default function HomePage() {
   const tools = getAllTools()
+  const recentTools = tools.slice(-6).reverse()
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-12">
@@ -96,7 +99,16 @@ export default function HomePage() {
         </div>
       </section>
 
-      <ToolsGrid tools={tools} showSearch showCategoryFilter />
+      {/* Browse by Category — links to all category hub pages for crawl depth */}
+      <BrowseByCategory />
+
+      {/* Recently Added — gives new tools instant internal links from homepage */}
+      <RecentlyAdded tools={recentTools} />
+
+      <section className="mt-12">
+        <h2 className="mb-6 text-2xl font-semibold">All Tools</h2>
+        <ToolsGrid tools={tools} showSearch showCategoryFilter />
+      </section>
     </div>
   )
 }

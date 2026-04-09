@@ -1,7 +1,16 @@
 import { TOOLS, type Tool } from "@/data/tools"
+import { CATEGORIES, type Category } from "@/data/categories"
 
 export function getAllTools(): Tool[] {
   return TOOLS
+}
+
+export function getAllToolSlugs(): string[] {
+  return TOOLS.map((t) => t.slug)
+}
+
+export function getAllCategories(): Category[] {
+  return CATEGORIES
 }
 
 export function getToolBySlug(slug: string): Tool | undefined {
