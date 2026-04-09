@@ -12,6 +12,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
+import { addCanvasBranding } from "@/lib/exports/branded-exports"
 
 export default function QrCodeGenerator() {
   const [text, setText] = useState("")
@@ -49,9 +50,18 @@ export default function QrCodeGenerator() {
 
   function download() {
     if (!canvasRef.current) return
+    // Create a copy of the canvas to add branding without modifying the displayed one
+    const exportCanvas = document.createElement("canvas")
+    exportCanvas.width = canvasRef.current.width
+    exportCanvas.height = canvasRef.current.height
+    const ctx = exportCanvas.getContext("2d")
+    if (ctx) {
+      ctx.drawImage(canvasRef.current, 0, 0)
+    }
+    addCanvasBranding(exportCanvas, { position: "corner" })
     const link = document.createElement("a")
     link.download = "qrcode.png"
-    link.href = canvasRef.current.toDataURL("image/png")
+    link.href = exportCanvas.toDataURL("image/png")
     link.click()
   }
 

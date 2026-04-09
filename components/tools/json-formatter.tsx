@@ -11,6 +11,8 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { CopyButton } from "@/components/ui/copy-button"
+import { ExportButton } from "@/components/tools/export-button"
+import { addTextBranding } from "@/lib/exports/branded-exports"
 
 export default function JsonFormatter() {
   const [input, setInput] = useState("")
@@ -114,7 +116,24 @@ export default function JsonFormatter() {
         <div className="space-y-2">
           <div className="flex items-center justify-between">
             <label className="text-sm font-medium">Output</label>
-            <CopyButton value={output} label="Copy Output" />
+            <div className="flex items-center gap-2">
+              <CopyButton value={output} label="Copy Output" />
+              <ExportButton
+                label="Download"
+                onExport={({ includeBranding }) => {
+                  const content = addTextBranding(output, "json", {
+                    includeBranding,
+                  })
+                  const blob = new Blob([content], { type: "application/json" })
+                  const url = URL.createObjectURL(blob)
+                  const a = document.createElement("a")
+                  a.href = url
+                  a.download = "formatted.json"
+                  a.click()
+                  URL.revokeObjectURL(url)
+                }}
+              />
+            </div>
           </div>
           <Textarea
             value={output}

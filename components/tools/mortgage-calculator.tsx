@@ -5,6 +5,10 @@ import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/label"
 import { CopyButton } from "@/components/ui/copy-button"
+import { ShareResult } from "@/components/tools/share-result"
+import { CalculationHistory } from "@/components/tools/calculation-history"
+import type { HistoryItem } from "@/components/tools/calculation-history"
+import { useLocalStorage } from "@/hooks/use-local-storage"
 
 function formatCurrency(n: number) {
   return n.toLocaleString("en-US", {
@@ -48,7 +52,6 @@ function calculate(
   const monthlyIns = insurance / 12
   const monthly = monthlyMortgage + monthlyTax + monthlyIns
 
-  // Amortization by year
   const schedule: Result["schedule"] = []
   let balance = loan
   for (let yr = 1; yr <= years; yr++) {
@@ -84,6 +87,10 @@ export default function MortgageCalculator() {
   const [insurance, setInsurance] = useState("1200")
   const [result, setResult] = useState<Result | null>(null)
   const [showSchedule, setShowSchedule] = useState(false)
+  const [, setHistory] = useLocalStorage<HistoryItem[]>(
+    "mortgage-calculator-history",
+    []
+  )
 
   function handleCalculate() {
     const r = calculate(
@@ -96,6 +103,40 @@ export default function MortgageCalculator() {
     )
     setResult(r)
     setShowSchedule(false)
+
+    if (r) {
+      const params = new URLSearchParams({
+        hp: homePrice,
+        dp: downPayment,
+        r: rate,
+        t: term,
+        tx: tax,
+        ins: insurance,
+      })
+      const url = `${window.location.origin}/tools/mortgage-calculator?${params}`
+      setHistory((prev) => [
+        {
+          id: crypto.randomUUID(),
+          timestamp: Date.now(),
+          inputs: { homePrice, downPayment, rate, term, tax, insurance },
+          result: { monthly: r.monthly, totalPayment: r.totalPayment, totalInterest: r.totalInterest },
+          shareableUrl: url,
+        },
+        ...prev.slice(0, 9),
+      ])
+    }
+  }
+
+  function getShareUrl() {
+    const params = new URLSearchParams({
+      hp: homePrice,
+      dp: downPayment,
+      r: rate,
+      t: term,
+      tx: tax,
+      ins: insurance,
+    })
+    return `${typeof window !== "undefined" ? window.location.origin : ""}/tools/mortgage-calculator?${params}`
   }
 
   const summary = result
@@ -198,6 +239,13 @@ export default function MortgageCalculator() {
             </Button>
           </div>
 
+          <ShareResult
+            url={getShareUrl()}
+            resultText={`My estimated mortgage payment: ${formatCurrency(result.monthly)}/month on a ${formatCurrency(Number(homePrice))} home.`}
+            toolName="Mortgage Calculator"
+            hashtags={["MortgageCalculator", "HomeBuying"]}
+          />
+
           {showSchedule && (
             <div className="overflow-x-auto rounded-xl border">
               <table className="w-full text-sm">
@@ -230,6 +278,17 @@ export default function MortgageCalculator() {
           )}
         </div>
       )}
+
+      <CalculationHistory
+        toolSlug="mortgage-calculator"
+        formatResult={(r) => {
+          const res = r as { monthly: number }
+          return `Monthly: ${formatCurrency(res.monthly)}`
+        }}
+        formatInputs={(inputs) =>
+          `$${Number(inputs.homePrice).toLocaleString()} home, ${inputs.rate}% rate, ${inputs.term}yr`
+        }
+      />
     </div>
   )
 }

@@ -5,6 +5,10 @@ import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/label"
 import { CopyButton } from "@/components/ui/copy-button"
+import { ShareResult } from "@/components/tools/share-result"
+import { CalculationHistory } from "@/components/tools/calculation-history"
+import type { HistoryItem } from "@/components/tools/calculation-history"
+import { useLocalStorage } from "@/hooks/use-local-storage"
 
 type Mode = "of" | "change" | "is-what-percent"
 
@@ -13,6 +17,10 @@ export default function PercentageCalculator() {
   const [a, setA] = useState("")
   const [b, setB] = useState("")
   const [result, setResult] = useState<string | null>(null)
+  const [, setHistory] = useLocalStorage<HistoryItem[]>(
+    "percentage-calculator-history",
+    []
+  )
 
   function calc() {
     const numA = Number(a)
@@ -48,6 +56,24 @@ export default function PercentageCalculator() {
     }
 
     setResult(label)
+
+    const params = new URLSearchParams({ m: mode, a, b })
+    const url = `${window.location.origin}/tools/percentage-calculator?${params}`
+    setHistory((prev) => [
+      {
+        id: crypto.randomUUID(),
+        timestamp: Date.now(),
+        inputs: { a, b, mode },
+        result: { label },
+        shareableUrl: url,
+      },
+      ...prev.slice(0, 9),
+    ])
+  }
+
+  function getShareUrl() {
+    const params = new URLSearchParams({ m: mode, a, b })
+    return `${typeof window !== "undefined" ? window.location.origin : ""}/tools/percentage-calculator?${params}`
   }
 
   const modes: { key: Mode; label: string }[] = [
@@ -110,11 +136,31 @@ export default function PercentageCalculator() {
       <Button onClick={calc}>Calculate</Button>
 
       {result && (
-        <div className="flex items-center gap-3 rounded-xl bg-primary/10 p-4">
-          <span className="text-lg font-semibold">{result}</span>
-          <CopyButton value={result} />
+        <div className="space-y-4">
+          <div className="flex items-center gap-3 rounded-xl bg-primary/10 p-4">
+            <span className="text-lg font-semibold">{result}</span>
+            <CopyButton value={result} />
+          </div>
+
+          <ShareResult
+            url={getShareUrl()}
+            resultText={result}
+            toolName="Percentage Calculator"
+            hashtags={["Percentage", "Math"]}
+          />
         </div>
       )}
+
+      <CalculationHistory
+        toolSlug="percentage-calculator"
+        formatResult={(r) => {
+          const res = r as { label: string }
+          return res.label
+        }}
+        formatInputs={(inputs) =>
+          `${inputs.a}, ${inputs.b} (${inputs.mode})`
+        }
+      />
     </div>
   )
 }
