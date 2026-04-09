@@ -1,6 +1,7 @@
-// List of tool componentNames that have a built component
-// Keep in sync with components/tool-renderer.tsx registry
-export const BUILT_TOOL_SLUGS = new Set([
+// Single source of truth for which tools have built components.
+// Used by both the server (page.tsx SSG) and client (tool-renderer.tsx).
+// When adding a new tool component, add its componentName here.
+export const BUILT_TOOL_NAMES = [
   "mortgage-calculator",
   "percentage-calculator",
   "password-generator",
@@ -21,4 +22,6 @@ export const BUILT_TOOL_SLUGS = new Set([
   "case-converter",
   "css-gradient-generator",
   "timestamp-converter",
-])
+] as const
+
+export const BUILT_TOOL_SLUGS = new Set<string>(BUILT_TOOL_NAMES)
