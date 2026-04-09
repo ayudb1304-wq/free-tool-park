@@ -11,13 +11,28 @@ import { getAllTools } from "@/lib/tools"
 import { ToolsGrid } from "@/components/tools-grid"
 import { RecentlyAdded } from "@/components/home/recently-added"
 import { BrowseByCategory } from "@/components/home/browse-by-category"
+import { JsonLd } from "@/components/seo/json-ld"
+import { SITE_URL, SITE_NAME } from "@/lib/schema"
 
 export default function HomePage() {
   const tools = getAllTools()
   const recentTools = tools.slice(-6).reverse()
 
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: SITE_NAME,
+    url: SITE_URL,
+    logo: `${SITE_URL}/images/FreeToolpark-onlylogo.png`,
+    description:
+      "100+ free, privacy-first online tools. Calculators, converters, developer tools, and more. No tracking, no sign-ups.",
+    sameAs: [] as string[],
+  }
+
   return (
-    <div className="mx-auto max-w-7xl px-4 py-12">
+    <>
+      <JsonLd data={organizationSchema} />
+      <div className="mx-auto max-w-7xl px-4 py-12">
       <section className="mb-12 text-center">
         <div aria-hidden="true">
           <Image
@@ -110,5 +125,6 @@ export default function HomePage() {
         <ToolsGrid tools={tools} showSearch showCategoryFilter />
       </section>
     </div>
+    </>
   )
 }

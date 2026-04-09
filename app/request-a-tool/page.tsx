@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import { SITE_URL } from "@/lib/schema"
+import { breadcrumbSchema, SITE_URL } from "@/lib/schema"
+import { JsonLd } from "@/components/seo/json-ld"
 import { Breadcrumb } from "@/components/layout/breadcrumb"
 import { ToolRequestForm } from "@/components/community/tool-request-form"
 
@@ -36,13 +37,20 @@ const RECENTLY_BUILT = [
 
 export default function RequestToolPage() {
   return (
-    <div className="mx-auto max-w-4xl px-4 py-8">
-      <Breadcrumb
-        items={[
-          { label: "Home", href: "/" },
-          { label: "Request a Tool" },
-        ]}
+    <>
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "Home", url: SITE_URL },
+          { name: "Request a Tool", url: `${SITE_URL}/request-a-tool` },
+        ])}
       />
+      <div className="mx-auto max-w-4xl px-4 py-8">
+        <Breadcrumb
+          items={[
+            { label: "Home", href: "/" },
+            { label: "Request a Tool" },
+          ]}
+        />
 
       {/* Hero */}
       <section className="mb-12 text-center">
@@ -80,5 +88,6 @@ export default function RequestToolPage() {
         </div>
       </section>
     </div>
+    </>
   )
 }

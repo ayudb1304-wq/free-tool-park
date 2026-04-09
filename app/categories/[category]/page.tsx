@@ -3,7 +3,7 @@ import { notFound } from "next/navigation"
 import { CATEGORIES, getCategoryBySlug } from "@/data/categories"
 import { getToolsByCategory } from "@/lib/tools"
 import { JsonLd } from "@/components/seo/json-ld"
-import { categorySchema, faqSchema, SITE_URL } from "@/lib/schema"
+import { categorySchema, faqSchema, breadcrumbSchema, SITE_URL } from "@/lib/schema"
 import { Breadcrumb } from "@/components/layout/breadcrumb"
 import { ToolsGrid } from "@/components/tools-grid"
 
@@ -64,6 +64,16 @@ export default async function CategoryPage({
     <>
       <JsonLd data={categorySchema(category, tools)} />
       <JsonLd data={faqSchema(category.faqs)} />
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "Home", url: SITE_URL },
+          { name: "Categories", url: `${SITE_URL}/tools` },
+          {
+            name: category.name,
+            url: `${SITE_URL}/categories/${category.slug}`,
+          },
+        ])}
+      />
 
       <div className="mx-auto max-w-7xl px-4 py-8">
         <Breadcrumb

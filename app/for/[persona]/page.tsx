@@ -5,7 +5,8 @@ import { HugeiconsIcon } from "@hugeicons/react"
 import { getToolsByCategory } from "@/lib/tools"
 import { PERSONAS, getAllPersonaSlugs } from "@/data/personas"
 import { PrivacyBadge } from "@/components/tools/privacy-badge"
-import { SITE_URL } from "@/lib/schema"
+import { breadcrumbSchema, faqSchema, SITE_URL } from "@/lib/schema"
+import { JsonLd } from "@/components/seo/json-ld"
 import { Breadcrumb } from "@/components/layout/breadcrumb"
 import type { Tool } from "@/data/tools"
 
@@ -56,14 +57,41 @@ export default async function PersonaPage({ params }: Props) {
     })
   })
 
+  const faqs = [
+    {
+      question: `Are these ${config.title.toLowerCase()} really free?`,
+      answer:
+        "Yes, completely free with no hidden limits. We're ad-supported, which keeps everything free for you.",
+    },
+    {
+      question: "Do I need to create an account?",
+      answer:
+        "No signup required for any tool. Just open and use immediately.",
+    },
+    {
+      question: "Can I use these tools on mobile?",
+      answer:
+        "Yes, all tools are fully responsive and work on phones, tablets, and desktops.",
+    },
+  ]
+
   return (
-    <div className="mx-auto max-w-6xl px-4 py-8">
-      <Breadcrumb
-        items={[
-          { label: "Home", href: "/" },
-          { label: config.title },
-        ]}
+    <>
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "Home", url: SITE_URL },
+          { name: config.title, url: `${SITE_URL}/for/${persona}` },
+        ])}
       />
+      <JsonLd data={faqSchema(faqs)} />
+
+      <div className="mx-auto max-w-6xl px-4 py-8">
+        <Breadcrumb
+          items={[
+            { label: "Home", href: "/" },
+            { label: config.title },
+          ]}
+        />
 
       {/* Hero Section */}
       <section className="mb-16 text-center">
@@ -165,5 +193,6 @@ export default async function PersonaPage({ params }: Props) {
         </div>
       </section>
     </div>
+    </>
   )
 }

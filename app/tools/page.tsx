@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import { getAllTools } from "@/lib/tools"
-import { SITE_URL } from "@/lib/schema"
+import { breadcrumbSchema, SITE_URL } from "@/lib/schema"
 import { JsonLd } from "@/components/seo/json-ld"
 import { ToolsGrid } from "@/components/tools-grid"
 import { Breadcrumb } from "@/components/layout/breadcrumb"
@@ -51,6 +51,12 @@ export default function ToolsPage() {
     <div className="mx-auto max-w-7xl px-4 py-8">
       <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Tools" }]} />
       <JsonLd data={collectionSchema} />
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "Home", url: SITE_URL },
+          { name: "Tools", url: `${SITE_URL}/tools` },
+        ])}
+      />
 
       <h1 className="font-heading mb-2 text-3xl font-bold">
         100+ Free Online Tools - No Signup Required
