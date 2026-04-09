@@ -35,12 +35,32 @@ export async function generateMetadata({
     keywords: tool.keywords.join(", "),
     alternates: {
       canonical: `${SITE_URL}/tools/${slug}`,
+      languages: {
+        en: `${SITE_URL}/tools/${slug}`,
+        "x-default": `${SITE_URL}/tools/${slug}`,
+      },
     },
     openGraph: {
-      title: tool.name,
+      title: `${tool.name} - Free Online Tool | FreeToolPark`,
       description: tool.metaDescription,
       url: `${SITE_URL}/tools/${slug}`,
       type: "website",
+      siteName: "FreeToolPark",
+      locale: "en_US",
+      images: [
+        {
+          url: `${SITE_URL}/images/og-default.png`,
+          width: 1200,
+          height: 630,
+          alt: tool.name,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: tool.name,
+      description: tool.metaDescription,
+      images: [`${SITE_URL}/images/og-default.png`],
     },
   }
 }

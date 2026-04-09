@@ -33,6 +33,9 @@ export function toolSchema(tool: Tool) {
     description: tool.metaDescription,
     applicationCategory: "UtilityApplication",
     operatingSystem: "All",
+    image: `${SITE_URL}/images/og-default.png`,
+    datePublished: "2026-04-09",
+    dateModified: new Date().toISOString().split("T")[0],
     offers: {
       "@type": "Offer",
       price: "0",

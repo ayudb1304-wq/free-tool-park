@@ -3,7 +3,7 @@ import { notFound } from "next/navigation"
 import { CATEGORIES, getCategoryBySlug } from "@/data/categories"
 import { getToolsByCategory } from "@/lib/tools"
 import { JsonLd } from "@/components/seo/json-ld"
-import { categorySchema } from "@/lib/schema"
+import { categorySchema, SITE_URL } from "@/lib/schema"
 import { Breadcrumb } from "@/components/layout/breadcrumb"
 import { ToolsGrid } from "@/components/tools-grid"
 
@@ -23,6 +23,29 @@ export async function generateMetadata({
   return {
     title: `Free ${category.name} Online`,
     description: category.description,
+    alternates: {
+      canonical: `${SITE_URL}/categories/${slug}`,
+      languages: {
+        en: `${SITE_URL}/categories/${slug}`,
+        "x-default": `${SITE_URL}/categories/${slug}`,
+      },
+    },
+    openGraph: {
+      title: `Free ${category.name} Online | FreeToolPark`,
+      description: category.description,
+      url: `${SITE_URL}/categories/${slug}`,
+      type: "website",
+      siteName: "FreeToolPark",
+      locale: "en_US",
+      images: [
+        {
+          url: `${SITE_URL}/images/og-default.png`,
+          width: 1200,
+          height: 630,
+          alt: `${category.name} - FreeToolPark`,
+        },
+      ],
+    },
   }
 }
 
