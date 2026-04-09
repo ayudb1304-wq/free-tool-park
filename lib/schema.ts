@@ -2,7 +2,7 @@ import type { Tool } from "@/data/tools"
 import type { Category } from "@/data/categories"
 
 export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://seotools.example.com"
+  process.env.NEXT_PUBLIC_SITE_URL || "https://www.freetoolpark.com"
 export const SITE_NAME = "FreeToolPark"
 
 export function websiteSchema() {
@@ -91,6 +91,21 @@ export function breadcrumbSchema(
       position: i + 1,
       name: item.name,
       item: item.url,
+    })),
+  }
+}
+
+export function howToSchema(tool: Tool) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: `How to Use the ${tool.name}`,
+    description: tool.metaDescription,
+    step: tool.steps.map((step, i) => ({
+      "@type": "HowToStep",
+      position: i + 1,
+      name: step.title,
+      text: step.description,
     })),
   }
 }

@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   description:
     "100+ free online tools for text, development, calculations, conversions, and more. No signup required. All tools run in your browser.",
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL || "https://seotools.example.com"
+    process.env.NEXT_PUBLIC_SITE_URL || "https://www.freetoolpark.com"
   ),
   openGraph: {
     type: "website",

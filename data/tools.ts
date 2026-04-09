@@ -45,6 +45,7 @@ export interface Tool {
   metaDescription: string
   introduction: string
   whyUse: string[]
+  whyUseSummary: string
   steps: ToolStep[]
   faqs: ToolFAQ[]
   relatedSlugs: string[]
@@ -60,7 +61,7 @@ export const TOOLS: Tool[] = [
     icon: Home01Icon,
     componentName: "mortgage-calculator",
     h1: "Mortgage Calculator - Free Monthly Payment Calculator",
-    titleTag: "Mortgage Calculator - Free Payment Calculator",
+    titleTag: "Mortgage Calculator - Free | FreeToolPark",
     metaDescription:
       "Calculate your monthly mortgage payment with taxes and insurance. Free mortgage calculator with full amortization schedule. No signup required.",
     introduction:
@@ -72,6 +73,8 @@ export const TOOLS: Tool[] = [
       "100% client-side - nour financial data never leaves your browser",
       "No signup, no ads, no rate limits - nompletely free to use",
     ],
+    whyUseSummary:
+      "Mortgage Calculator is the fastest way to estimate monthly home payments without installing software. Key advantages include tax and insurance inclusion, full amortization schedules, and instant comparison of different loan terms and rates.",
     steps: [
       {
         title: "Enter your home price and down payment",
@@ -140,7 +143,7 @@ export const TOOLS: Tool[] = [
     icon: PercentIcon,
     componentName: "percentage-calculator",
     h1: "Percentage Calculator - Free Online Percent Calculator",
-    titleTag: "Percentage Calculator - Free Online Tool",
+    titleTag: "Percentage Calculator | FreeToolPark",
     metaDescription:
       "Calculate percentages instantly: find X% of Y, percentage change, or what percent X is of Y. Free online percentage calculator - no signup required.",
     introduction:
@@ -152,6 +155,8 @@ export const TOOLS: Tool[] = [
       "No formulas to remember - just enter your numbers and click Calculate",
       "100% free, no signup, works on any device",
     ],
+    whyUseSummary:
+      "Percentage Calculator is the fastest way to solve any percent problem without memorizing formulas. Key advantages include three calculation modes, instant results, and support for decimal percentages and large numbers.",
     steps: [
       {
         title: "Choose your calculation mode",
@@ -220,7 +225,7 @@ export const TOOLS: Tool[] = [
     icon: Key01Icon,
     componentName: "password-generator",
     h1: "Password Generator - Free Strong Password Generator",
-    titleTag: "Password Generator - Free Strong Password Tool",
+    titleTag: "Password Generator - Free | FreeToolPark",
     metaDescription:
       "Generate strong, random passwords instantly. Customize length, symbols, numbers, and case. Free secure password generator - no data stored.",
     introduction:
@@ -232,6 +237,8 @@ export const TOOLS: Tool[] = [
       "Generate up to 20 passwords at once for bulk account creation",
       "Zero data transmission - passwords never leave your browser",
     ],
+    whyUseSummary:
+      "Password Generator is the fastest way to create strong, random passwords without installing software. Key advantages include cryptographic security, customizable character types, bulk generation, and zero data transmission.",
     steps: [
       {
         title: "Set your password length",
@@ -300,7 +307,7 @@ export const TOOLS: Tool[] = [
     icon: QrCodeIcon,
     componentName: "qr-code-generator",
     h1: "QR Code Generator - Free Online QR Code Maker",
-    titleTag: "QR Code Generator - Free Online QR Maker",
+    titleTag: "QR Code Generator - Free | FreeToolPark",
     metaDescription:
       "Generate QR codes for URLs, text, and more. Customize colors and size. Download as PNG. Free online QR code generator - no signup required.",
     introduction:
@@ -312,6 +319,8 @@ export const TOOLS: Tool[] = [
       "100% client-side - nour data never leaves your browser",
       "No watermarks, no signup, unlimited free QR codes",
     ],
+    whyUseSummary:
+      "QR Code Generator is the fastest way to create scannable QR codes without installing software. Key advantages include custom colors, multiple sizes, PNG download, and completely private browser-based generation.",
     steps: [
       {
         title: "Enter your text or URL",
@@ -380,7 +389,7 @@ export const TOOLS: Tool[] = [
     icon: BodyWeightIcon,
     componentName: "bmi-calculator",
     h1: "BMI Calculator - Free Body Mass Index Calculator",
-    titleTag: "BMI Calculator - Free Body Mass Index Tool",
+    titleTag: "BMI Calculator - Free | FreeToolPark",
     metaDescription:
       "Calculate your Body Mass Index (BMI) instantly. Supports metric and imperial units. Free BMI calculator with health category ranges.",
     introduction:
@@ -392,6 +401,8 @@ export const TOOLS: Tool[] = [
       "No account or personal information required beyond height and weight",
       "100% private - nour health data never leaves your browser",
     ],
+    whyUseSummary:
+      "BMI Calculator is the fastest way to check your body mass index without visiting a doctor. Key advantages include metric and imperial support, clear category ranges, and instant results with no personal data stored.",
     steps: [
       {
         title: "Select your unit system",
@@ -464,7 +475,7 @@ export const TOOLS: Tool[] = [
     icon: Calendar01Icon,
     componentName: "age-calculator",
     h1: "Age Calculator - Free Online Age Calculator",
-    titleTag: "Age Calculator - Free Online Age Tool",
+    titleTag: "Age Calculator - Free | FreeToolPark",
     metaDescription:
       "Calculate your exact age in years, months, and days. Find total days lived, weeks, and days until next birthday. Free online age calculator.",
     introduction:
@@ -476,6 +487,8 @@ export const TOOLS: Tool[] = [
       "Calculate age between any two dates, not just to today",
       "Completely free and private - no data stored",
     ],
+    whyUseSummary:
+      "Age Calculator is the fastest way to find your exact age without manual counting. Key advantages include precision to the day, total days and weeks lived, next birthday countdown, and flexible date-to-date calculation.",
     steps: [
       {
         title: "Enter your date of birth",
@@ -548,7 +561,7 @@ export const TOOLS: Tool[] = [
     icon: Calculator01Icon,
     componentName: "emi-calculator",
     h1: "Loan EMI Calculator - Free Monthly Installment Calculator",
-    titleTag: "EMI Calculator - Free Loan EMI Calculator",
+    titleTag: "EMI Calculator - Free | FreeToolPark",
     metaDescription:
       "Calculate your monthly loan EMI, total interest, and payment breakdown. Free EMI calculator for home, car, and personal loans. No signup.",
     introduction:
@@ -560,6 +573,8 @@ export const TOOLS: Tool[] = [
       "Compare different loan amounts, rates, and tenures instantly",
       "100% private - financial data never leaves your device",
     ],
+    whyUseSummary:
+      "EMI Calculator is the fastest way to estimate loan installments without visiting a bank. Key advantages include support for any loan type, visual principal vs interest breakdown, and instant comparison of different terms.",
     steps: [
       {
         title: "Enter your loan amount",
@@ -632,7 +647,7 @@ export const TOOLS: Tool[] = [
     icon: ReceiptDollarIcon,
     componentName: "tip-calculator",
     h1: "Tip Calculator - Free Online Tip Calculator",
-    titleTag: "Tip Calculator - Free Online Gratuity Tool",
+    titleTag: "Tip Calculator - Free | FreeToolPark",
     metaDescription:
       "Calculate tips and split bills instantly. Choose preset or custom tip percentages. Free tip calculator with per-person breakdown.",
     introduction:
@@ -644,6 +659,8 @@ export const TOOLS: Tool[] = [
       "See tip per person and total per person at a glance",
       "No app to install - norks instantly in your browser",
     ],
+    whyUseSummary:
+      "Tip Calculator is the fastest way to figure out gratuity and split bills without mental math. Key advantages include preset tip buttons, custom percentages, even bill splitting, and per-person breakdowns.",
     steps: [
       {
         title: "Enter the bill amount",
@@ -716,7 +733,7 @@ export const TOOLS: Tool[] = [
     icon: CodeIcon,
     componentName: "json-formatter",
     h1: "JSON Formatter - Free Online JSON Beautifier & Validator",
-    titleTag: "JSON Formatter - Free Online JSON Beautifier",
+    titleTag: "JSON Formatter - Free | FreeToolPark",
     metaDescription:
       "Format, validate and beautify your JSON data instantly. Supports syntax highlighting, error detection, and minification. Free online tool - no signup required.",
     introduction:
@@ -728,6 +745,8 @@ export const TOOLS: Tool[] = [
       "100% client-side processing - nour data never leaves your browser",
       "No signup, no ads, no rate limits - nompletely free to use",
     ],
+    whyUseSummary:
+      "JSON Formatter is the fastest way to beautify and validate JSON without installing software. Key advantages include format, minify, and validate modes, configurable indentation, and completely private browser-based processing.",
     steps: [
       {
         title: "Paste your JSON data",
@@ -802,7 +821,7 @@ export const TOOLS: Tool[] = [
     icon: TextFontIcon,
     componentName: "word-counter",
     h1: "Word Counter - Free Online Word & Character Counter",
-    titleTag: "Word Counter - Free Online Word Counter Tool",
+    titleTag: "Word Counter - Free | FreeToolPark",
     metaDescription:
       "Count words, characters, sentences, and paragraphs instantly. Includes reading and speaking time estimates. Free online word counter - no signup.",
     introduction:
@@ -814,6 +833,8 @@ export const TOOLS: Tool[] = [
       "Character count with and without spaces for different requirements",
       "100% private - nour text never leaves your browser",
     ],
+    whyUseSummary:
+      "Word Counter is the fastest way to analyze text length without installing software. Key advantages include real-time counting, reading and speaking time estimates, and comprehensive character, sentence, and paragraph metrics.",
     steps: [
       {
         title: "Type or paste your text",
@@ -886,7 +907,7 @@ export const TOOLS: Tool[] = [
     icon: BinaryCodeIcon,
     componentName: "base64-encoder-decoder",
     h1: "Base64 Encoder/Decoder - Free Online Base64 Tool",
-    titleTag: "Base64 Encoder/Decoder - Free Online Tool",
+    titleTag: "Base64 Encoder Decoder | FreeToolPark",
     metaDescription:
       "Encode text to Base64 or decode Base64 to text instantly. Supports UTF-8. Free online Base64 encoder and decoder - no signup required.",
     introduction:
@@ -898,6 +919,8 @@ export const TOOLS: Tool[] = [
       "Handles international characters, emojis, and binary data",
       "100% client-side - no data transmitted or stored",
     ],
+    whyUseSummary:
+      "Base64 Encoder/Decoder is the fastest way to encode and decode Base64 without installing software. Key advantages include full UTF-8 support, instant conversion, and completely private browser-based processing.",
     steps: [
       { title: "Enter your text or Base64 string", description: "Paste the text you want to encode, or the Base64 string you want to decode, into the input area. The tool accepts any text for encoding and any valid Base64 string for decoding." },
       { title: "Click Encode or Decode", description: "Click 'Encode to Base64' to convert plain text to Base64 format, or click 'Decode from Base64' to convert a Base64 string back to readable text." },
@@ -923,7 +946,7 @@ export const TOOLS: Tool[] = [
     icon: RegexIcon,
     componentName: "regex-tester",
     h1: "Regex Tester - Free Online Regular Expression Tester",
-    titleTag: "Regex Tester - Free Online Regex Tool",
+    titleTag: "Regex Tester - Free | FreeToolPark",
     metaDescription:
       "Test regular expressions with real-time highlighting, match details, and capture groups. Free online regex tester - no signup required.",
     introduction:
@@ -935,6 +958,8 @@ export const TOOLS: Tool[] = [
       "Uses JavaScript's native RegExp engine - results match your code exactly",
       "No signup required - test unlimited patterns for free",
     ],
+    whyUseSummary:
+      "Regex Tester is the fastest way to test regular expressions without running code. Key advantages include real-time match highlighting, capture group details, flag toggles, and JavaScript-native RegExp compatibility.",
     steps: [
       { title: "Enter your regular expression", description: "Type your regex pattern in the pattern field. The pattern is shown between forward slashes (/pattern/flags) for clarity. You don't need to include the slashes - just the pattern itself." },
       { title: "Set your flags", description: "Toggle the regex flags using the buttons: 'g' for global (find all matches), 'i' for case-insensitive, 'm' for multiline (^ and $ match line boundaries), and 's' for dotall (. matches newlines)." },
@@ -960,7 +985,7 @@ export const TOOLS: Tool[] = [
     icon: ColorPickerIcon,
     componentName: "color-picker",
     h1: "Color Picker - Free Online Color Picker & Converter",
-    titleTag: "Color Picker - Free Online Color Tool",
+    titleTag: "Color Picker - Free | FreeToolPark",
     metaDescription:
       "Pick colors and convert between HEX, RGB, and HSL formats instantly. Free online color picker with visual preview - no signup required.",
     introduction:
@@ -972,6 +997,8 @@ export const TOOLS: Tool[] = [
       "One-click copy for any color format",
       "No signup, completely free, works offline",
     ],
+    whyUseSummary:
+      "Color Picker is the fastest way to find and convert color values without installing software. Key advantages include visual selection, HEX/RGB/HSL conversion, individual channel editing, and one-click copy for any format.",
     steps: [
       { title: "Pick a color", description: "Click the color picker to select a color visually, or type a HEX code directly into the HEX input field. The large preview swatch shows your selected color." },
       { title: "Fine-tune with RGB values", description: "Adjust individual Red, Green, and Blue channel values (0-255) for precise color control. Changes update the color picker and all format outputs in real time." },
@@ -997,7 +1024,7 @@ export const TOOLS: Tool[] = [
     icon: HashtagIcon,
     componentName: "uuid-generator",
     h1: "UUID Generator - Free Online UUID v4 Generator",
-    titleTag: "UUID Generator - Free Online UUID v4 Tool",
+    titleTag: "UUID Generator - Free | FreeToolPark",
     metaDescription:
       "Generate random UUID v4 identifiers instantly. Bulk generation, uppercase, and hyphen options. Free UUID generator - no signup required.",
     introduction:
@@ -1009,6 +1036,8 @@ export const TOOLS: Tool[] = [
       "One-click copy for individual or all generated UUIDs",
       "Zero server calls - nompletely private and offline-capable",
     ],
+    whyUseSummary:
+      "UUID Generator is the fastest way to create unique identifiers without installing software. Key advantages include cryptographic randomness, bulk generation up to 100, and format options for hyphens and case.",
     steps: [
       { title: "Set your options", description: "Choose how many UUIDs to generate (1-100), whether to include hyphens (standard format: 8-4-4-4-12), and whether to output in uppercase or lowercase." },
       { title: "Click Generate", description: "Press the Generate button to create your UUID(s) instantly. Each UUID is generated using crypto.randomUUID(), which provides cryptographically strong randomness." },
@@ -1034,7 +1063,7 @@ export const TOOLS: Tool[] = [
     icon: LockKeyIcon,
     componentName: "md5-generator",
     h1: "MD5 Hash Generator - Free Online MD5 Generator",
-    titleTag: "MD5 Hash Generator - Free Online Tool",
+    titleTag: "MD5 Hash Generator | FreeToolPark",
     metaDescription:
       "Generate MD5 hashes from any text instantly. Free online MD5 hash generator with one-click copy - no signup required.",
     introduction:
@@ -1046,6 +1075,8 @@ export const TOOLS: Tool[] = [
       "Useful for checksums, data integrity, and non-security fingerprinting",
       "No file size or usage limits - nompletely free",
     ],
+    whyUseSummary:
+      "MD5 Hash Generator is the fastest way to compute MD5 checksums without installing software. Key advantages include instant hashing, pure client-side processing, and one-click copy of the 32-character output.",
     steps: [
       { title: "Enter your text", description: "Type or paste the text you want to hash into the input area. Any text of any length will produce a fixed 32-character hexadecimal hash output." },
       { title: "Click Generate MD5 Hash", description: "Press the button to compute the MD5 hash of your input. The computation happens instantly in your browser using a pure JavaScript implementation." },
@@ -1071,7 +1102,7 @@ export const TOOLS: Tool[] = [
     icon: Link01Icon,
     componentName: "url-encoder-decoder",
     h1: "URL Encoder/Decoder - Free Online URL Encoding Tool",
-    titleTag: "URL Encoder/Decoder - Free Online Tool",
+    titleTag: "URL Encoder Decoder | FreeToolPark",
     metaDescription:
       "Encode and decode URLs and query parameters instantly. Supports encodeURIComponent and encodeURI. Free online URL encoder/decoder.",
     introduction:
@@ -1083,6 +1114,8 @@ export const TOOLS: Tool[] = [
       "Perfect for debugging API requests and query strings",
       "100% client-side - no data sent anywhere",
     ],
+    whyUseSummary:
+      "URL Encoder/Decoder is the fastest way to encode and decode URL strings without installing software. Key advantages include component and full URL modes, UTF-8 support, and completely private processing.",
     steps: [
       { title: "Enter your text or URL", description: "Paste the text, URL parameter, or encoded URL you want to process. For encoding, enter the raw text. For decoding, enter the percent-encoded string." },
       { title: "Choose your operation", description: "Click 'Encode Component' for query parameter encoding (encodes everything except A-Z, 0-9, and -_.~). Click 'Encode Full URL' to encode a complete URL (preserves :, /, ?, #, &, =). Click 'Decode' to convert percent-encoded text back to readable form." },
@@ -1108,7 +1141,7 @@ export const TOOLS: Tool[] = [
     icon: SecurityCheckIcon,
     componentName: "sha256-generator",
     h1: "SHA-256 Hash Generator - Free Online SHA-256 Tool",
-    titleTag: "SHA-256 Generator - Free Online Hash Tool",
+    titleTag: "SHA-256 Generator | FreeToolPark",
     metaDescription:
       "Generate SHA-256 hashes from any text using the Web Crypto API. Free online SHA-256 hash generator - no signup required.",
     introduction:
@@ -1120,6 +1153,8 @@ export const TOOLS: Tool[] = [
       "Safe for sensitive data - nothing leaves your browser",
       "No installation, no signup, unlimited free use",
     ],
+    whyUseSummary:
+      "SHA-256 Generator is the fastest way to compute cryptographic hashes without installing software. Key advantages include native Web Crypto API, industry-standard 256-bit output, and zero data transmission.",
     steps: [
       { title: "Enter your text", description: "Type or paste the text you want to hash into the input area. SHA-256 accepts any text of any length and produces a fixed 64-character hexadecimal output." },
       { title: "Click Generate SHA-256 Hash", description: "Press the button to compute the hash using the Web Crypto API (crypto.subtle.digest). This is the same implementation used by browsers for SSL/TLS." },
@@ -1145,7 +1180,7 @@ export const TOOLS: Tool[] = [
     icon: ShuffleIcon,
     componentName: "case-converter",
     h1: "Case Converter - Free Online Text Case Changer",
-    titleTag: "Case Converter - Free Online Text Tool",
+    titleTag: "Case Converter - Free | FreeToolPark",
     metaDescription:
       "Convert text between UPPERCASE, lowercase, Title Case, camelCase, snake_case, kebab-case, and more. Free online case converter.",
     introduction:
@@ -1157,6 +1192,8 @@ export const TOOLS: Tool[] = [
       "Handles multi-word text and preserves word boundaries",
       "100% client-side - no data leaves your browser",
     ],
+    whyUseSummary:
+      "Case Converter is the fastest way to transform text between naming conventions without installing software. Key advantages include ten case formats, one-click conversion, and support for programming conventions like camelCase and snake_case.",
     steps: [
       { title: "Enter your text", description: "Type or paste the text you want to convert into the input area. The tool works with any text: sentences, variable names, titles, or multi-line content." },
       { title: "Choose a case format", description: "Click one of the 10 case format buttons to convert your text. Hover over any button to see an example of that case format. The active format is highlighted." },
@@ -1182,7 +1219,7 @@ export const TOOLS: Tool[] = [
     icon: PaintBrush01Icon,
     componentName: "css-gradient-generator",
     h1: "CSS Gradient Generator - Free Online Gradient Maker",
-    titleTag: "CSS Gradient Generator - Free Gradient Tool",
+    titleTag: "CSS Gradient Generator | FreeToolPark",
     metaDescription:
       "Create beautiful CSS gradients with a visual editor. Supports linear, radial, and conic gradients. Copy CSS code instantly. Free online tool.",
     introduction:
@@ -1194,6 +1231,8 @@ export const TOOLS: Tool[] = [
       "Copy production-ready CSS code with one click",
       "No signup, no watermarks, unlimited free use",
     ],
+    whyUseSummary:
+      "CSS Gradient Generator is the fastest way to create gradient backgrounds without writing code manually. Key advantages include linear, radial, and conic types, up to six color stops, and instant CSS output.",
     steps: [
       { title: "Choose your gradient type", description: "Select linear (straight gradient), radial (circular gradient), or conic (swept gradient) from the type dropdown. Each type creates a different visual effect." },
       { title: "Set colors and positions", description: "Use the color pickers to choose your gradient colors. Adjust each stop's position (0-100%) to control where colors blend. Add more stops for complex gradients or remove extras." },
@@ -1219,7 +1258,7 @@ export const TOOLS: Tool[] = [
     icon: Clock01Icon,
     componentName: "timestamp-converter",
     h1: "Timestamp Converter - Free Unix Timestamp Converter",
-    titleTag: "Timestamp Converter - Free Unix Time Tool",
+    titleTag: "Timestamp Converter | FreeToolPark",
     metaDescription:
       "Convert between Unix timestamps and human-readable dates. Live current timestamp, ISO 8601, and UTC formats. Free online timestamp converter.",
     introduction:
@@ -1231,6 +1270,8 @@ export const TOOLS: Tool[] = [
       "Multiple output formats: ISO 8601, UTC, local time, seconds, and milliseconds",
       "One-click copy for any format - no signup required",
     ],
+    whyUseSummary:
+      "Timestamp Converter is the fastest way to translate between Unix timestamps and dates without installing software. Key advantages include live clock display, auto-detection of seconds vs milliseconds, and multiple output formats.",
     steps: [
       { title: "View or copy the current timestamp", description: "The current Unix timestamp is displayed at the top, updating every second. Click the copy button to grab it for use in your code or API requests." },
       { title: "Convert a timestamp to a date", description: "Enter a Unix timestamp (seconds or milliseconds - auto-detected) in the left panel and click 'Convert to Date'. You'll see the date in ISO 8601, UTC, and local formats, plus both second and millisecond timestamp values." },

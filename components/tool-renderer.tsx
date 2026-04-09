@@ -92,6 +92,8 @@ const registry: Record<string, ComponentType> = {
   ),
 }
 
+export const BUILT_TOOL_SLUGS = new Set(Object.keys(registry))
+
 export function ToolRenderer({
   componentName,
 }: {

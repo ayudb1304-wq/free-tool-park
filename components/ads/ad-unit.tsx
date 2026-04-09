@@ -15,9 +15,13 @@ interface AdUnitProps {
   slot: string
   format?: AdFormat
   className?: string
+  adSlot?: string
 }
 
-export function AdUnit({ format = "horizontal", className }: AdUnitProps) {
+export function AdUnit({
+  format = "horizontal",
+  className,
+}: AdUnitProps) {
   const ref = useRef<HTMLDivElement>(null)
   const [visible, setVisible] = useState(false)
 
@@ -50,7 +54,29 @@ export function AdUnit({ format = "horizontal", className }: AdUnitProps) {
       aria-label="Advertisement"
     >
       {visible && (
-        <span className="text-xs text-muted-foreground/50">Ad</span>
+        <div className="flex h-full w-full items-center justify-center">
+          {/*
+            AD NETWORK CODE GOES HERE
+            Replace this comment block with your ad network script tag.
+
+            Adsterra example:
+            <script async data-cfasync="false" src="//YOUR_ADSTERRA_BANNER_URL"></script>
+
+            Google AdSense example:
+            <ins className="adsbygoogle"
+              style={{ display: 'block' }}
+              data-ad-client="ca-pub-XXXXXXXXXX"
+              data-ad-slot="XXXXXXXXXX"
+              data-ad-format="auto"
+              data-full-width-responsive="true" />
+
+            PropellerAds example:
+            <script src="//YOURPROPELLERURL" data-cfasync="false" async></script>
+          */}
+          <span className="text-xs text-muted-foreground/30 select-none">
+            Advertisement
+          </span>
+        </div>
       )}
     </div>
   )
