@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import { SITE_URL } from "@/lib/schema"
+import { breadcrumbSchema, faqSchema, SITE_URL } from "@/lib/schema"
+import { JsonLd } from "@/components/seo/json-ld"
 import { Breadcrumb } from "@/components/layout/breadcrumb"
 
 export const metadata: Metadata = {
@@ -56,14 +57,40 @@ const AVAILABLE_WIDGETS = [
 ]
 
 export default function EmbedShowcasePage() {
+  const faqs = [
+    {
+      question: "Are these widgets really free to use?",
+      answer:
+        "Yes, all our embeddable widgets are 100% free with no usage limits. We only ask that you keep the small attribution link.",
+    },
+    {
+      question: "Do the widgets collect user data?",
+      answer:
+        "No. All calculations happen in the browser. We don't collect, store, or transmit any data entered into our widgets.",
+    },
+    {
+      question: "Will the widgets slow down my website?",
+      answer:
+        "No. Widgets load asynchronously in an iframe and don't block your page rendering. They're optimized for Core Web Vitals.",
+    },
+  ]
+
   return (
-    <div className="mx-auto max-w-6xl px-4 py-8">
-      <Breadcrumb
-        items={[
-          { label: "Home", href: "/" },
-          { label: "Embeddable Widgets" },
-        ]}
+    <>
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "Home", url: SITE_URL },
+          { name: "Embeddable Widgets", url: `${SITE_URL}/embed` },
+        ])}
       />
+      <JsonLd data={faqSchema(faqs)} />
+      <div className="mx-auto max-w-6xl px-4 py-8">
+        <Breadcrumb
+          items={[
+            { label: "Home", href: "/" },
+            { label: "Embeddable Widgets" },
+          ]}
+        />
 
       <h1 className="text-center text-3xl font-bold md:text-4xl">
         Free Embeddable Widgets for Your Website
@@ -184,5 +211,6 @@ export default function EmbedShowcasePage() {
         </div>
       </section>
     </div>
+    </>
   )
 }

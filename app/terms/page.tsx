@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
-import { SITE_URL } from "@/lib/schema"
+import { breadcrumbSchema, SITE_URL } from "@/lib/schema"
+import { JsonLd } from "@/components/seo/json-ld"
 import { Breadcrumb } from "@/components/layout/breadcrumb"
 
 export const metadata: Metadata = {
@@ -13,13 +14,20 @@ export const metadata: Metadata = {
 
 export default function TermsPage() {
   return (
-    <div className="mx-auto max-w-3xl px-4 py-8">
-      <Breadcrumb
-        items={[
-          { label: "Home", href: "/" },
-          { label: "Terms of Service" },
-        ]}
+    <>
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "Home", url: SITE_URL },
+          { name: "Terms of Service", url: `${SITE_URL}/terms` },
+        ])}
       />
+      <div className="mx-auto max-w-3xl px-4 py-8">
+        <Breadcrumb
+          items={[
+            { label: "Home", href: "/" },
+            { label: "Terms of Service" },
+          ]}
+        />
 
       <h1 className="font-heading mb-6 text-3xl font-bold">
         Terms of Service
@@ -205,5 +213,6 @@ export default function TermsPage() {
         </section>
       </div>
     </div>
+    </>
   )
 }
