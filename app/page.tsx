@@ -1,4 +1,12 @@
 import Image from "next/image"
+import Link from "next/link"
+import { HugeiconsIcon } from "@hugeicons/react"
+import {
+  SecurityCheckIcon,
+  LockKeyIcon,
+  FlashIcon,
+  InfinityCircleIcon,
+} from "@hugeicons/core-free-icons"
 import { getAllTools } from "@/lib/tools"
 import { ToolsGrid } from "@/components/tools-grid"
 
@@ -26,14 +34,66 @@ export default function HomePage() {
             priority
           />
         </div>
-        <h1 className="mt-4 text-2xl font-bold tracking-tight text-foreground">
-          Free Online Tools - No Signup Required
+        <h1 className="mt-6 text-3xl font-bold tracking-tight text-foreground md:text-5xl">
+          Free Online Tools That{" "}
+          <span className="text-primary">Respect Your Privacy</span>
         </h1>
         <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
-          100+ free browser-based tools for developers, creators, and everyone.
-          No signup, no data collection. Everything runs locally in your
-          browser.
+          100+ browser-based calculators, converters, and developer tools. No
+          tracking. No sign-ups. No limits. Your data never leaves your device.
         </p>
+
+        {/* Trust Badges */}
+        <div className="mt-8 flex flex-wrap justify-center gap-4 text-sm text-muted-foreground">
+          <div className="flex items-center gap-2">
+            <HugeiconsIcon
+              icon={SecurityCheckIcon}
+              className="text-green-500"
+              size={20}
+            />
+            <span>100% Client-Side</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <HugeiconsIcon
+              icon={LockKeyIcon}
+              className="text-green-500"
+              size={20}
+            />
+            <span>No Data Collection</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <HugeiconsIcon
+              icon={FlashIcon}
+              className="text-green-500"
+              size={20}
+            />
+            <span>Instant Results</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <HugeiconsIcon
+              icon={InfinityCircleIcon}
+              className="text-green-500"
+              size={20}
+            />
+            <span>Unlimited Use</span>
+          </div>
+        </div>
+
+        {/* CTAs */}
+        <div className="mt-10 flex flex-wrap justify-center gap-4">
+          <Link
+            href="/tools"
+            className="rounded-lg bg-primary px-8 py-3 font-medium text-primary-foreground transition hover:bg-primary/90"
+          >
+            Browse All Tools
+          </Link>
+          <Link
+            href="/privacy"
+            className="rounded-lg border border-border px-8 py-3 font-medium transition hover:bg-muted"
+          >
+            How We Protect You
+          </Link>
+        </div>
       </section>
 
       <ToolsGrid tools={tools} showSearch showCategoryFilter />

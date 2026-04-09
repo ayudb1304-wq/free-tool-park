@@ -14,6 +14,7 @@ import {
 } from "@/lib/schema"
 import { Breadcrumb } from "@/components/layout/breadcrumb"
 import { AdUnit } from "@/components/ads/ad-unit"
+import { PrivacyBadge } from "@/components/tools/privacy-badge"
 import Link from "next/link"
 import { Card, CardHeader, CardTitle } from "@/components/ui/card"
 import { HugeiconsIcon } from "@hugeicons/react"
@@ -157,6 +158,11 @@ export default async function ToolPage({
                   <li key={i}>{reason}</li>
                 ))}
               </ul>
+            </section>
+
+            {/* Privacy Badge */}
+            <section className="mb-8">
+              <PrivacyBadge toolName={tool.name} variant="default" />
             </section>
 
             <AdUnit
