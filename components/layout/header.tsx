@@ -70,6 +70,36 @@ export function Header() {
                 ))}
               </DropdownMenuContent>
             </DropdownMenu>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" size="sm">
+                  For You
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="start">
+                <DropdownMenuItem asChild>
+                  <Link href="/for/developers">For Developers</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link href="/for/writers">For Writers</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link href="/for/students">For Students</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link href="/for/designers">For Designers</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link href="/for/finance">For Finance</Link>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+            <Button variant="ghost" size="sm" asChild>
+              <Link href="/embed">Embed</Link>
+            </Button>
+            <Button variant="ghost" size="sm" asChild>
+              <Link href="/request-a-tool">Request a Tool</Link>
+            </Button>
           </nav>
         </div>
 
@@ -137,6 +167,45 @@ export function Header() {
                     </Link>
                   </Button>
                 ))}
+                <div className="mt-4 mb-2 px-3 text-xs font-medium text-muted-foreground">
+                  For You
+                </div>
+                {[
+                  { href: "/for/developers", label: "For Developers" },
+                  { href: "/for/writers", label: "For Writers" },
+                  { href: "/for/students", label: "For Students" },
+                  { href: "/for/designers", label: "For Designers" },
+                  { href: "/for/finance", label: "For Finance" },
+                ].map((item) => (
+                  <Button
+                    key={item.href}
+                    variant="ghost"
+                    className="justify-start"
+                    asChild
+                    onClick={() => setOpen(false)}
+                  >
+                    <Link href={item.href}>{item.label}</Link>
+                  </Button>
+                ))}
+                <div className="mt-4 mb-2 px-3 text-xs font-medium text-muted-foreground">
+                  More
+                </div>
+                <Button
+                  variant="ghost"
+                  className="justify-start"
+                  asChild
+                  onClick={() => setOpen(false)}
+                >
+                  <Link href="/embed">Embed Widgets</Link>
+                </Button>
+                <Button
+                  variant="ghost"
+                  className="justify-start"
+                  asChild
+                  onClick={() => setOpen(false)}
+                >
+                  <Link href="/request-a-tool">Request a Tool</Link>
+                </Button>
               </nav>
             </SheetContent>
           </Sheet>
