@@ -133,7 +133,7 @@ export function Header() {
               <SheetHeader>
                 <SheetTitle>Menu</SheetTitle>
               </SheetHeader>
-              <nav className="flex flex-col gap-1 p-4">
+              <nav className="flex flex-col gap-1 overflow-y-auto p-4">
                 <Button
                   variant="ghost"
                   className="justify-start"

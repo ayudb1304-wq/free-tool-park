@@ -9,7 +9,7 @@ export function ToolRequestForm() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    // Client-side only — stores in localStorage for now
+    // Client-side only - stores in localStorage for now
     try {
       const existing = JSON.parse(
         localStorage.getItem("tool-requests") || "[]"

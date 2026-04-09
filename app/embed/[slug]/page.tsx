@@ -49,7 +49,7 @@ export default async function EmbedToolPage({
         >
           FreeToolPark
         </a>
-        {" "}&mdash; Free Privacy-First Tools
+        {" "}- Free Privacy-First Tools
       </footer>
     </div>
   )
