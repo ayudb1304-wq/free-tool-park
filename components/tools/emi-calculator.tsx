@@ -5,6 +5,10 @@ import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/label"
 import { CopyButton } from "@/components/ui/copy-button"
+import { ShareResult } from "@/components/tools/share-result"
+import { CalculationHistory } from "@/components/tools/calculation-history"
+import type { HistoryItem } from "@/components/tools/calculation-history"
+import { useLocalStorage } from "@/hooks/use-local-storage"
 
 function formatNum(n: number) {
   return n.toLocaleString("en-US", {
@@ -46,11 +50,34 @@ export default function EmiCalculator() {
   const [rate, setRate] = useState("8.5")
   const [tenureYears, setTenureYears] = useState("5")
   const [result, setResult] = useState<EMIResult | null>(null)
+  const [, setHistory] = useLocalStorage<HistoryItem[]>(
+    "emi-calculator-history",
+    []
+  )
 
   function handleCalculate() {
-    setResult(
-      calcEMI(Number(principal), Number(rate), Number(tenureYears) * 12)
-    )
+    const r = calcEMI(Number(principal), Number(rate), Number(tenureYears) * 12)
+    setResult(r)
+
+    if (r) {
+      const params = new URLSearchParams({ p: principal, r: rate, t: tenureYears })
+      const url = `${window.location.origin}/tools/emi-calculator?${params}`
+      setHistory((prev) => [
+        {
+          id: crypto.randomUUID(),
+          timestamp: Date.now(),
+          inputs: { principal, rate, tenureYears },
+          result: { emi: r.emi, totalInterest: r.totalInterest, totalPayment: r.totalPayment },
+          shareableUrl: url,
+        },
+        ...prev.slice(0, 9),
+      ])
+    }
+  }
+
+  function getShareUrl() {
+    const params = new URLSearchParams({ p: principal, r: rate, t: tenureYears })
+    return `${typeof window !== "undefined" ? window.location.origin : ""}/tools/emi-calculator?${params}`
   }
 
   const summary = result
@@ -137,8 +164,26 @@ export default function EmiCalculator() {
           </div>
 
           <CopyButton value={summary} label="Copy Results" />
+
+          <ShareResult
+            url={getShareUrl()}
+            resultText={`My monthly EMI: ${formatNum(result.emi)} for a ${formatNum(Number(principal))} loan`}
+            toolName="EMI Calculator"
+            hashtags={["EMI", "Finance"]}
+          />
         </div>
       )}
+
+      <CalculationHistory
+        toolSlug="emi-calculator"
+        formatResult={(r) => {
+          const res = r as { emi: number }
+          return formatNum(res.emi)
+        }}
+        formatInputs={(inputs) =>
+          `${formatNum(Number(inputs.principal))}, ${inputs.rate}%, ${inputs.tenureYears} years`
+        }
+      />
     </div>
   )
 }

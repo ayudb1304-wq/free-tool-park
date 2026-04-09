@@ -5,6 +5,10 @@ import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/label"
 import { CopyButton } from "@/components/ui/copy-button"
+import { ShareResult } from "@/components/tools/share-result"
+import { CalculationHistory } from "@/components/tools/calculation-history"
+import type { HistoryItem } from "@/components/tools/calculation-history"
+import { useLocalStorage } from "@/hooks/use-local-storage"
 
 type Unit = "metric" | "imperial"
 
@@ -49,9 +53,34 @@ export default function BmiCalculator() {
   const [weight, setWeight] = useState("")
   const [height, setHeight] = useState("")
   const [result, setResult] = useState<BMIResult | null>(null)
+  const [, setHistory] = useLocalStorage<HistoryItem[]>(
+    "bmi-calculator-history",
+    []
+  )
 
   function handleCalculate() {
-    setResult(calcBMI(Number(weight), Number(height), unit))
+    const r = calcBMI(Number(weight), Number(height), unit)
+    setResult(r)
+
+    if (r) {
+      const params = new URLSearchParams({ w: weight, h: height, u: unit })
+      const url = `${window.location.origin}/tools/bmi-calculator?${params}`
+      setHistory((prev) => [
+        {
+          id: crypto.randomUUID(),
+          timestamp: Date.now(),
+          inputs: { weight, height, unit },
+          result: { bmi: r.bmi, category: r.category },
+          shareableUrl: url,
+        },
+        ...prev.slice(0, 9),
+      ])
+    }
+  }
+
+  function getShareUrl() {
+    const params = new URLSearchParams({ w: weight, h: height, u: unit })
+    return `${typeof window !== "undefined" ? window.location.origin : ""}/tools/bmi-calculator?${params}`
   }
 
   const summary = result
@@ -130,8 +159,26 @@ export default function BmiCalculator() {
               </div>
             ))}
           </div>
+
+          <ShareResult
+            url={getShareUrl()}
+            resultText={`My BMI is ${result.bmi} (${result.category}).`}
+            toolName="BMI Calculator"
+            hashtags={["BMI", "Health"]}
+          />
         </div>
       )}
+
+      <CalculationHistory
+        toolSlug="bmi-calculator"
+        formatResult={(r) => {
+          const res = r as { bmi: number; category: string }
+          return `BMI: ${res.bmi} - ${res.category}`
+        }}
+        formatInputs={(inputs) =>
+          `${inputs.weight}${inputs.unit === "metric" ? "kg" : "lbs"}, ${inputs.height}${inputs.unit === "metric" ? "cm" : "in"}`
+        }
+      />
     </div>
   )
 }

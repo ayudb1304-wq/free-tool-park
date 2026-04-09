@@ -15,7 +15,20 @@ import {
 import { Breadcrumb } from "@/components/layout/breadcrumb"
 import { AdUnit } from "@/components/ads/ad-unit"
 import { PrivacyBadge } from "@/components/tools/privacy-badge"
+import { EmbedCodeGenerator } from "@/components/embed/embed-code-generator"
 import Link from "next/link"
+
+const EMBEDDABLE_SLUGS = new Set([
+  "mortgage-calculator",
+  "bmi-calculator",
+  "percentage-calculator",
+  "word-counter",
+  "color-picker",
+  "password-generator",
+  "tip-calculator",
+  "emi-calculator",
+  "age-calculator",
+])
 import { Card, CardHeader, CardTitle } from "@/components/ui/card"
 import { HugeiconsIcon } from "@hugeicons/react"
 
@@ -164,6 +177,23 @@ export default async function ToolPage({
             <section className="mb-8">
               <PrivacyBadge toolName={tool.name} variant="default" />
             </section>
+
+            {/* Embed Widget */}
+            {EMBEDDABLE_SLUGS.has(tool.slug) && (
+              <section className="mb-8">
+                <h2 className="font-heading mb-4 text-2xl font-bold">
+                  Embed This {tool.name} on Your Website
+                </h2>
+                <p className="mb-4 text-muted-foreground">
+                  Add this {tool.name.toLowerCase()} to your website for free.
+                  Customize the size and copy the embed code below.
+                </p>
+                <EmbedCodeGenerator
+                  toolSlug={tool.slug}
+                  toolName={tool.name}
+                />
+              </section>
+            )}
 
             <AdUnit
               slot="before-faq"

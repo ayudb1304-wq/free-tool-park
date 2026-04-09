@@ -5,6 +5,10 @@ import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/label"
 import { CopyButton } from "@/components/ui/copy-button"
+import { ShareResult } from "@/components/tools/share-result"
+import { CalculationHistory } from "@/components/tools/calculation-history"
+import type { HistoryItem } from "@/components/tools/calculation-history"
+import { useLocalStorage } from "@/hooks/use-local-storage"
 
 const TIP_PRESETS = [10, 15, 18, 20, 25]
 
@@ -13,9 +17,38 @@ export default function TipCalculator() {
   const [tipPercent, setTipPercent] = useState("15")
   const [people, setPeople] = useState("1")
   const [calculated, setCalculated] = useState(false)
+  const [, setHistory] = useLocalStorage<HistoryItem[]>(
+    "tip-calculator-history",
+    []
+  )
 
   function handleCalculate() {
     setCalculated(true)
+
+    const billNum = Number(bill)
+    const tipNum = Number(tipPercent)
+    const tipAmount = billNum * (tipNum / 100)
+    const total = billNum + tipAmount
+
+    if (billNum > 0) {
+      const params = new URLSearchParams({ b: bill, tp: tipPercent, p: people })
+      const url = `${window.location.origin}/tools/tip-calculator?${params}`
+      setHistory((prev) => [
+        {
+          id: crypto.randomUUID(),
+          timestamp: Date.now(),
+          inputs: { bill, tipPercent, people },
+          result: { tipAmount, total },
+          shareableUrl: url,
+        },
+        ...prev.slice(0, 9),
+      ])
+    }
+  }
+
+  function getShareUrl() {
+    const params = new URLSearchParams({ b: bill, tp: tipPercent, p: people })
+    return `${typeof window !== "undefined" ? window.location.origin : ""}/tools/tip-calculator?${params}`
   }
 
   const billNum = Number(bill)
@@ -116,8 +149,26 @@ export default function TipCalculator() {
           </div>
 
           <CopyButton value={summary} label="Copy Results" />
+
+          <ShareResult
+            url={getShareUrl()}
+            resultText={`Tip: ${fmt(tipAmount)}, Total: ${fmt(total)}`}
+            toolName="Tip Calculator"
+            hashtags={["Tip", "Finance"]}
+          />
         </div>
       )}
+
+      <CalculationHistory
+        toolSlug="tip-calculator"
+        formatResult={(r) => {
+          const res = r as { total: number }
+          return fmt(res.total)
+        }}
+        formatInputs={(inputs) =>
+          `${fmt(Number(inputs.bill))}, ${inputs.tipPercent}%`
+        }
+      />
     </div>
   )
 }

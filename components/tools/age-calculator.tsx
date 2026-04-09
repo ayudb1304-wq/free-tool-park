@@ -5,6 +5,10 @@ import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/label"
 import { CopyButton } from "@/components/ui/copy-button"
+import { ShareResult } from "@/components/tools/share-result"
+import { CalculationHistory } from "@/components/tools/calculation-history"
+import type { HistoryItem } from "@/components/tools/calculation-history"
+import { useLocalStorage } from "@/hooks/use-local-storage"
 
 interface AgeResult {
   years: number
@@ -62,10 +66,35 @@ export default function AgeCalculator() {
     new Date().toISOString().split("T")[0]
   )
   const [result, setResult] = useState<AgeResult | null>(null)
+  const [, setHistory] = useLocalStorage<HistoryItem[]>(
+    "age-calculator-history",
+    []
+  )
 
   function handleCalculate() {
     if (!birthDate) return
-    setResult(calcAge(new Date(birthDate), new Date(toDate)))
+    const r = calcAge(new Date(birthDate), new Date(toDate))
+    setResult(r)
+
+    if (r) {
+      const params = new URLSearchParams({ bd: birthDate, td: toDate })
+      const url = `${window.location.origin}/tools/age-calculator?${params}`
+      setHistory((prev) => [
+        {
+          id: crypto.randomUUID(),
+          timestamp: Date.now(),
+          inputs: { birthDate, toDate },
+          result: { years: r.years, months: r.months, days: r.days },
+          shareableUrl: url,
+        },
+        ...prev.slice(0, 9),
+      ])
+    }
+  }
+
+  function getShareUrl() {
+    const params = new URLSearchParams({ bd: birthDate, td: toDate })
+    return `${typeof window !== "undefined" ? window.location.origin : ""}/tools/age-calculator?${params}`
   }
 
   const summary = result
@@ -126,8 +155,24 @@ export default function AgeCalculator() {
               </div>
             ))}
           </div>
+
+          <ShareResult
+            url={getShareUrl()}
+            resultText={`I am ${result.years} years, ${result.months} months, ${result.days} days old`}
+            toolName="Age Calculator"
+            hashtags={["Age", "Birthday"]}
+          />
         </div>
       )}
+
+      <CalculationHistory
+        toolSlug="age-calculator"
+        formatResult={(r) => {
+          const res = r as { years: number; months: number; days: number }
+          return `${res.years} years, ${res.months} months, ${res.days} days`
+        }}
+        formatInputs={(inputs) => inputs.birthDate as string}
+      />
     </div>
   )
 }
