@@ -1,4 +1,4 @@
-const INDEXNOW_KEY = process.env.INDEXNOW_KEY!
+const INDEXNOW_KEY = "83edeaacde3bee733f33bc9fbe324fd6"
 const SITE_HOST = "freetoolpark.com"
 
 export async function pingIndexNow(urls: string[]): Promise<boolean> {
