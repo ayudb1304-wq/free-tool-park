@@ -72,78 +72,107 @@ export const TOOLS: Tool[] = [
     category: "calculators",
     icon: Home01Icon,
     componentName: "mortgage-calculator",
-    h1: "Mortgage Calculator - Free Monthly Payment Calculator",
-    titleTag: "Mortgage Calculator - Free | FreeToolPark",
+    h1: "Free Mortgage Calculator — Monthly Payment, PMI & Amortization",
+    titleTag: "Mortgage Calculator: Payment, PMI, Amortization | FreeToolPark",
     metaDescription:
-      "Calculate your monthly mortgage payment with taxes and insurance. Free mortgage calculator with full amortization schedule. No signup required.",
+      "Calculate your mortgage payment with PMI, taxes, insurance, and full amortization. Free, instant, no signup. See your true monthly cost.",
     introduction:
-      "The Mortgage Calculator helps you estimate your monthly mortgage payment instantly, including property taxes and homeowner's insurance. Whether you're a first-time homebuyer comparing loan options, a homeowner considering refinancing, or a real estate investor evaluating properties, this free tool gives you a complete financial picture in seconds. Enter your home price, down payment, interest rate, and loan term to see your exact monthly payment and full amortization schedule. All calculations happen locally in your browser - no data is stored or shared.",
+      "A mortgage calculator helps you estimate your monthly home loan payment including principal, interest, property taxes, homeowners insurance, PMI, and HOA fees. Use our free mortgage calculator to see exactly what your monthly mortgage payment will be, how much interest you'll pay over the life of your loan, and when you can expect PMI to be removed from your payment. Unlike basic mortgage calculators that only show principal and interest, this tool gives you the complete picture — including tax deductions, biweekly payment savings, and the impact of extra payments. Whether you're buying your first home, refinancing, or shopping for the best mortgage rate, this calculator will help you make a confident, informed decision.",
     whyUse: [
-      "Calculate monthly mortgage payments including taxes and insurance instantly",
-      "View a complete year-by-year amortization schedule showing principal vs. interest",
-      "Compare different loan terms and interest rates side by side",
-      "100% client-side - nour financial data never leaves your browser",
-      "No signup, no ads, no rate limits - nompletely free to use",
+      "Includes PMI, property taxes, insurance, and HOA for your true monthly cost",
+      "Auto-fills state-specific property tax rates for all 50 US states",
+      "Shows PMI removal date and total PMI paid over the life of the loan",
+      "Interactive charts showing payment breakdown, principal vs interest over time",
+      "Smart insights panel with personalized advice based on your inputs",
+      "Biweekly payment toggle shows years and interest saved instantly",
+      "Extra payment slider shows payoff acceleration and interest savings",
     ],
     whyUseSummary:
-      "Mortgage Calculator is the fastest way to estimate monthly home payments without installing software. Key advantages include tax and insurance inclusion, full amortization schedules, and instant comparison of different loan terms and rates.",
+      "A mortgage calculator helps you estimate your monthly payment, total interest, and loan payoff timeline before applying. Our calculator includes PMI, property taxes, insurance, and HOA fees to show your true monthly cost — plus visualizations and a downloadable amortization schedule.",
     steps: [
       {
-        title: "Enter your home price and down payment",
+        title: "Enter the home price you're considering",
         description:
-          "Input the total purchase price of the home and the amount you plan to put down. The calculator will compute the actual loan amount by subtracting your down payment from the home price. A typical down payment is 20%, but you can enter any amount.",
+          "Input the total purchase price of the home. The default is $400,000 but you can enter any amount. This is the starting point for all calculations.",
       },
       {
-        title: "Set your interest rate and loan term",
+        title: "Enter your down payment (in dollars or percent)",
         description:
-          "Enter the annual interest rate offered by your lender and select the loan term in years. Common terms are 15 and 30 years. A lower rate or shorter term means less total interest paid, but higher monthly payments.",
+          "Input how much you plan to put down. Toggle between dollar amount and percentage. A 20% down payment eliminates PMI. The calculator shows your LTV ratio and PMI impact.",
       },
       {
-        title: "Add property taxes and insurance",
+        title: "Choose your loan term (15, 20, or 30 years)",
         description:
-          "Enter your annual property tax and homeowner's insurance amounts. These are added to your base mortgage payment to give you the true monthly cost. You can find estimated property tax rates from your county assessor's website.",
+          "Select your loan term from the dropdown. A shorter term means higher monthly payments but significantly less total interest. Compare terms to find your ideal balance.",
       },
       {
-        title: "Click Calculate and review your results",
+        title: "Enter the interest rate from your lender",
         description:
-          "Click the Calculate button to see your monthly payment, total payment over the life of the loan, and total interest paid. Toggle the amortization schedule to see a year-by-year breakdown of how your payments split between principal and interest.",
+          "Enter the annual interest rate from your lender or rate quote. Use 0.125% increments for precision. The rate has the biggest impact on your total cost.",
+      },
+      {
+        title: "Add property tax, insurance, PMI, and HOA estimates",
+        description:
+          "Select your state for auto-filled property tax rates. Add annual home insurance, monthly HOA, and PMI rate. These costs are often overlooked but significantly affect your monthly payment.",
+      },
+      {
+        title: "Review your results and smart insights",
+        description:
+          "Review your monthly payment breakdown, amortization schedule, and interactive charts. The smart insights panel provides personalized advice about PMI removal, extra payments, and tax deductions.",
       },
     ],
     faqs: [
       {
-        question: "How is a monthly mortgage payment calculated?",
+        question: "How much house can I afford on my salary?",
         answer:
-          "Monthly mortgage payments are calculated using the standard amortization formula: M = P[r(1+r)^n]/[(1+r)^n-1], where M is the monthly payment, P is the loan principal, r is the monthly interest rate (annual rate divided by 12), and n is the total number of monthly payments. This calculator also adds monthly property tax and insurance to give you the total monthly cost of homeownership.",
+          "Use the 28/36 rule: spend no more than 28% of your gross monthly income on housing costs (mortgage, taxes, insurance, HOA) and no more than 36% on total debt. For example, with a $100,000 salary ($8,333/month), keep housing costs below $2,333. This calculator shows your full monthly cost including all components so you can compare against your budget.",
       },
       {
-        question: "What is a good mortgage interest rate?",
+        question: "What is PMI and when does it go away?",
         answer:
-          "Mortgage interest rates vary based on economic conditions, your credit score, loan type, and down payment. As of 2026, rates for a 30-year fixed mortgage typically range from 5.5% to 7.5%. A rate below 6% is generally considered good. Your actual rate depends on your credit score (740+ gets the best rates), debt-to-income ratio, and the size of your down payment.",
+          "Private Mortgage Insurance (PMI) is required when your down payment is less than 20% of the home price. PMI protects the lender if you default. Under the Homeowners Protection Act, your lender must automatically remove PMI when your loan-to-value (LTV) ratio reaches 78%. Our calculator shows the exact month PMI drops off and how much total PMI you'll pay.",
       },
       {
-        question: "How much house can I afford?",
+        question: "Is a 15-year or 30-year mortgage better?",
         answer:
-          "A common guideline is the 28/36 rule: spend no more than 28% of your gross monthly income on housing costs (mortgage, taxes, insurance) and no more than 36% on total debt. For example, with a $6,000 monthly income, aim for housing costs under $1,680. Use this calculator to find the home price that keeps your payment within that range.",
+          "A 15-year mortgage has higher monthly payments but saves you tens of thousands in interest. A 30-year mortgage has lower payments but costs significantly more over the life of the loan. For a $320,000 loan at 6.5%, a 15-year term saves over $180,000 in interest. Choose 15 years if you can afford the higher payment; choose 30 years for flexibility and invest the difference.",
       },
       {
-        question: "Should I choose a 15-year or 30-year mortgage?",
+        question: "How much should I put down on a house?",
         answer:
-          "A 15-year mortgage has higher monthly payments but saves significantly on total interest. A 30-year mortgage has lower monthly payments but costs more over the life of the loan. For example, on a $240,000 loan at 6.5%, a 15-year term saves over $150,000 in interest compared to a 30-year term. Choose based on your monthly budget and long-term financial goals.",
+          "A 20% down payment is ideal because it eliminates PMI and gives you a lower monthly payment. However, many buyers put down 3-10%. FHA loans require just 3.5% down. Use this calculator to compare scenarios — even a few percentage points more down payment can save thousands over the life of the loan by reducing PMI and interest.",
       },
       {
-        question: "What is included in a mortgage payment?",
+        question: "What's included in a monthly mortgage payment?",
         answer:
-          "A mortgage payment typically includes four components, known as PITI: Principal (the loan amount you're paying down), Interest (the cost of borrowing), Taxes (property taxes, usually collected monthly and held in escrow), and Insurance (homeowner's insurance). Some loans also include Private Mortgage Insurance (PMI) if your down payment is less than 20%.",
+          "A monthly mortgage payment includes PITI: Principal (paying down your loan balance), Interest (the cost of borrowing), Taxes (property taxes held in escrow), and Insurance (homeowner's insurance). It may also include PMI (if less than 20% down) and HOA fees. This calculator breaks down each component so you see your true monthly cost.",
+      },
+      {
+        question: "How is mortgage interest calculated?",
+        answer:
+          "Mortgage interest is calculated using the formula M = P[r(1+r)^n]/[(1+r)^n-1], where P is the loan principal, r is the monthly interest rate (annual rate / 12), and n is the total number of payments. Early in the loan, most of your payment goes to interest. Over time, more goes to principal. The amortization schedule in this calculator shows this shift month by month.",
+      },
+      {
+        question: "Can I deduct mortgage interest on taxes?",
+        answer:
+          "Yes, mortgage interest is tax-deductible on loans up to $750,000 (married filing jointly) if you itemize deductions. The deduction is most valuable in the early years when interest payments are highest. Our calculator estimates your Year 1 tax deduction based on your selected federal tax bracket. Consult a tax professional for your specific situation.",
+      },
+      {
+        question: "What credit score do I need for a mortgage?",
+        answer:
+          "Conventional loans typically require a minimum credit score of 620, while FHA loans accept scores as low as 580 with 3.5% down. However, the best interest rates go to borrowers with scores of 740+. Every 20-point improvement in your score can save 0.125-0.25% on your rate, which translates to thousands over the life of the loan.",
       },
     ],
-    relatedSlugs: ["emi-calculator", "percentage-calculator", "tip-calculator"],
+    relatedSlugs: ["emi-calculator", "interest-calculator", "percentage-calculator", "tip-calculator"],
     keywords: [
       "mortgage calculator",
-      "mortgage payment calculator",
-      "monthly mortgage payment calculator",
-      "mortgage calculator with taxes and insurance",
+      "monthly mortgage payment",
+      "mortgage payment calculator with pmi",
       "home loan calculator",
+      "mortgage amortization calculator",
+      "mortgage calculator with taxes and insurance",
       "30 year mortgage calculator",
+      "15 year mortgage calculator",
     ],
   },
 
