@@ -9,7 +9,8 @@
     "start": "next start",
     "lint": "eslint",
     "format": "prettier --write \"**/*.{ts,tsx}\"",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "indexnow": "npx tsx scripts/indexnow-bulk.ts"
   },
   "dependencies": {
     "@hugeicons/core-free-icons": "^4.1.1",
