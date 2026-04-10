@@ -288,7 +288,124 @@ export const TOOLS: Tool[] = [
     ],
   },
 
-  // 3. Percentage Calculator
+  // 3. Auto Loan Calculator
+  {
+    slug: "auto-loan-calculator",
+    name: "Auto Loan Calculator",
+    category: "calculators",
+    icon: CalculatorIcon,
+    componentName: "auto-loan-calculator",
+    h1: "Free Auto Loan Calculator — Car Payment, Interest & Total Cost",
+    titleTag: "Auto Loan Calculator: Monthly Payment & APR | FreeToolPark",
+    metaDescription:
+      "Calculate your car loan payment, total interest, and full amortization. Includes trade-in equity, sales tax by state, fees, and upside-down warnings.",
+    introduction:
+      "An auto loan calculator helps you figure out the true cost of a car loan before you sign at the dealership. Enter the vehicle price, down payment, trade-in value, interest rate, and loan term — this tool instantly shows your monthly payment, total interest over the life of the loan, and the full cost of ownership including sales tax and fees. Unlike basic car payment calculators, this one handles the tricky stuff: rolling negative equity from a previous loan into the new one, state-specific vehicle sales tax for all 50 states, and an upside-down warning that tells you how many months you'll owe more than the car is worth based on typical depreciation. Whether you're buying new or used, trading in or starting fresh, use this calculator to compare dealer offers, shop bank financing, and avoid walking into a loan that's worse than it looks on the monthly payment line.",
+    whyUse: [
+      "Handles trade-in equity and negative equity rolled into the new loan",
+      "Vehicle sales tax auto-filled for all 50 US states + DC",
+      "Toggle between tax on full price vs. price minus trade-in (varies by state)",
+      "Upside-down timeline shows exactly when you break even against depreciation",
+      "Pie chart breakdown of vehicle price, tax, fees, and total interest",
+      "Smart insights flag long loan terms, low down payments, and underwater trade-ins",
+      "Full amortization schedule you can reveal with one click",
+      "Shareable URL so you can save and compare multiple loan scenarios",
+    ],
+    whyUseSummary:
+      "An auto loan calculator helps you estimate your monthly car payment, total interest, and full cost of ownership before you sign. Our calculator includes sales tax by state, trade-in equity, title fees, and an upside-down warning so you see the true cost — not just the monthly payment the dealer quotes you.",
+    steps: [
+      {
+        title: "Enter the vehicle price",
+        description:
+          "Type in the total out-the-door price of the car before any trade-in, down payment, or tax. This is the sticker price you've negotiated with the dealer or seller.",
+      },
+      {
+        title: "Add your down payment",
+        description:
+          "Enter how much cash you're putting down. A larger down payment lowers your monthly payment, reduces interest, and shortens the time you'll be upside-down on the loan. Most experts recommend at least 20% down on a new car and 10% on a used car.",
+      },
+      {
+        title: "Enter your trade-in details (if applicable)",
+        description:
+          "Enter the dealer's trade-in offer for your current vehicle and the amount you still owe on your existing auto loan. If your trade-in is worth less than what you owe, the calculator automatically rolls the negative equity into the new loan and warns you about it.",
+      },
+      {
+        title: "Set the interest rate (APR) and loan term",
+        description:
+          "Enter the APR from your lender or dealer quote and choose a term from 24 to 84 months. Shorter terms mean higher monthly payments but dramatically less total interest. Compare several terms to find your sweet spot.",
+      },
+      {
+        title: "Pick your state for sales tax",
+        description:
+          "Select your state from the dropdown and the calculator auto-fills the average vehicle sales tax rate. Add title and registration fees from your dealer's fee sheet. You can override the tax rate if your local rate is different.",
+      },
+      {
+        title: "Review your results, breakdown, and upside-down timeline",
+        description:
+          "Check your monthly payment, total interest, and total cost of ownership. Look at the upside-down timeline chart to see when your loan balance crosses below the car's estimated value. Use the smart insights to spot red flags before you sign.",
+      },
+    ],
+    faqs: [
+      {
+        question: "How do I calculate my monthly car payment?",
+        answer:
+          "The monthly car payment formula is M = P[r(1+r)^n] / [(1+r)^n − 1], where P is the amount financed (vehicle price + tax + fees − down payment − trade-in equity), r is the monthly interest rate (APR ÷ 12), and n is the number of months. Our calculator does all of this for you and also shows the amortization schedule so you can see principal vs. interest for every year of the loan.",
+      },
+      {
+        question: "What is a good interest rate on a car loan?",
+        answer:
+          "Auto loan rates depend on your credit score, loan term, and whether the car is new or used. As a rough guide, prime borrowers (credit scores 720+) typically get 5–7% on new cars and 6–8% on used cars, while subprime borrowers (below 620) can see rates of 12% or higher. Always get a pre-approval from a credit union or bank before you walk into the dealership — dealer financing is often marked up by 1–3%.",
+      },
+      {
+        question: "Is a longer car loan term better?",
+        answer:
+          "A longer loan term (72 or 84 months) lowers your monthly payment but dramatically increases your total interest and the amount of time you'll be underwater on the loan. On a $35,000 car at 7.5% APR, moving from 60 months to 84 months drops the payment by about $115/month but adds roughly $3,000 in interest and keeps you upside-down for years. Run the numbers on both terms in this calculator to see the trade-off.",
+      },
+      {
+        question: "What does it mean to be 'upside-down' on a car loan?",
+        answer:
+          "Being upside-down (or 'underwater') on a car loan means you owe more on the loan than the car is worth. This is common in the first year or two of a new-car loan because cars depreciate 20–30% the moment you drive them off the lot. It becomes a problem if the car is totaled, stolen, or you need to sell it — you'd still owe money after the sale or insurance payout. Gap insurance covers this risk.",
+      },
+      {
+        question: "How does a trade-in affect my car loan?",
+        answer:
+          "A trade-in reduces the amount you need to finance. If your trade is worth more than you owe on it, the equity goes toward your new loan like an extra down payment. If your trade is worth less than you owe (negative equity), the difference gets rolled into the new loan, making you start the new loan already underwater. In most states, you also only pay sales tax on the price minus the trade-in value, which is a meaningful tax savings — toggle the setting in this calculator to see the impact.",
+      },
+      {
+        question: "Should I put money down on a car loan?",
+        answer:
+          "Yes — a down payment of at least 10–20% is strongly recommended. It lowers your monthly payment, reduces the total interest you'll pay, and (most importantly) shortens the time your loan is upside-down. With zero down, you start your loan immediately underwater because of tax, fees, and instant depreciation. Use this calculator to see exactly how different down payments change your monthly payment and upside-down timeline.",
+      },
+      {
+        question: "Do I have to pay sales tax on a used car?",
+        answer:
+          "Yes, almost every state charges sales tax on used car purchases, typically at the same rate as new cars. A few states (Delaware, Montana, New Hampshire, Oregon) have no vehicle sales tax, and a few (North Carolina, Oklahoma) use a special highway use or excise tax instead. Our calculator has the latest average rates pre-loaded for all 50 states plus DC, and you can override with your exact local rate.",
+      },
+      {
+        question: "Is it better to take 0% APR or the cash rebate?",
+        answer:
+          "It depends on the math. A cash rebate lowers your amount financed but you pay interest on the remaining balance. 0% APR means no interest but no rebate. Run both scenarios in this calculator: model the rebate by subtracting it from the vehicle price at your bank's rate, then model 0% APR at the full price. Whichever has a lower total cost wins. Cash rebates usually beat 0% APR on longer terms or larger rebates; 0% wins on shorter terms and smaller rebates.",
+      },
+    ],
+    relatedSlugs: [
+      "mortgage-calculator",
+      "refinance-calculator",
+      "emi-calculator",
+      "interest-calculator",
+    ],
+    keywords: [
+      "auto loan calculator",
+      "car loan calculator",
+      "car payment calculator",
+      "vehicle loan calculator",
+      "auto loan payment calculator",
+      "car finance calculator",
+      "auto loan calculator with trade in",
+      "car loan calculator with sales tax",
+    ],
+  },
+
+  // 4. Percentage Calculator
   {
     slug: "percentage-calculator",
     name: "Percentage Calculator",
