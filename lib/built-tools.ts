@@ -5,6 +5,7 @@ export const BUILT_TOOL_NAMES = [
   "mortgage-calculator",
   "refinance-calculator",
   "auto-loan-calculator",
+  "loan-calculator",
   "percentage-calculator",
   "password-generator",
   "qr-code-generator",
