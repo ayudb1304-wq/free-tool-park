@@ -8,6 +8,17 @@ const nextConfig = {
   async headers() {
     return [
       {
+        source: "/:path*",
+        headers: [
+          {
+            // Enforce HTTPS for 2 years across all subdomains.
+            // Helps Google Search Console evaluate HTTPS and eligible for HSTS preload.
+            key: "Strict-Transport-Security",
+            value: "max-age=63072000; includeSubDomains; preload",
+          },
+        ],
+      },
+      {
         source: "/_next/static/(.*)",
         headers: [
           {
