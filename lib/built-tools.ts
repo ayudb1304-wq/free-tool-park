@@ -3,6 +3,7 @@
 // When adding a new tool component, add its componentName here.
 export const BUILT_TOOL_NAMES = [
   "mortgage-calculator",
+  "refinance-calculator",
   "percentage-calculator",
   "password-generator",
   "qr-code-generator",
