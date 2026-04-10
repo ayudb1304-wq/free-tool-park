@@ -405,7 +405,126 @@ export const TOOLS: Tool[] = [
     ],
   },
 
-  // 4. Percentage Calculator
+  // 4. Loan Calculator (Generic)
+  {
+    slug: "loan-calculator",
+    name: "Loan Calculator",
+    category: "calculators",
+    icon: Dollar01Icon,
+    componentName: "loan-calculator",
+    h1: "Free Loan Calculator — Monthly Payment for Any Loan Type",
+    titleTag: "Loan Calculator: Payment, Interest & Amortization | FreeToolPark",
+    metaDescription:
+      "Calculate monthly payments for personal, student, business, medical, and home equity loans. Free loan calculator with full amortization, comparison & payoff tips.",
+    introduction:
+      "A loan calculator helps you figure out the monthly payment, total interest, and full payoff timeline for any installment loan. Whether you're shopping for a personal loan, student loan, business loan, medical loan, RV or boat loan, home equity loan, or just trying to model a debt consolidation, this tool handles it all in one place. Pick your loan type and the calculator pre-fills typical interest rate ranges so you can sanity-check the quote in front of you. Add an extra monthly payment to see how much faster you'd pay it off. Save up to four scenarios side-by-side to compare lenders directly. Unlike basic loan calculators that only spit out a number, this one gives you a payoff strategy optimizer, biweekly payment savings, refinance suggestions, and a clear amortization schedule — everything you need to make a confident borrowing decision before you sign anything.",
+    whyUse: [
+      "10 preset loan types with typical rate ranges (personal, student, auto, business, medical, HELOC, RV, boat, debt consolidation, custom)",
+      "Compare up to 4 loan scenarios side-by-side with the cheapest highlighted automatically",
+      "Payoff strategy optimizer suggests biweekly payments, extra payments, and refinance opportunities",
+      "Extra payment slider shows exact months and interest saved",
+      "Built-in APR vs. interest rate explainer so you compare apples to apples",
+      "Prepayment penalty alerts for loan types where early payoff fees are common",
+      "Interactive charts: cost breakdown pie, balance over time, principal vs interest by year",
+      "Full amortization schedule and shareable URL — no signup, no email, ever",
+    ],
+    whyUseSummary:
+      "A loan calculator helps you estimate your monthly payment, total interest, and payoff date for any installment loan. Our calculator supports 10 loan types, lets you compare up to 4 scenarios side-by-side, and includes a payoff strategy optimizer that shows exactly how biweekly or extra payments accelerate your loan.",
+    steps: [
+      {
+        title: "Pick your loan type",
+        description:
+          "Select the type of loan you're modeling — personal, student, auto, business, medical, home equity, RV, boat, debt consolidation, or custom. The calculator auto-fills the typical interest rate range and a sensible default amount and term so you can immediately sanity-check whether the quote you've been offered is competitive.",
+      },
+      {
+        title: "Enter your loan amount",
+        description:
+          "Type in the principal — the amount you actually want to borrow. For consolidation loans, this is the sum of the debts you want to pay off. For HELOCs and home equity loans, it's how much of your equity you plan to draw.",
+      },
+      {
+        title: "Enter your interest rate (or APR)",
+        description:
+          "Enter the rate from your loan offer. Use APR if you have it — APR includes most fees and gives you the true yearly cost. Click the inline explainer if you're not sure which rate your lender quoted. The calculator will warn you if your rate falls outside the typical range for your loan type.",
+      },
+      {
+        title: "Set your loan term",
+        description:
+          "Choose the length of the loan in years or months. Shorter terms mean higher monthly payments but dramatically less total interest. Longer terms make the monthly payment more affordable but cost much more in interest over the life of the loan.",
+      },
+      {
+        title: "(Optional) Add an extra monthly payment",
+        description:
+          "Type in any extra amount you plan to pay each month above the minimum. The smart insights panel will show you exactly how many months and how much interest you'd save. Even small extras (5–10% of the payment) often save thousands and shave years off the loan.",
+      },
+      {
+        title: "Compare scenarios and review the payoff strategy",
+        description:
+          "Click 'Add to Comparison' to save the current scenario and add a second one. Compare up to 4 loans side-by-side — the cheapest is automatically highlighted. Read the smart insights for biweekly payment savings, refinance suggestions, and prepayment penalty warnings.",
+      },
+    ],
+    faqs: [
+      {
+        question: "How do I calculate a loan payment?",
+        answer:
+          "The standard loan payment formula is M = P[r(1+r)^n] / [(1+r)^n − 1], where M is the monthly payment, P is the principal (the amount borrowed), r is the monthly interest rate (annual rate divided by 12), and n is the number of monthly payments. Enter your numbers in this calculator and the math is done instantly, including the full amortization schedule that breaks down principal vs. interest for every year of the loan.",
+      },
+      {
+        question: "What is the difference between APR and interest rate?",
+        answer:
+          "The interest rate is the percentage the lender charges on the principal balance — it's the headline number in most loan ads. The APR (Annual Percentage Rate) bundles the interest rate with most up-front fees and origination costs to give you the true annual cost of borrowing. APR is almost always higher than the interest rate. When you're comparing loan offers from different lenders, always compare APR to APR — never interest rate to APR — or you'll be misled by the cheaper-looking option.",
+      },
+      {
+        question: "How does an extra monthly payment affect my loan?",
+        answer:
+          "Every dollar of extra payment goes 100% to principal, which directly reduces the balance interest is calculated on next month. Over time the savings compound: a small extra payment can shave years off a loan and save thousands in interest. On a $20,000 personal loan at 11% over 5 years, adding just $50/month extra typically pays it off about 8 months early and saves around $700 in interest. Use the extra payment field above to see your exact savings.",
+      },
+      {
+        question: "Is biweekly payment really better?",
+        answer:
+          "Yes — paying half your monthly payment every two weeks adds up to one extra full payment per year, because there are 26 biweekly periods in a year (52 ÷ 2) versus 12 monthly periods. That extra payment goes entirely to principal and accelerates payoff. On a 5-year personal loan, biweekly typically pays the loan off 4–6 months early. On a 30-year mortgage, the savings are dramatic — often 4 to 6 years and tens of thousands in interest.",
+      },
+      {
+        question: "What is a good interest rate on a personal loan?",
+        answer:
+          "Personal loan rates depend heavily on your credit score, income, loan term, and the lender. As of 2026, prime borrowers (scores 720+) typically see 7–11%, near-prime borrowers (640–719) see 11–18%, and subprime borrowers (below 640) see 18–30%+. Always shop at least 3 lenders — credit unions, online lenders, and your existing bank — and compare APRs not interest rates. Pre-qualifying with a soft pull doesn't hurt your credit.",
+      },
+      {
+        question: "Can I pay off my loan early?",
+        answer:
+          "Most personal, student, and auto loans allow early payoff with no penalty — you simply save the remaining interest. However, some business loans, mortgages, HELOCs, and certain auto loans do carry prepayment penalties, especially in the first 1–3 years. Always read your loan agreement before making large extra payments. This calculator flags loan types where prepayment penalties are common so you know to check.",
+      },
+      {
+        question: "Should I take a longer loan term to lower my monthly payment?",
+        answer:
+          "It depends on your priorities. A longer term lowers the monthly payment, which can be essential if cash flow is tight, but it dramatically increases the total interest you'll pay and keeps you in debt longer. Run both scenarios in this calculator's side-by-side comparison: model a 3-year and a 5-year version of the same loan and look at the total interest difference. Pick the shortest term you can comfortably afford — your future self will thank you.",
+      },
+      {
+        question: "How do I compare multiple loan offers?",
+        answer:
+          "Use this calculator's side-by-side comparison feature: enter your first offer, click 'Add to Comparison,' then change the inputs and click 'Add to Comparison' again. Repeat for up to 4 offers. The table shows each loan's monthly payment, total interest, and total cost — and the cheapest one is highlighted automatically. Always compare APR to APR, not interest rate to APR, and remember that the cheapest total cost isn't always the right answer if it strains your monthly budget.",
+      },
+    ],
+    relatedSlugs: [
+      "mortgage-calculator",
+      "auto-loan-calculator",
+      "refinance-calculator",
+      "emi-calculator",
+      "interest-calculator",
+    ],
+    keywords: [
+      "loan calculator",
+      "personal loan calculator",
+      "simple loan calculator",
+      "loan payment calculator",
+      "student loan calculator",
+      "business loan calculator",
+      "loan amortization calculator",
+      "loan payoff calculator",
+      "loan interest calculator",
+    ],
+  },
+
+  // 5. Percentage Calculator
   {
     slug: "percentage-calculator",
     name: "Percentage Calculator",
