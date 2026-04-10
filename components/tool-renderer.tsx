@@ -18,6 +18,10 @@ const registry: Record<string, ComponentType> = {
     () => import("@/components/tools/refinance-calculator"),
     { ssr: false, loading: Loading }
   ),
+  "auto-loan-calculator": dynamic(
+    () => import("@/components/tools/auto-loan-calculator"),
+    { ssr: false, loading: Loading }
+  ),
   "percentage-calculator": dynamic(
     () => import("@/components/tools/percentage-calculator"),
     { ssr: false, loading: Loading }
