@@ -163,7 +163,7 @@ export const TOOLS: Tool[] = [
           "Conventional loans typically require a minimum credit score of 620, while FHA loans accept scores as low as 580 with 3.5% down. However, the best interest rates go to borrowers with scores of 740+. Every 20-point improvement in your score can save 0.125-0.25% on your rate, which translates to thousands over the life of the loan.",
       },
     ],
-    relatedSlugs: ["emi-calculator", "interest-calculator", "percentage-calculator", "tip-calculator"],
+    relatedSlugs: ["refinance-calculator", "emi-calculator", "interest-calculator", "percentage-calculator"],
     keywords: [
       "mortgage calculator",
       "monthly mortgage payment",
@@ -176,7 +176,119 @@ export const TOOLS: Tool[] = [
     ],
   },
 
-  // 2. Percentage Calculator
+  // 2. Refinance Calculator
+  {
+    slug: "refinance-calculator",
+    name: "Refinance Calculator",
+    category: "calculators",
+    icon: Calculator01Icon,
+    componentName: "refinance-calculator",
+    h1: "Free Refinance Calculator — Should You Refinance Your Mortgage?",
+    titleTag: "Refinance Calculator: Break-Even & Savings | FreeToolPark",
+    metaDescription:
+      "See if refinancing your mortgage saves you money. Calculate break-even point, monthly savings, and lifetime interest reduction. Free, instant, no signup.",
+    introduction:
+      "A mortgage refinance calculator helps you decide whether refinancing your home loan is actually worth it. Enter your current loan balance, rate, and remaining term, then compare a new rate and term — this tool instantly shows your new monthly payment, how much you'll save each month, the exact break-even point where closing costs are recouped, and your total lifetime savings. Unlike basic refinance calculators that just spit out a monthly number, this one gives you a clear YES/NO/MAYBE verdict, a side-by-side comparison table, a savings curve you can visualize, and supports cash-out refinance scenarios. Whether rates have dropped, you want to shorten your term, or you need cash for a home improvement, this calculator answers the one question that matters: should you refinance?",
+    whyUse: [
+      "Exact break-even point so you know when refinancing starts saving money",
+      "Clear Worth It / Marginal / Not Worth It verdict with personalized reasoning",
+      "Side-by-side comparison table: current loan vs new loan, payment, interest, and total cost",
+      "Cash-out refinance mode with separate cash-out slider",
+      "State-based closing cost estimates auto-filled for all 50 US states",
+      "Toggle to roll closing costs into the new loan and see the impact instantly",
+      "Interactive savings curve chart shows cumulative net savings over time",
+      "Smart insights panel flags extended loan terms, rate drops below the 0.75% threshold, and cash-out warnings",
+    ],
+    whyUseSummary:
+      "A refinance calculator helps you decide whether refinancing your mortgage actually saves money after closing costs. Our calculator shows break-even point, monthly savings, total interest saved, and a clear Worth It / Not Worth It verdict so you can make a confident refinance decision.",
+    steps: [
+      {
+        title: "Enter your current loan details",
+        description:
+          "Input your current mortgage balance, interest rate, and years remaining on the loan. The calculator automatically derives your current monthly principal and interest payment so you don't have to look it up.",
+      },
+      {
+        title: "Enter the new loan terms you're being offered",
+        description:
+          "Input the new interest rate and choose a new loan term (10, 15, 20, 25, or 30 years). Use quotes from multiple lenders to compare options — each quote takes just seconds to model.",
+      },
+      {
+        title: "Select your state for closing cost defaults",
+        description:
+          "Pick your state from the dropdown. Closing costs are auto-filled based on your state's average — typically 1.5% to 3.1% of the loan amount. You can override the estimate with a custom number from your loan estimate.",
+      },
+      {
+        title: "Choose upfront or rolled-in closing costs",
+        description:
+          "Decide whether you'll pay closing costs out of pocket (standard) or roll them into the new loan balance. The calculator updates the new monthly payment and lifetime savings in real time.",
+      },
+      {
+        title: "Add cash-out amount if applicable",
+        description:
+          "If you're doing a cash-out refinance, enter the amount of equity you're pulling out. The calculator adds it to your new loan balance and warns you about the added interest cost.",
+      },
+      {
+        title: "Review your break-even point and verdict",
+        description:
+          "Check the break-even point (the month when refinancing starts saving you money), the monthly savings, and the lifetime savings. Use the Worth It / Marginal / Not Worth It verdict to guide your decision.",
+      },
+    ],
+    faqs: [
+      {
+        question: "Is it worth refinancing my mortgage?",
+        answer:
+          "Refinancing is generally worth it if you can drop your rate by at least 0.75%, plan to stay in the home past the break-even point (when monthly savings equal closing costs), and won't significantly extend your loan term. This calculator computes all three factors and gives you a clear Worth It / Marginal / Not Worth It verdict based on your exact numbers.",
+      },
+      {
+        question: "How do you calculate the break-even point on a refinance?",
+        answer:
+          "The break-even point is your total closing costs divided by your monthly savings. For example, if closing costs are $6,000 and refinancing saves you $200 per month, your break-even point is 30 months ($6,000 ÷ $200). If you plan to stay in the home longer than that, refinancing saves money. If you'll move sooner, you'll lose money on the refi.",
+      },
+      {
+        question: "What is a good rate drop to refinance a mortgage?",
+        answer:
+          "The traditional rule of thumb is a rate drop of at least 0.75% to 1%, but it depends on your closing costs and how long you'll stay in the home. With low closing costs, even a 0.5% drop can pay off. With high closing costs, you may need a 1% drop or more. This calculator uses your exact closing costs to give you a precise answer instead of relying on rules of thumb.",
+      },
+      {
+        question: "What are closing costs on a refinance?",
+        answer:
+          "Refinance closing costs typically range from 2% to 5% of the loan amount and include the loan origination fee, appraisal fee, title insurance, recording fees, credit report fee, and various lender fees. A $300,000 refinance often has closing costs between $6,000 and $9,000. Our calculator auto-fills state-average closing costs and lets you override with your exact loan estimate.",
+      },
+      {
+        question: "Should I roll closing costs into my new mortgage?",
+        answer:
+          "Rolling closing costs into the loan means no cash out of pocket, but you pay interest on those costs for the entire loan term. On a 30-year loan, $6,000 in rolled-in closing costs can cost an extra $6,000–$8,000 in interest. Paying closing costs upfront is usually cheaper if you have the cash. Toggle the 'Roll closing costs into loan' option in the calculator to compare both scenarios.",
+      },
+      {
+        question: "How does a cash-out refinance work?",
+        answer:
+          "A cash-out refinance replaces your existing mortgage with a new, larger loan. You receive the difference in cash — typically used for home improvements, debt consolidation, or major expenses. You're trading equity for cash at your new mortgage rate, which is usually lower than credit card or personal loan rates but higher than your old mortgage rate. Enter the cash-out amount in this calculator to see how it impacts your payment and total interest.",
+      },
+      {
+        question: "Does refinancing restart my loan term?",
+        answer:
+          "Yes — a refinance replaces your current loan with a brand new one. If you refinance into a 30-year loan with 25 years left on your current loan, you've added 5 years of payments. This lowers your monthly payment but can increase total interest. Use this calculator to compare terms — you can refinance into a 15-year loan to pay off faster, or a 30-year loan for lower payments.",
+      },
+      {
+        question: "How much does refinancing lower my monthly payment?",
+        answer:
+          "Monthly savings depend on your rate drop, the loan balance, and the new loan term. A 1% rate drop on a $300,000 balance typically saves $150–$200 per month on a 30-year loan. Extending the term (say from 20 to 30 years) amplifies the savings further but increases total interest paid. This calculator shows your exact monthly savings and breaks down the trade-off.",
+      },
+    ],
+    relatedSlugs: ["mortgage-calculator", "emi-calculator", "interest-calculator", "percentage-calculator"],
+    keywords: [
+      "refinance calculator",
+      "mortgage refinance calculator",
+      "should i refinance",
+      "refinance break even calculator",
+      "cash out refinance calculator",
+      "refinance savings calculator",
+      "home refinance calculator",
+      "refinance mortgage calculator",
+    ],
+  },
+
+  // 3. Percentage Calculator
   {
     slug: "percentage-calculator",
     name: "Percentage Calculator",
