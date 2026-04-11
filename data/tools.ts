@@ -2852,4 +2852,127 @@ export const TOOLS: Tool[] = [
       "compounding calculator",
     ],
   },
+
+  // 44. Salary to Hourly Calculator
+  {
+    slug: "salary-to-hourly-calculator",
+    name: "Salary to Hourly Calculator",
+    category: "calculators",
+    icon: Dollar01Icon,
+    componentName: "salary-to-hourly-calculator",
+    h1: "Salary to Hourly Calculator: Convert Annual Pay to Hourly Wage",
+    titleTag:
+      "Salary to Hourly Calculator: Annual, Monthly, Hourly | FreeToolPark",
+    metaDescription:
+      "Convert your annual salary to an hourly wage (or vice versa) with custom hours per week, PTO adjustment, and overtime. See your pay at every frequency.",
+    introduction:
+      "A salary to hourly calculator converts an annual salary into its equivalent hourly, daily, weekly, biweekly, and monthly pay so you can compare job offers and understand what your compensation is really worth per hour. Enter your annual salary, hours worked per week, and any paid time off, and this tool shows every pay frequency instantly along with your \"true hourly rate\" adjusted for vacation and holidays. Switch to the reverse mode to turn an hourly wage into an annual salary, which is useful for freelancers figuring out rate quotes and hourly employees deciding whether to accept a salaried offer. Unlike simpler calculators that just divide by 2,080 hours, this one handles non-standard workweeks (32, 35, 37.5, 40, 45, or any custom number), accounts for PTO and paid holidays, and includes an overtime estimator so you can see what extra weekly hours at time-and-a-half or double time would add to your annual total. Whether you are negotiating a raise, comparing job offers, quoting a freelance rate, or just curious what your salary works out to per hour, this calculator gives you a clear answer in seconds.",
+    whyUse: [
+      "Bidirectional mode: convert salary to hourly or hourly to salary in the same tool",
+      "Custom hours per week supports 20, 25, 30, 32, 35, 37.5, 40, 45, 50, or any value",
+      "PTO and paid holidays adjustment shows your actual working hours and true hourly rate",
+      "Shows your pay at every frequency: annual, monthly, biweekly, weekly, daily, hourly",
+      "Built-in overtime estimator with 1.5x (time and a half) and 2x (double) presets",
+      "Quick preset buttons for common workweek lengths",
+      "Real-time updates as you type, no button clicks needed",
+      "Runs entirely in your browser with zero tracking or data collection",
+    ],
+    whyUseSummary:
+      "Salary to Hourly Calculator converts between annual, monthly, biweekly, weekly, daily, and hourly pay. Includes custom workweek hours, PTO adjustment for your true hourly rate, and an overtime estimator.",
+    steps: [
+      {
+        title: "Choose your conversion direction",
+        description:
+          "Pick 'Salary to Hourly' if you want to see what an annual salary works out to per hour. Pick 'Hourly to Salary' if you earn hourly and want to see the equivalent annual number.",
+      },
+      {
+        title: "Enter your salary or hourly rate",
+        description:
+          "Type your annual salary (before taxes) or your hourly rate. The tool starts with a default value so you can see example numbers right away.",
+      },
+      {
+        title: "Set your hours per week",
+        description:
+          "Enter the hours you actually work each week. Use the preset buttons for common values (32, 35, 37.5, 40) or type any custom number, including fractional hours like 37.5.",
+      },
+      {
+        title: "Enter PTO and paid holidays",
+        description:
+          "Type the number of vacation days and paid holidays you get per year. These do not change your weekly or hourly pay, but they make your 'true hourly rate' (the amount you earn per hour actually worked) higher.",
+      },
+      {
+        title: "Enable overtime if relevant",
+        description:
+          "Check the overtime box and enter the number of extra hours you work each week beyond your standard schedule. Pick 1.5x (time and a half, the federal minimum for non-exempt workers) or 2x (double time for holidays or weekends at some employers).",
+      },
+      {
+        title: "Review every pay frequency",
+        description:
+          "Check the grid showing annual, monthly, biweekly, weekly, daily, and hourly pay side by side. Use the true hourly rate card to see what each working hour is really worth, and use the overtime card to see how much extra overtime would add to your annual pay.",
+      },
+    ],
+    faqs: [
+      {
+        question: "How do you convert an annual salary to an hourly wage?",
+        answer:
+          "The standard formula is: hourly wage = annual salary divided by (weeks per year times hours per week). For a 40-hour workweek and 52 paid weeks per year, that is annual salary divided by 2,080. For example, a $75,000 salary works out to $36.06 per hour ($75,000 divided by 2,080). This calculator uses the same formula but lets you adjust the hours per week and account for PTO so you get a more accurate number.",
+      },
+      {
+        question: "What is the \"true hourly rate\" and why is it higher?",
+        answer:
+          "Your true hourly rate is your annual salary divided by the hours you actually work, not the hours you are paid for. Because PTO and paid holidays are paid time off (you get paid without working), each hour you actually show up is worth more. For example, a $75,000 salary with a 40-hour week and 20 paid days off per year works out to $36.06 standard hourly but about $37.88 true hourly, because you only actually work 1,980 hours. The more PTO and holidays you have, the bigger the gap.",
+      },
+      {
+        question: "How do I convert an hourly wage to an annual salary?",
+        answer:
+          "Multiply your hourly rate by hours per week by 52 weeks. For example, $25 per hour at 40 hours per week is $25 times 40 times 52, or $52,000 per year. Switch this calculator to 'Hourly to Salary' mode and enter your rate to see the equivalent annual salary along with monthly, biweekly, and weekly breakdowns.",
+      },
+      {
+        question: "Does this calculator include taxes?",
+        answer:
+          "No. The numbers shown are gross pay before federal income tax, state tax, Social Security, Medicare, health insurance, 401(k), and any other deductions. To estimate your after-tax take-home pay, use our Income Tax Calculator, which handles federal and state brackets, FICA, and pre-tax deductions.",
+      },
+      {
+        question: "How does overtime work?",
+        answer:
+          "In the United States, most hourly (non-exempt) workers are entitled to overtime pay at 1.5 times their regular rate for any hours worked beyond 40 in a workweek, under the Fair Labor Standards Act. Some employers pay 2x (double time) for holidays or for hours beyond a certain daily or weekly threshold. Salaried exempt workers typically do not receive overtime. This calculator lets you enter any overtime hours per week and any multiplier to see the annual boost.",
+      },
+      {
+        question: "Why do some jobs have 37.5-hour weeks instead of 40?",
+        answer:
+          "A 37.5-hour workweek comes from a 7.5-hour workday with a 30-minute unpaid lunch, totaling 8 hours on site but 7.5 hours paid. Many European companies, US government agencies, and professional services firms use this schedule. Some healthcare and tech roles use 32-hour four-day weeks. This calculator handles any custom workweek length.",
+      },
+      {
+        question: "What hours per week should I use if my schedule varies?",
+        answer:
+          "Use your average. If you usually work 40 hours but sometimes work 45 or 50, enter 40 for the base calculation and add the extra as overtime. If you work a compressed schedule like 4-10s (four 10-hour days), enter 40. If you work part-time with an unpredictable schedule, use your typical weekly hours and remember the hourly rate is just an average across busy and slow weeks.",
+      },
+      {
+        question: "How many working hours are in a year?",
+        answer:
+          "At 40 hours per week for 52 weeks, a full-time employee is paid for 2,080 hours per year. If you subtract 10 days of PTO and 10 paid holidays (20 working days, or 160 hours), you actually work about 1,920 hours. If you have 15 PTO days and 10 holidays, you work about 1,880 hours. This difference is why your true hourly rate is usually higher than the simple 'salary divided by 2,080' number.",
+      },
+      {
+        question: "Is my salary data private?",
+        answer:
+          "Yes. Every calculation runs entirely in your browser. We never see your salary, hourly rate, or any other input. Nothing is uploaded, logged, or transmitted. You can use this calculator with confidence when comparing offers or thinking about compensation.",
+      },
+    ],
+    relatedSlugs: [
+      "income-tax-calculator",
+      "percentage-calculator",
+      "compound-interest-calculator",
+      "tip-calculator",
+    ],
+    keywords: [
+      "salary to hourly",
+      "salary to hourly calculator",
+      "hourly to salary calculator",
+      "annual to hourly converter",
+      "salary converter",
+      "wage calculator",
+      "hourly wage calculator",
+      "pay calculator",
+    ],
+  },
 ]
