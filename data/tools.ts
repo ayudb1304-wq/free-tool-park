@@ -3235,4 +3235,134 @@ export const TOOLS: Tool[] = [
       "payback period calculator",
     ],
   },
+
+  // 47. Profit Margin Calculator
+  {
+    slug: "profit-margin-calculator",
+    name: "Profit Margin Calculator",
+    category: "calculators",
+    icon: PercentIcon,
+    componentName: "profit-margin-calculator",
+    h1: "Profit Margin Calculator: Gross, Operating & Net Margin",
+    titleTag:
+      "Profit Margin Calculator: Gross, Operating, Net | FreeToolPark",
+    metaDescription:
+      "Calculate gross, operating, and net profit margins. Includes reverse pricing mode, industry benchmarks for 20+ sectors, markup vs margin converter, and bulk product mode.",
+    introduction:
+      "A profit margin calculator takes your revenue and costs and shows you three different margins that tell very different stories about your business. Gross margin tells you how much you keep after paying for the product itself. Operating margin tells you how much you keep after paying for the entire operation (rent, salaries, marketing). Net margin tells you how much actually hits the bank after taxes and interest. Most calculators only show one of these; this one shows all three side by side along with the equivalent markup on cost, so you can instantly see how your pricing compares. Switch to Reverse mode to solve the opposite problem: given a unit cost and a target margin, what price should you charge? Switch to Bulk mode to paste in a list of products (from a spreadsheet, a Shopify export, or a simple CSV) and get a per-product margin breakdown plus totals. The tool also includes average margins for 20+ industries so you can benchmark your numbers against comparable businesses, and it clears up the markup vs margin confusion that trips up so many people when they are setting prices for the first time.",
+    whyUse: [
+      "Shows gross, operating, and net margin side by side so you see the full picture",
+      "Reverse mode: enter cost and target margin to find the exact price you need to charge",
+      "Bulk mode accepts pasted CSV or spreadsheet data and computes margins for every row",
+      "Industry benchmarks for 20+ sectors (SaaS, retail, restaurants, manufacturing, and more)",
+      "Visual benchmark bars compare your margins directly against the industry average",
+      "Clear markup vs margin explainer with a reference table for common markup levels",
+      "Common margin targets table shows the price needed at 10, 20, 30, 40, 50, 60, 70, and 80%",
+      "Color-coded margin strength (positive, neutral, negative) for fast reading",
+      "Runs entirely in your browser with no signup and no data collection",
+    ],
+    whyUseSummary:
+      "Profit Margin Calculator shows gross, operating, and net margin in one view. Includes a reverse price finder, bulk product mode, 20+ industry benchmarks, and a markup vs margin converter.",
+    steps: [
+      {
+        title: "Pick the right mode",
+        description:
+          "Use Calculate for a single product or full P&L analysis. Use Reverse when you know the cost and need to find the right price to hit a target margin. Use Bulk when you have a list of products and want margins for all of them at once.",
+      },
+      {
+        title: "Calculate mode: enter revenue, COGS, opex, and taxes",
+        description:
+          "Type your total revenue, cost of goods sold, operating expenses (rent, salaries, marketing, utilities), and total taxes plus interest. The calculator instantly shows gross, operating, and net margin along with a full P&L breakdown.",
+      },
+      {
+        title: "Reverse mode: enter cost and target margin",
+        description:
+          "Type your unit cost and the profit margin you want (for example, 40%). The calculator shows the exact price you need to charge, your profit per unit, and the equivalent markup percentage on cost. A reference table shows pricing for common margin targets from 10% to 80%.",
+      },
+      {
+        title: "Bulk mode: paste your product data",
+        description:
+          "Copy product rows from a spreadsheet and paste them into the textarea. Each row should be 'Name, Cost, Price' or 'Cost, Price'. The calculator parses every line and shows per-product profit, margin, and markup plus combined totals and an average margin.",
+      },
+      {
+        title: "Compare to your industry",
+        description:
+          "Pick your industry from the dropdown in Calculate mode. The tool shows your margins next to the industry average with visual bars, so you can see whether you are performing above or below similar businesses.",
+      },
+      {
+        title: "Read the markup vs margin explainer",
+        description:
+          "Most pricing mistakes come from confusing markup and margin. The reference table in Calculate mode shows exactly how a 50% markup becomes a 33% margin, how a 100% markup becomes a 50% margin, and so on. Use it to double-check your pricing spreadsheets.",
+      },
+    ],
+    faqs: [
+      {
+        question: "What is the difference between gross, operating, and net margin?",
+        answer:
+          "Gross margin is revenue minus cost of goods sold, divided by revenue. It measures how much you keep after paying for the product itself but before paying for overhead. Operating margin subtracts your operating expenses (rent, salaries, utilities, marketing) from gross profit and divides by revenue. It measures how efficiently your core business operates. Net margin subtracts taxes and interest from operating income. It measures how much of every revenue dollar actually becomes shareholder profit. A company with a 60% gross margin and a 5% net margin has high product profitability but heavy overhead or tax burden.",
+      },
+      {
+        question: "What is the difference between markup and margin?",
+        answer:
+          "Margin is profit as a percentage of price (profit divided by price). Markup is profit as a percentage of cost (profit divided by cost). They are not the same number. A 50% markup on a $100 cost item means selling it for $150, which is only a 33% margin (the $50 profit divided by the $150 price). Confusing these two is one of the most common pricing mistakes. When a supplier quotes 'margin', they usually mean margin; when they quote 'markup', they mean markup; always ask which one before agreeing to terms.",
+      },
+      {
+        question: "What is a good profit margin?",
+        answer:
+          "It depends entirely on your industry. SaaS and software typically run 75% to 85% gross margins and 15% to 25% net. Retail and grocery run 25% to 45% gross and 1% to 5% net. Restaurants run about 65% gross but only 3% to 8% net because of heavy labor and rent costs. Professional services run 60% to 80% gross and 10% to 20% net. Use the industry benchmark dropdown in this calculator to see what is typical for your sector.",
+      },
+      {
+        question: "How do I calculate the price I need to hit a target margin?",
+        answer:
+          "The formula is Price = Cost / (1 - Target Margin as a decimal). For example, to get a 40% margin on a $50 cost item: Price = 50 / (1 - 0.40) = 50 / 0.60 = $83.33. Switch to Reverse mode in this calculator and it does the math for you, plus shows the equivalent markup percentage and a reference table for other common margin targets.",
+      },
+      {
+        question: "How do I calculate gross profit margin?",
+        answer:
+          "Gross Profit Margin = (Revenue minus Cost of Goods Sold) divided by Revenue, expressed as a percentage. For example, if you sell $10,000 worth of products that cost $4,500 to produce, your gross profit is $5,500 and your gross margin is 55%. This calculator does this automatically when you enter revenue and COGS, and also shows operating and net margin when you add opex and taxes.",
+      },
+      {
+        question: "Should I focus on gross margin or net margin?",
+        answer:
+          "Both. Gross margin tells you whether your product or service is priced correctly relative to what it costs to produce. A weak gross margin usually means you need to raise prices or cut product costs. Net margin tells you whether your overall business model is viable after overhead and taxes. A strong gross margin with a weak net margin means you are bleeding money on overhead (too much rent, too many employees, too much marketing spend). Use the full P&L breakdown in this calculator to see where the leakage is happening.",
+      },
+      {
+        question: "Can I use this calculator for a service business?",
+        answer:
+          "Yes. For service businesses, use labor costs (hourly wages times hours worked) as your COGS and add rent, software, marketing, and admin as operating expenses. The same gross, operating, and net margin concepts apply. Service businesses typically have higher gross margins (60% to 80%) than product businesses because there is no physical inventory, but they often have higher operating expenses (heavy payroll).",
+      },
+      {
+        question: "How does bulk mode work?",
+        answer:
+          "Bulk mode accepts pasted data from a spreadsheet or CSV file. Each line should contain a product name, cost, and price separated by commas, tabs, or two or more spaces. For example: 'Widget A, 12.50, 24.99' or just '12.50, 24.99' if you do not need names. The calculator parses every valid line and shows per-product profit, margin, and markup along with combined totals and an average margin across all products. It is especially useful for reviewing a full product catalog to find items that are underpriced.",
+      },
+      {
+        question: "How accurate are the industry benchmarks?",
+        answer:
+          "The benchmarks are approximate 2024 averages compiled from public financial data across 20+ sectors. They are meant for rough comparison only. Individual companies within the same industry can vary by 10 to 20 percentage points in either direction depending on size, location, product mix, and management quality. Use the benchmarks to understand whether you are roughly in line with peers, not as a hard target.",
+      },
+      {
+        question: "Is my revenue data private?",
+        answer:
+          "Yes. Every calculation runs in your browser. Nothing is uploaded, logged, or transmitted to any server. We never see your revenue, costs, product names, or margins. You can safely use this calculator with real business data and real product catalogs.",
+      },
+    ],
+    relatedSlugs: [
+      "roi-calculator",
+      "percentage-calculator",
+      "investment-return-calculator",
+      "tip-calculator",
+    ],
+    keywords: [
+      "profit margin calculator",
+      "gross margin calculator",
+      "net margin calculator",
+      "operating margin calculator",
+      "markup calculator",
+      "margin calculator",
+      "markup to margin converter",
+      "bulk margin calculator",
+      "profit calculator",
+    ],
+  },
 ]
