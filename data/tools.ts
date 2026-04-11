@@ -2468,33 +2468,33 @@ export const TOOLS: Tool[] = [
     category: "generators",
     icon: Invoice01Icon,
     componentName: "invoice-generator",
-    h1: "Free Invoice Generator — Create & Download Professional Invoices",
+    h1: "Free Invoice Generator: Create & Download Professional Invoices",
     titleTag: "Free Invoice Generator: PDF Download, No Signup | FreeToolPark",
     metaDescription:
       "Create professional invoices in seconds. Free invoice generator with PDF download, 40+ currencies, and your logo. No signup, no email required.",
     introduction:
-      "The Invoice Generator lets you create a clean, professional invoice in under a minute — no signup, no email, no watermark. Fill in your business info once, add your client, list your services or products, and watch the live preview update as you type. Download a polished PDF by printing the page, email it directly to your client with one click, or duplicate any invoice to start the next month's bill in seconds. Unlike Invoice Simple, Wave, or Zoho, this generator requires zero account creation. Your logo and data stay on your device — nothing is ever uploaded to a server. Unlimited line items, per-item tax rates, 40+ currencies with proper symbols, fixed-amount or percentage discounts, bank payment details, and an auto-generated payment QR code for PayPal.me or Stripe links make this a complete solution for freelancers, small businesses, consultants, and agencies who need to get paid without the overhead of yet another SaaS subscription.",
+      "The Invoice Generator lets you create a clean, professional invoice in under a minute, with no signup, no email, and no watermark. Fill in your business info once, add your client, list your services or products, and watch the live preview update as you type. Download a polished PDF by printing the page, email it directly to your client with one click, or duplicate any invoice to start the next month's bill in seconds. Unlike Invoice Simple, Wave, or Zoho, this generator requires zero account creation. Your logo and data stay on your device, so nothing is ever uploaded to a server. Unlimited line items, per-item tax rates, 40+ currencies with proper symbols, fixed-amount or percentage discounts, bank payment details, and an auto-generated payment QR code for PayPal.me or Stripe links make this a complete solution for freelancers, small businesses, consultants, and agencies who need to get paid without the overhead of yet another SaaS subscription.",
     whyUse: [
-      "Zero signup — no email, no account, no credit card, no watermark",
+      "Zero signup: no email, no account, no credit card, no watermark",
       "Live WYSIWYG preview updates as you type every field",
       "40+ currencies with proper ISO symbols and locale-aware formatting",
-      "Logo upload stays on your device — never uploaded to any server",
+      "Logo upload stays on your device and is never uploaded to any server",
       "Auto-saves your draft to the browser so you never lose work",
       "Save clients locally and autofill them on every future invoice",
       "Unlimited line items with per-item tax rates for complex invoices",
       "Percentage or fixed-amount discounts applied before the final total",
       "Auto-generated payment QR code from a PayPal.me or Stripe link",
-      "One-click duplicate for recurring invoices — great for retainers",
-      "Email the invoice with a prefilled mailto link — no email provider integration needed",
-      "Print to PDF directly from your browser — professional, clean template",
+      "One-click duplicate for recurring invoices, great for retainers",
+      "Email the invoice with a prefilled mailto link, no email provider integration needed",
+      "Print to PDF directly from your browser using a professional, clean template",
     ],
     whyUseSummary:
-      "Invoice Generator creates professional invoices with PDF download, 40+ currencies, logo upload, and saved clients — all without signup. Your data never leaves your device.",
+      "Invoice Generator creates professional invoices with PDF download, 40+ currencies, logo upload, and saved clients, all without signup. Your data never leaves your device.",
     steps: [
       {
         title: "Fill in your business information",
         description:
-          "Enter your business name, email, phone, address, and tax ID. Upload your logo — it stays in your browser and is never uploaded anywhere. This information saves automatically so you only enter it once.",
+          "Enter your business name, email, phone, address, and tax ID. Upload your logo. It stays in your browser and is never uploaded anywhere. This information saves automatically so you only enter it once.",
       },
       {
         title: "Add your client details",
@@ -2504,7 +2504,7 @@ export const TOOLS: Tool[] = [
       {
         title: "Set the invoice number, dates, and currency",
         description:
-          "The invoice number auto-increments when you create a new invoice. Pick the invoice date and due date, and choose from 40+ currencies — the preview updates with the correct symbol and formatting.",
+          "The invoice number auto-increments when you create a new invoice. Pick the invoice date and due date, and choose from 40+ currencies. The preview updates with the correct symbol and formatting.",
       },
       {
         title: "Add your line items",
@@ -2541,7 +2541,7 @@ export const TOOLS: Tool[] = [
       {
         question: "Can I save my clients for future invoices?",
         answer:
-          "Yes. Fill in the client name, email, and address, then click 'Save Client'. Your saved clients appear in a dropdown the next time you create an invoice — select a client to autofill all their details in one click. Clients are stored locally in your browser, so they stay private.",
+          "Yes. Fill in the client name, email, and address, then click 'Save Client'. Your saved clients appear in a dropdown the next time you create an invoice. Select a client to autofill all their details in one click. Clients are stored locally in your browser, so they stay private.",
       },
       {
         question: "How many line items can I add to one invoice?",
@@ -2561,17 +2561,17 @@ export const TOOLS: Tool[] = [
       {
         question: "What is the payment QR code and how do I use it?",
         answer:
-          "Paste a PayPal.me link, Stripe Payment Link, or any payment URL into the Payment Link field and the generator automatically creates a QR code that appears on the invoice. When your client prints or views the invoice, they can scan the QR code with their phone to pay you instantly. Works with any payment URL — PayPal, Stripe, Venmo, Wise, or your bank's payment portal.",
+          "Paste a PayPal.me link, Stripe Payment Link, or any payment URL into the Payment Link field and the generator automatically creates a QR code that appears on the invoice. When your client prints or views the invoice, they can scan the QR code with their phone to pay you instantly. This works with any payment URL: PayPal, Stripe, Venmo, Wise, or your bank's payment portal.",
       },
       {
         question: "How do I create a recurring invoice for a retainer client?",
         answer:
-          "Click 'Duplicate' to create a copy of your current invoice with a new auto-incremented invoice number and updated dates. All the business info, client info, line items, and payment details stay the same — edit anything you need, then print or email. This is the fastest way to bill retainer clients every month.",
+          "Click 'Duplicate' to create a copy of your current invoice with a new auto-incremented invoice number and updated dates. All the business info, client info, line items, and payment details stay the same. Edit anything you need, then print or email. This is the fastest way to bill retainer clients every month.",
       },
       {
         question: "Is my invoice data private and secure?",
         answer:
-          "Yes. Every piece of data — your business info, client list, line items, logo, and invoice drafts — lives only in your browser's local storage. Nothing is uploaded, nothing is transmitted, and we never see your invoice content. You can clear it anytime by clearing your browser storage. This makes the tool safer than any SaaS invoicing product because your financial data simply never leaves your device.",
+          "Yes. Every piece of data (your business info, client list, line items, logo, and invoice drafts) lives only in your browser's local storage. Nothing is uploaded, nothing is transmitted, and we never see your invoice content. You can clear it anytime by clearing your browser storage. This makes the tool safer than any SaaS invoicing product because your financial data simply never leaves your device.",
       },
     ],
     relatedSlugs: [
@@ -2599,24 +2599,24 @@ export const TOOLS: Tool[] = [
     category: "calculators",
     icon: TaxesIcon,
     componentName: "income-tax-calculator",
-    h1: "Free US Income Tax Calculator — Federal & State Tax Estimator",
+    h1: "Free US Income Tax Calculator: Federal & State Tax Estimator",
     titleTag: "Income Tax Calculator 2025: Federal + State | FreeToolPark",
     metaDescription:
       "Estimate your 2025 federal and state income taxes. Free tax calculator with deductions, credits, FICA, and effective vs marginal rate breakdown.",
     introduction:
-      "The Income Tax Calculator estimates your 2025 federal income tax, state tax, FICA (or self-employment tax), and take-home pay in seconds. Enter your annual income, filing status, state, pre-tax deductions like 401(k) and HSA, itemized deductions, and any tax credits — the calculator applies the official 2025 federal brackets, determines whether your standard or itemized deduction is larger, computes Social Security and Medicare with the correct wage base and additional Medicare threshold, and estimates your state tax using each state's effective rate. Unlike calculators that only cover federal tax, this tool handles all 50 states plus DC, supports both W-2 employees and self-employed filers (with automatic SE tax and half-deduction), and shows you the exact bracket-by-bracket breakdown so you can see how marginal vs effective rates actually work. Use the What-If slider to instantly see how a raise, bonus, or pay cut would change your take-home. Whether you're planning a job change, negotiating salary, tuning your 401(k) contribution, or just want to understand where your paycheck goes, this is the fastest way to get a reliable tax estimate.",
+      "The Income Tax Calculator estimates your 2025 federal income tax, state tax, FICA (or self-employment tax), and take-home pay in seconds. Enter your annual income, filing status, state, pre-tax deductions like 401(k) and HSA, itemized deductions, and any tax credits. The calculator applies the official 2025 federal brackets, determines whether your standard or itemized deduction is larger, computes Social Security and Medicare with the correct wage base and additional Medicare threshold, and estimates your state tax using each state's effective rate. Unlike calculators that only cover federal tax, this tool handles all 50 states plus DC, supports both W-2 employees and self-employed filers (with automatic SE tax and half-deduction), and shows you the exact bracket-by-bracket breakdown so you can see how marginal vs effective rates actually work. Use the What-If slider to instantly see how a raise, bonus, or pay cut would change your take-home. Whether you're planning a job change, negotiating salary, tuning your 401(k) contribution, or just want to understand where your paycheck goes, this is the fastest way to get a reliable tax estimate.",
     whyUse: [
       "Official 2025 IRS federal brackets for all five filing statuses",
       "All 50 states plus DC with effective state rate estimates",
       "Handles Social Security (6.2%), Medicare (1.45%), and Additional Medicare (0.9%)",
       "Self-employed mode with SE tax and automatic half-deduction to AGI",
-      "Automatic standard vs itemized comparison — uses whichever is larger",
+      "Automatic standard vs itemized comparison that uses whichever is larger",
       "Bracket-by-bracket visualization showing marginal vs effective rate",
       "Take-home pay displayed as annual, monthly, biweekly, and weekly",
       "What-If slider for instant raise / bonus / pay cut impact",
       "Pre-tax deduction support for 401(k), HSA, and other payroll reductions",
       "Tax credits applied directly to your federal tax owed",
-      "All calculations run in your browser — your income data never leaves your device",
+      "All calculations run in your browser, so your income data never leaves your device",
     ],
     whyUseSummary:
       "US Income Tax Calculator estimates your 2025 federal, state, and FICA taxes with bracket breakdown, take-home pay, and what-if scenarios. Supports W-2 and self-employed, all 50 states, and every filing status.",
@@ -2629,7 +2629,7 @@ export const TOOLS: Tool[] = [
       {
         title: "Select your filing status and state",
         description:
-          "Choose Single, Married Filing Jointly, Married Filing Separately, Head of Household, or Qualifying Widow(er). Pick your state from the dropdown — all 50 states plus DC are supported, including the nine states with no income tax on wages.",
+          "Choose Single, Married Filing Jointly, Married Filing Separately, Head of Household, or Qualifying Widow(er). Pick your state from the dropdown. All 50 states plus DC are supported, including the nine states with no income tax on wages.",
       },
       {
         title: "Enter your annual income",
@@ -2644,7 +2644,7 @@ export const TOOLS: Tool[] = [
       {
         title: "Add itemized deductions and credits (optional)",
         description:
-          "If you plan to itemize, enter your total itemized deductions. The calculator automatically compares to the 2025 standard deduction and uses whichever is larger. Enter any tax credits (Child Tax Credit, Saver's Credit, etc.) — they reduce your federal tax dollar-for-dollar.",
+          "If you plan to itemize, enter your total itemized deductions. The calculator automatically compares to the 2025 standard deduction and uses whichever is larger. Enter any tax credits (Child Tax Credit, Saver's Credit, etc.) and they will reduce your federal tax dollar-for-dollar.",
       },
       {
         title: "Review your results and run what-if scenarios",
@@ -2661,7 +2661,7 @@ export const TOOLS: Tool[] = [
       {
         question: "What is the difference between effective and marginal tax rate?",
         answer:
-          "Your marginal tax rate is the rate on the next dollar you earn — it's the bracket your highest dollar of income falls into. Your effective tax rate is your total tax divided by your total income — what you actually pay as a percentage. Because the US uses a progressive bracket system, your effective rate is always lower than your marginal rate. For example, a Single filer earning $100,000 has a 22% marginal rate but only a ~14% effective federal rate, since most of their income is taxed at 10% and 12% before reaching the 22% bracket.",
+          "Your marginal tax rate is the rate on the next dollar you earn. It is the bracket your highest dollar of income falls into. Your effective tax rate is your total tax divided by your total income, which is what you actually pay as a percentage. Because the US uses a progressive bracket system, your effective rate is always lower than your marginal rate. For example, a Single filer earning $100,000 has a 22% marginal rate but only a ~14% effective federal rate, since most of their income is taxed at 10% and 12% before reaching the 22% bracket.",
       },
       {
         question: "Does this calculator include FICA (Social Security and Medicare)?",
@@ -2671,12 +2671,12 @@ export const TOOLS: Tool[] = [
       {
         question: "How does the standard vs itemized deduction comparison work?",
         answer:
-          "For 2025, the standard deduction is $15,000 for Single and MFS, $30,000 for MFJ and QW, and $22,500 for HoH. When you enter a value in the Itemized Deductions field, the calculator automatically uses whichever is larger — standard or itemized — so you always get the best outcome. The breakdown shows which deduction was applied.",
+          "For 2025, the standard deduction is $15,000 for Single and MFS, $30,000 for MFJ and QW, and $22,500 for HoH. When you enter a value in the Itemized Deductions field, the calculator automatically uses whichever is larger (standard or itemized) so you always get the best outcome. The breakdown shows which deduction was applied.",
       },
       {
         question: "Why does a raise return less than the raise amount after taxes?",
         answer:
-          "A raise is taxed at your marginal rate, not your effective rate. If you're in the 22% federal bracket, live in a 6% state, and pay 7.65% FICA, about 36% of your raise goes to taxes — so a $10,000 raise adds roughly $6,400 to your take-home. The What-If slider in this calculator shows exactly how much of any raise you'd keep based on your specific bracket, state, and deductions.",
+          "A raise is taxed at your marginal rate, not your effective rate. If you're in the 22% federal bracket, live in a 6% state, and pay 7.65% FICA, about 36% of your raise goes to taxes, so a $10,000 raise adds roughly $6,400 to your take-home. The What-If slider in this calculator shows exactly how much of any raise you'd keep based on your specific bracket, state, and deductions.",
       },
       {
         question: "How accurate are the state tax estimates?",
@@ -2686,7 +2686,7 @@ export const TOOLS: Tool[] = [
       {
         question: "How does self-employed mode differ from W-2?",
         answer:
-          "Self-employed filers pay both halves of Social Security and Medicare — called Self-Employment (SE) tax — totaling 15.3% on 92.35% of net SE earnings. The Social Security portion (12.4%) stops at the wage base; the Medicare portion (2.9%) has no cap. The IRS lets you deduct half of SE tax from your AGI to roughly mirror how employer payroll taxes are handled for W-2 workers. This calculator applies that half-deduction automatically. It does not currently model the QBI deduction, which may further reduce your taxable income.",
+          "Self-employed filers pay both halves of Social Security and Medicare (called Self-Employment or SE tax) totaling 15.3% on 92.35% of net SE earnings. The Social Security portion (12.4%) stops at the wage base; the Medicare portion (2.9%) has no cap. The IRS lets you deduct half of SE tax from your AGI to roughly mirror how employer payroll taxes are handled for W-2 workers. This calculator applies that half-deduction automatically. It does not currently model the QBI deduction, which may further reduce your taxable income.",
       },
       {
         question: "Can I use this calculator to figure out my 401(k) contribution?",
@@ -2696,7 +2696,7 @@ export const TOOLS: Tool[] = [
       {
         question: "Is my income data private?",
         answer:
-          "Yes, completely. Every calculation runs in your browser. Nothing is uploaded, logged, or transmitted to our servers. We never see your income, state, filing status, or any other input. You can check by opening your browser's developer tools — there are no network requests during calculation.",
+          "Yes, completely. Every calculation runs in your browser. Nothing is uploaded, logged, or transmitted to our servers. We never see your income, state, filing status, or any other input. You can check by opening your browser's developer tools: there are no network requests during calculation.",
       },
       {
         question: "Is this tax advice?",
@@ -2730,23 +2730,23 @@ export const TOOLS: Tool[] = [
     category: "calculators",
     icon: ChartUpIcon,
     componentName: "compound-interest-calculator",
-    h1: "Free Compound Interest Calculator — Investment Growth Over Time",
+    h1: "Free Compound Interest Calculator: Investment Growth Over Time",
     titleTag:
       "Compound Interest Calculator: Daily, Monthly, Yearly | FreeToolPark",
     metaDescription:
       "Calculate compound interest with monthly contributions, any compounding frequency. See your investment grow with charts and a full year-by-year schedule.",
     introduction:
-      "A compound interest calculator shows you exactly how much a one-time deposit plus recurring contributions will grow to over time. Enter your starting amount, how much you plan to add each period, your expected annual return, and the number of years — this tool runs a full month-by-month simulation and shows you the final future value, total contributions, total interest earned, a stacked growth chart, and a complete year-by-year breakdown. Unlike basic compound interest formulas that assume one compounding period per year, this calculator supports every compounding frequency from daily to continuously and lets you contribute yearly, monthly, biweekly, or weekly. Toggle inflation adjustment to see your real (today's dollars) future value, enable tax drag to model a taxable brokerage account, or switch to Goal mode to solve the reverse problem — how much do I need to save per month to reach $1 million in 25 years? Whether you're planning retirement, a college fund, an emergency fund, or any long-term savings goal, this is the fastest way to see compound interest in action.",
+      "A compound interest calculator shows you exactly how much a one-time deposit plus recurring contributions will grow to over time. Enter your starting amount, how much you plan to add each period, your expected annual return, and the number of years. This tool runs a full month-by-month simulation and shows you the final future value, total contributions, total interest earned, a stacked growth chart, and a complete year-by-year breakdown. Unlike basic compound interest formulas that assume one compounding period per year, this calculator supports every compounding frequency from daily to continuously and lets you contribute yearly, monthly, biweekly, or weekly. Toggle inflation adjustment to see your real (today's dollars) future value, enable tax drag to model a taxable brokerage account, or switch to Goal mode to solve the reverse problem: how much do I need to save per month to reach $1 million in 25 years? Whether you're planning retirement, a college fund, an emergency fund, or any long-term savings goal, this is the fastest way to see compound interest in action.",
     whyUse: [
       "Supports every compounding frequency from daily to continuously",
       "Recurring contributions at yearly, monthly, biweekly, or weekly intervals",
-      "Goal mode solves the reverse problem — required contribution to hit a target",
+      "Goal mode solves the reverse problem and finds the contribution needed to hit a target",
       "Inflation-adjusted toggle shows real purchasing power in today's dollars",
       "Tax drag simulation models a taxable account vs tax-advantaged growth",
       "Year-by-year table with contributions, interest, and running balance",
       "Stacked area chart shows principal, contributions, and interest over time",
       "Month-level simulation is accurate regardless of compounding frequency",
-      "All math runs in your browser — nothing uploaded, nothing tracked",
+      "All math runs in your browser with nothing uploaded and nothing tracked",
       "Smart insights explain how much growth came from compound interest vs contributions",
     ],
     whyUseSummary:
@@ -2760,7 +2760,7 @@ export const TOOLS: Tool[] = [
       {
         title: "Enter your starting amount and contribution",
         description:
-          "Type in your starting balance — the lump sum you already have invested or ready to invest. Then enter how much you plan to add each period. If you're in Goal mode, enter your target final amount instead.",
+          "Type in your starting balance: the lump sum you already have invested or ready to invest. Then enter how much you plan to add each period. If you're in Goal mode, enter your target final amount instead.",
       },
       {
         title: "Set the annual rate and time horizon",
@@ -2775,7 +2775,7 @@ export const TOOLS: Tool[] = [
       {
         title: "Toggle inflation adjustment and tax drag",
         description:
-          "Enable inflation to see your real future value in today's dollars — 3% is a reasonable long-term assumption. Enable tax drag to model a taxable account where interest is taxed annually; this is useful for comparing taxable vs tax-advantaged (401k, Roth IRA) growth.",
+          "Enable inflation to see your real future value in today's dollars, where 3% is a reasonable long-term assumption. Enable tax drag to model a taxable account where interest is taxed annually; this is useful for comparing taxable vs tax-advantaged (401k, Roth IRA) growth.",
       },
       {
         title: "Review the summary, chart, and year-by-year table",
@@ -2797,7 +2797,7 @@ export const TOOLS: Tool[] = [
       {
         question: "What return rate should I use?",
         answer:
-          "Historical long-term averages give you a reasonable baseline: the S&P 500 has returned about 10% annually (before inflation) since 1926, or about 7% after inflation. A balanced 60/40 portfolio has averaged 7–8% nominal. High-yield savings accounts currently offer 4–5%. Bonds average 3–5%. For planning purposes, use 7% for long-term stock-heavy portfolios, 5% for moderate portfolios, and 4% for conservative portfolios. Remember these are long-term averages — any individual year can vary dramatically.",
+          "Historical long-term averages give you a reasonable baseline: the S&P 500 has returned about 10% annually (before inflation) since 1926, or about 7% after inflation. A balanced 60/40 portfolio has averaged 7 to 8% nominal. High-yield savings accounts currently offer 4 to 5%. Bonds average 3 to 5%. For planning purposes, use 7% for long-term stock-heavy portfolios, 5% for moderate portfolios, and 4% for conservative portfolios. Remember these are long-term averages, and any individual year can vary dramatically.",
       },
       {
         question: "How does the Goal mode work?",
@@ -2807,27 +2807,27 @@ export const TOOLS: Tool[] = [
       {
         question: "What is inflation adjustment and should I use it?",
         answer:
-          "Inflation erodes purchasing power. $1,000,000 in 30 years will not buy what $1,000,000 buys today. Inflation adjustment shows your real future value — the equivalent amount in today's dollars after accounting for rising prices. At 3% inflation, $1,000,000 in 30 years only buys what $412,000 buys today. Always use inflation adjustment when planning long-term goals like retirement, so you know the actual purchasing power you'll have.",
+          "Inflation erodes purchasing power. $1,000,000 in 30 years will not buy what $1,000,000 buys today. Inflation adjustment shows your real future value, which is the equivalent amount in today's dollars after accounting for rising prices. At 3% inflation, $1,000,000 in 30 years only buys what $412,000 buys today. Always use inflation adjustment when planning long-term goals like retirement, so you know the actual purchasing power you'll have.",
       },
       {
         question: "What is tax drag and how does it affect compounding?",
         answer:
-          "In a taxable brokerage account, interest and dividends are taxed each year — this is called tax drag. Even if you don't withdraw the money, taxes on annual interest reduce the amount that keeps compounding. For example, at a 7% return with 15% annual tax drag, your effective return drops to about 5.95%. Over 30 years, this can reduce your final balance by 25% or more compared to a tax-advantaged account (401k, Roth IRA, HSA). Enable tax drag in the calculator to see the impact, then compare to the no-tax case to see the value of tax-advantaged accounts.",
+          "In a taxable brokerage account, interest and dividends are taxed each year. This is called tax drag. Even if you don't withdraw the money, taxes on annual interest reduce the amount that keeps compounding. For example, at a 7% return with 15% annual tax drag, your effective return drops to about 5.95%. Over 30 years, this can reduce your final balance by 25% or more compared to a tax-advantaged account (401k, Roth IRA, HSA). Enable tax drag in the calculator to see the impact, then compare to the no-tax case to see the value of tax-advantaged accounts.",
       },
       {
         question: "Why does most of my final balance come from interest, not contributions?",
         answer:
-          "This is the magic of compound interest. Over long time periods, earlier contributions have decades to grow, so their interest-on-interest dwarfs the contributions themselves. A $500/month contribution for 30 years totals $180,000, but at 7% it grows to about $610,000 — meaning interest accounts for $430,000 (70%) of your final balance. This is why starting early matters so much: the first decade of contributions compounds the longest.",
+          "This is the magic of compound interest. Over long time periods, earlier contributions have decades to grow, so their interest-on-interest dwarfs the contributions themselves. A $500/month contribution for 30 years totals $180,000, but at 7% it grows to about $610,000, meaning interest accounts for $430,000 (70%) of your final balance. This is why starting early matters so much: the first decade of contributions compounds the longest.",
       },
       {
         question: "Should I contribute monthly or all at once?",
         answer:
-          "If you have the lump sum available, investing it all at once (lump sum) usually beats dollar-cost averaging for long-term returns because the money has more time to compound. However, contributing monthly is what most people do because it matches their paycheck cycle. Both approaches work — the more important factors are your total contribution amount, rate of return, and time horizon. This calculator lets you model both: enter your lump sum as starting amount and your monthly savings as contribution.",
+          "If you have the lump sum available, investing it all at once (lump sum) usually beats dollar-cost averaging for long-term returns because the money has more time to compound. However, contributing monthly is what most people do because it matches their paycheck cycle. Both approaches work, and the more important factors are your total contribution amount, rate of return, and time horizon. This calculator lets you model both: enter your lump sum as starting amount and your monthly savings as contribution.",
       },
       {
         question: "Does the calculator account for market volatility?",
         answer:
-          "No. The simulation assumes a constant annual return rate every year, which is a simplification — real markets are volatile and returns vary year to year. This matters most for retirees who face sequence-of-returns risk (bad returns early in retirement can hurt more than the same returns later). For accumulation-phase planning, using the long-term average rate is standard practice and gives a good estimate. For retirement withdrawal planning, consult a financial advisor who can model sequence-of-returns scenarios.",
+          "No. The simulation assumes a constant annual return rate every year, which is a simplification. Real markets are volatile and returns vary year to year. This matters most for retirees who face sequence-of-returns risk (bad returns early in retirement can hurt more than the same returns later). For accumulation-phase planning, using the long-term average rate is standard practice and gives a good estimate. For retirement withdrawal planning, consult a financial advisor who can model sequence-of-returns scenarios.",
       },
       {
         question: "Is my data private?",

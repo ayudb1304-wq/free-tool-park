@@ -37,7 +37,7 @@ import {
 } from "@/components/ui/select"
 import { useLocalStorage } from "@/hooks/use-local-storage"
 
-// --- Currency catalog (40+ common currencies — covers ~95% of real-world use) ---
+// --- Currency catalog (40+ common currencies, covers ~95% of real-world use) ---
 const CURRENCIES: { code: string; name: string; symbol: string }[] = [
   { code: "USD", name: "US Dollar", symbol: "$" },
   { code: "EUR", name: "Euro", symbol: "€" },
@@ -242,7 +242,7 @@ export default function InvoiceGenerator() {
   }, [data.items, data.discountType, data.discountValue])
 
   // Generate payment QR when paymentLink changes.
-  // We intentionally do not reset qrDataUrl synchronously here — the preview
+  // We intentionally do not reset qrDataUrl synchronously here; the preview
   // only renders the QR when data.paymentLink is truthy, so a stale value
   // stays hidden until the next non-empty link generates a fresh one.
   useEffect(() => {
@@ -298,13 +298,13 @@ export default function InvoiceGenerator() {
     [setData]
   )
 
-  // Logo upload — stays in the browser as a data URL
+  // Logo upload. Stays in the browser as a data URL.
   const onLogoChange = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
       const file = e.target.files?.[0]
       if (!file) return
       if (file.size > 1024 * 1024) {
-        showMessage("Logo too large — please use an image under 1 MB.")
+        showMessage("Logo too large. Please use an image under 1 MB.")
         e.target.value = ""
         return
       }
@@ -386,7 +386,7 @@ export default function InvoiceGenerator() {
       invoiceDate: today(),
       dueDate: daysFromNow(30),
     }))
-    showMessage("Duplicated — edit the new invoice then print or email.")
+    showMessage("Duplicated. Edit the new invoice then print or email.")
   }, [setData, showMessage])
 
   const handlePrint = () => {
@@ -414,7 +414,7 @@ export default function InvoiceGenerator() {
   return (
     <div className="space-y-6">
       {/*
-        Print CSS — isolate the invoice document from the surrounding page.
+        Print CSS: isolate the invoice document from the surrounding page.
         Uses the classic `visibility: hidden` trick: hide every element on the
         page, then re-enable visibility only on #invoice-doc and its
         descendants. This works regardless of what the outer tool page renders
@@ -554,7 +554,7 @@ export default function InvoiceGenerator() {
                 </div>
               </div>
               <p className="text-xs text-muted-foreground">
-                Your logo stays on this device — it&apos;s never uploaded
+                Your logo stays on this device. It&apos;s never uploaded
                 anywhere.
               </p>
             </CardContent>
@@ -646,7 +646,7 @@ export default function InvoiceGenerator() {
                     <SelectContent className="max-h-80">
                       {CURRENCIES.map((c) => (
                         <SelectItem key={c.code} value={c.code}>
-                          {c.code} — {c.name} ({c.symbol})
+                          {c.code} · {c.name} ({c.symbol})
                         </SelectItem>
                       ))}
                     </SelectContent>
@@ -958,7 +958,7 @@ function InvoicePreview({
         )}
       </div>
 
-      {/* Items — overflow-x-auto so narrow previews can scroll horizontally
+      {/* Items: overflow-x-auto so narrow previews can scroll horizontally
           when a line item amount is very large; in print the wrapper override
           lets the table render at natural width inside the full A4 page. */}
       <div className="invoice-table-wrap mt-6 overflow-x-auto rounded-xl border">
@@ -976,7 +976,7 @@ function InvoicePreview({
             {data.items.map((item) => (
               <tr key={item.id} className="border-t align-top">
                 <td className="break-words px-2 py-2">
-                  {item.description || "—"}
+                  {item.description || "-"}
                 </td>
                 <td className="whitespace-nowrap px-2 py-2 text-right tabular-nums">
                   {item.quantity}
@@ -985,7 +985,7 @@ function InvoicePreview({
                   {fmtMoney(item.rate)}
                 </td>
                 <td className="invoice-muted whitespace-nowrap px-2 py-2 text-right tabular-nums text-muted-foreground">
-                  {item.taxRate > 0 ? `${item.taxRate}%` : "—"}
+                  {item.taxRate > 0 ? `${item.taxRate}%` : "-"}
                 </td>
                 <td className="whitespace-nowrap px-2 py-2 text-right font-medium tabular-nums">
                   {fmtMoney(item.quantity * item.rate)}
@@ -996,7 +996,7 @@ function InvoicePreview({
         </table>
       </div>
 
-      {/* Totals — use a min-width so big numbers (e.g. $342,342,324.00) don't
+      {/* Totals: use a min-width so big numbers (e.g. $342,342,324.00) don't
           wrap across lines, and let the block grow past the minimum if needed */}
       <div className="mt-4 flex justify-end">
         <div className="min-w-56 space-y-1 text-xs">

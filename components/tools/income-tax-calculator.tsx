@@ -345,7 +345,7 @@ export default function IncomeTaxCalculator() {
                   {STATE_INCOME_TAX_RATES.map((s) => (
                     <SelectItem key={s.abbr} value={s.abbr}>
                       {s.name}
-                      {s.effectiveRate === 0 ? " — 0%" : ""}
+                      {s.effectiveRate === 0 ? " (0%)" : ""}
                     </SelectItem>
                   ))}
                 </SelectContent>
@@ -544,7 +544,7 @@ export default function IncomeTaxCalculator() {
               </div>
               <div>
                 <strong className="text-foreground">Marginal rate:</strong>{" "}
-                {fmtPct(result.marginalRate)} federal — the rate on your next
+                {fmtPct(result.marginalRate)} federal, the rate on your next
                 dollar earned
               </div>
               <div>
@@ -604,7 +604,7 @@ export default function IncomeTaxCalculator() {
             {result.bracketBreakdown.filter((b) => b.amountInBracket > 0)
               .length === 0 && (
               <p className="text-sm text-muted-foreground">
-                Your taxable income is zero after deductions — no federal
+                Your taxable income is zero after deductions, so no federal
                 income tax owed.
               </p>
             )}
@@ -662,7 +662,7 @@ export default function IncomeTaxCalculator() {
                           whatIfRaise) *
                           100
                       )
-                    : "—"
+                    : "-"
                 }
               />
             </div>

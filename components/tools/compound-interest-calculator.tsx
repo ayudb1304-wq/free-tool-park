@@ -185,8 +185,8 @@ function simulate(input: SimInputs): SimulationResult {
 }
 
 // Solve for the periodic contribution required to hit a target future value.
-// Uses a bisection search that calls simulate() — works with any compounding
-// and tax/inflation settings without closed-form algebra headaches.
+// Uses a bisection search that calls simulate(). This works with any
+// compounding and tax/inflation settings without closed-form algebra.
 function solveGoal(
   base: Omit<SimInputs, "contributionAmount">,
   targetFV: number
@@ -372,7 +372,7 @@ function GrowthChart({
           strokeWidth={1.5}
         />
 
-        {/* X-axis labels — show 5 evenly spaced years */}
+        {/* X-axis labels: show 5 evenly spaced years */}
         {Array.from({ length: 5 }, (_, i) => {
           const year = Math.round(((i + 1) * maxYear) / 5)
           return (
@@ -787,8 +787,8 @@ export default function CompoundInterestCalculator() {
               • Compound interest generated{" "}
               <strong className="text-foreground">
                 {fmt(result.totalInterest)}
-              </strong>{" "}
-              — that&rsquo;s{" "}
+              </strong>
+              . That&rsquo;s{" "}
               <strong className="text-foreground">
                 {fmtPct(
                   (result.totalInterest / result.finalBalance) * 100
@@ -827,8 +827,8 @@ export default function CompoundInterestCalculator() {
               <strong className="text-foreground">
                 {fmt(result.inflationAdjustedFinal)}
               </strong>{" "}
-              in today&rsquo;s dollars — the real purchasing power of your
-              nest egg.
+              in today&rsquo;s dollars. That is the real purchasing power of
+              your nest egg.
             </p>
           )}
         </CardContent>
