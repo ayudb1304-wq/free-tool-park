@@ -413,26 +413,39 @@ export default function InvoiceGenerator() {
 
   return (
     <div className="space-y-6">
-      {/* Print CSS: hide the app chrome and form, let only the invoice doc show */}
+      {/*
+        Print CSS — isolate the invoice document from the surrounding page.
+        Uses the classic `visibility: hidden` trick: hide every element on the
+        page, then re-enable visibility only on #invoice-doc and its
+        descendants. This works regardless of what the outer tool page renders
+        (H1, intro, FAQs, footer, etc.) without having to tag every ancestor
+        with a .no-print class. Absolute positioning removes any sticky/grid
+        offset the preview had on screen so it lands at the top of the page.
+      */}
       <style>{`
         @media print {
-          body { background: white !important; }
-          .no-print { display: none !important; }
-          .invoice-print-root { display: block !important; }
+          @page { margin: 14mm; }
+          html, body { background: white !important; }
+          body * { visibility: hidden !important; }
+          #invoice-doc, #invoice-doc * { visibility: visible !important; }
           #invoice-doc {
+            position: absolute !important;
+            left: 0 !important;
+            top: 0 !important;
+            width: 100% !important;
+            max-width: 100% !important;
             border: none !important;
             box-shadow: none !important;
             padding: 0 !important;
-            ring: 0 !important;
+            margin: 0 !important;
             background: white !important;
             color: black !important;
           }
-          #invoice-doc * {
-            color: black !important;
-          }
-          #invoice-doc .invoice-muted {
-            color: #555 !important;
-          }
+          #invoice-doc * { color: black !important; }
+          #invoice-doc .invoice-muted { color: #555 !important; }
+          /* On print, give the table real width so nothing is clipped */
+          #invoice-doc .invoice-table-wrap { overflow: visible !important; }
+          #invoice-doc .invoice-table { min-width: 0 !important; }
         }
       `}</style>
 
@@ -945,9 +958,11 @@ function InvoicePreview({
         )}
       </div>
 
-      {/* Items */}
-      <div className="mt-6 overflow-hidden rounded-xl border">
-        <table className="w-full text-left text-xs">
+      {/* Items — overflow-x-auto so narrow previews can scroll horizontally
+          when a line item amount is very large; in print the wrapper override
+          lets the table render at natural width inside the full A4 page. */}
+      <div className="invoice-table-wrap mt-6 overflow-x-auto rounded-xl border">
+        <table className="invoice-table w-full min-w-[460px] text-left text-xs">
           <thead className="invoice-muted bg-muted/60 text-muted-foreground">
             <tr>
               <th className="px-2 py-2 font-medium">Description</th>
@@ -960,17 +975,19 @@ function InvoicePreview({
           <tbody>
             {data.items.map((item) => (
               <tr key={item.id} className="border-t align-top">
-                <td className="px-2 py-2">{item.description || "—"}</td>
-                <td className="px-2 py-2 text-right tabular-nums">
+                <td className="break-words px-2 py-2">
+                  {item.description || "—"}
+                </td>
+                <td className="whitespace-nowrap px-2 py-2 text-right tabular-nums">
                   {item.quantity}
                 </td>
-                <td className="px-2 py-2 text-right tabular-nums">
+                <td className="whitespace-nowrap px-2 py-2 text-right tabular-nums">
                   {fmtMoney(item.rate)}
                 </td>
-                <td className="invoice-muted px-2 py-2 text-right tabular-nums text-muted-foreground">
+                <td className="invoice-muted whitespace-nowrap px-2 py-2 text-right tabular-nums text-muted-foreground">
                   {item.taxRate > 0 ? `${item.taxRate}%` : "—"}
                 </td>
-                <td className="px-2 py-2 text-right font-medium tabular-nums">
+                <td className="whitespace-nowrap px-2 py-2 text-right font-medium tabular-nums">
                   {fmtMoney(item.quantity * item.rate)}
                 </td>
               </tr>
@@ -979,34 +996,41 @@ function InvoicePreview({
         </table>
       </div>
 
-      {/* Totals */}
+      {/* Totals — use a min-width so big numbers (e.g. $342,342,324.00) don't
+          wrap across lines, and let the block grow past the minimum if needed */}
       <div className="mt-4 flex justify-end">
-        <div className="w-56 space-y-1 text-xs">
-          <div className="flex justify-between tabular-nums">
+        <div className="min-w-56 space-y-1 text-xs">
+          <div className="flex items-center justify-between gap-4 tabular-nums">
             <span className="invoice-muted text-muted-foreground">
               Subtotal
             </span>
-            <span>{fmtMoney(totals.subtotal)}</span>
+            <span className="whitespace-nowrap">
+              {fmtMoney(totals.subtotal)}
+            </span>
           </div>
           {totals.discount > 0 && (
-            <div className="flex justify-between tabular-nums">
+            <div className="flex items-center justify-between gap-4 tabular-nums">
               <span className="invoice-muted text-muted-foreground">
                 Discount
               </span>
-              <span>-{fmtMoney(totals.discount)}</span>
+              <span className="whitespace-nowrap">
+                -{fmtMoney(totals.discount)}
+              </span>
             </div>
           )}
           {totals.itemTax > 0 && (
-            <div className="flex justify-between tabular-nums">
-              <span className="invoice-muted text-muted-foreground">
-                Tax
+            <div className="flex items-center justify-between gap-4 tabular-nums">
+              <span className="invoice-muted text-muted-foreground">Tax</span>
+              <span className="whitespace-nowrap">
+                {fmtMoney(totals.itemTax)}
               </span>
-              <span>{fmtMoney(totals.itemTax)}</span>
             </div>
           )}
-          <div className="mt-1 flex justify-between border-t pt-1.5 text-sm font-semibold tabular-nums">
+          <div className="mt-1 flex items-center justify-between gap-4 border-t pt-1.5 text-sm font-semibold tabular-nums">
             <span>Total</span>
-            <span>{fmtMoney(totals.total)}</span>
+            <span className="whitespace-nowrap">
+              {fmtMoney(totals.total)}
+            </span>
           </div>
         </div>
       </div>
