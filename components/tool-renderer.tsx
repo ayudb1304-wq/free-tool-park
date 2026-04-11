@@ -182,6 +182,10 @@ const registry: Record<string, ComponentType> = {
     () => import("@/components/tools/time-zone-converter"),
     { ssr: false, loading: Loading }
   ),
+  "invoice-generator": dynamic(
+    () => import("@/components/tools/invoice-generator"),
+    { ssr: false, loading: Loading }
+  ),
 }
 
 export function ToolRenderer({

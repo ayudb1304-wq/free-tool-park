@@ -28,6 +28,7 @@ import {
   WeightScaleIcon,
   TimeZoneIcon,
   School01Icon,
+  Invoice01Icon,
   NaturalFoodIcon,
   LeftToRightListNumberIcon,
   Globe02Icon,
@@ -2456,5 +2457,136 @@ export const TOOLS: Tool[] = [
     ],
     relatedSlugs: ["timestamp-converter", "age-calculator", "temperature-converter"],
     keywords: ["time zone converter", "world time zone converter", "time zone conversion", "convert time zones", "time difference calculator", "world clock converter"],
+  },
+
+  // 41. Invoice Generator
+  {
+    slug: "invoice-generator",
+    name: "Invoice Generator",
+    category: "generators",
+    icon: Invoice01Icon,
+    componentName: "invoice-generator",
+    h1: "Free Invoice Generator — Create & Download Professional Invoices",
+    titleTag: "Free Invoice Generator: PDF Download, No Signup | FreeToolPark",
+    metaDescription:
+      "Create professional invoices in seconds. Free invoice generator with PDF download, 40+ currencies, and your logo. No signup, no email required.",
+    introduction:
+      "The Invoice Generator lets you create a clean, professional invoice in under a minute — no signup, no email, no watermark. Fill in your business info once, add your client, list your services or products, and watch the live preview update as you type. Download a polished PDF by printing the page, email it directly to your client with one click, or duplicate any invoice to start the next month's bill in seconds. Unlike Invoice Simple, Wave, or Zoho, this generator requires zero account creation. Your logo and data stay on your device — nothing is ever uploaded to a server. Unlimited line items, per-item tax rates, 40+ currencies with proper symbols, fixed-amount or percentage discounts, bank payment details, and an auto-generated payment QR code for PayPal.me or Stripe links make this a complete solution for freelancers, small businesses, consultants, and agencies who need to get paid without the overhead of yet another SaaS subscription.",
+    whyUse: [
+      "Zero signup — no email, no account, no credit card, no watermark",
+      "Live WYSIWYG preview updates as you type every field",
+      "40+ currencies with proper ISO symbols and locale-aware formatting",
+      "Logo upload stays on your device — never uploaded to any server",
+      "Auto-saves your draft to the browser so you never lose work",
+      "Save clients locally and autofill them on every future invoice",
+      "Unlimited line items with per-item tax rates for complex invoices",
+      "Percentage or fixed-amount discounts applied before the final total",
+      "Auto-generated payment QR code from a PayPal.me or Stripe link",
+      "One-click duplicate for recurring invoices — great for retainers",
+      "Email the invoice with a prefilled mailto link — no email provider integration needed",
+      "Print to PDF directly from your browser — professional, clean template",
+    ],
+    whyUseSummary:
+      "Invoice Generator creates professional invoices with PDF download, 40+ currencies, logo upload, and saved clients — all without signup. Your data never leaves your device.",
+    steps: [
+      {
+        title: "Fill in your business information",
+        description:
+          "Enter your business name, email, phone, address, and tax ID. Upload your logo — it stays in your browser and is never uploaded anywhere. This information saves automatically so you only enter it once.",
+      },
+      {
+        title: "Add your client details",
+        description:
+          "Type in your client's name, email, and address. Click 'Save Client' to store them locally so you can autofill them on future invoices. You can save as many clients as you want.",
+      },
+      {
+        title: "Set the invoice number, dates, and currency",
+        description:
+          "The invoice number auto-increments when you create a new invoice. Pick the invoice date and due date, and choose from 40+ currencies — the preview updates with the correct symbol and formatting.",
+      },
+      {
+        title: "Add your line items",
+        description:
+          "Click 'Add Item' for each service or product. Enter a description, quantity, rate, and tax percentage for that specific line. There's no limit on how many items you can add. The subtotal, tax, and total update in real time.",
+      },
+      {
+        title: "Add discount, notes, terms, and payment details",
+        description:
+          "Apply a percentage or fixed-amount discount if needed. Add notes, payment terms, bank details, or paste a PayPal.me / Stripe link and the tool will auto-generate a payment QR code for your client to scan.",
+      },
+      {
+        title: "Print to PDF or email the invoice",
+        description:
+          "Click 'Print / Save as PDF' to open your browser's print dialog and save the invoice as a clean, professional PDF. Or click 'Email Invoice' to open a prefilled mailto link with the invoice number, amount, and due date ready to send.",
+      },
+    ],
+    faqs: [
+      {
+        question: "Do I need to sign up to use this invoice generator?",
+        answer:
+          "No. There is no signup, no email, no account, and no credit card required. Every feature works instantly without creating an account. Your invoice data is saved to your browser's local storage so you can pick up where you left off on your next visit.",
+      },
+      {
+        question: "How do I download my invoice as a PDF?",
+        answer:
+          "Click the 'Print / Save as PDF' button to open your browser's print dialog. Choose 'Save as PDF' from the destination dropdown (Chrome, Edge, Safari, and Firefox all support this built in). The form UI is hidden automatically and only the clean invoice document is saved. The resulting PDF has no watermark and looks identical to what you see in the preview.",
+      },
+      {
+        question: "Where is my logo stored when I upload it?",
+        answer:
+          "Your logo stays entirely in your own browser. It is converted to a data URL and saved to your browser's local storage, not uploaded to any server. We never see it, never transmit it, and never have access to it. This is the most privacy-respecting way to handle a business logo on a free tool.",
+      },
+      {
+        question: "Can I save my clients for future invoices?",
+        answer:
+          "Yes. Fill in the client name, email, and address, then click 'Save Client'. Your saved clients appear in a dropdown the next time you create an invoice — select a client to autofill all their details in one click. Clients are stored locally in your browser, so they stay private.",
+      },
+      {
+        question: "How many line items can I add to one invoice?",
+        answer:
+          "There is no limit. Add as many line items as you need. Each item can have its own quantity, rate, and tax percentage, so you can handle complex invoices with mixed tax rates (for example, taxable services plus tax-exempt reimbursements).",
+      },
+      {
+        question: "Which currencies are supported?",
+        answer:
+          "The generator supports 40+ major currencies including USD, EUR, GBP, JPY, CNY, INR, AUD, CAD, CHF, HKD, SGD, SEK, NOK, DKK, NZD, MXN, BRL, ZAR, KRW, TRY, RUB, AED, SAR, THB, MYR, IDR, PHP, VND, PLN, CZK, HUF, ILS, EGP, NGN, PKR, BDT, LKR, ARS, CLP, COP, KES, and TWD. Each currency uses the correct symbol and locale-aware number formatting.",
+      },
+      {
+        question: "Can I apply a discount to my invoice?",
+        answer:
+          "Yes. Choose between a percentage discount (like 10% off) or a fixed-amount discount (like $50 off). The discount is applied to the subtotal and displayed as a separate line in the totals section, so your client can see exactly what they saved.",
+      },
+      {
+        question: "What is the payment QR code and how do I use it?",
+        answer:
+          "Paste a PayPal.me link, Stripe Payment Link, or any payment URL into the Payment Link field and the generator automatically creates a QR code that appears on the invoice. When your client prints or views the invoice, they can scan the QR code with their phone to pay you instantly. Works with any payment URL — PayPal, Stripe, Venmo, Wise, or your bank's payment portal.",
+      },
+      {
+        question: "How do I create a recurring invoice for a retainer client?",
+        answer:
+          "Click 'Duplicate' to create a copy of your current invoice with a new auto-incremented invoice number and updated dates. All the business info, client info, line items, and payment details stay the same — edit anything you need, then print or email. This is the fastest way to bill retainer clients every month.",
+      },
+      {
+        question: "Is my invoice data private and secure?",
+        answer:
+          "Yes. Every piece of data — your business info, client list, line items, logo, and invoice drafts — lives only in your browser's local storage. Nothing is uploaded, nothing is transmitted, and we never see your invoice content. You can clear it anytime by clearing your browser storage. This makes the tool safer than any SaaS invoicing product because your financial data simply never leaves your device.",
+      },
+    ],
+    relatedSlugs: [
+      "qr-code-generator",
+      "percentage-calculator",
+      "number-to-words",
+      "tip-calculator",
+    ],
+    keywords: [
+      "invoice generator",
+      "free invoice generator",
+      "invoice maker",
+      "online invoice creator",
+      "invoice template",
+      "create invoice online",
+      "pdf invoice generator",
+      "invoice generator no signup",
+    ],
   },
 ]

@@ -45,6 +45,7 @@ export const BUILT_TOOL_NAMES = [
   "length-converter",
   "weight-converter",
   "time-zone-converter",
+  "invoice-generator",
 ] as const
 
 export const BUILT_TOOL_SLUGS = new Set<string>(BUILT_TOOL_NAMES)
