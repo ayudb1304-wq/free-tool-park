@@ -49,6 +49,7 @@ export const BUILT_TOOL_NAMES = [
   "income-tax-calculator",
   "compound-interest-calculator",
   "salary-to-hourly-calculator",
+  "investment-return-calculator",
 ] as const
 
 export const BUILT_TOOL_SLUGS = new Set<string>(BUILT_TOOL_NAMES)

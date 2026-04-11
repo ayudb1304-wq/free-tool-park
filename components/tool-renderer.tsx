@@ -198,6 +198,10 @@ const registry: Record<string, ComponentType> = {
     () => import("@/components/tools/salary-to-hourly-calculator"),
     { ssr: false, loading: Loading }
   ),
+  "investment-return-calculator": dynamic(
+    () => import("@/components/tools/investment-return-calculator"),
+    { ssr: false, loading: Loading }
+  ),
 }
 
 export function ToolRenderer({

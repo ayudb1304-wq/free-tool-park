@@ -2975,4 +2975,133 @@ export const TOOLS: Tool[] = [
       "pay calculator",
     ],
   },
+
+  // 45. Investment Return Calculator
+  {
+    slug: "investment-return-calculator",
+    name: "Investment Return Calculator",
+    category: "calculators",
+    icon: ChartUpIcon,
+    componentName: "investment-return-calculator",
+    h1: "Investment Return Calculator: ROI, CAGR & Total Gain",
+    titleTag:
+      "Investment Return Calculator: CAGR, ROI, Total Gain | FreeToolPark",
+    metaDescription:
+      "Calculate your investment return, ROI, CAGR, and total gain. Supports stocks, bonds, real estate, crypto, and business investments with tax estimates.",
+    introduction:
+      "An investment return calculator tells you exactly how much money you made on an investment and how good that return actually was. Enter your initial investment, the current or final value, how long you held it, and any dividends you received, and this tool calculates your total gain, total return percentage, annualized return (CAGR), and a rough capital gains tax estimate. Unlike basic ROI calculators that only show total return, this one also shows your compound annual growth rate so you can fairly compare investments held for different lengths of time. Switch to compare mode to put up to four investments side by side and instantly see which had the best CAGR. The tool covers every major asset type (stocks, bonds, real estate, crypto, business equity, and collectibles) with a note on how each is taxed, flags whether your holding period qualifies for long-term capital gains rates, and benchmarks your return against the historical S&P 500 average so you know whether your pick beat a plain index fund. Whether you are reviewing last year's portfolio, deciding which property to sell, or evaluating a crypto trade, this is the fastest way to understand what your investments really earned.",
+    whyUse: [
+      "Calculates total gain, total return percentage, and CAGR in one view",
+      "Supports stocks, bonds, real estate, crypto, business equity, and other asset types with per-type tax notes",
+      "Compare mode places up to 4 investments side by side and highlights the best CAGR",
+      "Automatic short-term vs long-term holding period classification",
+      "Rough capital gains tax estimate using 2025 long-term federal brackets",
+      "Benchmark comparison against the historical S&P 500 annualized return",
+      "Inflation-adjusted real CAGR using the Fisher equation",
+      "Includes dividends and additional contributions in the total return math",
+      "Runs entirely in your browser with no tracking or data collection",
+    ],
+    whyUseSummary:
+      "Investment Return Calculator computes your total gain, CAGR, and after-tax return for stocks, bonds, real estate, crypto, and more. Includes a side-by-side compare mode for up to 4 investments.",
+    steps: [
+      {
+        title: "Pick your investment type",
+        description:
+          "Select the asset class you want to analyze: stocks and ETFs, bonds, real estate, crypto, business equity, or other. This does not change the math but it updates the tax notes with rules specific to that asset type.",
+      },
+      {
+        title: "Enter the initial investment and final value",
+        description:
+          "Type in the amount you originally invested and the current or sale value. For real estate, use the purchase price and the sale or appraisal value. For stocks, use cost basis and current market value.",
+      },
+      {
+        title: "Set the holding period",
+        description:
+          "Enter how many years you have held the investment (fractional years are fine, so 0.5 means six months). This is critical because it determines your CAGR and whether you qualify for long-term capital gains rates.",
+      },
+      {
+        title: "Add dividends and extra contributions (optional)",
+        description:
+          "If your investment paid dividends, rental income, or interest, enter the total amount received. If you added more money during the holding period, enter the total contributions so they get factored into your total invested.",
+      },
+      {
+        title: "Enable inflation adjustment if needed",
+        description:
+          "Toggle the inflation option to see your real return (after inflation erodes purchasing power). This is important for long holding periods, where a 10% nominal return at 3% inflation is really only a 6.8% real return.",
+      },
+      {
+        title: "Review the summary cards and tax breakdown",
+        description:
+          "Check your total gain, total return percentage, CAGR, and holding period classification. The tax card shows an estimated capital gains tax and benchmarks your return against what an S&P 500 index fund would have done over the same period.",
+      },
+      {
+        title: "Compare multiple investments (optional)",
+        description:
+          "Switch to the Compare tab to evaluate up to four investments side by side. The tool highlights the one with the best CAGR in green, so you can see at a glance which pick performed best on a time-adjusted basis.",
+      },
+    ],
+    faqs: [
+      {
+        question: "What is the difference between total return and CAGR?",
+        answer:
+          "Total return is your cumulative gain as a percentage of what you invested. CAGR (Compound Annual Growth Rate) is the constant annual rate that would produce the same total return over the same period. For example, a 50% total return over 5 years is a 10% total return per year on average, but a CAGR of 8.45% (because compounding). CAGR is the right number to use when comparing investments held for different lengths of time.",
+      },
+      {
+        question: "How do I calculate CAGR manually?",
+        answer:
+          "The formula is CAGR = (ending value divided by starting value) to the power of (1 divided by years) minus 1. For example, $10,000 grown to $17,500 over 5 years: (17500 / 10000)^(1/5) - 1 = 1.75^0.2 - 1 = 1.119 - 1 = 0.119, or 11.9% CAGR. This calculator does the same math and also factors in dividends and additional contributions.",
+      },
+      {
+        question: "What counts as long-term capital gains for tax purposes?",
+        answer:
+          "In the United States, you qualify for long-term capital gains rates (currently 0%, 15%, or 20% depending on your taxable income) if you held the asset for more than 12 months before selling. Anything sold within 12 months is a short-term gain and is taxed at your ordinary income tax rate, which can be significantly higher. This calculator automatically flags your holding period as short-term or long-term.",
+      },
+      {
+        question: "Does this calculator include fees and expense ratios?",
+        answer:
+          "No. The numbers shown are gross returns based on the initial and final values you enter. If you want to account for trading fees, management fees, expense ratios, or advisory fees, subtract them from your final value before entering it, or reduce the final value by your estimated total fees. Over long holding periods, a 1% annual fee can eat 20% to 25% of your total returns.",
+      },
+      {
+        question: "What is CAGR on the S&P 500 historically?",
+        answer:
+          "The S&P 500 has returned roughly 10% annualized (with dividends reinvested) since 1926, or about 7% after adjusting for inflation. This is the benchmark this calculator uses for comparison, so you can see whether your investment beat or lagged a passive index fund strategy. Past performance does not guarantee future returns, but long-term averages are a reasonable planning assumption.",
+      },
+      {
+        question: "How does the tax estimate work?",
+        answer:
+          "If your holding period is 12 months or longer, the calculator applies the 2025 long-term capital gains brackets for a single filer (0% up to $47,025, 15% up to $518,900, 20% above that) as a rough blended estimate. If your holding period is under 12 months, the calculator uses a flat 22% placeholder representing an ordinary income tax rate. This is a simplified estimate for education and does not account for your actual filing status, state tax, or the Net Investment Income Tax (NIIT).",
+      },
+      {
+        question: "Can I use this for crypto?",
+        answer:
+          "Yes. Crypto is treated as property by the IRS, so every sale or swap is a taxable event. Enter your original cost basis as the initial investment and your sale value (or current market value) as the final value, along with how long you held. Long-term capital gains rates apply after 12 months. Wash-sale rules do not currently apply to crypto, which means losses can be realized and immediately re-entered for tax-loss harvesting. Consult a crypto tax professional for complex situations.",
+      },
+      {
+        question: "What if I added money during the holding period?",
+        answer:
+          "Enter the total additional contributions you made in the Additional Contributions field. The calculator adds them to your total invested so your total return percentage is calculated against the full amount you put in. Note that CAGR will slightly overstate performance if you added a lot of money late in the holding period, because those later contributions did not have the full period to compound. For dollar-cost averaging scenarios, consider using the Compound Interest Calculator instead.",
+      },
+      {
+        question: "Is my portfolio data private?",
+        answer:
+          "Yes, completely. Every calculation runs in your browser. We never see your investment amounts, asset names, gains, losses, or any other input. Nothing is uploaded, logged, or transmitted to any server. This tool is safe to use for real portfolio analysis without any privacy concerns.",
+      },
+    ],
+    relatedSlugs: [
+      "compound-interest-calculator",
+      "interest-calculator",
+      "income-tax-calculator",
+      "percentage-calculator",
+    ],
+    keywords: [
+      "investment return calculator",
+      "investment calculator",
+      "ROI calculator",
+      "CAGR calculator",
+      "stock return calculator",
+      "annualized return calculator",
+      "capital gains calculator",
+      "portfolio return calculator",
+    ],
+  },
 ]
