@@ -190,6 +190,10 @@ const registry: Record<string, ComponentType> = {
     () => import("@/components/tools/income-tax-calculator"),
     { ssr: false, loading: Loading }
   ),
+  "compound-interest-calculator": dynamic(
+    () => import("@/components/tools/compound-interest-calculator"),
+    { ssr: false, loading: Loading }
+  ),
 }
 
 export function ToolRenderer({

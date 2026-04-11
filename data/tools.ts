@@ -30,6 +30,7 @@ import {
   School01Icon,
   Invoice01Icon,
   TaxesIcon,
+  ChartUpIcon,
   NaturalFoodIcon,
   LeftToRightListNumberIcon,
   Globe02Icon,
@@ -2719,6 +2720,136 @@ export const TOOLS: Tool[] = [
       "self employment tax calculator",
       "us tax calculator",
       "paycheck tax calculator",
+    ],
+  },
+
+  // 43. Compound Interest Calculator
+  {
+    slug: "compound-interest-calculator",
+    name: "Compound Interest Calculator",
+    category: "calculators",
+    icon: ChartUpIcon,
+    componentName: "compound-interest-calculator",
+    h1: "Free Compound Interest Calculator — Investment Growth Over Time",
+    titleTag:
+      "Compound Interest Calculator: Daily, Monthly, Yearly | FreeToolPark",
+    metaDescription:
+      "Calculate compound interest with monthly contributions, any compounding frequency. See your investment grow with charts and a full year-by-year schedule.",
+    introduction:
+      "A compound interest calculator shows you exactly how much a one-time deposit plus recurring contributions will grow to over time. Enter your starting amount, how much you plan to add each period, your expected annual return, and the number of years — this tool runs a full month-by-month simulation and shows you the final future value, total contributions, total interest earned, a stacked growth chart, and a complete year-by-year breakdown. Unlike basic compound interest formulas that assume one compounding period per year, this calculator supports every compounding frequency from daily to continuously and lets you contribute yearly, monthly, biweekly, or weekly. Toggle inflation adjustment to see your real (today's dollars) future value, enable tax drag to model a taxable brokerage account, or switch to Goal mode to solve the reverse problem — how much do I need to save per month to reach $1 million in 25 years? Whether you're planning retirement, a college fund, an emergency fund, or any long-term savings goal, this is the fastest way to see compound interest in action.",
+    whyUse: [
+      "Supports every compounding frequency from daily to continuously",
+      "Recurring contributions at yearly, monthly, biweekly, or weekly intervals",
+      "Goal mode solves the reverse problem — required contribution to hit a target",
+      "Inflation-adjusted toggle shows real purchasing power in today's dollars",
+      "Tax drag simulation models a taxable account vs tax-advantaged growth",
+      "Year-by-year table with contributions, interest, and running balance",
+      "Stacked area chart shows principal, contributions, and interest over time",
+      "Month-level simulation is accurate regardless of compounding frequency",
+      "All math runs in your browser — nothing uploaded, nothing tracked",
+      "Smart insights explain how much growth came from compound interest vs contributions",
+    ],
+    whyUseSummary:
+      "Compound Interest Calculator runs a month-by-month simulation for any compounding frequency, with contributions, inflation adjustment, tax drag, and a goal-reverse mode that solves for required savings to hit a target.",
+    steps: [
+      {
+        title: "Pick a mode: Calculate Growth or Reach a Goal",
+        description:
+          "Use 'Calculate Growth' when you know your contribution and want to see the final value. Use 'Reach a Goal' when you know your target (like $1,000,000 at retirement) and need to find the monthly contribution required to get there.",
+      },
+      {
+        title: "Enter your starting amount and contribution",
+        description:
+          "Type in your starting balance — the lump sum you already have invested or ready to invest. Then enter how much you plan to add each period. If you're in Goal mode, enter your target final amount instead.",
+      },
+      {
+        title: "Set the annual rate and time horizon",
+        description:
+          "Enter your expected annual return rate. Historical averages: 7–10% for US stocks (S&P 500), 2–4% for bonds, 4–5% for a balanced portfolio, 4–5% for HYSAs. Then enter the number of years you plan to invest.",
+      },
+      {
+        title: "Choose compounding and contribution frequencies",
+        description:
+          "Most brokerages compound daily or continuously. Most 401(k) contributions happen biweekly (every payday). The calculator handles any combination and accurately simulates each period.",
+      },
+      {
+        title: "Toggle inflation adjustment and tax drag",
+        description:
+          "Enable inflation to see your real future value in today's dollars — 3% is a reasonable long-term assumption. Enable tax drag to model a taxable account where interest is taxed annually; this is useful for comparing taxable vs tax-advantaged (401k, Roth IRA) growth.",
+      },
+      {
+        title: "Review the summary, chart, and year-by-year table",
+        description:
+          "Check the four summary cards for future value, total contributed, interest earned, and inflation-adjusted value. The chart shows how much of your final balance came from compound growth vs contributions. The year-by-year table lets you drill into any individual year.",
+      },
+    ],
+    faqs: [
+      {
+        question: "What is the compound interest formula?",
+        answer:
+          "The basic compound interest formula is A = P(1 + r/n)^(nt), where A is the future value, P is the principal (starting amount), r is the annual interest rate (as a decimal), n is the number of times interest compounds per year, and t is the number of years. For recurring contributions, the future value of an ordinary annuity is added: PMT × [((1 + r/n)^(nt) - 1) / (r/n)]. This calculator runs a full month-by-month simulation so it handles any combination of compounding frequency, contribution frequency, and optional tax or inflation adjustments without simplifying approximations.",
+      },
+      {
+        question: "How does compounding frequency affect my returns?",
+        answer:
+          "Higher compounding frequency produces slightly higher returns because interest earns interest more often. At 7% annual rate over 30 years, $10,000 grows to about $76,123 with annual compounding, $81,165 with monthly compounding, $81,623 with daily compounding, and $81,661 with continuous compounding. The difference between monthly and continuous is tiny (~0.6% over 30 years), but the difference between annual and monthly is meaningful (~6% over 30 years).",
+      },
+      {
+        question: "What return rate should I use?",
+        answer:
+          "Historical long-term averages give you a reasonable baseline: the S&P 500 has returned about 10% annually (before inflation) since 1926, or about 7% after inflation. A balanced 60/40 portfolio has averaged 7–8% nominal. High-yield savings accounts currently offer 4–5%. Bonds average 3–5%. For planning purposes, use 7% for long-term stock-heavy portfolios, 5% for moderate portfolios, and 4% for conservative portfolios. Remember these are long-term averages — any individual year can vary dramatically.",
+      },
+      {
+        question: "How does the Goal mode work?",
+        answer:
+          "Goal mode solves the reverse problem: given a target future value, starting amount, rate, and time horizon, it finds the contribution amount needed to reach that goal. The calculator uses a binary search over the simulation to find the exact contribution level, which handles any compounding frequency, inflation adjustment, or tax drag you've enabled. For example, to reach $1,000,000 in 25 years starting with $10,000 at 7%, you need about $1,100 per month. Switch to Goal mode and try it yourself.",
+      },
+      {
+        question: "What is inflation adjustment and should I use it?",
+        answer:
+          "Inflation erodes purchasing power. $1,000,000 in 30 years will not buy what $1,000,000 buys today. Inflation adjustment shows your real future value — the equivalent amount in today's dollars after accounting for rising prices. At 3% inflation, $1,000,000 in 30 years only buys what $412,000 buys today. Always use inflation adjustment when planning long-term goals like retirement, so you know the actual purchasing power you'll have.",
+      },
+      {
+        question: "What is tax drag and how does it affect compounding?",
+        answer:
+          "In a taxable brokerage account, interest and dividends are taxed each year — this is called tax drag. Even if you don't withdraw the money, taxes on annual interest reduce the amount that keeps compounding. For example, at a 7% return with 15% annual tax drag, your effective return drops to about 5.95%. Over 30 years, this can reduce your final balance by 25% or more compared to a tax-advantaged account (401k, Roth IRA, HSA). Enable tax drag in the calculator to see the impact, then compare to the no-tax case to see the value of tax-advantaged accounts.",
+      },
+      {
+        question: "Why does most of my final balance come from interest, not contributions?",
+        answer:
+          "This is the magic of compound interest. Over long time periods, earlier contributions have decades to grow, so their interest-on-interest dwarfs the contributions themselves. A $500/month contribution for 30 years totals $180,000, but at 7% it grows to about $610,000 — meaning interest accounts for $430,000 (70%) of your final balance. This is why starting early matters so much: the first decade of contributions compounds the longest.",
+      },
+      {
+        question: "Should I contribute monthly or all at once?",
+        answer:
+          "If you have the lump sum available, investing it all at once (lump sum) usually beats dollar-cost averaging for long-term returns because the money has more time to compound. However, contributing monthly is what most people do because it matches their paycheck cycle. Both approaches work — the more important factors are your total contribution amount, rate of return, and time horizon. This calculator lets you model both: enter your lump sum as starting amount and your monthly savings as contribution.",
+      },
+      {
+        question: "Does the calculator account for market volatility?",
+        answer:
+          "No. The simulation assumes a constant annual return rate every year, which is a simplification — real markets are volatile and returns vary year to year. This matters most for retirees who face sequence-of-returns risk (bad returns early in retirement can hurt more than the same returns later). For accumulation-phase planning, using the long-term average rate is standard practice and gives a good estimate. For retirement withdrawal planning, consult a financial advisor who can model sequence-of-returns scenarios.",
+      },
+      {
+        question: "Is my data private?",
+        answer:
+          "Yes. Every calculation runs entirely in your browser. Nothing is uploaded, logged, or sent to a server. We never see your starting amount, contributions, target, or any other input. You can even disconnect from the internet and the calculator will keep working.",
+      },
+    ],
+    relatedSlugs: [
+      "interest-calculator",
+      "mortgage-calculator",
+      "loan-calculator",
+      "income-tax-calculator",
+    ],
+    keywords: [
+      "compound interest calculator",
+      "compound interest formula",
+      "investment calculator",
+      "savings calculator",
+      "interest calculator",
+      "retirement calculator",
+      "future value calculator",
+      "compounding calculator",
     ],
   },
 ]
