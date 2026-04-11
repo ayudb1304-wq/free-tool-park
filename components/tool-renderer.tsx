@@ -202,6 +202,10 @@ const registry: Record<string, ComponentType> = {
     () => import("@/components/tools/investment-return-calculator"),
     { ssr: false, loading: Loading }
   ),
+  "roi-calculator": dynamic(
+    () => import("@/components/tools/roi-calculator"),
+    { ssr: false, loading: Loading }
+  ),
 }
 
 export function ToolRenderer({

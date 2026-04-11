@@ -3104,4 +3104,135 @@ export const TOOLS: Tool[] = [
       "portfolio return calculator",
     ],
   },
+
+  // 46. ROI Calculator
+  {
+    slug: "roi-calculator",
+    name: "ROI Calculator",
+    category: "calculators",
+    icon: PercentIcon,
+    componentName: "roi-calculator",
+    h1: "ROI Calculator: Return on Investment for Any Project",
+    titleTag: "ROI Calculator: Marketing, Real Estate & Project | FreeToolPark",
+    metaDescription:
+      "Calculate ROI for marketing campaigns, rental properties, and business projects. Includes ROAS, cap rate, cash-on-cash, NPV, IRR, and payback period.",
+    introduction:
+      "An ROI calculator tells you whether an investment, campaign, or project is actually worth doing. This tool goes beyond the basic (gain minus cost) divided by cost formula by giving you three purpose-built modes: Marketing ROI for ad campaigns with ROAS, cost per acquisition, and gross margin; Real Estate ROI for rental properties with cap rate, cash-on-cash return, monthly cash flow, principal paydown, and total leveraged return over your holding period; and Business Project ROI with NPV (Net Present Value), IRR (Internal Rate of Return), and payback period for any multi-year project. Unlike generic ROI calculators that only do a single division, this tool handles the messy real-world math that matters: mortgage amortization and principal paydown for real estate, time value of money for project evaluation, and revenue-per-conversion metrics for marketing. Whether you are pitching a Facebook ad budget, deciding whether to buy a rental property, or evaluating whether to launch a new product line, this calculator gives you the numbers executives, landlords, and marketers actually use. All calculations run in your browser with no signup, no tracking, and no data sent anywhere.",
+    whyUse: [
+      "Three purpose-built modes: Marketing, Real Estate, and Business Project",
+      "Marketing mode calculates ROAS, ROI %, net profit, CPA, and gross margin",
+      "Real estate mode includes cap rate, cash-on-cash, monthly cash flow, and total leveraged return",
+      "Real estate accounts for mortgage amortization and principal paydown over your holding period",
+      "Project mode computes NPV at any discount rate using proper time value of money",
+      "Project IRR is solved by bisection so it works on any cash flow sequence",
+      "Payback period interpolated across years, not rounded to the nearest year",
+      "Full cash flow schedule table showing cumulative and discounted values",
+      "Compare annualized ROI across projects of different lengths",
+      "Clear color-coded tone (positive or negative) on every metric for at-a-glance reading",
+    ],
+    whyUseSummary:
+      "ROI Calculator with three modes (Marketing, Real Estate, Business Project). Computes ROAS, cap rate, cash-on-cash, NPV, IRR, payback period, and total leveraged return. Runs in your browser with no signup.",
+    steps: [
+      {
+        title: "Pick the right mode for your situation",
+        description:
+          "Use Marketing for ad campaigns and revenue attribution, Real Estate for rental properties and flips, and Business Project for any multi-year investment where you need NPV, IRR, and payback period.",
+      },
+      {
+        title: "Marketing: enter ad spend, revenue, conversions, and COGS",
+        description:
+          "Type your total ad spend, total revenue generated, number of conversions (optional), and cost of goods sold (optional). The calculator shows ROAS, ROI %, net profit, cost per acquisition, and gross margin instantly.",
+      },
+      {
+        title: "Real Estate: enter purchase price, financing, rent, and expenses",
+        description:
+          "Fill in purchase price, down payment percentage, closing costs, mortgage rate, loan term, monthly rent, annual operating expenses, vacancy rate, expected annual appreciation, and planned holding period. The calculator handles mortgage amortization and principal paydown for you.",
+      },
+      {
+        title: "Business Project: enter initial investment and each year's cash flow",
+        description:
+          "Enter your upfront investment, the discount rate you want to use (typically your cost of capital, 8 to 12% is common), and the expected net cash flow for each year. Use Add Year and Remove Year to extend the schedule up to 15 years.",
+      },
+      {
+        title: "Review the summary cards",
+        description:
+          "Each mode shows 4 headline metrics tuned to that mode. For marketing, ROAS and ROI. For real estate, cap rate and cash-on-cash. For projects, NPV and IRR. Color-coded tones show positive returns in green and losses in red.",
+      },
+      {
+        title: "Read the detailed breakdown tables",
+        description:
+          "Below the summary, the detailed breakdown shows exactly how the numbers were calculated, including the cash flow schedule (for projects) or NOI and cash flow waterfall (for real estate). This is helpful for presentations, sanity checks, and understanding where your return is coming from.",
+      },
+    ],
+    faqs: [
+      {
+        question: "What is the ROI formula?",
+        answer:
+          "The basic ROI formula is (gain from investment minus cost of investment) divided by cost of investment, expressed as a percentage. For example, investing $10,000 and ending up with $12,500 is a $2,500 gain on $10,000, or 25% ROI. This is simple for one-time investments but gets complicated when there is leverage, time value of money, or multi-year cash flows, which is why this calculator has three specialized modes.",
+      },
+      {
+        question: "What is ROAS and how is it different from ROI?",
+        answer:
+          "ROAS (Return on Ad Spend) is revenue divided by ad spend, expressed as a multiplier (3x, 4x, etc.). It measures gross revenue per dollar of advertising, ignoring product costs, overhead, and taxes. ROI is profit divided by cost, expressed as a percentage, and is the actual bottom-line measure. A 4x ROAS with 50% product costs only gives you 100% ROI, because half your revenue goes to COGS. Marketing teams track ROAS for campaign optimization; finance teams track ROI for profitability.",
+      },
+      {
+        question: "What is cap rate and what is a good cap rate?",
+        answer:
+          "Cap rate (capitalization rate) is Net Operating Income (NOI) divided by property price, expressed as a percentage. It measures unleveraged yield (the return you would get paying all cash). Generally, 4% to 5% cap rates are typical in expensive metros like New York and San Francisco, 6% to 8% in mid-tier markets, and 9%+ in high-risk or rural areas. Higher cap rates mean higher yield but usually higher risk, worse locations, or more management headaches. Always compare cap rates within the same market and property type.",
+      },
+      {
+        question: "What is cash-on-cash return?",
+        answer:
+          "Cash-on-cash return is annual pre-tax cash flow divided by total cash invested (down payment plus closing costs plus repairs). Unlike cap rate, it includes the effect of leverage, because if you put 20% down on a property, a relatively small cash flow can still produce a strong cash-on-cash number. A cash-on-cash return of 8% or higher is typically considered good for US residential rentals; below 4% is usually too tight of a margin.",
+      },
+      {
+        question: "What is NPV and why does it matter?",
+        answer:
+          "NPV (Net Present Value) discounts each future cash flow back to today's dollars using your chosen discount rate, then subtracts the initial investment. A positive NPV means the project beats your required return (the discount rate). A negative NPV means it does not, and you would be better off putting the money elsewhere. NPV is the gold standard for evaluating multi-year business investments because it correctly accounts for time value of money, which simple ROI does not.",
+      },
+      {
+        question: "What is IRR?",
+        answer:
+          "IRR (Internal Rate of Return) is the discount rate at which NPV equals zero. In plain English, it is the annualized return rate the project effectively generates. If your IRR is 15% and your cost of capital is 10%, the project creates value. If IRR is 6% and your cost of capital is 10%, it destroys value. IRR has no closed-form solution so this calculator solves it numerically using bisection, which works for any realistic cash flow pattern.",
+      },
+      {
+        question: "How do you calculate payback period?",
+        answer:
+          "Payback period is the time it takes for cumulative cash flows to equal the initial investment. For example, if you invest $50,000 and get $15k, $18k, $20k in years 1 through 3, you recover the investment during year 3: $50k minus $15k minus $18k leaves $17k to recover from year 3's $20k, so payback is 2 plus (17/20), or 2.85 years. Payback period ignores cash flows after the payback point and ignores time value of money, so it is a quick screen rather than a complete evaluation metric. Pair it with NPV or IRR.",
+      },
+      {
+        question: "What discount rate should I use for NPV?",
+        answer:
+          "Use your weighted average cost of capital (WACC) or your required rate of return. For small businesses, 10% to 15% is typical. For corporate finance, 8% to 12% is common. For personal investments, use the return you could get from a low-cost index fund, roughly 7% to 10%. The higher the discount rate, the more future cash flows are penalized, so risky projects should use higher discount rates than safe ones.",
+      },
+      {
+        question: "Does the real estate mode include taxes and depreciation?",
+        answer:
+          "No. The real estate mode calculates pre-tax cash flow, cap rate, and leveraged total return. It does not include income taxes on rental income, depreciation deductions, depreciation recapture on sale, or capital gains tax at sale. For tax-inclusive analysis, consult a CPA or real estate tax professional. The tool is intended to screen deals quickly, not to prepare a tax return.",
+      },
+      {
+        question: "Why is my ROAS different from my ROI?",
+        answer:
+          "ROAS is gross (revenue divided by ad spend) and ROI is net (profit divided by total cost). A 4x ROAS might translate to only 60% ROI or even a loss, depending on your product costs. Always include cost of goods sold in the ROI calculation to get a realistic picture. Marketing dashboards often show ROAS because it is simpler to attribute, but finance teams care about ROI because that is what ends up on the P&L.",
+      },
+    ],
+    relatedSlugs: [
+      "investment-return-calculator",
+      "compound-interest-calculator",
+      "mortgage-calculator",
+      "percentage-calculator",
+    ],
+    keywords: [
+      "ROI calculator",
+      "return on investment calculator",
+      "marketing ROI calculator",
+      "ROAS calculator",
+      "real estate ROI calculator",
+      "cap rate calculator",
+      "cash on cash calculator",
+      "NPV calculator",
+      "IRR calculator",
+      "payback period calculator",
+    ],
+  },
 ]
