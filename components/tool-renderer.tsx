@@ -186,6 +186,10 @@ const registry: Record<string, ComponentType> = {
     () => import("@/components/tools/invoice-generator"),
     { ssr: false, loading: Loading }
   ),
+  "income-tax-calculator": dynamic(
+    () => import("@/components/tools/income-tax-calculator"),
+    { ssr: false, loading: Loading }
+  ),
 }
 
 export function ToolRenderer({

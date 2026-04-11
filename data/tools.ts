@@ -29,6 +29,7 @@ import {
   TimeZoneIcon,
   School01Icon,
   Invoice01Icon,
+  TaxesIcon,
   NaturalFoodIcon,
   LeftToRightListNumberIcon,
   Globe02Icon,
@@ -2587,6 +2588,137 @@ export const TOOLS: Tool[] = [
       "create invoice online",
       "pdf invoice generator",
       "invoice generator no signup",
+    ],
+  },
+
+  // 42. Income Tax Calculator (US)
+  {
+    slug: "income-tax-calculator",
+    name: "Income Tax Calculator",
+    category: "calculators",
+    icon: TaxesIcon,
+    componentName: "income-tax-calculator",
+    h1: "Free US Income Tax Calculator — Federal & State Tax Estimator",
+    titleTag: "Income Tax Calculator 2025: Federal + State | FreeToolPark",
+    metaDescription:
+      "Estimate your 2025 federal and state income taxes. Free tax calculator with deductions, credits, FICA, and effective vs marginal rate breakdown.",
+    introduction:
+      "The Income Tax Calculator estimates your 2025 federal income tax, state tax, FICA (or self-employment tax), and take-home pay in seconds. Enter your annual income, filing status, state, pre-tax deductions like 401(k) and HSA, itemized deductions, and any tax credits — the calculator applies the official 2025 federal brackets, determines whether your standard or itemized deduction is larger, computes Social Security and Medicare with the correct wage base and additional Medicare threshold, and estimates your state tax using each state's effective rate. Unlike calculators that only cover federal tax, this tool handles all 50 states plus DC, supports both W-2 employees and self-employed filers (with automatic SE tax and half-deduction), and shows you the exact bracket-by-bracket breakdown so you can see how marginal vs effective rates actually work. Use the What-If slider to instantly see how a raise, bonus, or pay cut would change your take-home. Whether you're planning a job change, negotiating salary, tuning your 401(k) contribution, or just want to understand where your paycheck goes, this is the fastest way to get a reliable tax estimate.",
+    whyUse: [
+      "Official 2025 IRS federal brackets for all five filing statuses",
+      "All 50 states plus DC with effective state rate estimates",
+      "Handles Social Security (6.2%), Medicare (1.45%), and Additional Medicare (0.9%)",
+      "Self-employed mode with SE tax and automatic half-deduction to AGI",
+      "Automatic standard vs itemized comparison — uses whichever is larger",
+      "Bracket-by-bracket visualization showing marginal vs effective rate",
+      "Take-home pay displayed as annual, monthly, biweekly, and weekly",
+      "What-If slider for instant raise / bonus / pay cut impact",
+      "Pre-tax deduction support for 401(k), HSA, and other payroll reductions",
+      "Tax credits applied directly to your federal tax owed",
+      "All calculations run in your browser — your income data never leaves your device",
+    ],
+    whyUseSummary:
+      "US Income Tax Calculator estimates your 2025 federal, state, and FICA taxes with bracket breakdown, take-home pay, and what-if scenarios. Supports W-2 and self-employed, all 50 states, and every filing status.",
+    steps: [
+      {
+        title: "Choose W-2 Employee or Self-Employed",
+        description:
+          "Pick 'Employee (W-2)' if your taxes are withheld through payroll, or 'Self-Employed' if you pay estimated taxes on 1099 income. The self-employed mode applies SE tax (15.3%) and automatically deducts half of it from your AGI, matching IRS rules.",
+      },
+      {
+        title: "Select your filing status and state",
+        description:
+          "Choose Single, Married Filing Jointly, Married Filing Separately, Head of Household, or Qualifying Widow(er). Pick your state from the dropdown — all 50 states plus DC are supported, including the nine states with no income tax on wages.",
+      },
+      {
+        title: "Enter your annual income",
+        description:
+          "Enter your total gross income for the year before any deductions. For W-2 employees this is your salary before taxes; for self-employed filers it is your net self-employment income.",
+      },
+      {
+        title: "Add pre-tax deductions",
+        description:
+          "Enter your total pre-tax contributions to 401(k), HSA, or similar cafeteria plans. These reduce both your AGI and your FICA wages, so they lower your taxes twice.",
+      },
+      {
+        title: "Add itemized deductions and credits (optional)",
+        description:
+          "If you plan to itemize, enter your total itemized deductions. The calculator automatically compares to the 2025 standard deduction and uses whichever is larger. Enter any tax credits (Child Tax Credit, Saver's Credit, etc.) — they reduce your federal tax dollar-for-dollar.",
+      },
+      {
+        title: "Review your results and run what-if scenarios",
+        description:
+          "Check your take-home pay, total tax, effective rate, and bracket-by-bracket breakdown. Use the What-If slider to see how a raise or pay cut would change your take-home pay and how much of the extra income you actually keep after all taxes.",
+      },
+    ],
+    faqs: [
+      {
+        question: "What tax year does this calculator use?",
+        answer:
+          "This calculator uses the 2025 federal tax brackets, standard deductions, and Social Security wage base published by the IRS and Social Security Administration. For Single filers, the 2025 brackets are 10% up to $11,925, 12% up to $48,475, 22% up to $103,350, 24% up to $197,300, 32% up to $250,525, 35% up to $626,350, and 37% above that. Married Filing Jointly brackets are roughly double, and Head of Household sits in between.",
+      },
+      {
+        question: "What is the difference between effective and marginal tax rate?",
+        answer:
+          "Your marginal tax rate is the rate on the next dollar you earn — it's the bracket your highest dollar of income falls into. Your effective tax rate is your total tax divided by your total income — what you actually pay as a percentage. Because the US uses a progressive bracket system, your effective rate is always lower than your marginal rate. For example, a Single filer earning $100,000 has a 22% marginal rate but only a ~14% effective federal rate, since most of their income is taxed at 10% and 12% before reaching the 22% bracket.",
+      },
+      {
+        question: "Does this calculator include FICA (Social Security and Medicare)?",
+        answer:
+          "Yes. The calculator adds Social Security tax at 6.2% on wages up to the 2025 wage base of $176,100, Medicare tax at 1.45% on all wages, and the Additional Medicare Tax of 0.9% on wages above $200,000 Single, $250,000 MFJ, or $125,000 MFS. For self-employed filers, SE tax is calculated at 15.3% on 92.35% of SE earnings, and half of the total SE tax is automatically deducted from AGI.",
+      },
+      {
+        question: "How does the standard vs itemized deduction comparison work?",
+        answer:
+          "For 2025, the standard deduction is $15,000 for Single and MFS, $30,000 for MFJ and QW, and $22,500 for HoH. When you enter a value in the Itemized Deductions field, the calculator automatically uses whichever is larger — standard or itemized — so you always get the best outcome. The breakdown shows which deduction was applied.",
+      },
+      {
+        question: "Why does a raise return less than the raise amount after taxes?",
+        answer:
+          "A raise is taxed at your marginal rate, not your effective rate. If you're in the 22% federal bracket, live in a 6% state, and pay 7.65% FICA, about 36% of your raise goes to taxes — so a $10,000 raise adds roughly $6,400 to your take-home. The What-If slider in this calculator shows exactly how much of any raise you'd keep based on your specific bracket, state, and deductions.",
+      },
+      {
+        question: "How accurate are the state tax estimates?",
+        answer:
+          "State tax is estimated using each state's approximate effective rate for a single filer at median income, based on the most common bracket or flat rate. This is accurate enough for planning and what-if scenarios but is not a substitute for running your actual state return, especially if you itemize, have multi-state income, or live in a state with complex local taxes like NYC. Nine states (AK, FL, NV, NH, SD, TN, TX, WA, WY) have no income tax on wages and show 0%.",
+      },
+      {
+        question: "How does self-employed mode differ from W-2?",
+        answer:
+          "Self-employed filers pay both halves of Social Security and Medicare — called Self-Employment (SE) tax — totaling 15.3% on 92.35% of net SE earnings. The Social Security portion (12.4%) stops at the wage base; the Medicare portion (2.9%) has no cap. The IRS lets you deduct half of SE tax from your AGI to roughly mirror how employer payroll taxes are handled for W-2 workers. This calculator applies that half-deduction automatically. It does not currently model the QBI deduction, which may further reduce your taxable income.",
+      },
+      {
+        question: "Can I use this calculator to figure out my 401(k) contribution?",
+        answer:
+          "Yes. Enter different pre-tax deduction amounts to see how increasing your 401(k) contribution affects your take-home pay and total tax. You'll typically find that each $1,000 added to 401(k) only reduces take-home by $650–$780 because you save federal, state, and sometimes Medicare taxes on that contribution. Use this to find a contribution level that maxes your tax savings without crushing your paycheck.",
+      },
+      {
+        question: "Is my income data private?",
+        answer:
+          "Yes, completely. Every calculation runs in your browser. Nothing is uploaded, logged, or transmitted to our servers. We never see your income, state, filing status, or any other input. You can check by opening your browser's developer tools — there are no network requests during calculation.",
+      },
+      {
+        question: "Is this tax advice?",
+        answer:
+          "No. This calculator provides estimates for planning purposes only and does not constitute tax advice. It does not model every credit, deduction, AMT, phase-out, or state-specific rule. Consult a CPA or qualified tax professional before making decisions based on these estimates or before filing your tax return.",
+      },
+    ],
+    relatedSlugs: [
+      "mortgage-calculator",
+      "loan-calculator",
+      "percentage-calculator",
+      "interest-calculator",
+    ],
+    keywords: [
+      "income tax calculator",
+      "federal income tax calculator",
+      "2025 tax calculator",
+      "take home pay calculator",
+      "tax calculator",
+      "state income tax calculator",
+      "self employment tax calculator",
+      "us tax calculator",
+      "paycheck tax calculator",
     ],
   },
 ]
