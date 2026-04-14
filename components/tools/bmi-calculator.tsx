@@ -89,8 +89,8 @@ export default function BmiCalculator() {
 
   const ranges = [
     { label: "Underweight", range: "< 18.5", color: "bg-blue-500" },
-    { label: "Normal", range: "18.5 – 24.9", color: "bg-green-500" },
-    { label: "Overweight", range: "25 – 29.9", color: "bg-yellow-500" },
+    { label: "Normal", range: "18.5 to 24.9", color: "bg-green-500" },
+    { label: "Overweight", range: "25 to 29.9", color: "bg-yellow-500" },
     { label: "Obese", range: "≥ 30", color: "bg-red-500" },
   ]
 

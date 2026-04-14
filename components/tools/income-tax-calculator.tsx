@@ -578,7 +578,7 @@ export default function IncomeTaxCalculator() {
                       <span className="font-medium">
                         {fmtPct(b.rate * 100)} bracket
                         <span className="ml-2 text-muted-foreground">
-                          ({fmt(b.from)} –{" "}
+                          ({fmt(b.from)} to{" "}
                           {b.to === Number.POSITIVE_INFINITY
                             ? "∞"
                             : fmt(b.to)}

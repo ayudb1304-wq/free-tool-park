@@ -115,13 +115,13 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Most Visited Tools — top of homepage, above all other categories */}
+      {/* Most Visited Tools: top of homepage, above all other categories */}
       <MostVisitedTools />
 
-      {/* Browse by Category — links to all category hub pages for crawl depth */}
+      {/* Browse by Category: links to all category hub pages for crawl depth */}
       <BrowseByCategory />
 
-      {/* Recently Added — gives new tools instant internal links from homepage */}
+      {/* Recently Added: gives new tools instant internal links from homepage */}
       <RecentlyAdded tools={recentTools} />
 
       <section className="mt-12">

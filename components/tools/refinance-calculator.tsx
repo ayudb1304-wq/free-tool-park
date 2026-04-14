@@ -171,7 +171,7 @@ function calculateRefinance(
 
   const remainingMonths = Math.round(yearsRemaining * 12)
 
-  // Current loan — compute what remains to be paid.
+  // Current loan: compute what remains to be paid.
   const currentPI = monthlyPayment(currentBalance, currentRate, remainingMonths)
   const currentTotalRemainingCost = currentPI * remainingMonths
   const currentTotalInterestRemaining = currentTotalRemainingCost - currentBalance
@@ -201,7 +201,7 @@ function calculateRefinance(
 
   const rateDrop = currentRate - newRate
 
-  // Build savings curve — cumulative net savings (monthly savings * months - upfront closing costs).
+  // Build savings curve: cumulative net savings (monthly savings * months - upfront closing costs).
   const curveEnd = Math.min(newMonths, remainingMonths)
   const savingsCurve: SavingsPoint[] = []
   const step = Math.max(1, Math.round(curveEnd / 60))
@@ -236,7 +236,7 @@ function calculateRefinance(
     verdictReason =
       lifetimeSavings <= 0
         ? "Closing costs wipe out your interest savings."
-        : `Break-even is ${Math.round(breakEvenMonths)} months — too long to recoup the closing costs.`
+        : `Break-even is ${Math.round(breakEvenMonths)} months, too long to recoup the closing costs.`
   }
 
   return {
@@ -541,7 +541,7 @@ export default function RefinanceCalculator() {
                 onChange={(e) => setCashOut(e.target.value)}
               />
               <p className="text-xs text-muted-foreground">
-                Optional — for cash-out refinance
+                Optional, for cash-out refinance
               </p>
             </div>
             <div className="flex items-end pb-1">
@@ -726,10 +726,10 @@ export default function RefinanceCalculator() {
                 Your rate drop is{" "}
                 <strong>{result.rateDrop.toFixed(2)}%</strong>.{" "}
                 {result.rateDrop >= 0.75
-                  ? "The conventional rule of thumb says refinancing is worth it above 0.75% — you're in the clear."
+                  ? "The conventional rule of thumb says refinancing is worth it above 0.75%, and you're in the clear."
                   : result.rateDrop > 0
                     ? "Most lenders suggest at least a 0.75% rate drop to justify refinancing costs."
-                    : "Your new rate is higher than your current rate — only consider this for cash-out purposes."}
+                    : "Your new rate is higher than your current rate. Only consider this for cash-out purposes."}
               </li>
               {Number(cashOut) > 0 && (
                 <li>

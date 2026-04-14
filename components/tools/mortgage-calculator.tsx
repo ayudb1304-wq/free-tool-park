@@ -775,7 +775,7 @@ export default function MortgageCalculator() {
                 Your LTV is {fmtPct(result.ltv)}.{" "}
                 {result.ltv > 80
                   ? `You'll pay PMI of ${fmtFull(result.monthlyPMI)}/month until your LTV reaches 78%.`
-                  : "No PMI required — great!"}
+                  : "No PMI required, great!"}
               </li>
               {result.pmiRemovalDate && (
                 <li>

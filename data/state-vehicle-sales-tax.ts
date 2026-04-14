@@ -1,6 +1,6 @@
 // Average vehicle sales tax rates by US state (combined state + average local)
 // Sources: Tax Foundation, Avalara, DMV.org (2024). These are statewide averages
-// — actual rates can vary by county and municipality. Users can override.
+// Actual rates can vary by county and municipality. Users can override.
 
 export interface StateVehicleTax {
   name: string

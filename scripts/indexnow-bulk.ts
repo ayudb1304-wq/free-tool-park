@@ -35,7 +35,7 @@ async function submitAllPages() {
     const chunk = urls.slice(i, i + chunkSize)
     const ok = await pingIndexNow(chunk)
     console.log(
-      `Submitted ${chunk.length} URLs to IndexNow — ${ok ? "success" : "failed"}`,
+      `Submitted ${chunk.length} URLs to IndexNow: ${ok ? "success" : "failed"}`,
     )
   }
 

@@ -322,7 +322,7 @@ function calculateLoan(
     balanceCurve.push({ year: y, balance: stdBal, withExtra: extraBal })
   }
 
-  // Payoff date — start from current month
+  // Payoff date: start from current month
   const now = new Date()
   const payoffDate = new Date(
     now.getFullYear(),
@@ -500,7 +500,7 @@ export default function LoanCalculator() {
     ? `Monthly Payment: ${fmtFull(result.monthlyPayment)}\nTotal Interest: ${fmtFull(result.totalInterest)}\nTotal Paid: ${fmtFull(result.totalPaid)}\nPayoff: ${result.payoffMonths} months`
     : ""
 
-  // Smart insights — payoff strategy optimizer
+  // Smart insights: payoff strategy optimizer
   const insights = useMemo(() => {
     if (!result) return [] as string[]
     const out: string[] = []
@@ -520,11 +520,11 @@ export default function LoanCalculator() {
       const [low, high] = currentLoanType.rateRange
       if (r < low) {
         out.push(
-          `Your ${r.toFixed(2)}% rate is below the typical ${low}%–${high}% range for a ${currentLoanType.label.toLowerCase()} — double-check the quote.`
+          `Your ${r.toFixed(2)}% rate is below the typical ${low}% to ${high}% range for a ${currentLoanType.label.toLowerCase()}, so double-check the quote.`
         )
       } else if (r > high) {
         out.push(
-          `Your ${r.toFixed(2)}% rate is above the typical ${low}%–${high}% range for a ${currentLoanType.label.toLowerCase()}. Shop around — you may qualify for a better rate elsewhere.`
+          `Your ${r.toFixed(2)}% rate is above the typical ${low}% to ${high}% range for a ${currentLoanType.label.toLowerCase()}. Shop around, you may qualify for a better rate elsewhere.`
         )
       }
     }
@@ -565,7 +565,7 @@ export default function LoanCalculator() {
     // Refinance suggestion when rate is high
     if (currentLoanType && r >= currentLoanType.rateRange[1] - 1) {
       out.push(
-        `Refinance check: your rate is on the high end. Even a 2 percentage-point drop on this balance could save thousands — worth getting fresh quotes from a credit union.`
+        `Refinance check: your rate is on the high end. Even a 2 percentage-point drop on this balance could save thousands, so it is worth getting fresh quotes from a credit union.`
       )
     }
 
@@ -603,7 +603,7 @@ export default function LoanCalculator() {
                 <SelectContent>
                   {LOAN_TYPES.map((t) => (
                     <SelectItem key={t.id} value={t.id}>
-                      {t.label} (typical {t.rateRange[0]}–{t.rateRange[1]}%)
+                      {t.label} (typical {t.rateRange[0]} to {t.rateRange[1]}%)
                     </SelectItem>
                   ))}
                 </SelectContent>
@@ -701,7 +701,7 @@ export default function LoanCalculator() {
                 up-front fees and origination costs, giving you the true yearly
                 cost of borrowing. APR is almost always higher than the
                 interest rate. When comparing loans, always compare APR to APR
-                — not interest rate to APR.
+                (not interest rate to APR).
               </p>
             </div>
           )}
@@ -764,7 +764,7 @@ export default function LoanCalculator() {
             </div>
           </div>
 
-          {/* Smart Insights Panel (USP #3 — payoff strategy optimizer) */}
+          {/* Smart Insights Panel (USP #3, payoff strategy optimizer) */}
           <div className="rounded-xl border border-primary/20 bg-primary/5 p-4">
             <h3 className="mb-3 font-semibold text-primary">
               Smart Insights & Payoff Strategy

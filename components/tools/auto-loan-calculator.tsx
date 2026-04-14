@@ -125,7 +125,7 @@ function calculateAutoLoan(
   const tradeInEquity = tradeInValue - tradeInOwed
 
   // Most states tax the vehicle price minus the trade-in value.
-  // A handful tax the full price — we expose a toggle.
+  // A handful tax the full price, so we expose a toggle.
   const taxableAmount = taxOnTradeInReduction
     ? Math.max(0, vehiclePrice - tradeInValue)
     : vehiclePrice
@@ -597,7 +597,7 @@ export default function AutoLoanCalculator() {
               <Row label="Title / Registration Fees" value={fmt(Number(fees))} />
               <Row
                 label="Down Payment"
-                value={`– ${fmt(Number(downPayment))}`}
+                value={`- ${fmt(Number(downPayment))}`}
               />
               {hasTrade && (
                 <Row
@@ -606,7 +606,7 @@ export default function AutoLoanCalculator() {
                       ? "Negative Equity (added)"
                       : "Trade-In Equity (subtracted)"
                   }
-                  value={`${underwater ? "+" : "–"} ${fmt(
+                  value={`${underwater ? "+" : "-"} ${fmt(
                     Math.abs(result.tradeInEquity)
                   )}`}
                 />
@@ -702,7 +702,7 @@ export default function AutoLoanCalculator() {
                   You&apos;re rolling{" "}
                   <strong>{fmt(Math.abs(result.tradeInEquity))}</strong> of
                   negative equity from your trade-in into the new loan. You
-                  will start the new loan significantly underwater — consider
+                  will start the new loan significantly underwater. Consider
                   paying off the old loan first if possible.
                 </li>
               )}

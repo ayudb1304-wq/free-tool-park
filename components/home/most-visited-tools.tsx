@@ -30,12 +30,12 @@ export function MostVisitedTools() {
         <div>
           <h2 className="text-2xl font-semibold">Most Visited Tools</h2>
           <p className="mt-1 text-sm text-muted-foreground">
-            Our most popular free tools — used by millions every month
+            Our most popular free tools, used by millions every month
           </p>
         </div>
       </div>
 
-      {/* Built tools — featured grid */}
+      {/* Built tools: featured grid */}
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {builtTools.map((tool) => (
           <Link key={tool.slug} href={`/tools/${tool.slug}`}>

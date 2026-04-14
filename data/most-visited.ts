@@ -27,7 +27,7 @@ export interface MostVisitedTool {
 }
 
 export const MOST_VISITED_TOOLS: MostVisitedTool[] = [
-  // P0 — Build First
+  // P0: Build First
   {
     slug: "mortgage-calculator",
     name: "Mortgage Calculator",
@@ -77,7 +77,7 @@ export const MOST_VISITED_TOOLS: MostVisitedTool[] = [
     icon: CalculatorIcon,
     priority: "P0",
   },
-  // P1 — Build Second
+  // P1: Build Second
   {
     slug: "salary-to-hourly-calculator",
     name: "Salary to Hourly Calculator",
@@ -127,7 +127,7 @@ export const MOST_VISITED_TOOLS: MostVisitedTool[] = [
     icon: NaturalFoodIcon,
     priority: "P1",
   },
-  // P2 — Build Third
+  // P2: Build Third
   {
     slug: "macro-calculator",
     name: "Macro Calculator",
