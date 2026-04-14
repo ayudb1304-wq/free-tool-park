@@ -210,6 +210,18 @@ const registry: Record<string, ComponentType> = {
     () => import("@/components/tools/profit-margin-calculator"),
     { ssr: false, loading: Loading }
   ),
+  "break-even-calculator": dynamic(
+    () => import("@/components/tools/break-even-calculator"),
+    { ssr: false, loading: Loading }
+  ),
+  "macro-calculator": dynamic(
+    () => import("@/components/tools/macro-calculator"),
+    { ssr: false, loading: Loading }
+  ),
+  "body-fat-calculator": dynamic(
+    () => import("@/components/tools/body-fat-calculator"),
+    { ssr: false, loading: Loading }
+  ),
 }
 
 export function ToolRenderer({

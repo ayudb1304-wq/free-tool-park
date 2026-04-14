@@ -3365,4 +3365,385 @@ export const TOOLS: Tool[] = [
       "profit calculator",
     ],
   },
+  {
+    slug: "break-even-calculator",
+    name: "Break-Even Calculator",
+    category: "calculators",
+    icon: PercentIcon,
+    componentName: "break-even-calculator",
+    h1: "Break-Even Calculator: Units and Revenue Required to Break Even",
+    titleTag:
+      "Break-Even Calculator: Units, Revenue & Margin of Safety | FreeToolPark",
+    metaDescription:
+      "Calculate your break-even point in units and revenue. Includes multi-product mode, sensitivity analysis with sliders, margin of safety, and a visual break-even chart.",
+    introduction:
+      "A break-even calculator tells you exactly how many units you need to sell, or how much revenue you need to earn, before your business starts making a profit. It works by comparing your fixed costs (rent, salaries, insurance, and other expenses that stay the same regardless of sales volume) against your contribution margin (the difference between your selling price and the variable cost to produce each unit). Once total contribution margin covers fixed costs, every additional sale becomes profit. This tool goes beyond the basic formula. Single-product mode shows your break-even point in both units and revenue, calculates your margin of safety (how far above break-even your current sales are), and displays a visual chart showing where revenue crosses total costs. Multi-product mode handles businesses with multiple SKUs by weighting each product's contribution margin according to its share of total sales. Sensitivity mode lets you drag sliders to see how changes in price, variable cost, or fixed costs shift the break-even point, so you can model scenarios before committing to a pricing change. Everything runs in your browser. No data leaves your device, no signup required.",
+    whyUse: [
+      "Shows break-even in both units and revenue so you see the full picture",
+      "Visual break-even chart highlights the exact intersection of revenue and costs",
+      "Margin of safety calculator shows how much cushion you have above break-even",
+      "Multi-product mode handles businesses with multiple SKUs using weighted contribution margins",
+      "Sensitivity analysis with sliders lets you model price, cost, and fixed cost changes instantly",
+      "Price sensitivity table shows break-even at nine different price points side by side",
+      "Profit table shows your earnings at various sales levels around the break-even point",
+      "Contribution margin and contribution margin ratio displayed for every scenario",
+      "Runs entirely in your browser with no signup and no data collection",
+    ],
+    whyUseSummary:
+      "Break-Even Calculator shows your break-even point in units and revenue. Includes multi-product mode, sensitivity sliders, margin of safety, and a visual chart.",
+    steps: [
+      {
+        title: "Choose your mode",
+        description:
+          "Use Single Product for a straightforward break-even analysis. Use Multi-Product when you sell more than one item and need a combined break-even across all SKUs. Use Sensitivity to see how changes in price, variable cost, or fixed costs affect your break-even point.",
+      },
+      {
+        title: "Enter your fixed costs",
+        description:
+          "Type the total monthly (or annual) fixed costs for your business. These are costs that do not change with sales volume: rent, salaries, insurance, loan payments, and subscriptions. The break-even point rises with higher fixed costs.",
+      },
+      {
+        title: "Enter price and variable cost per unit",
+        description:
+          "Type the price you charge per unit and the variable cost to produce or acquire each unit (materials, labor per unit, shipping). The difference between these two numbers is your contribution margin per unit.",
+      },
+      {
+        title: "Review the break-even results",
+        description:
+          "The calculator instantly shows how many units you need to sell and how much revenue you need to earn to cover all costs. It also shows your contribution margin, contribution margin ratio, and profit or loss at your current sales level.",
+      },
+      {
+        title: "Check your margin of safety",
+        description:
+          "Enter your current or expected sales volume to see how far above (or below) break-even you are. The margin of safety is shown in units, as a percentage, and as a revenue cushion, so you know how much sales can drop before you start losing money.",
+      },
+      {
+        title: "Run sensitivity scenarios",
+        description:
+          "Switch to Sensitivity mode and drag the sliders to model what happens if you raise your price by 10%, or if material costs increase by 15%. The price sensitivity table shows break-even at nine price points from -20% to +20%, so you can compare scenarios at a glance.",
+      },
+    ],
+    faqs: [
+      {
+        question: "What is a break-even point?",
+        answer:
+          "The break-even point is the number of units you need to sell (or the total revenue you need to earn) for your total revenue to equal your total costs. At break-even, profit is exactly zero: you have covered all fixed and variable costs but have not yet made a profit. Every unit sold beyond the break-even point generates profit equal to the contribution margin per unit.",
+      },
+      {
+        question: "How do you calculate break-even units?",
+        answer:
+          "Break-even units equals fixed costs divided by contribution margin per unit. Contribution margin per unit is selling price minus variable cost per unit. For example, if fixed costs are $10,000, price is $50, and variable cost is $20, then contribution margin is $30 and break-even is 10,000 / 30 = 334 units.",
+      },
+      {
+        question: "How do you calculate break-even revenue?",
+        answer:
+          "Break-even revenue equals fixed costs divided by the contribution margin ratio. The contribution margin ratio is contribution margin per unit divided by the selling price. Using the same example: contribution margin ratio is 30 / 50 = 0.60, so break-even revenue is 10,000 / 0.60 = $16,667.",
+      },
+      {
+        question: "What is contribution margin?",
+        answer:
+          "Contribution margin is the selling price minus the variable cost per unit. It represents how much each unit sold contributes toward covering fixed costs. Once enough units are sold to cover all fixed costs, the contribution margin on each additional unit becomes profit. A higher contribution margin means fewer units are needed to break even.",
+      },
+      {
+        question: "What is margin of safety?",
+        answer:
+          "Margin of safety measures how far your current sales are above the break-even point. It is calculated as (Current Sales minus Break-Even Sales) divided by Current Sales, expressed as a percentage. A 25% margin of safety means sales could drop by 25% before you start losing money. A higher margin of safety gives you more cushion against downturns.",
+      },
+      {
+        question: "What is the difference between fixed and variable costs?",
+        answer:
+          "Fixed costs stay the same regardless of how many units you sell. Examples include rent, salaries, insurance, and loan payments. Variable costs change in direct proportion to sales volume. Examples include raw materials, per-unit labor, packaging, and shipping. The break-even formula separates these two because fixed costs are the 'hurdle' you need to clear, and contribution margin (price minus variable cost) is what clears it.",
+      },
+      {
+        question: "How does multi-product break-even work?",
+        answer:
+          "When you sell multiple products at different prices and costs, you calculate a weighted average contribution margin based on each product's share of total sales (the sales mix). The formula is the same: total fixed costs divided by the weighted average contribution margin. Each product's individual break-even allocation is then calculated by applying its sales mix percentage to the total break-even units.",
+      },
+      {
+        question: "How can I lower my break-even point?",
+        answer:
+          "There are three ways to lower your break-even point: reduce fixed costs, increase your selling price, or decrease your variable cost per unit. The sensitivity mode in this calculator lets you model all three changes using sliders, so you can see exactly how each lever affects the number of units you need to sell. A 10% price increase, for example, often has a larger impact than a 10% cost reduction.",
+      },
+      {
+        question: "Can I use this for a service business?",
+        answer:
+          "Yes. For service businesses, think of each billable hour, project, or client engagement as a 'unit'. Your variable cost per unit is the direct cost to deliver that service (contractor pay, materials, software licenses per project). Your fixed costs are overhead (office rent, full-time salaries, tools, insurance). The break-even calculation tells you how many billable hours or projects you need each month to cover costs.",
+      },
+      {
+        question: "Is my financial data private?",
+        answer:
+          "Yes. Every calculation runs entirely in your browser. No data is uploaded to any server, no cookies are set, and no account is required. You can safely enter real business numbers without any privacy concerns.",
+      },
+    ],
+    relatedSlugs: [
+      "profit-margin-calculator",
+      "roi-calculator",
+      "investment-return-calculator",
+      "percentage-calculator",
+    ],
+    keywords: [
+      "break even calculator",
+      "break even point calculator",
+      "break even analysis",
+      "contribution margin calculator",
+      "margin of safety calculator",
+      "break even units",
+      "break even revenue",
+      "multi product break even",
+      "break even chart",
+    ],
+  },
+  {
+    slug: "macro-calculator",
+    name: "Macro Calculator",
+    category: "calculators",
+    icon: NaturalFoodIcon,
+    componentName: "macro-calculator",
+    h1: "Macro Calculator: Protein, Carbs and Fat Targets for Your Goals",
+    titleTag:
+      "Macro Calculator: Protein, Carbs & Fat Targets | FreeToolPark",
+    metaDescription:
+      "Calculate your daily protein, carb, and fat targets based on your body stats, activity level, and fitness goal. Includes keto, paleo, IIFYM presets and meal-by-meal breakdown.",
+    introduction:
+      "A macro calculator takes your body stats and fitness goal and tells you exactly how many grams of protein, carbohydrates, and fat to eat each day. It starts with your Basal Metabolic Rate (the calories your body burns at rest), adjusts for your activity level to get your Total Daily Energy Expenditure, then applies your goal: a 500-calorie deficit for fat loss, maintenance for holding steady, or a 500-calorie surplus for muscle gain. From there it splits your target calories across the three macronutrients using a ratio that matches your diet style. Choose from six presets: Balanced (30/40/30), High Protein (40/30/30), Low Carb (35/20/45), Keto (20/5/75), Paleo (35/25/40), or IIFYM where you set your own percentages. Switch to Meal Breakdown mode and the calculator distributes your daily targets across 2 to 6 meals, with realistic portions for breakfast, lunch, dinner, and snacks. Smart insights flag whether your protein intake is in the optimal range for your body weight and warn you about very low calorie targets. Everything runs in your browser with no signup and no data collection.",
+    whyUse: [
+      "Goal-based macro splits for cutting, maintaining, or bulking with appropriate calorie adjustments",
+      "Six diet presets: Balanced, High Protein, Low Carb, Keto, Paleo, and fully custom IIFYM",
+      "Meal-by-meal breakdown splits your daily targets across 2 to 6 meals with realistic portions",
+      "Visual macro bar shows your protein, carb, and fat split at a glance",
+      "Smart insights check your protein per kg against research-backed recommendations",
+      "All goals compared side by side so you can see exactly how cut, maintain, and bulk differ",
+      "Per-meal cards with mini macro bars make it easy to plan each meal",
+      "Supports both imperial (lbs/inches) and metric (kg/cm) units with instant conversion",
+      "Runs entirely in your browser with no signup, no data collection, and no server processing",
+    ],
+    whyUseSummary:
+      "Macro Calculator shows your daily protein, carb, and fat targets for any fitness goal. Includes six diet presets, meal-by-meal breakdown, and smart protein insights.",
+    steps: [
+      {
+        title: "Enter your body stats",
+        description:
+          "Choose imperial or metric units, then enter your gender, age, weight, and height. Select your activity level from the dropdown. The calculator uses the Mifflin-St Jeor equation to estimate your Basal Metabolic Rate.",
+      },
+      {
+        title: "Pick your goal",
+        description:
+          "Choose Cut (500-calorie deficit for fat loss), Maintain (stay at your current weight), or Bulk (500-calorie surplus for muscle gain). The calculator adjusts your target calories based on your selection.",
+      },
+      {
+        title: "Select a diet preset",
+        description:
+          "Pick from Balanced, High Protein, Low Carb, Keto, Paleo, or IIFYM. Each preset uses a different protein/carbs/fat percentage split. Choose IIFYM to set your own custom percentages.",
+      },
+      {
+        title: "Review your macro targets",
+        description:
+          "The calculator shows your BMR, TDEE, and target calories along with the exact grams of protein, carbs, and fat you need per day. The visual macro bar shows your split at a glance.",
+      },
+      {
+        title: "Check the smart insights",
+        description:
+          "The insights panel checks whether your protein intake falls in the optimal range for your body weight (1.6 to 2.2g per kg for muscle building). It also warns about very low calorie targets or extreme macro ratios.",
+      },
+      {
+        title: "Switch to meal breakdown",
+        description:
+          "Click the Meal Breakdown tab and choose how many meals you eat per day (2 to 6). The calculator distributes your daily targets across breakfast, lunch, dinner, and snacks with per-meal calorie and macro cards.",
+      },
+    ],
+    faqs: [
+      {
+        question: "What are macros?",
+        answer:
+          "Macros (macronutrients) are the three main nutrients your body needs in large amounts: protein, carbohydrates, and fat. Protein provides 4 calories per gram and is essential for muscle repair and growth. Carbohydrates provide 4 calories per gram and are your body's preferred energy source. Fat provides 9 calories per gram and supports hormone production, brain function, and nutrient absorption. Tracking macros gives you more control over your body composition than tracking calories alone.",
+      },
+      {
+        question: "How do I calculate my macros?",
+        answer:
+          "First, calculate your Total Daily Energy Expenditure (TDEE) by multiplying your Basal Metabolic Rate by an activity factor. Then adjust for your goal: subtract calories for fat loss, add for muscle gain, or keep the same for maintenance. Finally, split the total calories into protein, carbs, and fat based on your diet style. This calculator does all of that automatically. You just enter your stats, pick a goal, and choose a macro split.",
+      },
+      {
+        question: "What macro split should I use?",
+        answer:
+          "It depends on your goal and preferences. A balanced 30/40/30 (protein/carbs/fat) split works well for most people. If you are focused on building muscle, try high protein (40/30/30). If you respond well to lower carbs, try low carb (35/20/45). Keto (20/5/75) keeps carbs extremely low to induce ketosis. The best split is one you can stick to consistently, so start with balanced and adjust based on how you feel and perform.",
+      },
+      {
+        question: "How much protein do I need per day?",
+        answer:
+          "Research consistently shows that 1.6 to 2.2 grams of protein per kilogram of body weight is optimal for building and maintaining muscle. For a 70 kg (154 lb) person, that is 112 to 154 grams per day. If you are cutting (losing fat), staying at the higher end of this range helps preserve muscle. If you are maintaining or bulking, the lower end is usually sufficient. This calculator shows your protein per kg so you can check whether your preset hits this range.",
+      },
+      {
+        question: "Should I count macros or just calories?",
+        answer:
+          "Counting calories tells you how much to eat. Counting macros tells you what to eat. Two diets with the same calorie count can produce very different results depending on macro composition. A high-protein diet preserves more muscle during a cut than a high-carb diet at the same calorie level. If your goal is general weight management, calorie counting may be enough. If you care about body composition (muscle vs fat), tracking macros is worth the extra effort.",
+      },
+      {
+        question: "What is the difference between keto and low carb?",
+        answer:
+          "Low carb typically means getting 20% to 25% of calories from carbohydrates, which is roughly 100 to 150 grams per day for most people. Keto is much more restrictive, keeping carbs to 5% to 10% of calories (usually under 50 grams per day) to push your body into ketosis, a metabolic state where you burn fat for fuel instead of glucose. Keto requires stricter tracking and can be harder to maintain, but some people find it effective for fat loss and appetite control.",
+      },
+      {
+        question: "How should I split macros across meals?",
+        answer:
+          "There is no single best way to split macros across meals. The most important factor is hitting your daily totals. That said, spreading protein evenly across 3 to 5 meals (20 to 40 grams per meal) may slightly improve muscle protein synthesis compared to eating it all in one meal. The Meal Breakdown tab in this calculator distributes your targets across your chosen number of meals with breakfast slightly smaller and main meals slightly larger.",
+      },
+      {
+        question: "How accurate is this calculator?",
+        answer:
+          "This calculator uses the Mifflin-St Jeor equation, which research shows is the most accurate BMR formula for most adults (within 10% of measured values). However, individual metabolism varies based on genetics, muscle mass, hormone levels, sleep, stress, and other factors. Treat the output as a starting point: follow the plan for 2 to 3 weeks, then adjust based on how your weight, energy levels, and performance change.",
+      },
+      {
+        question: "What does IIFYM mean?",
+        answer:
+          "IIFYM stands for 'If It Fits Your Macros'. It is a flexible dieting approach where you can eat any food as long as it fits within your daily macro targets. There are no restricted foods. IIFYM focuses on hitting your protein, carb, and fat numbers rather than following a rigid meal plan. In this calculator, the IIFYM preset lets you set your own custom macro percentages rather than using a predefined split.",
+      },
+      {
+        question: "Is my data private?",
+        answer:
+          "Yes. Every calculation runs entirely in your browser. Your age, weight, height, and other inputs are never sent to any server. No cookies, no tracking, no account required. You can safely use this calculator with your real measurements.",
+      },
+    ],
+    relatedSlugs: [
+      "calorie-calculator",
+      "bmi-calculator",
+      "percentage-calculator",
+      "tip-calculator",
+    ],
+    keywords: [
+      "macro calculator",
+      "macronutrient calculator",
+      "protein calculator",
+      "carb calculator",
+      "fat calculator",
+      "macro split calculator",
+      "keto macro calculator",
+      "iifym calculator",
+      "meal macro calculator",
+      "cutting macros",
+      "bulking macros",
+    ],
+  },
+  {
+    slug: "body-fat-calculator",
+    name: "Body Fat Calculator",
+    category: "calculators",
+    icon: WeightScaleIcon,
+    componentName: "body-fat-calculator",
+    h1: "Body Fat Calculator: 5 Methods to Estimate Your Body Fat Percentage",
+    titleTag:
+      "Body Fat Calculator: Navy, Skinfold & BMI Methods | FreeToolPark",
+    metaDescription:
+      "Estimate your body fat percentage using 5 methods: US Navy, Jackson-Pollock 3-site, Jackson-Pollock 7-site, BIA, and BMI-based. Compare all results side by side with health range classifications.",
+    introduction:
+      "A body fat calculator estimates the percentage of your total body weight that is stored as fat. Knowing your body fat percentage gives you a much clearer picture of your fitness than weight or BMI alone, because it distinguishes between fat mass and lean mass (muscle, bone, water, and organs). This calculator offers five different estimation methods so you can compare results and get a more reliable reading. The US Navy method uses waist, neck, and hip circumference measurements. The BMI-based method uses a statistical formula from your height, weight, and age. The BIA estimate approximates what an impedance device would report. The Jackson-Pollock 3-site and 7-site methods use skinfold caliper measurements for the most precise field estimates. All five results are displayed side by side with body fat category classifications (essential, athlete, fitness, average, above average) so you can see where you fall. Everything runs in your browser with no data uploaded and no account required.",
+    whyUse: [
+      "Five estimation methods in one tool so you can compare and cross-check results",
+      "US Navy method uses simple tape measurements that anyone can take at home",
+      "Jackson-Pollock 3-site and 7-site skinfold methods for gym and clinical accuracy",
+      "BMI-based and BIA estimates available without any special equipment",
+      "Side-by-side comparison table shows body fat, category, fat mass, and lean mass for every method",
+      "Visual comparison bars and category chart show where you fall on the health spectrum",
+      "Smart insights flag results that fall outside healthy ranges or show wide method disagreement",
+      "Supports both imperial (lbs/inches) and metric (kg/cm) with instant conversion",
+      "Runs entirely in your browser with no signup, no uploads, and no data collection",
+    ],
+    whyUseSummary:
+      "Body Fat Calculator estimates your body fat percentage using 5 methods: US Navy, Jackson-Pollock 3 and 7-site, BIA, and BMI-based. Compare all results side by side.",
+    steps: [
+      {
+        title: "Choose your unit system and enter body stats",
+        description:
+          "Select imperial (lbs/inches) or metric (kg/cm), then enter your gender, age, weight, and height. These basic stats are used by the BMI-based and BIA estimation methods.",
+      },
+      {
+        title: "Enter body measurements for the Navy method",
+        description:
+          "Measure your waist circumference at the navel, neck circumference just below the larynx, and (for females) hip circumference at the widest point. Use a flexible tape measure and keep it snug but not tight.",
+      },
+      {
+        title: "Optionally enter skinfold measurements",
+        description:
+          "If you have a skinfold caliper, expand the Skinfold Measurements section. For the 3-site method, males measure chest, abdomen, and thigh; females measure tricep, suprailiac, and thigh. For the 7-site method, fill in all seven fields.",
+      },
+      {
+        title: "Review your primary result and body fat category",
+        description:
+          "The calculator shows your estimated body fat percentage, fat mass, lean mass, and BMI. The category chart shows where your result falls: essential fat, athlete, fitness, average, or above average.",
+      },
+      {
+        title: "Compare all methods side by side",
+        description:
+          "The comparison table and visual bars show results from every method that has enough data. A range and average across all valid methods gives you a more reliable estimate than any single formula.",
+      },
+      {
+        title: "Read the insights and method descriptions",
+        description:
+          "The insights panel flags results outside healthy ranges and suggests actions. The method descriptions explain what each formula measures, its accuracy, and when to use it.",
+      },
+    ],
+    faqs: [
+      {
+        question: "What is a healthy body fat percentage?",
+        answer:
+          "Healthy body fat ranges depend on gender. For males: athletes typically carry 6 to 13%, fitness enthusiasts 14 to 17%, average is 18 to 24%, and above 25% is considered above average. For females: athletes typically carry 14 to 20%, fitness enthusiasts 21 to 24%, average is 25 to 31%, and above 32% is considered above average. Essential fat (the minimum needed for basic health) is 2 to 5% for males and 10 to 13% for females.",
+      },
+      {
+        question: "Which body fat method is most accurate?",
+        answer:
+          "Among the methods in this calculator, the Jackson-Pollock 7-site skinfold method is generally considered the most accurate field method, with an error margin of plus or minus 2 to 3 percentage points compared to hydrostatic weighing. The US Navy method is the most practical for home use with an error margin of plus or minus 3 to 4 percentage points. For clinical accuracy, DEXA scans and hydrostatic weighing are the gold standard but require specialized equipment.",
+      },
+      {
+        question: "How do I measure skinfolds correctly?",
+        answer:
+          "Use a skinfold caliper. Pinch the skin and underlying fat (not muscle) between your thumb and forefinger, then place the caliper jaws about 1 cm from your fingers. Take the reading after 2 seconds. Measure each site 2 to 3 times and use the average. Always measure on the right side of the body. Common mistakes include pinching too little skin, placing the caliper too close to the fingers, and measuring while the muscle is flexed.",
+      },
+      {
+        question: "Why do different methods give different results?",
+        answer:
+          "Each method uses a different approach to estimate body fat. The Navy method uses circumference ratios, skinfold methods measure subcutaneous fat thickness, and BMI-based methods use statistical population averages. None of them directly measure total body fat. Factors like muscle mass, body shape, fat distribution, and hydration affect each method differently. A spread of 3 to 5 percentage points between methods is normal.",
+      },
+      {
+        question: "Is BMI or body fat percentage more useful?",
+        answer:
+          "Body fat percentage is more useful for assessing fitness and health risk because it distinguishes between fat and muscle. BMI only considers height and weight, so a muscular person can have a 'overweight' BMI despite having low body fat. However, BMI is easier to calculate and is still useful for population-level health screening. Ideally, use both metrics together for a more complete picture.",
+      },
+      {
+        question: "How often should I measure body fat?",
+        answer:
+          "Measure every 2 to 4 weeks if you are actively trying to change your body composition. More frequent measurements introduce noise from hydration changes, meal timing, and measurement inconsistency. Always measure under the same conditions: same time of day, same hydration level, same person taking the measurements. Track the trend over months rather than reacting to any single reading.",
+      },
+      {
+        question: "Can I reduce body fat in specific areas?",
+        answer:
+          "No. Spot reduction (losing fat from one specific body part) is a persistent myth. When you lose fat, your body draws from fat stores throughout the body based on genetics, hormones, and gender. The most effective approach is a consistent calorie deficit combined with resistance training to preserve muscle. Over time, fat loss will occur across your entire body, including stubborn areas.",
+      },
+      {
+        question: "What is the US Navy body fat formula?",
+        answer:
+          "The US Navy formula for males is: Body Fat % = 495 / (1.0324 - 0.19077 * log10(waist - neck) + 0.15456 * log10(height)) - 450. For females: Body Fat % = 495 / (1.29579 - 0.35004 * log10(waist + hip - neck) + 0.22100 * log10(height)) - 450. All measurements are in centimeters. This formula was developed by Hodgdon and Beckett at the Naval Health Research Center.",
+      },
+      {
+        question: "Is my data private?",
+        answer:
+          "Yes. Every calculation runs entirely in your browser. Your body measurements are never sent to any server, no cookies are set, and no account is required. You can safely enter your real measurements without any privacy concerns.",
+      },
+    ],
+    relatedSlugs: [
+      "bmi-calculator",
+      "calorie-calculator",
+      "macro-calculator",
+      "percentage-calculator",
+    ],
+    keywords: [
+      "body fat calculator",
+      "body fat percentage calculator",
+      "navy body fat calculator",
+      "skinfold body fat calculator",
+      "body composition calculator",
+      "lean body mass calculator",
+      "fat mass calculator",
+      "jackson pollock body fat",
+      "body fat estimate",
+    ],
+  },
 ]
