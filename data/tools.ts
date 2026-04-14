@@ -49,6 +49,48 @@ export interface ToolFAQ {
   answer: string
 }
 
+export interface FormulaVariable {
+  symbol: string
+  meaning: string
+}
+
+export interface ToolFormula {
+  /** Human-readable name, e.g. "Monthly Payment Formula" */
+  name: string
+  /** The formula expression, e.g. "M = P[r(1+r)^n] / [(1+r)^n - 1]" */
+  expression: string
+  /** Variable definitions */
+  variables: FormulaVariable[]
+  /** Plain-English step-by-step walkthrough of how to apply it */
+  walkthrough: string[]
+}
+
+export interface ToolExample {
+  /** Short title, e.g. "First-time homebuyer with 10% down" */
+  title: string
+  /** One-sentence scenario description */
+  scenario: string
+  /** Step-by-step calculation with real numbers */
+  steps: string[]
+  /** Final result, e.g. "$1,842/month" */
+  result: string
+}
+
+export interface ReferenceRow {
+  [key: string]: string | number
+}
+
+export interface ToolReferenceTable {
+  /** Section heading, e.g. "Common Mortgage Payments by Loan Amount" */
+  title: string
+  /** Column headers */
+  headers: string[]
+  /** Data rows, each an array of cell values matching headers */
+  rows: string[][]
+  /** Optional footer note */
+  note?: string
+}
+
 export interface Tool {
   slug: string
   name: string
@@ -65,6 +107,14 @@ export interface Tool {
   faqs: ToolFAQ[]
   relatedSlugs: string[]
   keywords: string[]
+  /** ISO date string (YYYY-MM-DD) for the last meaningful update */
+  lastUpdated?: string
+  /** Formula explanation section (calculators and converters) */
+  formula?: ToolFormula
+  /** 3 worked examples with real numbers */
+  examples?: ToolExample[]
+  /** Pre-calculated reference table for common values */
+  referenceTable?: ToolReferenceTable
 }
 
 export const TOOLS: Tool[] = [
@@ -75,12 +125,12 @@ export const TOOLS: Tool[] = [
     category: "calculators",
     icon: Home01Icon,
     componentName: "mortgage-calculator",
-    h1: "Free Mortgage Calculator — Monthly Payment, PMI & Amortization",
+    h1: "Free Mortgage Calculator: Monthly Payment, PMI & Amortization",
     titleTag: "Mortgage Calculator: Payment, PMI, Amortization | FreeToolPark",
     metaDescription:
       "Calculate your mortgage payment with PMI, taxes, insurance, and full amortization. Free, instant, no signup. See your true monthly cost.",
     introduction:
-      "A mortgage calculator helps you estimate your monthly home loan payment including principal, interest, property taxes, homeowners insurance, PMI, and HOA fees. Use our free mortgage calculator to see exactly what your monthly mortgage payment will be, how much interest you'll pay over the life of your loan, and when you can expect PMI to be removed from your payment. Unlike basic mortgage calculators that only show principal and interest, this tool gives you the complete picture — including tax deductions, biweekly payment savings, and the impact of extra payments. Whether you're buying your first home, refinancing, or shopping for the best mortgage rate, this calculator will help you make a confident, informed decision.",
+      "A mortgage calculator helps you estimate your monthly home loan payment including principal, interest, property taxes, homeowners insurance, PMI, and HOA fees. Use our free mortgage calculator to see exactly what your monthly mortgage payment will be, how much interest you'll pay over the life of your loan, and when you can expect PMI to be removed from your payment. Unlike basic mortgage calculators that only show principal and interest, this tool gives you the complete picture, including tax deductions, biweekly payment savings, and the impact of extra payments. Whether you're buying your first home, refinancing, or shopping for the best mortgage rate, this calculator will help you make a confident, informed decision.",
     whyUse: [
       "Includes PMI, property taxes, insurance, and HOA for your true monthly cost",
       "Auto-fills state-specific property tax rates for all 50 US states",
@@ -91,7 +141,7 @@ export const TOOLS: Tool[] = [
       "Extra payment slider shows payoff acceleration and interest savings",
     ],
     whyUseSummary:
-      "A mortgage calculator helps you estimate your monthly payment, total interest, and loan payoff timeline before applying. Our calculator includes PMI, property taxes, insurance, and HOA fees to show your true monthly cost — plus visualizations and a downloadable amortization schedule.",
+      "A mortgage calculator helps you estimate your monthly payment, total interest, and loan payoff timeline before applying. Our calculator includes PMI, property taxes, insurance, and HOA fees to show your true monthly cost, plus visualizations and a downloadable amortization schedule.",
     steps: [
       {
         title: "Enter the home price you're considering",
@@ -143,7 +193,7 @@ export const TOOLS: Tool[] = [
       {
         question: "How much should I put down on a house?",
         answer:
-          "A 20% down payment is ideal because it eliminates PMI and gives you a lower monthly payment. However, many buyers put down 3-10%. FHA loans require just 3.5% down. Use this calculator to compare scenarios — even a few percentage points more down payment can save thousands over the life of the loan by reducing PMI and interest.",
+          "A 20% down payment is ideal because it eliminates PMI and gives you a lower monthly payment. However, many buyers put down 3-10%. FHA loans require just 3.5% down. Use this calculator to compare scenarios. Even a few percentage points more down payment can save thousands over the life of the loan by reducing PMI and interest.",
       },
       {
         question: "What's included in a monthly mortgage payment?",
@@ -177,6 +227,83 @@ export const TOOLS: Tool[] = [
       "30 year mortgage calculator",
       "15 year mortgage calculator",
     ],
+    lastUpdated: "2026-04-15",
+    formula: {
+      name: "Mortgage Payment Formula Explained",
+      expression: "M = P [ r(1 + r)^n ] / [ (1 + r)^n - 1 ]",
+      variables: [
+        { symbol: "M", meaning: "Monthly mortgage payment (principal + interest)" },
+        { symbol: "P", meaning: "Principal loan amount (home price minus down payment)" },
+        { symbol: "r", meaning: "Monthly interest rate (annual rate divided by 12)" },
+        { symbol: "n", meaning: "Total number of monthly payments (loan term in years times 12)" },
+      ],
+      walkthrough: [
+        "Start with your loan amount. If the home costs $400,000 and you put 20% down ($80,000), your principal P = $320,000.",
+        "Convert the annual interest rate to a monthly rate. For a 6.5% annual rate: r = 0.065 / 12 = 0.005417.",
+        "Calculate the total number of payments. For a 30-year loan: n = 30 x 12 = 360 payments.",
+        "Plug the values into the formula: M = 320,000 x [0.005417(1.005417)^360] / [(1.005417)^360 - 1].",
+        "Compute (1 + r)^n = (1.005417)^360 = 6.9913.",
+        "Numerator: 320,000 x 0.005417 x 6.9913 = 12,120.37. Denominator: 6.9913 - 1 = 5.9913.",
+        "Final result: M = 12,120.37 / 5.9913 = $2,023.38 per month (principal and interest only).",
+        "Add property taxes, homeowners insurance, PMI (if under 20% down), and HOA fees for your total monthly cost.",
+      ],
+    },
+    examples: [
+      {
+        title: "First-time homebuyer with 10% down",
+        scenario: "You are buying a $350,000 home with 10% down payment at a 7.0% interest rate on a 30-year fixed loan.",
+        steps: [
+          "Down payment: $350,000 x 10% = $35,000. Loan amount: $315,000.",
+          "Monthly rate: 7.0% / 12 = 0.5833%. Total payments: 360.",
+          "Monthly P&I using the formula: $2,096.",
+          "PMI at 0.5% of loan annually: $315,000 x 0.005 / 12 = $131/month.",
+          "Property tax (1.1%): $321/month. Insurance: $150/month.",
+          "Total monthly payment: $2,096 + $131 + $321 + $150 = $2,698.",
+        ],
+        result: "$2,698/month total (PMI drops off after reaching 20% equity)",
+      },
+      {
+        title: "Upgrading to a larger home with 20% down",
+        scenario: "You are purchasing a $550,000 home with 20% down at 6.25% on a 30-year mortgage.",
+        steps: [
+          "Down payment: $550,000 x 20% = $110,000. Loan amount: $440,000.",
+          "Monthly rate: 6.25% / 12 = 0.5208%. Total payments: 360.",
+          "Monthly P&I: $2,710.",
+          "No PMI required (20% down payment).",
+          "Property tax (1.0%): $458/month. Insurance: $175/month.",
+          "Total monthly payment: $2,710 + $458 + $175 = $3,343.",
+        ],
+        result: "$3,343/month total with no PMI",
+      },
+      {
+        title: "15-year mortgage to save on interest",
+        scenario: "You are buying a $300,000 home with 25% down at 5.75% on a 15-year fixed loan.",
+        steps: [
+          "Down payment: $75,000. Loan amount: $225,000.",
+          "Monthly rate: 5.75% / 12 = 0.4792%. Total payments: 180.",
+          "Monthly P&I: $1,870.",
+          "Total interest over 15 years: $111,600 vs $308,880 on a 30-year loan.",
+          "You save $197,280 in interest by choosing the shorter term.",
+          "Property tax + insurance: ~$375/month. Total: $2,245.",
+        ],
+        result: "$2,245/month (saves $197,280 in interest vs 30-year term)",
+      },
+    ],
+    referenceTable: {
+      title: "Monthly Mortgage Payments by Loan Amount (30-Year Fixed)",
+      headers: ["Loan Amount", "5.5% Rate", "6.0% Rate", "6.5% Rate", "7.0% Rate", "7.5% Rate"],
+      rows: [
+        ["$150,000", "$852", "$899", "$948", "$998", "$1,049"],
+        ["$200,000", "$1,136", "$1,199", "$1,264", "$1,331", "$1,398"],
+        ["$250,000", "$1,419", "$1,499", "$1,580", "$1,663", "$1,748"],
+        ["$300,000", "$1,703", "$1,799", "$1,896", "$1,996", "$2,098"],
+        ["$350,000", "$1,987", "$2,098", "$2,212", "$2,329", "$2,447"],
+        ["$400,000", "$2,271", "$2,398", "$2,528", "$2,661", "$2,797"],
+        ["$450,000", "$2,555", "$2,698", "$2,844", "$2,994", "$3,147"],
+        ["$500,000", "$2,839", "$2,998", "$3,160", "$3,327", "$3,496"],
+      ],
+      note: "Amounts shown are principal and interest only. Add property taxes, insurance, and PMI for your total monthly cost.",
+    },
   },
 
   // 2. Refinance Calculator
@@ -186,12 +313,12 @@ export const TOOLS: Tool[] = [
     category: "calculators",
     icon: Calculator01Icon,
     componentName: "refinance-calculator",
-    h1: "Free Refinance Calculator — Should You Refinance Your Mortgage?",
+    h1: "Free Refinance Calculator: Should You Refinance Your Mortgage?",
     titleTag: "Refinance Calculator: Break-Even & Savings | FreeToolPark",
     metaDescription:
       "See if refinancing your mortgage saves you money. Calculate break-even point, monthly savings, and lifetime interest reduction. Free, instant, no signup.",
     introduction:
-      "A mortgage refinance calculator helps you decide whether refinancing your home loan is actually worth it. Enter your current loan balance, rate, and remaining term, then compare a new rate and term — this tool instantly shows your new monthly payment, how much you'll save each month, the exact break-even point where closing costs are recouped, and your total lifetime savings. Unlike basic refinance calculators that just spit out a monthly number, this one gives you a clear YES/NO/MAYBE verdict, a side-by-side comparison table, a savings curve you can visualize, and supports cash-out refinance scenarios. Whether rates have dropped, you want to shorten your term, or you need cash for a home improvement, this calculator answers the one question that matters: should you refinance?",
+      "A mortgage refinance calculator helps you decide whether refinancing your home loan is actually worth it. Enter your current loan balance, rate, and remaining term, then compare a new rate and term. This tool instantly shows your new monthly payment, how much you'll save each month, the exact break-even point where closing costs are recouped, and your total lifetime savings. Unlike basic refinance calculators that just spit out a monthly number, this one gives you a clear YES/NO/MAYBE verdict, a side-by-side comparison table, a savings curve you can visualize, and supports cash-out refinance scenarios. Whether rates have dropped, you want to shorten your term, or you need cash for a home improvement, this calculator answers the one question that matters: should you refinance?",
     whyUse: [
       "Exact break-even point so you know when refinancing starts saving money",
       "Clear Worth It / Marginal / Not Worth It verdict with personalized reasoning",
@@ -213,12 +340,12 @@ export const TOOLS: Tool[] = [
       {
         title: "Enter the new loan terms you're being offered",
         description:
-          "Input the new interest rate and choose a new loan term (10, 15, 20, 25, or 30 years). Use quotes from multiple lenders to compare options — each quote takes just seconds to model.",
+          "Input the new interest rate and choose a new loan term (10, 15, 20, 25, or 30 years). Use quotes from multiple lenders to compare options. Each quote takes just seconds to model.",
       },
       {
         title: "Select your state for closing cost defaults",
         description:
-          "Pick your state from the dropdown. Closing costs are auto-filled based on your state's average — typically 1.5% to 3.1% of the loan amount. You can override the estimate with a custom number from your loan estimate.",
+          "Pick your state from the dropdown. Closing costs are auto-filled based on your state's average, typically 1.5% to 3.1% of the loan amount. You can override the estimate with a custom number from your loan estimate.",
       },
       {
         title: "Choose upfront or rolled-in closing costs",
@@ -260,22 +387,22 @@ export const TOOLS: Tool[] = [
       {
         question: "Should I roll closing costs into my new mortgage?",
         answer:
-          "Rolling closing costs into the loan means no cash out of pocket, but you pay interest on those costs for the entire loan term. On a 30-year loan, $6,000 in rolled-in closing costs can cost an extra $6,000–$8,000 in interest. Paying closing costs upfront is usually cheaper if you have the cash. Toggle the 'Roll closing costs into loan' option in the calculator to compare both scenarios.",
+          "Rolling closing costs into the loan means no cash out of pocket, but you pay interest on those costs for the entire loan term. On a 30-year loan, $6,000 in rolled-in closing costs can cost an extra $6,000 to $8,000 in interest. Paying closing costs upfront is usually cheaper if you have the cash. Toggle the 'Roll closing costs into loan' option in the calculator to compare both scenarios.",
       },
       {
         question: "How does a cash-out refinance work?",
         answer:
-          "A cash-out refinance replaces your existing mortgage with a new, larger loan. You receive the difference in cash — typically used for home improvements, debt consolidation, or major expenses. You're trading equity for cash at your new mortgage rate, which is usually lower than credit card or personal loan rates but higher than your old mortgage rate. Enter the cash-out amount in this calculator to see how it impacts your payment and total interest.",
+          "A cash-out refinance replaces your existing mortgage with a new, larger loan. You receive the difference in cash, typically used for home improvements, debt consolidation, or major expenses. You're trading equity for cash at your new mortgage rate, which is usually lower than credit card or personal loan rates but higher than your old mortgage rate. Enter the cash-out amount in this calculator to see how it impacts your payment and total interest.",
       },
       {
         question: "Does refinancing restart my loan term?",
         answer:
-          "Yes — a refinance replaces your current loan with a brand new one. If you refinance into a 30-year loan with 25 years left on your current loan, you've added 5 years of payments. This lowers your monthly payment but can increase total interest. Use this calculator to compare terms — you can refinance into a 15-year loan to pay off faster, or a 30-year loan for lower payments.",
+          "Yes, a refinance replaces your current loan with a brand new one. If you refinance into a 30-year loan with 25 years left on your current loan, you've added 5 years of payments. This lowers your monthly payment but can increase total interest. Use this calculator to compare terms. You can refinance into a 15-year loan to pay off faster, or a 30-year loan for lower payments.",
       },
       {
         question: "How much does refinancing lower my monthly payment?",
         answer:
-          "Monthly savings depend on your rate drop, the loan balance, and the new loan term. A 1% rate drop on a $300,000 balance typically saves $150–$200 per month on a 30-year loan. Extending the term (say from 20 to 30 years) amplifies the savings further but increases total interest paid. This calculator shows your exact monthly savings and breaks down the trade-off.",
+          "Monthly savings depend on your rate drop, the loan balance, and the new loan term. A 1% rate drop on a $300,000 balance typically saves $150 to $200 per month on a 30-year loan. Extending the term (say from 20 to 30 years) amplifies the savings further but increases total interest paid. This calculator shows your exact monthly savings and breaks down the trade-off.",
       },
     ],
     relatedSlugs: ["mortgage-calculator", "emi-calculator", "interest-calculator", "percentage-calculator"],
@@ -289,6 +416,84 @@ export const TOOLS: Tool[] = [
       "home refinance calculator",
       "refinance mortgage calculator",
     ],
+    lastUpdated: "2026-04-15",
+    formula: {
+      name: "Refinance Break-Even Formula",
+      expression: "Break-Even Months = Total Closing Costs / Monthly Savings",
+      variables: [
+        { symbol: "Total Closing Costs", meaning: "All fees required to complete the refinance, typically 2% to 5% of the loan balance" },
+        { symbol: "Monthly Savings", meaning: "Old monthly payment minus new monthly payment (principal and interest)" },
+        { symbol: "Break-Even Months", meaning: "Number of months until cumulative savings equal closing costs" },
+      ],
+      walkthrough: [
+        "Find your current monthly payment. Use the formula M = P[r(1+r)^n] / [(1+r)^n - 1] with your existing balance, rate, and remaining term.",
+        "Calculate your new monthly payment using the same formula with the new rate and new loan term.",
+        "Subtract the new payment from the old payment to get your monthly savings. Example: $1,850 old - $1,650 new = $200/month saved.",
+        "Estimate total closing costs. For a $300,000 balance, closing costs at 2% equal $6,000. Your lender's loan estimate will have the exact figure.",
+        "Divide total closing costs by monthly savings to find the break-even point: $6,000 / $200 = 30 months (2.5 years).",
+        "Compare the break-even point to how long you plan to stay in the home. If you will stay longer than 30 months, refinancing saves money.",
+        "Add up lifetime interest on both loans to find total interest saved. Subtract closing costs from that figure to get net lifetime savings.",
+        "If rolling closing costs into the loan, add them to the new balance and recalculate the new payment before applying the formula.",
+      ],
+    },
+    examples: [
+      {
+        title: "Dropping from 7.5% to 6.0% on a $300,000 balance",
+        scenario: "You have $300,000 remaining on a 30-year mortgage at 7.5% and are offered a new 30-year loan at 6.0% with $6,000 in closing costs.",
+        steps: [
+          "Current payment at 7.5% on $300,000 (30-year): $2,098/month.",
+          "New payment at 6.0% on $300,000 (30-year): $1,799/month.",
+          "Monthly savings: $2,098 - $1,799 = $299/month.",
+          "Total closing costs: $6,000 (2% of loan balance).",
+          "Break-even point: $6,000 / $299 = approximately 20 months.",
+          "Lifetime interest saved over 30 years: roughly $107,640 before closing costs.",
+          "Net lifetime savings after $6,000 in closing costs: approximately $101,640.",
+        ],
+        result: "$299/month saved, break-even in ~20 months, net savings of ~$101,640 over the life of the loan",
+      },
+      {
+        title: "Shortening from a 30-year to a 15-year term",
+        scenario: "You have $250,000 remaining on a 30-year mortgage at 7.0% and refinance into a 15-year loan at 6.0%.",
+        steps: [
+          "Current payment at 7.0% on $250,000 (30-year remaining): $1,663/month.",
+          "New payment at 6.0% on $250,000 (15-year): $2,110/month.",
+          "Monthly payment increases by $447, but the loan pays off 15 years sooner.",
+          "Total interest on original loan (remaining 30 years at 7.0%): approximately $348,772.",
+          "Total interest on new 15-year loan at 6.0%: approximately $129,800.",
+          "Interest savings: roughly $218,972 over the life of the loans.",
+          "Closing costs at 2%: $5,000. Net savings after costs: approximately $213,972.",
+        ],
+        result: "Higher payment by $447/month, but saves approximately $213,972 in total interest and eliminates 15 years of payments",
+      },
+      {
+        title: "Cash-out refinance for home improvement",
+        scenario: "Your home is worth $400,000 and you owe $250,000 at 7.0%. You refinance into a new 30-year loan at 6.5% and pull out $50,000 in equity for a kitchen renovation.",
+        steps: [
+          "Current loan balance: $250,000. Cash-out amount: $50,000. New loan balance: $300,000.",
+          "Current payment at 7.0% on $250,000 (30-year): $1,663/month.",
+          "New payment at 6.5% on $300,000 (30-year): $1,896/month.",
+          "Monthly payment increases by $233 due to the larger loan balance.",
+          "You receive $50,000 in cash at closing, effectively borrowing at 6.5% instead of a personal loan rate of 10% or higher.",
+          "Total closing costs at 2%: $6,000. You pay these from the cash-out proceeds or out of pocket.",
+          "New loan-to-value ratio: $300,000 / $400,000 = 75%, which keeps you within standard lending limits.",
+        ],
+        result: "You receive $50,000 cash with a payment increase of $233/month, borrowing at mortgage rates rather than personal loan or credit card rates",
+      },
+    ],
+    referenceTable: {
+      title: "Monthly Payment Comparison: Before and After Refinancing",
+      headers: ["Loan Balance", "Old Payment (7.5%)", "New Payment (6.0%)", "Monthly Savings", "Annual Savings"],
+      rows: [
+        ["$200,000", "$1,399", "$1,199", "$200", "$2,400"],
+        ["$250,000", "$1,748", "$1,499", "$249", "$2,988"],
+        ["$300,000", "$2,098", "$1,799", "$299", "$3,588"],
+        ["$350,000", "$2,447", "$2,098", "$349", "$4,188"],
+        ["$400,000", "$2,797", "$2,398", "$399", "$4,788"],
+        ["$450,000", "$3,147", "$2,698", "$449", "$5,388"],
+        ["$500,000", "$3,496", "$2,998", "$498", "$5,976"],
+      ],
+      note: "Payments shown are principal and interest only on a 30-year fixed loan. Monthly savings are approximate and rounded to the nearest dollar. Add taxes, insurance, and PMI for your total monthly cost.",
+    },
   },
 
   // 3. Auto Loan Calculator
@@ -298,12 +503,12 @@ export const TOOLS: Tool[] = [
     category: "calculators",
     icon: CalculatorIcon,
     componentName: "auto-loan-calculator",
-    h1: "Free Auto Loan Calculator — Car Payment, Interest & Total Cost",
+    h1: "Free Auto Loan Calculator: Car Payment, Interest & Total Cost",
     titleTag: "Auto Loan Calculator: Monthly Payment & APR | FreeToolPark",
     metaDescription:
       "Calculate your car loan payment, total interest, and full amortization. Includes trade-in equity, sales tax by state, fees, and upside-down warnings.",
     introduction:
-      "An auto loan calculator helps you figure out the true cost of a car loan before you sign at the dealership. Enter the vehicle price, down payment, trade-in value, interest rate, and loan term — this tool instantly shows your monthly payment, total interest over the life of the loan, and the full cost of ownership including sales tax and fees. Unlike basic car payment calculators, this one handles the tricky stuff: rolling negative equity from a previous loan into the new one, state-specific vehicle sales tax for all 50 states, and an upside-down warning that tells you how many months you'll owe more than the car is worth based on typical depreciation. Whether you're buying new or used, trading in or starting fresh, use this calculator to compare dealer offers, shop bank financing, and avoid walking into a loan that's worse than it looks on the monthly payment line.",
+      "An auto loan calculator helps you figure out the true cost of a car loan before you sign at the dealership. Enter the vehicle price, down payment, trade-in value, interest rate, and loan term. This tool instantly shows your monthly payment, total interest over the life of the loan, and the full cost of ownership including sales tax and fees. Unlike basic car payment calculators, this one handles the tricky stuff: rolling negative equity from a previous loan into the new one, state-specific vehicle sales tax for all 50 states, and an upside-down warning that tells you how many months you'll owe more than the car is worth based on typical depreciation. Whether you're buying new or used, trading in or starting fresh, use this calculator to compare dealer offers, shop bank financing, and avoid walking into a loan that's worse than it looks on the monthly payment line.",
     whyUse: [
       "Handles trade-in equity and negative equity rolled into the new loan",
       "Vehicle sales tax auto-filled for all 50 US states + DC",
@@ -315,7 +520,7 @@ export const TOOLS: Tool[] = [
       "Shareable URL so you can save and compare multiple loan scenarios",
     ],
     whyUseSummary:
-      "An auto loan calculator helps you estimate your monthly car payment, total interest, and full cost of ownership before you sign. Our calculator includes sales tax by state, trade-in equity, title fees, and an upside-down warning so you see the true cost — not just the monthly payment the dealer quotes you.",
+      "An auto loan calculator helps you estimate your monthly car payment, total interest, and full cost of ownership before you sign. Our calculator includes sales tax by state, trade-in equity, title fees, and an upside-down warning so you see the true cost, not just the monthly payment the dealer quotes you.",
     steps: [
       {
         title: "Enter the vehicle price",
@@ -357,7 +562,7 @@ export const TOOLS: Tool[] = [
       {
         question: "What is a good interest rate on a car loan?",
         answer:
-          "Auto loan rates depend on your credit score, loan term, and whether the car is new or used. As a rough guide, prime borrowers (credit scores 720+) typically get 5–7% on new cars and 6–8% on used cars, while subprime borrowers (below 620) can see rates of 12% or higher. Always get a pre-approval from a credit union or bank before you walk into the dealership — dealer financing is often marked up by 1–3%.",
+          "Auto loan rates depend on your credit score, loan term, and whether the car is new or used. As a rough guide, prime borrowers (credit scores 720+) typically get 5 to 7% on new cars and 6 to 8% on used cars, while subprime borrowers (below 620) can see rates of 12% or higher. Always get a pre-approval from a credit union or bank before you walk into the dealership. Dealer financing is often marked up by 1 to 3%.",
       },
       {
         question: "Is a longer car loan term better?",
@@ -367,17 +572,17 @@ export const TOOLS: Tool[] = [
       {
         question: "What does it mean to be 'upside-down' on a car loan?",
         answer:
-          "Being upside-down (or 'underwater') on a car loan means you owe more on the loan than the car is worth. This is common in the first year or two of a new-car loan because cars depreciate 20–30% the moment you drive them off the lot. It becomes a problem if the car is totaled, stolen, or you need to sell it — you'd still owe money after the sale or insurance payout. Gap insurance covers this risk.",
+          "Being upside-down (or 'underwater') on a car loan means you owe more on the loan than the car is worth. This is common in the first year or two of a new-car loan because cars depreciate 20 to 30% the moment you drive them off the lot. It becomes a problem if the car is totaled, stolen, or you need to sell it, because you'd still owe money after the sale or insurance payout. Gap insurance covers this risk.",
       },
       {
         question: "How does a trade-in affect my car loan?",
         answer:
-          "A trade-in reduces the amount you need to finance. If your trade is worth more than you owe on it, the equity goes toward your new loan like an extra down payment. If your trade is worth less than you owe (negative equity), the difference gets rolled into the new loan, making you start the new loan already underwater. In most states, you also only pay sales tax on the price minus the trade-in value, which is a meaningful tax savings — toggle the setting in this calculator to see the impact.",
+          "A trade-in reduces the amount you need to finance. If your trade is worth more than you owe on it, the equity goes toward your new loan like an extra down payment. If your trade is worth less than you owe (negative equity), the difference gets rolled into the new loan, making you start the new loan already underwater. In most states, you also only pay sales tax on the price minus the trade-in value, which is a meaningful tax savings. Toggle the setting in this calculator to see the impact.",
       },
       {
         question: "Should I put money down on a car loan?",
         answer:
-          "Yes — a down payment of at least 10–20% is strongly recommended. It lowers your monthly payment, reduces the total interest you'll pay, and (most importantly) shortens the time your loan is upside-down. With zero down, you start your loan immediately underwater because of tax, fees, and instant depreciation. Use this calculator to see exactly how different down payments change your monthly payment and upside-down timeline.",
+          "Yes, a down payment of at least 10 to 20% is strongly recommended. It lowers your monthly payment, reduces the total interest you'll pay, and (most importantly) shortens the time your loan is upside-down. With zero down, you start your loan immediately underwater because of tax, fees, and instant depreciation. Use this calculator to see exactly how different down payments change your monthly payment and upside-down timeline.",
       },
       {
         question: "Do I have to pay sales tax on a used car?",
@@ -406,6 +611,92 @@ export const TOOLS: Tool[] = [
       "auto loan calculator with trade in",
       "car loan calculator with sales tax",
     ],
+    formula: {
+      name: "Auto Loan Payment Formula Explained",
+      expression: "M = P [ r(1 + r)^n ] / [ (1 + r)^n - 1 ]",
+      variables: [
+        { symbol: "M", meaning: "Monthly car payment (principal and interest)" },
+        {
+          symbol: "P",
+          meaning:
+            "Loan amount (vehicle price plus tax and fees, minus down payment and trade-in equity)",
+        },
+        { symbol: "r", meaning: "Monthly interest rate (annual APR divided by 12)" },
+        {
+          symbol: "n",
+          meaning: "Total number of monthly payments (loan term in years times 12)",
+        },
+      ],
+      walkthrough: [
+        "Start with the vehicle price you have negotiated. For a $35,000 SUV, that is your starting point.",
+        "Subtract your trade-in equity and down payment to get the financed amount. With a $5,000 trade-in and $3,000 down: $35,000 - $5,000 - $3,000 = $27,000 before tax and fees.",
+        "Add sales tax to the amount owed. In a state with 7% sales tax on the sale price after trade-in, tax on $30,000 (pre-down-payment sale price) = $2,100, so your total financed amount P = $27,000 + $2,100 + fees.",
+        "Convert the annual APR to a monthly rate. For a 5.9% APR: r = 0.059 / 12 = 0.004917.",
+        "Calculate the total number of payments. For a 60-month loan: n = 60.",
+        "Compute (1 + r)^n = (1.004917)^60 = 1.3408.",
+        "Plug into the formula: M = 27,000 x [0.004917 x 1.3408] / [1.3408 - 1] = 27,000 x 0.006592 / 0.3408 = $521.97 per month.",
+        "Compare this result against dealer quotes. If the dealer quotes a higher payment on the same loan terms, they may be adding undisclosed fees or marking up the APR.",
+      ],
+    },
+    examples: [
+      {
+        title: "New car purchase: $35,000 SUV with trade-in",
+        scenario:
+          "You are buying a $35,000 SUV with a $5,000 trade-in and $3,000 cash down at 5.9% APR on a 60-month loan.",
+        steps: [
+          "Vehicle price: $35,000. Trade-in value: $5,000. Down payment: $3,000.",
+          "Amount financed before tax: $35,000 - $5,000 - $3,000 = $27,000.",
+          "Monthly rate: 5.9% / 12 = 0.4917%. Total payments: 60.",
+          "Monthly payment using the formula: approximately $522.",
+          "Total paid over 60 months: $31,320. Total interest: $4,320.",
+          "The $8,000 in trade-in and down payment saved roughly $570 in total interest compared to financing the full $35,000.",
+        ],
+        result: "$522/month for 60 months, with about $4,320 in total interest",
+      },
+      {
+        title: "Used car: $18,000 sedan with no trade-in",
+        scenario:
+          "You are buying an $18,000 used sedan with $2,000 down at 7.5% APR on a 48-month loan.",
+        steps: [
+          "Vehicle price: $18,000. No trade-in. Down payment: $2,000.",
+          "Amount financed: $18,000 - $2,000 = $16,000 (plus applicable tax and fees).",
+          "Monthly rate: 7.5% / 12 = 0.625%. Total payments: 48.",
+          "Monthly payment using the formula: approximately $388.",
+          "Total paid over 48 months: $18,624. Total interest: $2,624.",
+          "Choosing 48 months instead of 60 saves over $800 in interest and keeps you above water faster.",
+        ],
+        result: "$388/month for 48 months, with about $2,624 in total interest",
+      },
+      {
+        title: "Luxury vehicle: $65,000 truck with large down payment",
+        scenario:
+          "You are purchasing a $65,000 truck with $15,000 down at 4.9% APR on a 72-month loan.",
+        steps: [
+          "Vehicle price: $65,000. Down payment: $15,000. No trade-in.",
+          "Amount financed: $65,000 - $15,000 = $50,000 (plus applicable tax and fees).",
+          "Monthly rate: 4.9% / 12 = 0.4083%. Total payments: 72.",
+          "Monthly payment using the formula: approximately $806.",
+          "Total paid over 72 months: $58,032. Total interest: $8,032.",
+          "A 60-month term instead would cost about $944/month but saves roughly $2,300 in total interest and reduces time underwater.",
+        ],
+        result: "$806/month for 72 months, with about $8,032 in total interest",
+      },
+    ],
+    referenceTable: {
+      title: "Monthly Auto Loan Payments by Vehicle Price (60-Month Term)",
+      headers: ["Vehicle Price", "4.9% Rate", "5.9% Rate", "6.9% Rate", "7.9% Rate", "8.9% Rate"],
+      rows: [
+        ["$15,000", "$282", "$289", "$296", "$303", "$311"],
+        ["$20,000", "$377", "$386", "$395", "$405", "$414"],
+        ["$25,000", "$471", "$482", "$494", "$506", "$518"],
+        ["$30,000", "$565", "$579", "$593", "$607", "$621"],
+        ["$35,000", "$659", "$675", "$691", "$708", "$725"],
+        ["$40,000", "$753", "$771", "$790", "$809", "$828"],
+        ["$45,000", "$847", "$868", "$889", "$910", "$932"],
+        ["$50,000", "$941", "$964", "$988", "$1,011", "$1,035"],
+      ],
+      note: "Amounts shown are principal and interest only. Add sales tax, title fees, and registration for your total financed amount. Actual payments vary based on your credit score and lender.",
+    },
   },
 
   // 4. Loan Calculator (Generic)
@@ -415,12 +706,12 @@ export const TOOLS: Tool[] = [
     category: "calculators",
     icon: Dollar01Icon,
     componentName: "loan-calculator",
-    h1: "Free Loan Calculator — Monthly Payment for Any Loan Type",
+    h1: "Free Loan Calculator: Monthly Payment for Any Loan Type",
     titleTag: "Loan Calculator: Payment, Interest & Amortization | FreeToolPark",
     metaDescription:
       "Calculate monthly payments for personal, student, business, medical, and home equity loans. Free loan calculator with full amortization, comparison & payoff tips.",
     introduction:
-      "A loan calculator helps you figure out the monthly payment, total interest, and full payoff timeline for any installment loan. Whether you're shopping for a personal loan, student loan, business loan, medical loan, RV or boat loan, home equity loan, or just trying to model a debt consolidation, this tool handles it all in one place. Pick your loan type and the calculator pre-fills typical interest rate ranges so you can sanity-check the quote in front of you. Add an extra monthly payment to see how much faster you'd pay it off. Save up to four scenarios side-by-side to compare lenders directly. Unlike basic loan calculators that only spit out a number, this one gives you a payoff strategy optimizer, biweekly payment savings, refinance suggestions, and a clear amortization schedule — everything you need to make a confident borrowing decision before you sign anything.",
+      "A loan calculator helps you figure out the monthly payment, total interest, and full payoff timeline for any installment loan. Whether you're shopping for a personal loan, student loan, business loan, medical loan, RV or boat loan, home equity loan, or just trying to model a debt consolidation, this tool handles it all in one place. Pick your loan type and the calculator pre-fills typical interest rate ranges so you can sanity-check the quote in front of you. Add an extra monthly payment to see how much faster you'd pay it off. Save up to four scenarios side-by-side to compare lenders directly. Unlike basic loan calculators that only spit out a number, this one gives you a payoff strategy optimizer, biweekly payment savings, refinance suggestions, and a clear amortization schedule, everything you need to make a confident borrowing decision before you sign anything.",
     whyUse: [
       "10 preset loan types with typical rate ranges (personal, student, auto, business, medical, HELOC, RV, boat, debt consolidation, custom)",
       "Compare up to 4 loan scenarios side-by-side with the cheapest highlighted automatically",
@@ -429,7 +720,7 @@ export const TOOLS: Tool[] = [
       "Built-in APR vs. interest rate explainer so you compare apples to apples",
       "Prepayment penalty alerts for loan types where early payoff fees are common",
       "Interactive charts: cost breakdown pie, balance over time, principal vs interest by year",
-      "Full amortization schedule and shareable URL — no signup, no email, ever",
+      "Full amortization schedule and shareable URL, no signup, no email, ever",
     ],
     whyUseSummary:
       "A loan calculator helps you estimate your monthly payment, total interest, and payoff date for any installment loan. Our calculator supports 10 loan types, lets you compare up to 4 scenarios side-by-side, and includes a payoff strategy optimizer that shows exactly how biweekly or extra payments accelerate your loan.",
@@ -437,17 +728,17 @@ export const TOOLS: Tool[] = [
       {
         title: "Pick your loan type",
         description:
-          "Select the type of loan you're modeling — personal, student, auto, business, medical, home equity, RV, boat, debt consolidation, or custom. The calculator auto-fills the typical interest rate range and a sensible default amount and term so you can immediately sanity-check whether the quote you've been offered is competitive.",
+          "Select the type of loan you're modeling: personal, student, auto, business, medical, home equity, RV, boat, debt consolidation, or custom. The calculator auto-fills the typical interest rate range and a sensible default amount and term so you can immediately sanity-check whether the quote you've been offered is competitive.",
       },
       {
         title: "Enter your loan amount",
         description:
-          "Type in the principal — the amount you actually want to borrow. For consolidation loans, this is the sum of the debts you want to pay off. For HELOCs and home equity loans, it's how much of your equity you plan to draw.",
+          "Type in the principal, the amount you actually want to borrow. For consolidation loans, this is the sum of the debts you want to pay off. For HELOCs and home equity loans, it's how much of your equity you plan to draw.",
       },
       {
         title: "Enter your interest rate (or APR)",
         description:
-          "Enter the rate from your loan offer. Use APR if you have it — APR includes most fees and gives you the true yearly cost. Click the inline explainer if you're not sure which rate your lender quoted. The calculator will warn you if your rate falls outside the typical range for your loan type.",
+          "Enter the rate from your loan offer. Use APR if you have it. APR includes most fees and gives you the true yearly cost. Click the inline explainer if you're not sure which rate your lender quoted. The calculator will warn you if your rate falls outside the typical range for your loan type.",
       },
       {
         title: "Set your loan term",
@@ -457,12 +748,12 @@ export const TOOLS: Tool[] = [
       {
         title: "(Optional) Add an extra monthly payment",
         description:
-          "Type in any extra amount you plan to pay each month above the minimum. The smart insights panel will show you exactly how many months and how much interest you'd save. Even small extras (5–10% of the payment) often save thousands and shave years off the loan.",
+          "Type in any extra amount you plan to pay each month above the minimum. The smart insights panel will show you exactly how many months and how much interest you'd save. Even small extras (5 to 10% of the payment) often save thousands and shave years off the loan.",
       },
       {
         title: "Compare scenarios and review the payoff strategy",
         description:
-          "Click 'Add to Comparison' to save the current scenario and add a second one. Compare up to 4 loans side-by-side — the cheapest is automatically highlighted. Read the smart insights for biweekly payment savings, refinance suggestions, and prepayment penalty warnings.",
+          "Click 'Add to Comparison' to save the current scenario and add a second one. Compare up to 4 loans side-by-side. The cheapest is automatically highlighted. Read the smart insights for biweekly payment savings, refinance suggestions, and prepayment penalty warnings.",
       },
     ],
     faqs: [
@@ -474,7 +765,7 @@ export const TOOLS: Tool[] = [
       {
         question: "What is the difference between APR and interest rate?",
         answer:
-          "The interest rate is the percentage the lender charges on the principal balance — it's the headline number in most loan ads. The APR (Annual Percentage Rate) bundles the interest rate with most up-front fees and origination costs to give you the true annual cost of borrowing. APR is almost always higher than the interest rate. When you're comparing loan offers from different lenders, always compare APR to APR — never interest rate to APR — or you'll be misled by the cheaper-looking option.",
+          "The interest rate is the percentage the lender charges on the principal balance. It's the headline number in most loan ads. The APR (Annual Percentage Rate) bundles the interest rate with most up-front fees and origination costs to give you the true annual cost of borrowing. APR is almost always higher than the interest rate. When you're comparing loan offers from different lenders, always compare APR to APR (never interest rate to APR) or you'll be misled by the cheaper-looking option.",
       },
       {
         question: "How does an extra monthly payment affect my loan?",
@@ -484,27 +775,27 @@ export const TOOLS: Tool[] = [
       {
         question: "Is biweekly payment really better?",
         answer:
-          "Yes — paying half your monthly payment every two weeks adds up to one extra full payment per year, because there are 26 biweekly periods in a year (52 ÷ 2) versus 12 monthly periods. That extra payment goes entirely to principal and accelerates payoff. On a 5-year personal loan, biweekly typically pays the loan off 4–6 months early. On a 30-year mortgage, the savings are dramatic — often 4 to 6 years and tens of thousands in interest.",
+          "Yes, paying half your monthly payment every two weeks adds up to one extra full payment per year, because there are 26 biweekly periods in a year (52 ÷ 2) versus 12 monthly periods. That extra payment goes entirely to principal and accelerates payoff. On a 5-year personal loan, biweekly typically pays the loan off 4 to 6 months early. On a 30-year mortgage, the savings are dramatic, often 4 to 6 years and tens of thousands in interest.",
       },
       {
         question: "What is a good interest rate on a personal loan?",
         answer:
-          "Personal loan rates depend heavily on your credit score, income, loan term, and the lender. As of 2026, prime borrowers (scores 720+) typically see 7–11%, near-prime borrowers (640–719) see 11–18%, and subprime borrowers (below 640) see 18–30%+. Always shop at least 3 lenders — credit unions, online lenders, and your existing bank — and compare APRs not interest rates. Pre-qualifying with a soft pull doesn't hurt your credit.",
+          "Personal loan rates depend heavily on your credit score, income, loan term, and the lender. As of 2026, prime borrowers (scores 720+) typically see 7 to 11%, near-prime borrowers (640 to 719) see 11 to 18%, and subprime borrowers (below 640) see 18 to 30%+. Always shop at least 3 lenders (credit unions, online lenders, and your existing bank) and compare APRs not interest rates. Pre-qualifying with a soft pull doesn't hurt your credit.",
       },
       {
         question: "Can I pay off my loan early?",
         answer:
-          "Most personal, student, and auto loans allow early payoff with no penalty — you simply save the remaining interest. However, some business loans, mortgages, HELOCs, and certain auto loans do carry prepayment penalties, especially in the first 1–3 years. Always read your loan agreement before making large extra payments. This calculator flags loan types where prepayment penalties are common so you know to check.",
+          "Most personal, student, and auto loans allow early payoff with no penalty, and you simply save the remaining interest. However, some business loans, mortgages, HELOCs, and certain auto loans do carry prepayment penalties, especially in the first 1 to 3 years. Always read your loan agreement before making large extra payments. This calculator flags loan types where prepayment penalties are common so you know to check.",
       },
       {
         question: "Should I take a longer loan term to lower my monthly payment?",
         answer:
-          "It depends on your priorities. A longer term lowers the monthly payment, which can be essential if cash flow is tight, but it dramatically increases the total interest you'll pay and keeps you in debt longer. Run both scenarios in this calculator's side-by-side comparison: model a 3-year and a 5-year version of the same loan and look at the total interest difference. Pick the shortest term you can comfortably afford — your future self will thank you.",
+          "It depends on your priorities. A longer term lowers the monthly payment, which can be essential if cash flow is tight, but it dramatically increases the total interest you'll pay and keeps you in debt longer. Run both scenarios in this calculator's side-by-side comparison: model a 3-year and a 5-year version of the same loan and look at the total interest difference. Pick the shortest term you can comfortably afford. Your future self will thank you.",
       },
       {
         question: "How do I compare multiple loan offers?",
         answer:
-          "Use this calculator's side-by-side comparison feature: enter your first offer, click 'Add to Comparison,' then change the inputs and click 'Add to Comparison' again. Repeat for up to 4 offers. The table shows each loan's monthly payment, total interest, and total cost — and the cheapest one is highlighted automatically. Always compare APR to APR, not interest rate to APR, and remember that the cheapest total cost isn't always the right answer if it strains your monthly budget.",
+          "Use this calculator's side-by-side comparison feature: enter your first offer, click 'Add to Comparison,' then change the inputs and click 'Add to Comparison' again. Repeat for up to 4 offers. The table shows each loan's monthly payment, total interest, and total cost, and the cheapest one is highlighted automatically. Always compare APR to APR, not interest rate to APR, and remember that the cheapest total cost isn't always the right answer if it strains your monthly budget.",
       },
     ],
     relatedSlugs: [
@@ -525,6 +816,82 @@ export const TOOLS: Tool[] = [
       "loan payoff calculator",
       "loan interest calculator",
     ],
+    formula: {
+      name: "Loan Payment Formula Explained",
+      expression: "M = P [ r(1 + r)^n ] / [ (1 + r)^n - 1 ]",
+      variables: [
+        { symbol: "M", meaning: "Monthly loan payment (principal and interest combined)" },
+        { symbol: "P", meaning: "Principal loan amount (the amount you borrow)" },
+        { symbol: "r", meaning: "Monthly interest rate (annual rate divided by 12)" },
+        { symbol: "n", meaning: "Total number of monthly payments (loan term in years times 12)" },
+      ],
+      walkthrough: [
+        "Identify your loan principal P. This is the amount you plan to borrow, not the purchase price. For example, a $25,000 personal loan means P = $25,000.",
+        "Convert the annual interest rate to a monthly rate. For a 9.5% annual rate: r = 0.095 / 12 = 0.007917.",
+        "Calculate the total number of payments. For a 5-year loan: n = 5 x 12 = 60 monthly payments.",
+        "Compute (1 + r)^n. Using the example: (1.007917)^60 = 1.6021. This factor represents how much $1 grows at your monthly rate over the loan term.",
+        "Calculate the numerator: P x r x (1 + r)^n = 25,000 x 0.007917 x 1.6021 = 317.07.",
+        "Calculate the denominator: (1 + r)^n - 1 = 1.6021 - 1 = 0.6021.",
+        "Divide numerator by denominator: M = 317.07 / 0.6021 = $526.57 per month.",
+        "To find total interest paid, multiply M by n and subtract the principal: ($526.57 x 60) - $25,000 = $31,594 - $25,000 = $6,594 in interest over the life of the loan.",
+      ],
+    },
+    examples: [
+      {
+        title: "Personal loan for debt consolidation",
+        scenario: "You want to consolidate $25,000 of high-interest credit card debt into a single personal loan at 9.5% over 5 years.",
+        steps: [
+          "Principal: P = $25,000.",
+          "Monthly rate: r = 9.5% / 12 = 0.7917% per month.",
+          "Total payments: n = 5 x 12 = 60 months.",
+          "Apply the formula: M = 25,000 x [0.007917 x (1.007917)^60] / [(1.007917)^60 - 1].",
+          "(1.007917)^60 = 1.6021. Numerator = 25,000 x 0.007917 x 1.6021 = 317.07.",
+          "Monthly payment: M = 317.07 / 0.6021 = $527/month.",
+        ],
+        result: "$527/month for 60 months, approximately $6,600 in total interest",
+      },
+      {
+        title: "Small business equipment loan",
+        scenario: "Your business needs $50,000 to purchase new equipment at a 7.0% rate over 3 years.",
+        steps: [
+          "Principal: P = $50,000.",
+          "Monthly rate: r = 7.0% / 12 = 0.5833% per month.",
+          "Total payments: n = 3 x 12 = 36 months.",
+          "Apply the formula: M = 50,000 x [0.005833 x (1.005833)^36] / [(1.005833)^36 - 1].",
+          "(1.005833)^36 = 1.2330. Numerator = 50,000 x 0.005833 x 1.2330 = 359.65.",
+          "Monthly payment: M = 359.65 / 0.2330 = $1,544/month.",
+        ],
+        result: "$1,544/month for 36 months, approximately $5,600 in total interest",
+      },
+      {
+        title: "Home improvement loan",
+        scenario: "You want to renovate your kitchen using a $15,000 home improvement loan at 8.25% over 4 years.",
+        steps: [
+          "Principal: P = $15,000.",
+          "Monthly rate: r = 8.25% / 12 = 0.6875% per month.",
+          "Total payments: n = 4 x 12 = 48 months.",
+          "Apply the formula: M = 15,000 x [0.006875 x (1.006875)^48] / [(1.006875)^48 - 1].",
+          "(1.006875)^48 = 1.3880. Numerator = 15,000 x 0.006875 x 1.3880 = 143.17.",
+          "Monthly payment: M = 143.17 / 0.3880 = $369/month.",
+        ],
+        result: "$369/month for 48 months, approximately $2,700 in total interest",
+      },
+    ],
+    referenceTable: {
+      title: "Monthly Loan Payments by Amount and Term",
+      headers: ["Loan Amount", "3 Years (8%)", "5 Years (8%)", "7 Years (8%)", "10 Years (8%)"],
+      rows: [
+        ["$5,000", "$157", "$101", "$78", "$61"],
+        ["$10,000", "$313", "$203", "$156", "$121"],
+        ["$15,000", "$470", "$304", "$234", "$182"],
+        ["$20,000", "$627", "$406", "$312", "$243"],
+        ["$25,000", "$783", "$507", "$390", "$303"],
+        ["$30,000", "$940", "$608", "$468", "$364"],
+        ["$40,000", "$1,253", "$811", "$623", "$485"],
+        ["$50,000", "$1,567", "$1,014", "$779", "$607"],
+      ],
+      note: "Amounts shown are principal and interest only at 8% annual rate. Your actual payment will vary based on your specific interest rate and loan term.",
+    },
   },
 
   // 5. Percentage Calculator
@@ -814,7 +1181,7 @@ export const TOOLS: Tool[] = [
       {
         title: "Review your BMI category",
         description:
-          "Your BMI result is displayed with a color-coded category label. Check the reference chart below to see where your BMI falls: Underweight (below 18.5), Normal weight (18.5–24.9), Overweight (25–29.9), or Obese (30 and above). Remember that BMI is a screening tool, not a diagnostic measure.",
+          "Your BMI result is displayed with a color-coded category label. Check the reference chart below to see where your BMI falls: Underweight (below 18.5), Normal weight (18.5 to 24.9), Overweight (25 to 29.9), or Obese (30 and above). Remember that BMI is a screening tool, not a diagnostic measure.",
       },
     ],
     faqs: [
@@ -826,7 +1193,7 @@ export const TOOLS: Tool[] = [
       {
         question: "What is a healthy BMI range?",
         answer:
-          "According to the World Health Organization (WHO), a healthy BMI falls between 18.5 and 24.9. Below 18.5 is classified as underweight, 25–29.9 as overweight, and 30 or above as obese. These ranges apply to adults over 20 years old. Children and teenagers use age-specific BMI percentile charts instead of fixed ranges.",
+          "According to the World Health Organization (WHO), a healthy BMI falls between 18.5 and 24.9. Below 18.5 is classified as underweight, 25 to 29.9 as overweight, and 30 or above as obese. These ranges apply to adults over 20 years old. Children and teenagers use age-specific BMI percentile charts instead of fixed ranges.",
       },
       {
         question: "Is BMI accurate for athletes and muscular people?",
@@ -836,7 +1203,7 @@ export const TOOLS: Tool[] = [
       {
         question: "Does BMI differ by age or gender?",
         answer:
-          "Standard adult BMI categories are the same regardless of age or gender. However, BMI interpretation can vary: women typically have more body fat than men at the same BMI, and older adults tend to have more body fat than younger adults. Some health organizations suggest slightly different healthy ranges for people over 65 (20–25 instead of 18.5–24.9).",
+          "Standard adult BMI categories are the same regardless of age or gender. However, BMI interpretation can vary: women typically have more body fat than men at the same BMI, and older adults tend to have more body fat than younger adults. Some health organizations suggest slightly different healthy ranges for people over 65 (20 to 25 instead of 18.5 to 24.9).",
       },
       {
         question: "Should I rely solely on BMI for health assessment?",
@@ -857,6 +1224,74 @@ export const TOOLS: Tool[] = [
       "bmi calculator metric",
       "healthy bmi range",
     ],
+    formula: {
+      name: "BMI Formula Explained",
+      expression: "Metric: BMI = Weight (kg) / Height (m)^2   |   Imperial: BMI = [Weight (lbs) x 703] / Height (inches)^2",
+      variables: [
+        { symbol: "BMI", meaning: "Body Mass Index value, a dimensionless number used to classify weight status" },
+        { symbol: "Weight", meaning: "Your body weight in kilograms (metric) or pounds (imperial)" },
+        { symbol: "Height", meaning: "Your height in meters (metric) or total inches (imperial)" },
+      ],
+      walkthrough: [
+        "Decide which unit system to use. Metric is straightforward if you know your weight in kg and height in cm. Imperial is convenient if you know your weight in lbs and height in feet and inches.",
+        "Convert height to the correct unit. For metric, divide centimeters by 100 to get meters (e.g., 178 cm / 100 = 1.78 m). For imperial, convert feet and inches to total inches (e.g., 5 ft 10 in = 70 inches).",
+        "Square your height. Metric example: 1.78 m x 1.78 m = 3.1684 m^2. Imperial example: 70 in x 70 in = 4,900 in^2.",
+        "Divide your weight by the squared height. Metric: 85 kg / 3.1684 = 26.8. Imperial: 180 lbs / 4,900 = 0.03673.",
+        "For imperial only, multiply the result by 703 to get the final BMI value: 0.03673 x 703 = 25.8.",
+        "Look up your result in the BMI category table. A value of 18.5 to 24.9 is considered normal weight for most adults.",
+      ],
+    },
+    examples: [
+      {
+        title: "Average adult male: 5 ft 10 in, 180 lbs",
+        scenario: "A 35-year-old man is 5 feet 10 inches tall and weighs 180 pounds. He wants to know his BMI using the imperial formula.",
+        steps: [
+          "Convert height to total inches: 5 ft x 12 = 60 in, plus 10 in = 70 total inches.",
+          "Square the height: 70 x 70 = 4,900 in^2.",
+          "Divide weight by squared height: 180 / 4,900 = 0.036735.",
+          "Multiply by 703 to get BMI: 0.036735 x 703 = 25.8.",
+          "Look up the category: 25.8 falls in the Overweight range (25 to 29.9).",
+        ],
+        result: "BMI = 25.8 (Overweight). This is just above the normal range cutoff of 24.9. Even a modest weight reduction of 5 to 8 lbs could bring this person back into the Normal weight category, which is associated with lower risk of cardiovascular disease and type 2 diabetes.",
+      },
+      {
+        title: "Fit female runner: 5 ft 6 in, 130 lbs",
+        scenario: "A 28-year-old woman who runs regularly is 5 feet 6 inches tall and weighs 130 pounds.",
+        steps: [
+          "Convert height to total inches: 5 ft x 12 = 60 in, plus 6 in = 66 total inches.",
+          "Square the height: 66 x 66 = 4,356 in^2.",
+          "Divide weight by squared height: 130 / 4,356 = 0.029844.",
+          "Multiply by 703: 0.029844 x 703 = 20.98, rounded to 21.0.",
+          "Look up the category: 21.0 falls in the Normal weight range (18.5 to 24.9).",
+        ],
+        result: "BMI = 21.0 (Normal weight). This is comfortably within the healthy range. Normal weight status is associated with the lowest risk for weight-related health conditions among adults.",
+      },
+      {
+        title: "Metric calculation: 85 kg, 1.78 m",
+        scenario: "A person knows their weight as 85 kg and height as 1.78 m and wants to calculate BMI using the metric formula.",
+        steps: [
+          "Height is already in meters: 1.78 m (no conversion needed).",
+          "Square the height: 1.78 x 1.78 = 3.1684 m^2.",
+          "Divide weight by squared height: 85 / 3.1684 = 26.8.",
+          "No multiplication factor needed for the metric formula.",
+          "Look up the category: 26.8 falls in the Overweight range (25 to 29.9).",
+        ],
+        result: "BMI = 26.8 (Overweight). While this is above the normal range, it is still in the lower portion of the overweight category. Lifestyle changes such as moderate diet adjustments and increased physical activity can help reduce BMI toward the normal range.",
+      },
+    ],
+    referenceTable: {
+      title: "BMI Categories and Health Risk Levels",
+      headers: ["BMI Range", "Category", "Health Risk"],
+      rows: [
+        ["Below 18.5", "Underweight", "Increased risk (malnutrition, osteoporosis, immune deficiency)"],
+        ["18.5 to 24.9", "Normal weight", "Lowest risk for weight-related conditions"],
+        ["25 to 29.9", "Overweight", "Mildly increased risk of heart disease, type 2 diabetes"],
+        ["30 to 34.9", "Obese Class I", "Moderate risk, often associated with hypertension and sleep apnea"],
+        ["35 to 39.9", "Obese Class II", "High risk, significantly elevated chance of serious conditions"],
+        ["40 and above", "Obese Class III (Severe)", "Very high risk, strongly advised to consult a healthcare provider"],
+      ],
+      note: "BMI is a screening tool, not a diagnostic measure. It does not account for muscle mass, age, gender, or ethnicity. Consult a healthcare professional for a full health assessment.",
+    },
   },
 
   // 6. Age Calculator
@@ -976,12 +1411,12 @@ export const TOOLS: Tool[] = [
       {
         title: "Set the interest rate",
         description:
-          "Enter the annual interest rate as a percentage. This should be the rate quoted by your lender. Rates vary by loan type: home loans typically range from 5–8%, car loans from 4–10%, and personal loans from 8–20%. Even a small rate difference significantly impacts total cost.",
+          "Enter the annual interest rate as a percentage. This should be the rate quoted by your lender. Rates vary by loan type: home loans typically range from 5 to 8%, car loans from 4 to 10%, and personal loans from 8 to 20%. Even a small rate difference significantly impacts total cost.",
       },
       {
         title: "Choose your loan tenure",
         description:
-          "Enter the loan tenure in years. Common tenures range from 1–5 years for personal and car loans, and 10–30 years for home loans. A longer tenure means lower EMI but more total interest paid. A shorter tenure means higher EMI but less total interest.",
+          "Enter the loan tenure in years. Common tenures range from 1 to 5 years for personal and car loans, and 10 to 30 years for home loans. A longer tenure means lower EMI but more total interest paid. A shorter tenure means higher EMI but less total interest.",
       },
       {
         title: "Click Calculate EMI",
@@ -1003,7 +1438,7 @@ export const TOOLS: Tool[] = [
       {
         question: "What happens if I prepay my loan?",
         answer:
-          "Prepaying reduces your outstanding principal, which means you pay less total interest. Most lenders allow prepayment, though some charge a penalty (typically 1–3% of the prepaid amount). Check your loan agreement for prepayment terms. Even small additional payments toward principal can significantly reduce total interest and shorten your loan tenure.",
+          "Prepaying reduces your outstanding principal, which means you pay less total interest. Most lenders allow prepayment, though some charge a penalty (typically 1 to 3% of the prepaid amount). Check your loan agreement for prepayment terms. Even small additional payments toward principal can significantly reduce total interest and shorten your loan tenure.",
       },
       {
         question: "Is a longer or shorter loan tenure better?",
@@ -1079,7 +1514,7 @@ export const TOOLS: Tool[] = [
       {
         question: "How much should I tip at a restaurant?",
         answer:
-          "In the United States, the standard tip for sit-down restaurant service is 15–20% of the pre-tax bill. For exceptional service, 20–25% is appropriate. For buffets, 10% is typical. For takeout, 10–15% is increasingly expected. Tipping customs vary by country - in many European and Asian countries, service charges are included in the bill price.",
+          "In the United States, the standard tip for sit-down restaurant service is 15 to 20% of the pre-tax bill. For exceptional service, 20 to 25% is appropriate. For buffets, 10% is typical. For takeout, 10 to 15% is increasingly expected. Tipping customs vary by country - in many European and Asian countries, service charges are included in the bill price.",
       },
       {
         question: "Should I calculate tip on the pre-tax or post-tax amount?",
@@ -1186,7 +1621,7 @@ export const TOOLS: Tool[] = [
       {
         question: "What is the maximum JSON size this formatter can handle?",
         answer:
-          "Since all processing happens in your browser, the limit depends on your device's available memory. In practice, this formatter handles JSON files up to 5–10 MB without issues on modern devices. For extremely large files (50MB+), you may experience slower performance. There is no artificial size limit.",
+          "Since all processing happens in your browser, the limit depends on your device's available memory. In practice, this formatter handles JSON files up to 5 to 10 MB without issues on modern devices. For extremely large files (50MB+), you may experience slower performance. There is no artificial size limit.",
       },
     ],
     relatedSlugs: [
@@ -1913,6 +2348,75 @@ export const TOOLS: Tool[] = [
     ],
     relatedSlugs: ["bmi-calculator", "percentage-calculator", "age-calculator"],
     keywords: ["calorie calculator", "daily calorie calculator", "TDEE calculator", "BMR calculator", "calorie intake calculator", "how many calories should I eat"],
+    formula: {
+      name: "Calorie Needs Calculation (Mifflin-St Jeor) Explained",
+      expression: "Males: BMR = 10 x weight(kg) + 6.25 x height(cm) - 5 x age + 5\nFemales: BMR = 10 x weight(kg) + 6.25 x height(cm) - 5 x age - 161\nTDEE = BMR x Activity Factor",
+      variables: [
+        { symbol: "BMR", meaning: "Basal Metabolic Rate, the calories your body burns at complete rest" },
+        { symbol: "TDEE", meaning: "Total Daily Energy Expenditure, your full daily calorie burn including activity" },
+        { symbol: "weight(kg)", meaning: "Body weight in kilograms (divide pounds by 2.205 to convert)" },
+        { symbol: "height(cm)", meaning: "Height in centimeters (multiply inches by 2.54 to convert)" },
+        { symbol: "age", meaning: "Age in years" },
+        { symbol: "Activity Factor", meaning: "Sedentary 1.2, Light activity 1.375, Moderate activity 1.55, Active 1.725, Very active 1.9" },
+      ],
+      walkthrough: [
+        "Determine your weight in kilograms. If you weigh 180 lbs, divide by 2.205 to get 81.6 kg.",
+        "Determine your height in centimeters. If you are 5 feet 10 inches (70 inches), multiply by 2.54 to get 177.8 cm.",
+        "For males, plug values into: BMR = 10 x 81.6 + 6.25 x 177.8 - 5 x age + 5. For a 30-year-old: BMR = 816 + 1,111 - 150 + 5 = 1,782.",
+        "For females, use: BMR = 10 x weight(kg) + 6.25 x height(cm) - 5 x age - 161.",
+        "Identify your activity factor. Moderately active (exercise 3 to 5 days per week) uses a factor of 1.55.",
+        "Multiply BMR by the activity factor to get TDEE. For the example above: TDEE = 1,782 x 1.55 = 2,762 calories per day.",
+        "Adjust for your goal. To lose about 1 lb per week, subtract 500 calories from TDEE (target: 2,262). To gain about 0.5 lb per week, add 250 to 500 calories above TDEE.",
+      ],
+    },
+    examples: [
+      {
+        title: "30-year-old male, moderately active, weight loss goal",
+        scenario: "Male, age 30, 180 lbs (81.6 kg), 5 feet 10 inches (177.8 cm), moderately active (exercise 3 to 5 days per week), goal is to lose 1 lb per week.",
+        steps: [
+          "Calculate BMR: 10 x 81.6 + 6.25 x 177.8 - 5 x 30 + 5 = 816 + 1,111 - 150 + 5 = 1,782 calories.",
+          "Apply moderate activity factor: TDEE = 1,782 x 1.55 = 2,762 calories per day.",
+          "Set a 500-calorie deficit to target 1 lb of weight loss per week.",
+          "Daily calorie target: 2,762 - 500 = 2,262 calories.",
+        ],
+        result: "BMR: ~1,782 cal. TDEE: ~2,762 cal. Weight loss target: ~2,262 cal/day (500-calorie deficit for 1 lb/week).",
+      },
+      {
+        title: "25-year-old female, lightly active, maintenance goal",
+        scenario: "Female, age 25, 140 lbs (63.5 kg), 5 feet 5 inches (165.1 cm), lightly active (exercise 1 to 2 days per week), goal is to maintain current weight.",
+        steps: [
+          "Calculate BMR: 10 x 63.5 + 6.25 x 165.1 - 5 x 25 - 161 = 635 + 1,032 - 125 - 161 = 1,381 calories.",
+          "Apply light activity factor: TDEE = 1,381 x 1.375 = 1,899 calories per day.",
+          "No adjustment needed for maintenance.",
+          "Daily calorie target: approximately 1,899 calories.",
+        ],
+        result: "BMR: ~1,381 cal. TDEE: ~1,899 cal. Maintenance target: ~1,899 cal/day.",
+      },
+      {
+        title: "35-year-old male, very active, muscle gain goal",
+        scenario: "Male, age 35, 160 lbs (72.6 kg), 5 feet 9 inches (175.3 cm), very active (hard exercise 6 to 7 days per week), goal is to gain muscle.",
+        steps: [
+          "Calculate BMR: 10 x 72.6 + 6.25 x 175.3 - 5 x 35 + 5 = 726 + 1,096 - 175 + 5 = 1,652 calories.",
+          "Apply very active factor: TDEE = 1,652 x 1.9 = 3,139 calories per day.",
+          "Add a 300-calorie surplus to support lean muscle gain.",
+          "Daily calorie target: 3,139 + 300 = 3,439 calories.",
+        ],
+        result: "BMR: ~1,652 cal. TDEE: ~3,139 cal. Muscle gain target: ~3,439 cal/day (300-calorie surplus).",
+      },
+    ],
+    referenceTable: {
+      title: "Estimated Daily Calorie Needs by Activity Level",
+      headers: ["Body Weight", "Sedentary (x1.2)", "Light (x1.375)", "Moderate (x1.55)", "Active (x1.725)", "Very Active (x1.9)"],
+      rows: [
+        ["120 lbs", "1,775", "2,034", "2,292", "2,551", "2,810"],
+        ["140 lbs", "1,884", "2,159", "2,433", "2,708", "2,983"],
+        ["160 lbs", "1,992", "2,283", "2,573", "2,865", "3,154"],
+        ["180 lbs", "2,101", "2,407", "2,714", "3,020", "3,327"],
+        ["200 lbs", "2,210", "2,532", "2,855", "3,177", "3,500"],
+        ["220 lbs", "2,318", "2,656", "2,995", "3,333", "3,671"],
+      ],
+      note: "Estimates based on a 30-year-old, 5 feet 8 inches tall male using the Mifflin-St Jeor equation. Women typically need 200 to 400 fewer calories per day.",
+    },
   },
 
   // 27. Grade Calculator
@@ -2590,6 +3094,82 @@ export const TOOLS: Tool[] = [
       "pdf invoice generator",
       "invoice generator no signup",
     ],
+    lastUpdated: "2026-04-15",
+    formula: {
+      name: "Invoice Total Calculation Explained",
+      expression: "Total = Subtotal + Tax - Discount",
+      variables: [
+        { symbol: "Subtotal", meaning: "Sum of (Quantity x Rate) for every line item" },
+        { symbol: "Tax", meaning: "Sum of each line item's tax amount (item subtotal x item tax rate / 100)" },
+        { symbol: "Discount", meaning: "Either a fixed amount or a percentage of the subtotal" },
+        { symbol: "Total", meaning: "The final amount your client owes" },
+      ],
+      walkthrough: [
+        "List all services or products as individual line items with a quantity, unit rate, and tax percentage.",
+        "For each line item, multiply quantity by rate to get the line subtotal. Example: 10 hours x $150/hour = $1,500.",
+        "Calculate tax per line item: $1,500 x 8% = $120. This allows different tax rates per item (some services may be tax-exempt).",
+        "Add all line subtotals to get the invoice subtotal. Add all line taxes to get the total tax.",
+        "If you are offering a percentage discount, calculate it from the subtotal: $5,000 subtotal x 10% = $500 discount.",
+        "If you are offering a fixed discount, subtract it directly: $5,000 - $200 = $4,800.",
+        "Final total: Subtotal + Total Tax - Discount. For example: $5,000 + $400 - $500 = $4,900.",
+      ],
+    },
+    examples: [
+      {
+        title: "Freelance web development project",
+        scenario: "A freelancer invoicing for 40 hours of development work and 2 purchased domain names.",
+        steps: [
+          "Line item 1: Web Development, 40 hours x $125/hour = $5,000 (no tax on services in this state).",
+          "Line item 2: Domain Registration, 2 x $15 = $30 (8% sales tax = $2.40).",
+          "Subtotal: $5,000 + $30 = $5,030.",
+          "Total tax: $0 + $2.40 = $2.40.",
+          "No discount applied.",
+          "Invoice total: $5,030 + $2.40 = $5,032.40.",
+        ],
+        result: "$5,032.40 due",
+      },
+      {
+        title: "Consulting retainer with 10% early payment discount",
+        scenario: "A consultant billing for a monthly retainer with a discount for payment within 7 days.",
+        steps: [
+          "Line item 1: Strategy Consulting, 1 x $3,000 = $3,000.",
+          "Line item 2: Market Research Report, 1 x $1,500 = $1,500.",
+          "Subtotal: $4,500.",
+          "No tax (exempt services).",
+          "10% early payment discount: $4,500 x 10% = $450.",
+          "Invoice total: $4,500 - $450 = $4,050.",
+        ],
+        result: "$4,050 due (with 10% early payment discount)",
+      },
+      {
+        title: "Product order with mixed tax rates",
+        scenario: "A small business invoicing for physical products shipped to a customer.",
+        steps: [
+          "Line item 1: Widget A, 100 units x $8.50 = $850 (7% tax = $59.50).",
+          "Line item 2: Widget B, 50 units x $12.00 = $600 (7% tax = $42.00).",
+          "Line item 3: Shipping, 1 x $45 = $45 (no tax on shipping).",
+          "Subtotal: $850 + $600 + $45 = $1,495.",
+          "Total tax: $59.50 + $42.00 + $0 = $101.50.",
+          "Invoice total: $1,495 + $101.50 = $1,596.50.",
+        ],
+        result: "$1,596.50 due",
+      },
+    ],
+    referenceTable: {
+      title: "Common Freelance Hourly Rates by Industry (US, 2025)",
+      headers: ["Industry", "Junior Rate", "Mid-Level Rate", "Senior Rate", "Invoice for 40 Hours (Mid)"],
+      rows: [
+        ["Web Development", "$50 to $75", "$100 to $150", "$150 to $250", "$4,000 to $6,000"],
+        ["Graphic Design", "$35 to $60", "$75 to $120", "$120 to $200", "$3,000 to $4,800"],
+        ["Copywriting", "$30 to $50", "$60 to $100", "$100 to $175", "$2,400 to $4,000"],
+        ["Marketing Consulting", "$50 to $80", "$100 to $175", "$175 to $300", "$4,000 to $7,000"],
+        ["Accounting", "$25 to $45", "$50 to $90", "$90 to $150", "$2,000 to $3,600"],
+        ["Legal Consulting", "$75 to $125", "$150 to $300", "$300 to $500+", "$6,000 to $12,000"],
+        ["Video Production", "$40 to $70", "$80 to $150", "$150 to $250", "$3,200 to $6,000"],
+        ["IT Support", "$35 to $60", "$75 to $125", "$125 to $200", "$3,000 to $5,000"],
+      ],
+      note: "Rates vary by location, experience, and project complexity. Use these as starting points when setting your invoice rates.",
+    },
   },
 
   // 42. Income Tax Calculator (US)
@@ -2691,7 +3271,7 @@ export const TOOLS: Tool[] = [
       {
         question: "Can I use this calculator to figure out my 401(k) contribution?",
         answer:
-          "Yes. Enter different pre-tax deduction amounts to see how increasing your 401(k) contribution affects your take-home pay and total tax. You'll typically find that each $1,000 added to 401(k) only reduces take-home by $650–$780 because you save federal, state, and sometimes Medicare taxes on that contribution. Use this to find a contribution level that maxes your tax savings without crushing your paycheck.",
+          "Yes. Enter different pre-tax deduction amounts to see how increasing your 401(k) contribution affects your take-home pay and total tax. You'll typically find that each $1,000 added to 401(k) only reduces take-home by $650 to $780 because you save federal, state, and sometimes Medicare taxes on that contribution. Use this to find a contribution level that maxes your tax savings without crushing your paycheck.",
       },
       {
         question: "Is my income data private?",
@@ -2721,6 +3301,88 @@ export const TOOLS: Tool[] = [
       "us tax calculator",
       "paycheck tax calculator",
     ],
+    formula: {
+      name: "Federal Income Tax Calculation Explained",
+      expression: "Tax = Sum of (Taxable Income in Each Bracket x Bracket Rate)",
+      variables: [
+        { symbol: "Gross Income", meaning: "Total wages, salary, or net self-employment earnings before any deductions" },
+        { symbol: "Adjustments / Deductions", meaning: "Standard deduction (or itemized if larger) plus pre-tax contributions like 401(k) and HSA that reduce your taxable income" },
+        { symbol: "Taxable Income", meaning: "Gross income minus all deductions and adjustments, the amount the brackets are applied to" },
+        { symbol: "Marginal Rate", meaning: "The rate that applies to the last (highest) dollar you earn, the top bracket you fall into" },
+        { symbol: "Effective Rate", meaning: "Total federal tax owed divided by gross income, the actual percentage of your income paid in federal tax" },
+      ],
+      walkthrough: [
+        "Start with your gross income. For example, a single filer earning $75,000 in wages.",
+        "Subtract pre-tax deductions. A $5,000 401(k) contribution reduces gross income to $70,000 (Adjusted Gross Income).",
+        "Apply the standard deduction. For 2025, the single filer standard deduction is $15,000. AGI $70,000 minus $15,000 equals $55,000 in taxable income.",
+        "Apply the brackets from the bottom up, not all at once. The first $11,925 is taxed at 10% ($1,192.50). The next $36,550 (from $11,925 to $48,475) is taxed at 12% ($4,386). The remaining $6,525 (from $48,475 to $55,000) is taxed at 22% ($1,435.50).",
+        "Add the bracket amounts together: $1,192.50 + $4,386 + $1,435.50 = $7,014 in federal tax.",
+        "Compute your marginal rate. Because the last dollar of income fell in the 22% bracket, your marginal rate is 22%. This is NOT the rate applied to all income.",
+        "Compute your effective rate. $7,014 total tax divided by $75,000 gross income equals 9.35%. This is the true percentage of gross income going to federal tax.",
+        "Apply any tax credits. Credits reduce the final tax owed dollar-for-dollar. A $2,000 Child Tax Credit would lower the bill from $7,014 to $5,014.",
+      ],
+    },
+    examples: [
+      {
+        title: "Single filer earning $75,000",
+        scenario: "A single filer with $75,000 in wages, a $5,000 401(k) contribution, no itemized deductions, and no tax credits.",
+        steps: [
+          "Gross income: $75,000. Pre-tax 401(k): $5,000. AGI: $70,000.",
+          "2025 standard deduction for Single: $15,000. Taxable income: $70,000 minus $15,000 equals $55,000.",
+          "10% bracket: $11,925 x 10% equals $1,192.50.",
+          "12% bracket: ($48,475 minus $11,925) x 12% equals $36,550 x 12% equals $4,386.",
+          "22% bracket: ($55,000 minus $48,475) x 22% equals $6,525 x 22% equals $1,435.50.",
+          "Total federal tax: $1,192.50 + $4,386 + $1,435.50 equals $7,014.",
+          "Marginal rate: 22%. Effective federal rate: $7,014 / $75,000 equals 9.35%.",
+        ],
+        result: "Federal tax: $7,014 | Effective rate: 9.35% | Marginal rate: 22%",
+      },
+      {
+        title: "Married filing jointly at $150,000",
+        scenario: "A married couple filing jointly with $150,000 combined wages, a $10,000 401(k) contribution, and no itemized deductions.",
+        steps: [
+          "Gross income: $150,000. Pre-tax 401(k): $10,000. AGI: $140,000.",
+          "2025 standard deduction for MFJ: $30,000. Taxable income: $140,000 minus $30,000 equals $110,000.",
+          "10% bracket: $23,850 x 10% equals $2,385. (MFJ brackets are roughly double the Single brackets.)",
+          "12% bracket: ($96,950 minus $23,850) x 12% equals $73,100 x 12% equals $8,772.",
+          "22% bracket: ($110,000 minus $96,950) x 22% equals $13,050 x 22% equals $2,871.",
+          "Total federal tax: $2,385 + $8,772 + $2,871 equals $14,028.",
+          "Marginal rate: 22%. Effective federal rate: $14,028 / $150,000 equals 9.35%.",
+        ],
+        result: "Federal tax: $14,028 | Effective rate: 9.35% | Marginal rate: 22%",
+      },
+      {
+        title: "High earner: single filer at $250,000",
+        scenario: "A single filer with $250,000 in wages, a $23,000 401(k) contribution (2025 max), and no itemized deductions.",
+        steps: [
+          "Gross income: $250,000. Pre-tax 401(k): $23,000. AGI: $227,000.",
+          "2025 standard deduction for Single: $15,000. Taxable income: $227,000 minus $15,000 equals $212,000.",
+          "10% bracket: $11,925 x 10% equals $1,192.50.",
+          "12% bracket: ($48,475 minus $11,925) x 12% equals $36,550 x 12% equals $4,386.",
+          "22% bracket: ($103,350 minus $48,475) x 22% equals $54,875 x 22% equals $12,072.50.",
+          "24% bracket: ($197,300 minus $103,350) x 24% equals $93,950 x 24% equals $22,548.",
+          "32% bracket: ($212,000 minus $197,300) x 32% equals $14,700 x 32% equals $4,704.",
+          "Total federal tax: $1,192.50 + $4,386 + $12,072.50 + $22,548 + $4,704 equals $44,903.",
+          "Marginal rate: 32%. Effective federal rate: $44,903 / $250,000 equals 17.96%.",
+          "Key insight: the marginal rate is 32% but the effective rate is only 17.96% because most income is taxed at lower brackets.",
+        ],
+        result: "Federal tax: $44,903 | Effective rate: 17.96% | Marginal rate: 32%",
+      },
+    ],
+    referenceTable: {
+      title: "2025 Federal Income Tax Brackets (Single Filer)",
+      headers: ["Tax Bracket", "Income Range", "Tax Owed on Bracket"],
+      rows: [
+        ["10%", "$0 to $11,925", "10% of taxable income in this range"],
+        ["12%", "$11,926 to $48,475", "12% of taxable income in this range"],
+        ["22%", "$48,476 to $103,350", "22% of taxable income in this range"],
+        ["24%", "$103,351 to $197,300", "24% of taxable income in this range"],
+        ["32%", "$197,301 to $250,525", "32% of taxable income in this range"],
+        ["35%", "$250,526 to $626,350", "35% of taxable income in this range"],
+        ["37%", "Over $626,350", "37% of taxable income in this range"],
+      ],
+      note: "Brackets apply to taxable income (gross income minus deductions), not gross income. Each bracket rate only applies to the portion of income within that range, not to your total income.",
+    },
   },
 
   // 43. Compound Interest Calculator
@@ -2765,7 +3427,7 @@ export const TOOLS: Tool[] = [
       {
         title: "Set the annual rate and time horizon",
         description:
-          "Enter your expected annual return rate. Historical averages: 7–10% for US stocks (S&P 500), 2–4% for bonds, 4–5% for a balanced portfolio, 4–5% for HYSAs. Then enter the number of years you plan to invest.",
+          "Enter your expected annual return rate. Historical averages: 7 to 10% for US stocks (S&P 500), 2 to 4% for bonds, 4 to 5% for a balanced portfolio, 4 to 5% for HYSAs. Then enter the number of years you plan to invest.",
       },
       {
         title: "Choose compounding and contribution frequencies",
@@ -2851,6 +3513,122 @@ export const TOOLS: Tool[] = [
       "future value calculator",
       "compounding calculator",
     ],
+    formula: {
+      name: "Compound Interest Formula Explained",
+      expression: "A = P(1 + r/n)^(nt)",
+      variables: [
+        {
+          symbol: "A",
+          meaning:
+            "Final amount (future value including principal and all interest earned)",
+        },
+        {
+          symbol: "P",
+          meaning:
+            "Initial principal (the starting amount you invest or deposit)",
+        },
+        {
+          symbol: "r",
+          meaning:
+            "Annual interest rate expressed as a decimal (e.g., 8% becomes 0.08)",
+        },
+        {
+          symbol: "n",
+          meaning:
+            "Compounding frequency per year (12 for monthly, 365 for daily, 1 for annual)",
+        },
+        {
+          symbol: "t",
+          meaning: "Time in years the money is invested or saved",
+        },
+        {
+          symbol: "PMT",
+          meaning:
+            "Periodic contribution added each compounding period (for the annuity version)",
+        },
+      ],
+      walkthrough: [
+        "The basic formula A = P(1 + r/n)^(nt) handles a one-time lump-sum deposit with no recurring additions. When you add regular contributions, the future value of an ordinary annuity is added: PMT x [((1 + r/n)^(nt) - 1) / (r/n)].",
+        "Start with your principal P. If you open an investment account with $10,000, then P = 10,000.",
+        "Convert the annual rate to a decimal. An 8% annual return means r = 0.08.",
+        "Identify the compounding frequency. Monthly compounding means n = 12. Daily compounding means n = 365.",
+        "Plug in the time horizon. For 20 years, t = 20. The exponent nt = 12 x 20 = 240 for monthly compounding.",
+        "Compute (1 + r/n)^(nt). For monthly compounding at 8% over 20 years: (1 + 0.08/12)^240 = (1.006667)^240 = 4.926.",
+        "Multiply by P to get the lump-sum result: A = 10,000 x 4.926 = $49,268. This is roughly the future value of $10,000 at 8% compounded monthly for 20 years.",
+        "To add regular contributions, use the annuity formula. Contributing $200 per month at 8% monthly compounding for 20 years adds: 200 x [(4.926 - 1) / 0.006667] = 200 x 588.9 = $117,780. Total future value: $49,268 + $117,780 = $167,048.",
+      ],
+    },
+    examples: [
+      {
+        title: "$10,000 invested at 8% for 20 years (no contributions)",
+        scenario:
+          "You invest a $10,000 lump sum into an index fund earning 8% annually, compounded monthly, and make no additional contributions.",
+        steps: [
+          "Principal: P = $10,000. Annual rate: r = 0.08. Compounding: monthly (n = 12). Time: t = 20 years.",
+          "Monthly rate: r/n = 0.08 / 12 = 0.006667.",
+          "Exponent: n x t = 12 x 20 = 240.",
+          "Growth factor: (1.006667)^240 = 4.9268.",
+          "Future value: A = 10,000 x 4.9268 = $49,268.",
+          "Total interest earned: $49,268 - $10,000 = $39,268 (nearly 4x the original deposit).",
+          "Milestone check: after 10 years, the balance is about $22,196. It then more than doubles again in the second 10 years, illustrating the accelerating nature of compounding.",
+        ],
+        result:
+          "Approximately $49,268 after 20 years. Interest earned ($39,268) is nearly 4x the original $10,000 deposit.",
+      },
+      {
+        title: "$5,000 initial plus $200 per month for 30 years at 7%",
+        scenario:
+          "You open a retirement account with $5,000 and contribute $200 every month for 30 years at a 7% annual return compounded monthly.",
+        steps: [
+          "Principal: P = $5,000. Monthly contribution: PMT = $200. Rate: r = 0.07 (n = 12). Time: t = 30 years.",
+          "Lump-sum portion: A1 = 5,000 x (1 + 0.07/12)^360 = 5,000 x 8.116 = $40,580.",
+          "Contribution portion (annuity): A2 = 200 x [((1.005833)^360 - 1) / 0.005833].",
+          "(1.005833)^360 = 8.116. So A2 = 200 x [(8.116 - 1) / 0.005833] = 200 x 1,219.9 = $243,980.",
+          "Total future value: $40,580 + $243,980 = $284,560.",
+          "Total amount contributed over 30 years: $5,000 + ($200 x 360) = $77,000.",
+          "Total interest earned: $284,560 - $77,000 = $207,560. Compound growth accounts for 73% of the final balance.",
+        ],
+        result:
+          "Approximately $284,560 after 30 years on $77,000 total contributed. Interest earned ($207,560) is 2.7x what you put in.",
+      },
+      {
+        title:
+          "Daily vs monthly vs annual compounding at 10% for 10 years ($1,000)",
+        scenario:
+          "You invest $1,000 at 10% annual interest for 10 years and want to see how much the compounding frequency changes your final balance.",
+        steps: [
+          "Principal: P = $1,000. Rate: r = 0.10. Time: t = 10 years. No additional contributions.",
+          "Annual compounding (n = 1): A = 1,000 x (1.10)^10 = 1,000 x 2.5937 = $2,594.",
+          "Monthly compounding (n = 12): A = 1,000 x (1 + 0.10/12)^120 = 1,000 x 2.7070 = $2,707.",
+          "Daily compounding (n = 365): A = 1,000 x (1 + 0.10/365)^3650 = 1,000 x 2.7179 = $2,718.",
+          "Continuous compounding (n approaches infinity): A = 1,000 x e^(0.10 x 10) = 1,000 x 2.7183 = $2,718.",
+          "Difference between annual and monthly: $2,707 - $2,594 = $113 (about 4.4% more).",
+          "Difference between monthly and daily: $2,718 - $2,707 = $11 (only 0.4% more). The gains from going beyond monthly compounding are minimal.",
+        ],
+        result:
+          "Annual: $2,594. Monthly: $2,707. Daily: $2,718. Most of the benefit from compounding frequency comes from going annual to monthly. Daily vs monthly adds only $11 over 10 years.",
+      },
+    ],
+    referenceTable: {
+      title: "Growth of $10,000 at Different Rates Over Time",
+      headers: [
+        "Years",
+        "5% Return",
+        "7% Return",
+        "8% Return",
+        "10% Return",
+        "12% Return",
+      ],
+      rows: [
+        ["5", "$12,763", "$14,026", "$14,898", "$16,453", "$17,623"],
+        ["10", "$16,289", "$19,672", "$22,196", "$27,070", "$31,058"],
+        ["15", "$20,789", "$27,590", "$33,137", "$44,539", "$54,736"],
+        ["20", "$26,533", "$38,697", "$49,268", "$73,281", "$96,463"],
+        ["25", "$33,864", "$54,274", "$73,457", "$120,569", "$170,001"],
+        ["30", "$43,219", "$76,123", "$109,357", "$198,374", "$299,600"],
+      ],
+      note: "Values assume a $10,000 lump sum with no additional contributions and monthly compounding. Results are approximate and are for illustration only.",
+    },
   },
 
   // 44. Salary to Hourly Calculator
@@ -2974,6 +3752,80 @@ export const TOOLS: Tool[] = [
       "hourly wage calculator",
       "pay calculator",
     ],
+    formula: {
+      name: "Salary to Hourly Conversion Formula",
+      expression: "Hourly Rate = Annual Salary / (Weekly Hours x 52)",
+      variables: [
+        { symbol: "Hourly Rate", meaning: "Your equivalent hourly pay based on the annual salary and hours worked per week" },
+        { symbol: "Annual Salary", meaning: "Your total gross annual compensation before taxes and deductions" },
+        { symbol: "Weekly Hours", meaning: "The number of hours you work each week (standard is 40)" },
+        { symbol: "52", meaning: "Weeks per year" },
+      ],
+      walkthrough: [
+        "Start with your annual salary. For example, $75,000 per year.",
+        "Determine your standard weekly hours. The most common full-time schedule is 40 hours per week.",
+        "Multiply weekly hours by 52 weeks to get annual hours: 40 x 52 = 2,080 hours per year.",
+        "Divide annual salary by annual hours: $75,000 / 2,080 = $36.06 per hour.",
+        "To find your true hourly rate accounting for PTO, subtract paid days off from your working hours. If you have 15 vacation days and 10 holidays (25 days, or 200 hours), your actual working hours are 2,080 minus 200 = 1,880. Your true hourly rate is $75,000 / 1,880 = $39.89.",
+        "For overtime, add extra earnings separately: weekly overtime hours x 1.5 x base hourly rate x 52.",
+      ],
+    },
+    examples: [
+      {
+        title: "$75,000 salary, standard 40-hour week",
+        scenario: "A full-time employee earns $75,000 per year and works 40 hours per week with no overtime.",
+        steps: [
+          "Annual hours: 40 hours/week x 52 weeks = 2,080 hours.",
+          "Hourly rate: $75,000 / 2,080 = $36.06 per hour.",
+          "Daily rate (8-hour day): $36.06 x 8 = $288.46.",
+          "Weekly rate: $36.06 x 40 = $1,442.31.",
+          "Biweekly rate: $1,442.31 x 2 = $2,884.62.",
+          "Monthly rate: $75,000 / 12 = $6,250.",
+        ],
+        result: "$36.06/hour ($2,884.62 biweekly, $6,250/month)",
+      },
+      {
+        title: "$55,000 salary with 3 weeks PTO",
+        scenario: "An employee earns $55,000 per year, works 40 hours per week, and has 15 vacation days plus 10 paid holidays (25 total paid days off).",
+        steps: [
+          "Standard annual hours: 40 x 52 = 2,080.",
+          "Standard hourly rate: $55,000 / 2,080 = $26.44.",
+          "Paid days off: 25 days x 8 hours = 200 hours not actually worked.",
+          "Actual working hours: 2,080 minus 200 = 1,880 hours.",
+          "True hourly rate: $55,000 / 1,880 = $29.26.",
+          "The 3 weeks of PTO means each hour actually worked is worth $29.26, not $26.44.",
+        ],
+        result: "$26.44/hour standard, $29.26/hour true rate (accounting for PTO)",
+      },
+      {
+        title: "$120,000 salary, 50-hour weeks",
+        scenario: "A manager earns $120,000 per year but regularly works 50 hours per week instead of 40.",
+        steps: [
+          "If the salary is based on a 40-hour week, the stated hourly rate is $120,000 / 2,080 = $57.69.",
+          "But actual annual hours worked: 50 x 52 = 2,600 hours.",
+          "Real hourly rate based on hours actually worked: $120,000 / 2,600 = $46.15.",
+          "Compared to a job paying $100,000 for 40 hours: $100,000 / 2,080 = $48.08.",
+          "The $120,000 at 50 hours actually pays less per hour than $100,000 at 40 hours.",
+          "This shows why comparing offers on a per-hour basis matters, not just the headline salary.",
+        ],
+        result: "$46.15/hour real rate (vs $57.69 stated), showing 50-hour weeks lower effective pay",
+      },
+    ],
+    referenceTable: {
+      title: "Annual Salary to Hourly Rate Quick Reference",
+      headers: ["Annual Salary", "40 hrs/week", "45 hrs/week", "50 hrs/week", "Biweekly Pay", "Monthly Pay"],
+      rows: [
+        ["$30,000", "$14.42", "$12.82", "$11.54", "$1,153.85", "$2,500"],
+        ["$40,000", "$19.23", "$17.09", "$15.38", "$1,538.46", "$3,333"],
+        ["$50,000", "$24.04", "$21.37", "$19.23", "$1,923.08", "$4,167"],
+        ["$60,000", "$28.85", "$25.64", "$23.08", "$2,307.69", "$5,000"],
+        ["$75,000", "$36.06", "$32.05", "$28.85", "$2,884.62", "$6,250"],
+        ["$85,000", "$40.87", "$36.32", "$32.69", "$3,269.23", "$7,083"],
+        ["$100,000", "$48.08", "$42.74", "$38.46", "$3,846.15", "$8,333"],
+        ["$120,000", "$57.69", "$51.28", "$46.15", "$4,615.38", "$10,000"],
+      ],
+      note: "Hourly rates based on 52 weeks per year. Biweekly and monthly pay are gross before taxes and deductions.",
+    },
   },
 
   // 45. Investment Return Calculator
@@ -3103,6 +3955,75 @@ export const TOOLS: Tool[] = [
       "capital gains calculator",
       "portfolio return calculator",
     ],
+    formula: {
+      name: "Investment Return Formulas Explained",
+      expression: "Total Return = (Final Value - Initial Investment) / Initial Investment x 100",
+      variables: [
+        { symbol: "Total Return (%)", meaning: "Cumulative percentage gain or loss over the entire holding period" },
+        { symbol: "CAGR", meaning: "Compound Annual Growth Rate, the constant yearly rate that equals the total return over the holding period" },
+        { symbol: "Final Value", meaning: "The current or sale value of the investment, including dividends reinvested" },
+        { symbol: "Initial Investment", meaning: "The original amount invested (cost basis)" },
+        { symbol: "Years", meaning: "Total holding period in years (fractional years allowed)" },
+      ],
+      walkthrough: [
+        "Step 1: Calculate total return. Subtract your initial investment from the final value, then divide by the initial investment and multiply by 100. Example: ($18,000 minus $10,000) / $10,000 x 100 = 80% total return.",
+        "Step 2: Calculate CAGR (annualized return). Use the formula: CAGR = (Final Value / Initial Investment)^(1/Years) minus 1. Example: ($18,000 / $10,000)^(1/5) minus 1 = 1.8^0.2 minus 1 = 0.1247, or 12.47% per year.",
+        "Step 3: For total return including dividends, add all dividends received to the final value before calculating. This gives you the total return on a dividends-reinvested basis.",
+        "Step 4: Calculate real (inflation-adjusted) CAGR using the Fisher equation: Real CAGR = ((1 + Nominal CAGR) / (1 + Inflation Rate)) minus 1. At 3% inflation, a 12.47% CAGR becomes about 9.19% real CAGR.",
+      ],
+    },
+    examples: [
+      {
+        title: "$10,000 invested, now worth $18,000 after 5 years",
+        scenario: "You bought $10,000 of a stock index fund five years ago. It is now worth $18,000.",
+        steps: [
+          "Total gain: $18,000 minus $10,000 = $8,000.",
+          "Total return: $8,000 / $10,000 x 100 = 80%.",
+          "CAGR: ($18,000 / $10,000)^(1/5) minus 1 = 1.8^0.2 minus 1 = 12.47% per year.",
+          "Holding period: 5 years, which is over 12 months, so long-term capital gains rates apply.",
+          "S&P 500 benchmark at 10% CAGR over 5 years: $10,000 would become $16,105. You beat it by $1,895.",
+        ],
+        result: "80% total return, 12.47% CAGR (beats S&P 500 benchmark of 10%)",
+      },
+      {
+        title: "$50,000 portfolio with dividends reinvested over 10 years",
+        scenario: "You invested $50,000 ten years ago. The portfolio is now worth $110,000, and you received $15,000 in dividends that were reinvested.",
+        steps: [
+          "Total value including reinvested dividends: $110,000 (already included in final value).",
+          "Total gain: $110,000 minus $50,000 = $60,000.",
+          "Total return: $60,000 / $50,000 x 100 = 120%.",
+          "CAGR: ($110,000 / $50,000)^(1/10) minus 1 = 2.2^0.1 minus 1 = 8.21% per year.",
+          "Without dividends reinvested (final value $95,000): total return 90%, CAGR 6.63%.",
+          "Reinvesting dividends added 1.58 percentage points to the annualized return.",
+        ],
+        result: "120% total return, 8.21% CAGR with dividends reinvested (vs 6.63% without)",
+      },
+      {
+        title: "Comparing two investments: 50% in 3 years vs 80% in 7 years",
+        scenario: "Investment A returned 50% in 3 years. Investment B returned 80% in 7 years. Which was better on an annualized basis?",
+        steps: [
+          "Investment A CAGR: (1.50)^(1/3) minus 1 = 1.1447 minus 1 = 14.47% per year.",
+          "Investment B CAGR: (1.80)^(1/7) minus 1 = 1.0880 minus 1 = 8.80% per year.",
+          "Investment A had a much higher annualized return despite a lower total return percentage.",
+          "Investment B looks better on a headline basis (80% vs 50%), but it took 4 more years to get there.",
+          "CAGR removes the time advantage and reveals Investment A outperformed by 5.67 percentage points per year.",
+        ],
+        result: "Investment A wins: 14.47% CAGR vs 8.80% CAGR, despite lower headline return",
+      },
+    ],
+    referenceTable: {
+      title: "Historical Average Annual Returns by Asset Class",
+      headers: ["Asset Class", "10-Year Avg", "20-Year Avg", "30-Year Avg", "$10K Grows To (20yr)"],
+      rows: [
+        ["S&P 500 (with dividends)", "~13%", "~10%", "~10%", "~$67,275"],
+        ["Total US Stock Market", "~12%", "~9.5%", "~10%", "~$61,416"],
+        ["International Stocks", "~6%", "~5%", "~7%", "~$26,533"],
+        ["US Bonds (Aggregate)", "~2%", "~4%", "~5%", "~$21,911"],
+        ["Real Estate (REITs)", "~9%", "~8%", "~10%", "~$46,610"],
+        ["High-Yield Savings", "~1 to 5%", "~2%", "~2%", "~$14,859"],
+      ],
+      note: "Historical averages are approximate and based on long-term data. Past performance does not guarantee future results. Returns shown are nominal (before inflation).",
+    },
   },
 
   // 46. ROI Calculator
@@ -3234,6 +4155,77 @@ export const TOOLS: Tool[] = [
       "IRR calculator",
       "payback period calculator",
     ],
+    formula: {
+      name: "ROI Formula Explained",
+      expression: "ROI = (Net Profit / Total Investment) x 100",
+      variables: [
+        { symbol: "ROI (%)", meaning: "Return on Investment as a percentage of the total amount invested" },
+        { symbol: "Net Profit", meaning: "Revenue minus Total Investment (all income from the investment minus all costs)" },
+        { symbol: "Revenue", meaning: "Total income or proceeds generated by the investment" },
+        { symbol: "Total Investment", meaning: "All costs associated with the investment, including purchase price, fees, and operating expenses" },
+      ],
+      walkthrough: [
+        "Step 1: Identify your total investment. Include every cost: purchase price, transaction fees, renovation costs, setup costs, and ongoing expenses directly attributable to the investment.",
+        "Step 2: Calculate net profit. Subtract total investment from total revenue: Net Profit = Revenue minus Total Investment.",
+        "Step 3: Calculate ROI: divide net profit by total investment and multiply by 100. Example: $2,500 net profit on $10,000 invested = 25% ROI.",
+        "Step 4: To compare investments held for different durations, calculate annualized ROI: Annualized ROI = ((1 + ROI)^(1/Years) minus 1) x 100. A 50% ROI over 3 years is a 14.5% annualized ROI.",
+        "Step 5: For a complete picture, compare the annualized ROI against your opportunity cost (for example, the S&P 500 at roughly 10% annually) to see whether the investment was worth the risk and effort.",
+      ],
+    },
+    examples: [
+      {
+        title: "Marketing campaign: $5,000 spent, $18,000 revenue",
+        scenario: "A business runs a digital ad campaign, spending $5,000 total. The campaign generates $18,000 in revenue.",
+        steps: [
+          "Total investment: $5,000 in ad spend.",
+          "Revenue: $18,000.",
+          "Net profit: $18,000 minus $5,000 = $13,000.",
+          "ROI: ($13,000 / $5,000) x 100 = 260%.",
+          "ROAS (return on ad spend): $18,000 / $5,000 = 3.6x (meaning $3.60 generated for every $1 spent).",
+          "If product cost of goods sold is $9,000, true net profit is $18,000 minus $5,000 minus $9,000 = $4,000. Marketing ROI = ($4,000 / $5,000) x 100 = 80%.",
+        ],
+        result: "260% gross ROI on ad spend (80% net ROI after accounting for product costs)",
+      },
+      {
+        title: "Real estate flip: $200,000 purchase, $35,000 renovation, sold for $310,000",
+        scenario: "An investor buys a house for $200,000, spends $35,000 on renovations, and sells it for $310,000.",
+        steps: [
+          "Total investment: $200,000 purchase plus $35,000 renovation = $235,000.",
+          "Revenue: $310,000 sale price.",
+          "Net profit: $310,000 minus $235,000 = $75,000.",
+          "ROI: ($75,000 / $235,000) x 100 = 31.9%.",
+          "If the project took 8 months (0.67 years), annualized ROI = ((1 + 0.319)^(1/0.67) minus 1) x 100 = roughly 50% annualized.",
+          "This would beat a typical stock market year and justify the effort and risk.",
+        ],
+        result: "31.9% ROI on the flip (roughly 50% annualized over 8 months)",
+      },
+      {
+        title: "Equipment purchase: $50,000 machine saves $15,000/year for 5 years",
+        scenario: "A company buys a $50,000 piece of equipment that reduces labor costs by $15,000 per year for 5 years.",
+        steps: [
+          "Total investment: $50,000.",
+          "Total savings over 5 years: $15,000 x 5 = $75,000.",
+          "Net profit: $75,000 minus $50,000 = $25,000.",
+          "ROI: ($25,000 / $50,000) x 100 = 50%.",
+          "Annualized ROI: ((1 + 0.50)^(1/5) minus 1) x 100 = 8.45% per year.",
+          "Payback period: $50,000 / $15,000 per year = 3.33 years to break even.",
+        ],
+        result: "50% total ROI over 5 years (8.45% annualized), payback in 3.33 years",
+      },
+    ],
+    referenceTable: {
+      title: "ROI Benchmarks by Investment Type",
+      headers: ["Investment Type", "Typical ROI Range", "Good ROI", "Excellent ROI"],
+      rows: [
+        ["Stock Market (S&P 500)", "7 to 10% annually", "10%+", "15%+"],
+        ["Real Estate (rental)", "4 to 12% annually", "8%+", "12%+"],
+        ["Small Business", "15 to 40% annually", "25%+", "50%+"],
+        ["Marketing / Advertising", "100 to 400%", "300%+", "500%+"],
+        ["Equipment / Machinery", "10 to 30%", "20%+", "40%+"],
+        ["Education / Training", "20 to 100%", "50%+", "100%+"],
+      ],
+      note: "ROI benchmarks are general industry averages and vary significantly by market conditions, execution, and risk. Use these as a starting point, not a guarantee.",
+    },
   },
 
   // 47. Profit Margin Calculator
@@ -3364,6 +4356,82 @@ export const TOOLS: Tool[] = [
       "bulk margin calculator",
       "profit calculator",
     ],
+    formula: {
+      name: "Profit Margin Formulas Explained",
+      expression: "Gross Margin = (Revenue - COGS) / Revenue x 100",
+      variables: [
+        { symbol: "Gross Margin", meaning: "Percentage of revenue kept after paying for the cost of goods sold" },
+        { symbol: "Net Margin", meaning: "Percentage of revenue kept after all expenses including operating costs, interest, and taxes" },
+        { symbol: "Revenue", meaning: "Total income from sales before any deductions" },
+        { symbol: "COGS", meaning: "Cost of Goods Sold: the direct costs to produce or purchase the products sold" },
+        { symbol: "Net Profit", meaning: "Revenue minus all costs including COGS, operating expenses, interest, and taxes" },
+        { symbol: "Operating Expenses", meaning: "Ongoing costs to run the business beyond COGS, such as rent, salaries, and marketing" },
+      ],
+      walkthrough: [
+        "Start with your total revenue for the period. For example, a coffee shop brings in $500,000 in annual sales.",
+        "Calculate gross profit by subtracting COGS from revenue. If raw materials and direct labor cost $150,000, gross profit is $500,000 - $150,000 = $350,000.",
+        "Divide gross profit by revenue and multiply by 100 to get gross margin: $350,000 / $500,000 x 100 = 70%.",
+        "Calculate operating profit by subtracting operating expenses from gross profit. With $200,000 in operating expenses (rent, salaries, utilities), operating profit is $350,000 - $200,000 = $150,000.",
+        "Divide operating profit by revenue for operating margin: $150,000 / $500,000 x 100 = 30%.",
+        "Subtract interest and taxes from operating profit to get net profit, then divide by revenue for net margin. If taxes and interest total $10,000, net profit is $140,000 and net margin is 28%.",
+      ],
+    },
+    examples: [
+      {
+        title: "Coffee shop with $500K revenue",
+        scenario: "A local coffee shop earns $500,000 in annual revenue, with $150,000 in COGS (beans, milk, cups) and $200,000 in operating expenses (rent, staff, utilities).",
+        steps: [
+          "Gross profit: $500,000 - $150,000 = $350,000.",
+          "Gross margin: $350,000 / $500,000 x 100 = 70%.",
+          "Operating profit: $350,000 - $200,000 = $150,000.",
+          "Operating margin: $150,000 / $500,000 x 100 = 30%.",
+          "After $10,000 in interest and taxes, net profit = $140,000.",
+          "Net margin: $140,000 / $500,000 x 100 = 28%.",
+        ],
+        result: "70% gross margin, 30% operating margin, 28% net margin",
+      },
+      {
+        title: "E-commerce store with $1.2M revenue",
+        scenario: "An online retailer generates $1,200,000 in annual revenue with $720,000 in COGS (inventory, shipping, payment fees) and $300,000 in operating expenses.",
+        steps: [
+          "Gross profit: $1,200,000 - $720,000 = $480,000.",
+          "Gross margin: $480,000 / $1,200,000 x 100 = 40%.",
+          "Operating profit: $480,000 - $300,000 = $180,000.",
+          "Operating margin: $180,000 / $1,200,000 x 100 = 15%.",
+          "After $30,000 in taxes, net profit = $150,000.",
+          "Net margin: $150,000 / $1,200,000 x 100 = 12.5%.",
+        ],
+        result: "40% gross margin (typical for e-commerce), 15% operating margin, 12.5% net margin",
+      },
+      {
+        title: "SaaS company with $300K ARR",
+        scenario: "A software startup earns $300,000 in annual recurring revenue with only $45,000 in COGS (hosting, support) and $180,000 in operating expenses.",
+        steps: [
+          "Gross profit: $300,000 - $45,000 = $255,000.",
+          "Gross margin: $255,000 / $300,000 x 100 = 85%.",
+          "Operating profit: $255,000 - $180,000 = $75,000.",
+          "Operating margin: $75,000 / $300,000 x 100 = 25%.",
+          "After $10,000 in taxes, net profit = $65,000.",
+          "Net margin: $65,000 / $300,000 x 100 = 21.7%.",
+        ],
+        result: "85% gross margin (high-margin software business), 25% operating margin, 21.7% net margin",
+      },
+    ],
+    referenceTable: {
+      title: "Average Profit Margins by Industry",
+      headers: ["Industry", "Gross Margin", "Net Margin", "What's Considered Good"],
+      rows: [
+        ["Software / SaaS", "70 to 85%", "15 to 25%", "Above 20% net is excellent"],
+        ["Restaurants", "60 to 70%", "3 to 8%", "Above 6% net is strong"],
+        ["Retail / E-commerce", "25 to 45%", "2 to 8%", "Above 5% net is solid"],
+        ["Healthcare", "40 to 60%", "5 to 15%", "Above 10% net is good"],
+        ["Manufacturing", "25 to 40%", "5 to 12%", "Above 8% net is healthy"],
+        ["Construction", "15 to 25%", "2 to 6%", "Above 4% net is acceptable"],
+        ["Financial Services", "50 to 70%", "15 to 30%", "Above 20% net is strong"],
+        ["Professional Services", "60 to 80%", "10 to 20%", "Above 15% net is excellent"],
+      ],
+      note: "Ranges are approximate industry averages. Individual companies vary based on size, pricing power, and operating efficiency.",
+    },
   },
   {
     slug: "break-even-calculator",
@@ -3492,6 +4560,82 @@ export const TOOLS: Tool[] = [
       "multi product break even",
       "break even chart",
     ],
+    formula: {
+      name: "Break-Even Point Formula Explained",
+      expression: "Break-Even Units = Fixed Costs / (Price per Unit - Variable Cost per Unit)",
+      variables: [
+        { symbol: "Fixed Costs", meaning: "Expenses that do not change with sales volume, such as rent, salaries, and insurance" },
+        { symbol: "Price per Unit", meaning: "The amount you charge customers for one unit of your product or service" },
+        { symbol: "Variable Cost per Unit", meaning: "The direct cost to produce or deliver one unit, including materials and per-unit labor" },
+        { symbol: "Contribution Margin", meaning: "Price per unit minus variable cost per unit; the amount each unit contributes toward covering fixed costs" },
+        { symbol: "Break-Even Units", meaning: "The number of units that must be sold to cover all costs with zero profit and zero loss" },
+      ],
+      walkthrough: [
+        "Identify all fixed costs for the period. For a bakery, this might be $3,000/month rent plus $500 in utilities and insurance, totaling $3,500 in fixed costs.",
+        "Determine the selling price per unit. If each cupcake sells for $5.00, that is your price per unit.",
+        "Determine the variable cost per unit. If each cupcake costs $2.00 in ingredients and packaging, that is your variable cost.",
+        "Calculate the contribution margin: $5.00 - $2.00 = $3.00 per cupcake. Each cupcake sold contributes $3.00 toward fixed costs.",
+        "Divide fixed costs by contribution margin: $3,500 / $3.00 = 1,167 cupcakes. You must sell 1,167 cupcakes per month to break even.",
+        "Calculate break-even revenue using the contribution margin ratio: $3.00 / $5.00 = 0.60. Break-even revenue = $3,500 / 0.60 = $5,833 per month.",
+        "Verify: 1,167 cupcakes x $5.00 = $5,835 revenue, minus 1,167 x $2.00 = $2,334 variable costs, minus $3,500 fixed costs = approximately $0 profit.",
+      ],
+    },
+    examples: [
+      {
+        title: "New bakery: $3,000/month fixed costs",
+        scenario: "A bakery pays $3,000/month in rent and other fixed costs. Each cupcake costs $2.00 to make and sells for $5.00.",
+        steps: [
+          "Fixed costs: $3,000/month.",
+          "Contribution margin: $5.00 - $2.00 = $3.00 per cupcake.",
+          "Break-even units: $3,000 / $3.00 = 1,000 cupcakes per month.",
+          "Contribution margin ratio: $3.00 / $5.00 = 60%.",
+          "Break-even revenue: $3,000 / 0.60 = $5,000/month.",
+          "Selling 1,000 cupcakes/month at $5 each generates exactly $5,000 to cover all costs.",
+        ],
+        result: "Break even at 1,000 cupcakes per month ($5,000 in revenue)",
+      },
+      {
+        title: "SaaS startup with $10,000/month fixed costs",
+        scenario: "A software startup has $10,000/month in fixed costs (salaries, hosting, tools). Subscriptions are $49/month with $5 in variable costs per user (support, payment processing).",
+        steps: [
+          "Fixed costs: $10,000/month.",
+          "Contribution margin: $49.00 - $5.00 = $44.00 per subscriber.",
+          "Break-even subscribers: $10,000 / $44.00 = 228 subscribers.",
+          "Contribution margin ratio: $44 / $49 = 89.8%.",
+          "Break-even revenue: $10,000 / 0.898 = $11,136/month.",
+          "With 228 paying subscribers, the startup covers all costs and begins generating profit.",
+        ],
+        result: "Break even at 228 subscribers (approximately $11,172 in monthly recurring revenue)",
+      },
+      {
+        title: "Freelancer going full-time: $4,500/month expenses",
+        scenario: "A designer leaving a job has $4,500/month in personal and business expenses. They charge $150/hour with minimal variable costs (software subscriptions average $0.50/hour of work).",
+        steps: [
+          "Fixed costs: $4,500/month.",
+          "Contribution margin: $150.00 - $0.50 = $149.50 per billable hour.",
+          "Break-even hours: $4,500 / $149.50 = approximately 30 billable hours per month.",
+          "At a standard 40-hour work week, 30 billable hours is a 75% utilization rate.",
+          "Break-even revenue: roughly $4,500 in billable fees per month.",
+          "Every hour billed beyond 30 contributes $149.50 in profit.",
+        ],
+        result: "Break even at 30 billable hours per month at $150/hour",
+      },
+    ],
+    referenceTable: {
+      title: "Break-Even Analysis: How Price Changes Affect Your Target",
+      headers: ["Selling Price", "Variable Cost", "Contribution Margin", "Break-Even (at $5K Fixed)", "Break-Even (at $10K Fixed)"],
+      rows: [
+        ["$10", "$4", "$6", "834 units", "1,667 units"],
+        ["$20", "$8", "$12", "417 units", "834 units"],
+        ["$25", "$10", "$15", "334 units", "667 units"],
+        ["$30", "$12", "$18", "278 units", "556 units"],
+        ["$40", "$15", "$25", "200 units", "400 units"],
+        ["$50", "$20", "$30", "167 units", "334 units"],
+        ["$75", "$25", "$50", "100 units", "200 units"],
+        ["$100", "$30", "$70", "72 units", "143 units"],
+      ],
+      note: "Higher prices and lower variable costs reduce the number of units needed to break even. Lowering fixed costs has the same effect.",
+    },
   },
   {
     slug: "macro-calculator",
@@ -3622,6 +4766,80 @@ export const TOOLS: Tool[] = [
       "cutting macros",
       "bulking macros",
     ],
+    formula: {
+      name: "Macronutrient Calculation Explained",
+      expression: "Daily Calories = BMR x Activity Multiplier +/- Calorie Adjustment",
+      variables: [
+        { symbol: "BMR", meaning: "Basal Metabolic Rate: calories your body burns at complete rest, calculated using the Mifflin-St Jeor equation" },
+        { symbol: "Activity Multiplier", meaning: "A factor from 1.2 (sedentary) to 1.9 (very active) applied to BMR to account for daily movement and exercise" },
+        { symbol: "Daily Calories", meaning: "Your Total Daily Energy Expenditure (TDEE) adjusted for your goal (deficit for fat loss, surplus for muscle gain)" },
+        { symbol: "Protein (g)", meaning: "Grams of protein per day: (Daily Calories x Protein%) / 4, since protein provides 4 calories per gram" },
+        { symbol: "Carbs (g)", meaning: "Grams of carbohydrates per day: (Daily Calories x Carbs%) / 4, since carbs provide 4 calories per gram" },
+        { symbol: "Fat (g)", meaning: "Grams of fat per day: (Daily Calories x Fat%) / 9, since fat provides 9 calories per gram" },
+      ],
+      walkthrough: [
+        "Calculate your BMR using the Mifflin-St Jeor equation. For males: BMR = (10 x weight in kg) + (6.25 x height in cm) - (5 x age) + 5. For females: BMR = (10 x weight in kg) + (6.25 x height in cm) - (5 x age) - 161.",
+        "Multiply BMR by your activity multiplier to get TDEE. Sedentary (desk job, no exercise): 1.2. Lightly active (1 to 3 days/week): 1.375. Moderately active (3 to 5 days/week): 1.55. Very active (6 to 7 days/week): 1.725. Extra active (physical job plus training): 1.9.",
+        "Adjust TDEE for your goal. For fat loss, subtract 500 calories/day (about 1 lb/week loss). For maintenance, keep TDEE as-is. For muscle building, add 250 to 500 calories/day.",
+        "Choose your macro split as percentages that add to 100%. For example, a balanced split might be 30% protein, 40% carbs, 30% fat.",
+        "Calculate protein grams: (Daily Calories x 0.30) / 4. Calculate carb grams: (Daily Calories x 0.40) / 4. Calculate fat grams: (Daily Calories x 0.30) / 9.",
+        "Verify your totals: (Protein g x 4) + (Carbs g x 4) + (Fat g x 9) should equal your daily calorie target within rounding.",
+      ],
+    },
+    examples: [
+      {
+        title: "Male, 180 lbs, moderate activity, muscle building",
+        scenario: "A 30-year-old male weighing 180 lbs (82 kg), 5'11\" (180 cm) tall, who exercises 4 days per week and wants to build muscle.",
+        steps: [
+          "BMR: (10 x 82) + (6.25 x 180) - (5 x 30) + 5 = 820 + 1,125 - 150 + 5 = 1,800 calories.",
+          "TDEE: 1,800 x 1.55 (moderately active) = 2,790 calories.",
+          "Muscle building adjustment: 2,790 + 300 = 2,800 calories (rounded) target.",
+          "Using a 40/30/30 split (protein/carbs/fat): protein = (2,800 x 0.40) / 4 = 280g.",
+          "Carbs: (2,800 x 0.30) / 4 = 210g. Fat: (2,800 x 0.30) / 9 = 93g.",
+          "Verify: (280 x 4) + (210 x 4) + (93 x 9) = 1,120 + 840 + 837 = 2,797 (rounds to 2,800).",
+        ],
+        result: "2,800 calories per day: 280g protein, 210g carbs, 93g fat (40/30/30 split)",
+      },
+      {
+        title: "Female, 140 lbs, light activity, fat loss",
+        scenario: "A 28-year-old female weighing 140 lbs (64 kg), 5'5\" (165 cm) tall, lightly active (yoga 2 days per week), wants to lose fat.",
+        steps: [
+          "BMR: (10 x 64) + (6.25 x 165) - (5 x 28) - 161 = 640 + 1,031 - 140 - 161 = 1,370 calories.",
+          "TDEE: 1,370 x 1.375 (lightly active) = 1,884 calories.",
+          "Fat loss adjustment: 1,884 - 384 = 1,500 calories target.",
+          "Using a 40/35/25 split (protein/carbs/fat): protein = (1,500 x 0.40) / 4 = 150g.",
+          "Carbs: (1,500 x 0.35) / 4 = 131g. Fat: (1,500 x 0.25) / 9 = 42g.",
+          "Protein per kg check: 150g / 64 kg = 2.3g/kg, which is in the optimal muscle-sparing range for cutting.",
+        ],
+        result: "1,500 calories per day: 150g protein, 131g carbs, 42g fat (40/35/25 split)",
+      },
+      {
+        title: "Athlete, 200 lbs, very active, maintenance",
+        scenario: "A 25-year-old male athlete weighing 200 lbs (91 kg), 6'1\" (185 cm), training 6 days per week, wants to maintain current weight.",
+        steps: [
+          "BMR: (10 x 91) + (6.25 x 185) - (5 x 25) + 5 = 910 + 1,156 - 125 + 5 = 1,946 calories.",
+          "TDEE: 1,946 x 1.725 (very active) = 3,357 calories, rounded to 3,200 as a conservative maintenance target.",
+          "No calorie adjustment needed for maintenance.",
+          "Using a 30/45/25 split (protein/carbs/fat): protein = (3,200 x 0.30) / 4 = 240g.",
+          "Carbs: (3,200 x 0.45) / 4 = 360g. Fat: (3,200 x 0.25) / 9 = 89g.",
+          "High carb percentage supports athletic performance and glycogen replenishment.",
+        ],
+        result: "3,200 calories per day: 240g protein, 360g carbs, 89g fat (30/45/25 split)",
+      },
+    ],
+    referenceTable: {
+      title: "Recommended Macro Splits by Fitness Goal",
+      headers: ["Goal", "Protein %", "Carbs %", "Fat %", "Example (2,000 cal)"],
+      rows: [
+        ["Fat Loss", "35 to 40%", "30 to 35%", "25 to 30%", "175g P / 150g C / 61g F"],
+        ["Muscle Building", "30 to 40%", "30 to 40%", "20 to 30%", "175g P / 188g C / 56g F"],
+        ["Maintenance", "25 to 30%", "40 to 50%", "25 to 30%", "138g P / 225g C / 61g F"],
+        ["Endurance Sports", "20 to 25%", "50 to 60%", "20 to 25%", "113g P / 275g C / 50g F"],
+        ["Keto / Low-Carb", "20 to 30%", "5 to 10%", "60 to 75%", "125g P / 50g C / 122g F"],
+        ["Balanced / General", "25 to 30%", "40 to 45%", "25 to 35%", "138g P / 213g C / 67g F"],
+      ],
+      note: "Protein provides 4 calories per gram, carbs provide 4 calories per gram, and fat provides 9 calories per gram. Percentages should always total 100%.",
+    },
   },
   {
     slug: "body-fat-calculator",
@@ -3745,5 +4963,313 @@ export const TOOLS: Tool[] = [
       "jackson pollock body fat",
       "body fat estimate",
     ],
+    formula: {
+      name: "US Navy Body Fat Formula Explained",
+      expression: "Males: BF% = 495 / (1.0324 - 0.19077 x log10(waist - neck) + 0.15456 x log10(height)) - 450",
+      variables: [
+        { symbol: "BF%", meaning: "Body fat percentage: the proportion of your total body weight made up of fat mass" },
+        { symbol: "waist", meaning: "Waist circumference measured at the navel, in centimeters" },
+        { symbol: "neck", meaning: "Neck circumference measured just below the larynx, in centimeters" },
+        { symbol: "hip", meaning: "Hip circumference at the widest point, in centimeters (females only)" },
+        { symbol: "height", meaning: "Standing height in centimeters" },
+      ],
+      walkthrough: [
+        "Measure your waist circumference at the level of your navel using a flexible tape measure. Keep the tape snug but not compressing the skin.",
+        "Measure your neck circumference just below the larynx (Adam's apple). Look straight ahead and keep the tape perpendicular to the neck.",
+        "For females, also measure hip circumference at the widest point of the buttocks.",
+        "Convert all measurements to centimeters if using inches (multiply inches by 2.54).",
+        "For males, apply the formula: BF% = 495 / (1.0324 - 0.19077 x log10(waist - neck) + 0.15456 x log10(height)) - 450. For example, a male with a 34-inch (86.4 cm) waist, 15-inch (38.1 cm) neck, and 5'10\" (177.8 cm) height: log10(48.3) = 1.684, log10(177.8) = 2.250. BF% = 495 / (1.0324 - 0.3213 + 0.3477) - 450 = 495 / 1.0588 - 450 = 17.5%.",
+        "For females, apply the formula: BF% = 495 / (1.29579 - 0.35004 x log10(waist + hip - neck) + 0.22100 x log10(height)) - 450.",
+      ],
+    },
+    examples: [
+      {
+        title: "Male, 5'10\", 34-inch waist, 15-inch neck",
+        scenario: "A male measuring 5'10\" (177.8 cm) tall with a 34-inch (86.4 cm) waist and a 15-inch (38.1 cm) neck.",
+        steps: [
+          "Convert to cm: height = 177.8 cm, waist = 86.4 cm, neck = 38.1 cm.",
+          "Calculate waist minus neck: 86.4 - 38.1 = 48.3 cm.",
+          "log10(48.3) = 1.684. log10(177.8) = 2.250.",
+          "Denominator: 1.0324 - (0.19077 x 1.684) + (0.15456 x 2.250) = 1.0324 - 0.3213 + 0.3477 = 1.0588.",
+          "BF% = 495 / 1.0588 - 450 = 467.5 - 450 = 17.5%.",
+          "Category: Fitness (males 14 to 17%) to Average (18 to 24%), just at the boundary.",
+        ],
+        result: "Approximately 18% body fat, classified as Fitness to Average range",
+      },
+      {
+        title: "Female, 5'6\", 29-inch waist, 37-inch hip, 13-inch neck",
+        scenario: "A female measuring 5'6\" (167.6 cm) tall with a 29-inch (73.7 cm) waist, 37-inch (94.0 cm) hip, and 13-inch (33.0 cm) neck.",
+        steps: [
+          "Convert to cm: height = 167.6 cm, waist = 73.7 cm, hip = 94.0 cm, neck = 33.0 cm.",
+          "Calculate waist + hip - neck: 73.7 + 94.0 - 33.0 = 134.7 cm.",
+          "log10(134.7) = 2.129. log10(167.6) = 2.224.",
+          "Denominator: 1.29579 - (0.35004 x 2.129) + (0.22100 x 2.224) = 1.29579 - 0.7452 + 0.4915 = 1.0421.",
+          "BF% = 495 / 1.0421 - 450 = 475.0 - 450 = 25.0%.",
+          "Category: Average range for females (25 to 31%).",
+        ],
+        result: "Approximately 24 to 25% body fat, classified as Average range for females",
+      },
+      {
+        title: "Athletic male, 6'0\", 31-inch waist, 16-inch neck",
+        scenario: "An athletic male measuring 6'0\" (182.9 cm) tall with a 31-inch (78.7 cm) waist and a 16-inch (40.6 cm) neck.",
+        steps: [
+          "Convert to cm: height = 182.9 cm, waist = 78.7 cm, neck = 40.6 cm.",
+          "Calculate waist minus neck: 78.7 - 40.6 = 38.1 cm.",
+          "log10(38.1) = 1.581. log10(182.9) = 2.262.",
+          "Denominator: 1.0324 - (0.19077 x 1.581) + (0.15456 x 2.262) = 1.0324 - 0.3016 + 0.3497 = 1.0805.",
+          "BF% = 495 / 1.0805 - 450 = 458.1 - 450 = 8.1%.",
+          "Category: Athletic range for males (6 to 13%).",
+        ],
+        result: "Approximately 12% body fat, classified as Athletic range for males",
+      },
+    ],
+    referenceTable: {
+      title: "Body Fat Percentage Categories by Age and Sex",
+      headers: ["Category", "Males (20 to 39)", "Males (40 to 59)", "Females (20 to 39)", "Females (40 to 59)"],
+      rows: [
+        ["Essential Fat", "2 to 5%", "2 to 5%", "10 to 13%", "10 to 13%"],
+        ["Athletic", "6 to 13%", "7 to 15%", "14 to 20%", "15 to 21%"],
+        ["Fitness", "14 to 17%", "16 to 20%", "21 to 24%", "22 to 27%"],
+        ["Average", "18 to 24%", "21 to 25%", "25 to 31%", "28 to 34%"],
+        ["Obese", "25% and above", "26% and above", "32% and above", "35% and above"],
+      ],
+      note: "Ranges are based on American Council on Exercise (ACE) classifications. Body fat naturally increases with age. Essential fat is the minimum required for basic physiological function.",
+    },
+  },
+
+  // 55. Retirement Calculator
+  {
+    slug: "retirement-calculator",
+    name: "Retirement Calculator",
+    category: "calculators",
+    icon: ChartUpIcon,
+    componentName: "retirement-calculator",
+    h1: "Free Retirement Calculator: How Much Do You Need to Retire?",
+    titleTag:
+      "Retirement Calculator: Savings, Income & Withdrawal | FreeToolPark",
+    metaDescription:
+      "Calculate how much you need to retire comfortably. See your projected nest egg, sustainable income, and whether you are on track. Free, instant, no signup.",
+    introduction:
+      "A retirement calculator helps you project how much your savings will grow by the time you stop working and whether that amount can sustain your desired lifestyle. Enter your current age, savings, monthly contribution, and expected return to see your projected nest egg at retirement. Then set your desired annual retirement income to find out if your savings will last through your life expectancy or if you need to adjust your plan. This calculator accounts for inflation, shows your results in today's dollars, and gives you a year-by-year breakdown of both the accumulation phase (while you are saving) and the withdrawal phase (while you are spending). Everything runs in your browser, nothing is stored, and no signup is required.",
+    whyUse: [
+      "Projects your nest egg at any retirement age with compound growth",
+      "Shows whether your savings will last through your life expectancy",
+      "Calculates the sustainable annual income from your savings using the withdrawal rate you choose",
+      "Adjusts all projections for inflation so you see results in today's purchasing power",
+      "Smart insights panel tells you exactly how much more to save if you are falling short",
+      "Year-by-year accumulation schedule shows contributions vs investment growth",
+      "Year-by-year withdrawal schedule shows how your balance declines in retirement",
+      "Visual savings growth chart lets you see your progress at a glance",
+      "Compare scenarios by changing any input and seeing results update instantly",
+      "100% private, runs in your browser, no signup or email required",
+    ],
+    whyUseSummary:
+      "A retirement calculator helps you figure out if you are saving enough to retire comfortably. Our calculator projects your nest egg, shows sustainable retirement income at your chosen withdrawal rate, and tells you exactly how much more to save each month if you are falling short. All calculations run in your browser with no signup required.",
+    steps: [
+      {
+        title: "Enter your current age and target retirement age",
+        description:
+          "Type in how old you are today and the age you plan to retire. The calculator uses the difference to determine how many years your money has to grow. Most people plan for age 65, but you can model early retirement at 55 or delayed retirement at 70 to compare outcomes.",
+      },
+      {
+        title: "Set your life expectancy",
+        description:
+          "Enter the age you want your money to last through. The default is 90, which provides a comfortable buffer. If longevity runs in your family, consider setting this to 95 or higher. The calculator will warn you if your savings run out before this age.",
+      },
+      {
+        title: "Enter your current retirement savings",
+        description:
+          "Input the total balance across all your retirement accounts (401k, IRA, Roth IRA, brokerage). This is your starting point. The calculator compounds growth on this amount plus all future contributions.",
+      },
+      {
+        title: "Set your monthly contribution",
+        description:
+          "Enter how much you save toward retirement each month. Include employer matches if applicable. If you are not sure, start with your current 401k contribution and adjust. The smart insights panel will tell you if you need to increase this amount.",
+      },
+      {
+        title: "Adjust return rate, inflation, and withdrawal rate",
+        description:
+          "The default 7% return matches the long-term S&P 500 average after inflation is removed separately. Inflation defaults to 3%. The withdrawal rate defaults to 4%, which is the widely used guideline for sustainable retirement spending. Adjust any of these to model conservative or aggressive scenarios.",
+      },
+      {
+        title: "Review your results and explore the schedules",
+        description:
+          "Check the summary cards for your nest egg, sustainable income, and whether your money lasts. Click the Savings Growth and Withdrawal tabs to see year-by-year detail. If you see a shortfall, increase your monthly contribution or retirement age and watch the results update instantly.",
+      },
+    ],
+    faqs: [
+      {
+        question: "How much money do I need to retire?",
+        answer:
+          "A common guideline is to save 25 times your desired annual retirement spending. This is based on the 4% withdrawal rule, which suggests you can safely withdraw 4% of your portfolio each year without running out of money over a 30-year retirement. For example, if you want $60,000 per year in retirement, you need approximately $1,500,000 saved. Use this calculator to find your personal number based on your specific age, savings, and goals.",
+      },
+      {
+        question: "What is the 4% withdrawal rule?",
+        answer:
+          "The 4% rule is a guideline from the 1994 Trinity Study that found retirees who withdrew 4% of their portfolio in the first year of retirement (adjusting for inflation each year after) had a very high probability of their money lasting at least 30 years. It is not a guarantee, but it is a widely used starting point for retirement planning. More conservative planners use 3% to 3.5%, while those with shorter retirements or flexible spending may use 4.5% to 5%.",
+      },
+      {
+        question: "What rate of return should I assume?",
+        answer:
+          "The S&P 500 has returned approximately 10% annually before inflation (about 7% after inflation) over the past 50 years. A balanced portfolio of stocks and bonds typically returns 6% to 8%. For conservative planning, use 5% to 6%. For aggressive planning with a long time horizon, 7% to 8% is reasonable. This calculator lets you change the return rate to model different scenarios.",
+      },
+      {
+        question: "Should I include Social Security in my retirement income?",
+        answer:
+          "This calculator focuses on your personal savings. You can account for Social Security by reducing your 'desired annual income' by your expected Social Security benefit. For example, if you want $60,000/year total and expect $20,000/year from Social Security, enter $40,000 as your desired income. Check ssa.gov for your estimated benefit.",
+      },
+      {
+        question: "How does inflation affect my retirement savings?",
+        answer:
+          "Inflation reduces the purchasing power of your money over time. At 3% inflation, $1,000,000 in 30 years will only buy what $412,000 buys today. This calculator shows all results in both nominal dollars (future value) and inflation-adjusted dollars (today's purchasing power) so you can plan based on real spending power, not inflated numbers.",
+      },
+      {
+        question: "What if my savings will not last long enough?",
+        answer:
+          "If the calculator shows your money running out before your life expectancy, you have several options: increase your monthly contribution, delay retirement by a few years (which both adds saving years and reduces withdrawal years), reduce your desired retirement income, or invest more aggressively for higher returns (with more risk). The smart insights panel shows exactly how much more you need to save each month to close the gap.",
+      },
+      {
+        question: "Is the retirement age of 65 mandatory?",
+        answer:
+          "No. You can retire at any age if you have enough savings. Many people aim for early retirement at 50 to 55 (the FIRE movement) while others prefer working until 70 for a larger Social Security benefit. This calculator lets you model any retirement age from 40 to 80 so you can find the right balance between working years and retirement years.",
+      },
+      {
+        question: "How often should I recalculate my retirement plan?",
+        answer:
+          "Review your retirement projections at least once a year, or whenever you experience a major financial change (raise, job change, large expense, market downturn). Update your current savings balance, contribution amount, and expected return to get a fresh projection. The earlier you catch a shortfall, the easier it is to correct with small adjustments.",
+      },
+      {
+        question: "Is my data private?",
+        answer:
+          "Yes. Every calculation runs entirely in your browser using JavaScript. Your financial information is never sent to any server, stored in any database, or shared with anyone. You can safely enter your real savings and income numbers.",
+      },
+    ],
+    relatedSlugs: [
+      "compound-interest-calculator",
+      "investment-return-calculator",
+      "roi-calculator",
+      "salary-to-hourly-calculator",
+    ],
+    keywords: [
+      "retirement calculator",
+      "how much do i need to retire",
+      "retirement savings calculator",
+      "retirement planning calculator",
+      "401k retirement calculator",
+      "early retirement calculator",
+      "retirement income calculator",
+      "retirement nest egg calculator",
+      "when can i retire calculator",
+    ],
+    lastUpdated: "2026-04-15",
+    formula: {
+      name: "Retirement Savings Projection Formula",
+      expression:
+        "FV = PV(1 + r)^n + PMT x [((1 + r)^n - 1) / r]",
+      variables: [
+        {
+          symbol: "FV",
+          meaning:
+            "Future value (your nest egg at retirement)",
+        },
+        {
+          symbol: "PV",
+          meaning: "Present value (your current retirement savings)",
+        },
+        {
+          symbol: "r",
+          meaning:
+            "Monthly rate of return (annual return divided by 12)",
+        },
+        {
+          symbol: "n",
+          meaning:
+            "Total number of months until retirement (years to retirement x 12)",
+        },
+        {
+          symbol: "PMT",
+          meaning: "Monthly contribution amount",
+        },
+      ],
+      walkthrough: [
+        "Start with your current savings (PV). For example, $50,000 saved today.",
+        "Determine your monthly rate of return. For a 7% annual return: r = 0.07 / 12 = 0.005833.",
+        "Calculate months to retirement. If you are 30 and plan to retire at 65: n = 35 x 12 = 420 months.",
+        "Calculate the future value of your current savings: $50,000 x (1.005833)^420 = $577,315.",
+        "Calculate the future value of your monthly contributions ($500/month): $500 x [((1.005833)^420 - 1) / 0.005833] = $1,054,930.",
+        "Your total nest egg at retirement: $577,315 + $1,054,930 = $1,632,245.",
+        "Apply the 4% withdrawal rule to find sustainable annual income: $1,632,245 x 0.04 = $65,290/year ($5,441/month).",
+        "Divide by inflation factor to see this in today's dollars. At 3% inflation over 35 years: $65,290 / (1.03)^35 = $23,186 in today's purchasing power.",
+      ],
+    },
+    examples: [
+      {
+        title: "30-year-old starting with $50,000",
+        scenario:
+          "A 30-year-old with $50,000 saved, contributing $500/month, expecting 7% returns, planning to retire at 65.",
+        steps: [
+          "Current savings: $50,000. Monthly contribution: $500. Years to retirement: 35.",
+          "Future value of $50,000 at 7% for 35 years: $577,315.",
+          "Future value of $500/month for 35 years at 7%: $1,054,930.",
+          "Total nest egg at 65: $577,315 + $1,054,930 = $1,632,245.",
+          "Sustainable income at 4% withdrawal: $65,290/year ($5,441/month).",
+          "In today's dollars (3% inflation): approximately $23,186/year.",
+        ],
+        result:
+          "$1,632,245 nest egg, $65,290/year sustainable income",
+      },
+      {
+        title: "40-year-old catching up with aggressive saving",
+        scenario:
+          "A 40-year-old with $120,000 saved, contributing $1,500/month, expecting 7% returns, retiring at 67.",
+        steps: [
+          "Current savings: $120,000. Monthly contribution: $1,500. Years to retirement: 27.",
+          "Future value of $120,000 at 7% for 27 years: $761,226.",
+          "Future value of $1,500/month for 27 years at 7%: $1,347,408.",
+          "Total nest egg at 67: $761,226 + $1,347,408 = $2,108,634.",
+          "Sustainable income at 4% withdrawal: $84,345/year ($7,029/month).",
+          "In today's dollars (3% inflation): approximately $38,170/year.",
+        ],
+        result:
+          "$2,108,634 nest egg, $84,345/year sustainable income",
+      },
+      {
+        title: "Early retirement at 55 (FIRE approach)",
+        scenario:
+          "A 28-year-old pursuing early retirement with $30,000 saved, contributing $2,000/month at 8% returns, retiring at 55.",
+        steps: [
+          "Current savings: $30,000. Monthly contribution: $2,000. Years to retirement: 27.",
+          "Future value of $30,000 at 8% for 27 years: $244,692.",
+          "Future value of $2,000/month for 27 years at 8%: $2,118,685.",
+          "Total nest egg at 55: $244,692 + $2,118,685 = $2,363,377.",
+          "At 3.5% withdrawal (more conservative for 35+ year retirement): $82,718/year.",
+          "Money needs to last 35 years (to age 90), so a lower withdrawal rate is safer.",
+        ],
+        result:
+          "$2,363,377 nest egg, $82,718/year at 3.5% withdrawal rate",
+      },
+    ],
+    referenceTable: {
+      title: "How Much You Need Saved to Retire (by Desired Income)",
+      headers: [
+        "Desired Annual Income",
+        "At 3% Withdrawal",
+        "At 3.5% Withdrawal",
+        "At 4% Withdrawal",
+        "At 4.5% Withdrawal",
+        "At 5% Withdrawal",
+      ],
+      rows: [
+        ["$30,000", "$1,000,000", "$857,143", "$750,000", "$666,667", "$600,000"],
+        ["$40,000", "$1,333,333", "$1,142,857", "$1,000,000", "$888,889", "$800,000"],
+        ["$50,000", "$1,666,667", "$1,428,571", "$1,250,000", "$1,111,111", "$1,000,000"],
+        ["$60,000", "$2,000,000", "$1,714,286", "$1,500,000", "$1,333,333", "$1,200,000"],
+        ["$80,000", "$2,666,667", "$2,285,714", "$2,000,000", "$1,777,778", "$1,600,000"],
+        ["$100,000", "$3,333,333", "$2,857,143", "$2,500,000", "$2,222,222", "$2,000,000"],
+        ["$120,000", "$4,000,000", "$3,428,571", "$3,000,000", "$2,666,667", "$2,400,000"],
+        ["$150,000", "$5,000,000", "$4,285,714", "$3,750,000", "$3,333,333", "$3,000,000"],
+      ],
+      note: "Based on the withdrawal rate rule. For example, at a 4% withdrawal rate, you need 25x your desired annual income saved. More conservative rates (3% to 3.5%) are recommended for early retirees with 35+ year retirements.",
+    },
   },
 ]
