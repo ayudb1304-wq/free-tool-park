@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation"
-import { getToolBySlug } from "@/lib/tools"
+import { getToolBySlug, getAllTools } from "@/lib/tools"
 import { BUILT_TOOL_SLUGS } from "@/lib/built-tools"
 import { EmbedToolRenderer } from "@/components/embed/embed-tool-renderer"
 
@@ -7,20 +7,10 @@ export const metadata = {
   robots: "noindex, nofollow",
 }
 
-const EMBEDDABLE_SLUGS = [
-  "mortgage-calculator",
-  "bmi-calculator",
-  "percentage-calculator",
-  "word-counter",
-  "color-picker",
-  "password-generator",
-  "tip-calculator",
-  "emi-calculator",
-  "age-calculator",
-]
-
 export function generateStaticParams() {
-  return EMBEDDABLE_SLUGS.map((slug) => ({ slug }))
+  return getAllTools()
+    .filter((t) => BUILT_TOOL_SLUGS.has(t.componentName))
+    .map((t) => ({ slug: t.slug }))
 }
 
 export default async function EmbedToolPage({

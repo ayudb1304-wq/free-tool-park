@@ -1,6 +1,12 @@
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
-import { getAllTools, getToolBySlug, getRelatedTools } from "@/lib/tools"
+import {
+  getAllTools,
+  getToolBySlug,
+  getRelatedTools,
+  getPeopleAlsoUsed,
+  getNextStepTool,
+} from "@/lib/tools"
 import { getCategoryBySlug } from "@/data/categories"
 import { ToolRenderer } from "@/components/tool-renderer"
 import { BUILT_TOOL_SLUGS } from "@/lib/built-tools"
@@ -16,19 +22,14 @@ import { Breadcrumb } from "@/components/layout/breadcrumb"
 import { AdUnit } from "@/components/ads/ad-unit"
 import { PrivacyBadge } from "@/components/tools/privacy-badge"
 import { EmbedCodeGenerator } from "@/components/embed/embed-code-generator"
+import { AiCitationBlock } from "@/components/seo/ai-citation-block"
+import { PeopleAlsoUsed } from "@/components/tools/people-also-used"
+import { NextStepCta } from "@/components/tools/next-step-cta"
+import { FormulaExplained } from "@/components/tools/formula-explained"
+import { RealWorldExamples } from "@/components/tools/real-world-examples"
+import { QuickReferenceTable } from "@/components/tools/quick-reference-table"
 import Link from "next/link"
 
-const EMBEDDABLE_SLUGS = new Set([
-  "mortgage-calculator",
-  "bmi-calculator",
-  "percentage-calculator",
-  "word-counter",
-  "color-picker",
-  "password-generator",
-  "tip-calculator",
-  "emi-calculator",
-  "age-calculator",
-])
 import { Card, CardHeader, CardTitle } from "@/components/ui/card"
 import { HugeiconsIcon } from "@hugeicons/react"
 
@@ -77,6 +78,18 @@ export async function generateMetadata({
   }
 }
 
+function formatLastUpdated(dateStr?: string): string {
+  if (!dateStr) {
+    return "April 2026"
+  }
+  const date = new Date(dateStr + "T00:00:00")
+  return date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  })
+}
+
 export default async function ToolPage({
   params,
 }: {
@@ -88,6 +101,10 @@ export default async function ToolPage({
 
   const category = getCategoryBySlug(tool.category)
   const related = getRelatedTools(tool)
+  const alsoUsed = getPeopleAlsoUsed(tool)
+  const nextStepTool = getNextStepTool(tool)
+  const lastUpdatedDisplay = formatLastUpdated(tool.lastUpdated)
+  const lastUpdatedIso = tool.lastUpdated || "2026-04-09"
 
   return (
     <>
@@ -125,7 +142,8 @@ export default async function ToolPage({
             </h1>
 
             <p className="mb-1 text-sm text-muted-foreground">
-              Last updated: April 2026
+              Last updated:{" "}
+              <time dateTime={lastUpdatedIso}>{lastUpdatedDisplay}</time>
             </p>
 
             <p className="mb-8 max-w-3xl text-lg leading-relaxed text-muted-foreground">
@@ -137,7 +155,15 @@ export default async function ToolPage({
               <ToolRenderer componentName={tool.componentName} />
             </div>
 
+            {/* Next Step CTA (right after tool results) */}
+            {nextStepTool && (
+              <NextStepCta currentTool={tool} nextTool={nextStepTool} />
+            )}
+
             <AdUnit slot="after-tool" format="horizontal" className="mb-8" />
+
+            {/* People Also Used */}
+            <PeopleAlsoUsed tools={alsoUsed} />
 
             {/* How to Use */}
             <section className="mb-8">
@@ -173,27 +199,40 @@ export default async function ToolPage({
               </ul>
             </section>
 
+            {/* Formula Explained */}
+            {tool.formula && (
+              <FormulaExplained toolName={tool.name} formula={tool.formula} />
+            )}
+
+            {/* Real-World Examples */}
+            {tool.examples && tool.examples.length > 0 && (
+              <RealWorldExamples toolName={tool.name} examples={tool.examples} />
+            )}
+
+            {/* Quick Reference Table */}
+            {tool.referenceTable && (
+              <QuickReferenceTable table={tool.referenceTable} />
+            )}
+
             {/* Privacy Badge */}
             <section className="mb-8">
               <PrivacyBadge toolName={tool.name} variant="default" />
             </section>
 
             {/* Embed Widget */}
-            {EMBEDDABLE_SLUGS.has(tool.slug) && (
-              <section className="mb-8">
-                <h2 className="font-heading mb-4 text-2xl font-bold">
-                  Embed This {tool.name} on Your Website
-                </h2>
-                <p className="mb-4 text-muted-foreground">
-                  Add this {tool.name.toLowerCase()} to your website for free.
-                  Customize the size and copy the embed code below.
-                </p>
-                <EmbedCodeGenerator
-                  toolSlug={tool.slug}
-                  toolName={tool.name}
-                />
-              </section>
-            )}
+            <section className="mb-8">
+              <h2 className="font-heading mb-4 text-2xl font-bold">
+                Embed This {tool.name} on Your Website
+              </h2>
+              <p className="mb-4 text-muted-foreground">
+                Add this {tool.name.toLowerCase()} to your website for free.
+                Customize the size and copy the embed code below.
+              </p>
+              <EmbedCodeGenerator
+                toolSlug={tool.slug}
+                toolName={tool.name}
+              />
+            </section>
 
             <AdUnit
               slot="before-faq"
@@ -217,6 +256,15 @@ export default async function ToolPage({
                 ))}
               </div>
             </section>
+
+            {/* AI Citation Block */}
+            <AiCitationBlock
+              toolName={tool.name}
+              toolSlug={tool.slug}
+              category={tool.category}
+              keywords={tool.keywords}
+              metaDescription={tool.metaDescription}
+            />
 
             {/* Related Tools */}
             {related.length > 0 && (

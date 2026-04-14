@@ -9,9 +9,22 @@ const Loading = () => (
   </div>
 )
 
+// All built tools are embeddable - mirrors the main tool-renderer registry
 const registry: Record<string, ComponentType> = {
   "mortgage-calculator": dynamic(
     () => import("@/components/tools/mortgage-calculator"),
+    { ssr: false, loading: Loading }
+  ),
+  "refinance-calculator": dynamic(
+    () => import("@/components/tools/refinance-calculator"),
+    { ssr: false, loading: Loading }
+  ),
+  "auto-loan-calculator": dynamic(
+    () => import("@/components/tools/auto-loan-calculator"),
+    { ssr: false, loading: Loading }
+  ),
+  "loan-calculator": dynamic(
+    () => import("@/components/tools/loan-calculator"),
     { ssr: false, loading: Loading }
   ),
   "percentage-calculator": dynamic(
@@ -20,6 +33,10 @@ const registry: Record<string, ComponentType> = {
   ),
   "password-generator": dynamic(
     () => import("@/components/tools/password-generator"),
+    { ssr: false, loading: Loading }
+  ),
+  "qr-code-generator": dynamic(
+    () => import("@/components/tools/qr-code-generator"),
     { ssr: false, loading: Loading }
   ),
   "bmi-calculator": dynamic(
@@ -38,12 +55,176 @@ const registry: Record<string, ComponentType> = {
     () => import("@/components/tools/tip-calculator"),
     { ssr: false, loading: Loading }
   ),
+  "json-formatter": dynamic(
+    () => import("@/components/tools/json-formatter"),
+    { ssr: false, loading: Loading }
+  ),
   "word-counter": dynamic(
     () => import("@/components/tools/word-counter"),
     { ssr: false, loading: Loading }
   ),
+  "base64-encoder-decoder": dynamic(
+    () => import("@/components/tools/base64-encoder-decoder"),
+    { ssr: false, loading: Loading }
+  ),
+  "regex-tester": dynamic(
+    () => import("@/components/tools/regex-tester"),
+    { ssr: false, loading: Loading }
+  ),
   "color-picker": dynamic(
     () => import("@/components/tools/color-picker"),
+    { ssr: false, loading: Loading }
+  ),
+  "uuid-generator": dynamic(
+    () => import("@/components/tools/uuid-generator"),
+    { ssr: false, loading: Loading }
+  ),
+  "md5-generator": dynamic(
+    () => import("@/components/tools/md5-generator"),
+    { ssr: false, loading: Loading }
+  ),
+  "url-encoder-decoder": dynamic(
+    () => import("@/components/tools/url-encoder-decoder"),
+    { ssr: false, loading: Loading }
+  ),
+  "sha256-generator": dynamic(
+    () => import("@/components/tools/sha256-generator"),
+    { ssr: false, loading: Loading }
+  ),
+  "case-converter": dynamic(
+    () => import("@/components/tools/case-converter"),
+    { ssr: false, loading: Loading }
+  ),
+  "css-gradient-generator": dynamic(
+    () => import("@/components/tools/css-gradient-generator"),
+    { ssr: false, loading: Loading }
+  ),
+  "timestamp-converter": dynamic(
+    () => import("@/components/tools/timestamp-converter"),
+    { ssr: false, loading: Loading }
+  ),
+  "interest-calculator": dynamic(
+    () => import("@/components/tools/interest-calculator"),
+    { ssr: false, loading: Loading }
+  ),
+  "character-counter": dynamic(
+    () => import("@/components/tools/character-counter"),
+    { ssr: false, loading: Loading }
+  ),
+  "hex-to-rgb": dynamic(
+    () => import("@/components/tools/hex-to-rgb"),
+    { ssr: false, loading: Loading }
+  ),
+  "markdown-to-html": dynamic(
+    () => import("@/components/tools/markdown-to-html"),
+    { ssr: false, loading: Loading }
+  ),
+  "lorem-ipsum-generator": dynamic(
+    () => import("@/components/tools/lorem-ipsum-generator"),
+    { ssr: false, loading: Loading }
+  ),
+  "calorie-calculator": dynamic(
+    () => import("@/components/tools/calorie-calculator"),
+    { ssr: false, loading: Loading }
+  ),
+  "grade-calculator": dynamic(
+    () => import("@/components/tools/grade-calculator"),
+    { ssr: false, loading: Loading }
+  ),
+  "gpa-calculator": dynamic(
+    () => import("@/components/tools/gpa-calculator"),
+    { ssr: false, loading: Loading }
+  ),
+  "text-to-slug": dynamic(
+    () => import("@/components/tools/text-to-slug"),
+    { ssr: false, loading: Loading }
+  ),
+  "css-minifier": dynamic(
+    () => import("@/components/tools/css-minifier"),
+    { ssr: false, loading: Loading }
+  ),
+  "js-minifier": dynamic(
+    () => import("@/components/tools/js-minifier"),
+    { ssr: false, loading: Loading }
+  ),
+  "html-minifier": dynamic(
+    () => import("@/components/tools/html-minifier"),
+    { ssr: false, loading: Loading }
+  ),
+  "binary-to-decimal": dynamic(
+    () => import("@/components/tools/binary-to-decimal"),
+    { ssr: false, loading: Loading }
+  ),
+  "decimal-to-binary": dynamic(
+    () => import("@/components/tools/decimal-to-binary"),
+    { ssr: false, loading: Loading }
+  ),
+  "number-to-words": dynamic(
+    () => import("@/components/tools/number-to-words"),
+    { ssr: false, loading: Loading }
+  ),
+  "roman-numeral-converter": dynamic(
+    () => import("@/components/tools/roman-numeral-converter"),
+    { ssr: false, loading: Loading }
+  ),
+  "temperature-converter": dynamic(
+    () => import("@/components/tools/temperature-converter"),
+    { ssr: false, loading: Loading }
+  ),
+  "length-converter": dynamic(
+    () => import("@/components/tools/length-converter"),
+    { ssr: false, loading: Loading }
+  ),
+  "weight-converter": dynamic(
+    () => import("@/components/tools/weight-converter"),
+    { ssr: false, loading: Loading }
+  ),
+  "time-zone-converter": dynamic(
+    () => import("@/components/tools/time-zone-converter"),
+    { ssr: false, loading: Loading }
+  ),
+  "invoice-generator": dynamic(
+    () => import("@/components/tools/invoice-generator"),
+    { ssr: false, loading: Loading }
+  ),
+  "income-tax-calculator": dynamic(
+    () => import("@/components/tools/income-tax-calculator"),
+    { ssr: false, loading: Loading }
+  ),
+  "compound-interest-calculator": dynamic(
+    () => import("@/components/tools/compound-interest-calculator"),
+    { ssr: false, loading: Loading }
+  ),
+  "salary-to-hourly-calculator": dynamic(
+    () => import("@/components/tools/salary-to-hourly-calculator"),
+    { ssr: false, loading: Loading }
+  ),
+  "investment-return-calculator": dynamic(
+    () => import("@/components/tools/investment-return-calculator"),
+    { ssr: false, loading: Loading }
+  ),
+  "roi-calculator": dynamic(
+    () => import("@/components/tools/roi-calculator"),
+    { ssr: false, loading: Loading }
+  ),
+  "profit-margin-calculator": dynamic(
+    () => import("@/components/tools/profit-margin-calculator"),
+    { ssr: false, loading: Loading }
+  ),
+  "break-even-calculator": dynamic(
+    () => import("@/components/tools/break-even-calculator"),
+    { ssr: false, loading: Loading }
+  ),
+  "macro-calculator": dynamic(
+    () => import("@/components/tools/macro-calculator"),
+    { ssr: false, loading: Loading }
+  ),
+  "body-fat-calculator": dynamic(
+    () => import("@/components/tools/body-fat-calculator"),
+    { ssr: false, loading: Loading }
+  ),
+  "retirement-calculator": dynamic(
+    () => import("@/components/tools/retirement-calculator"),
     { ssr: false, loading: Loading }
   ),
 }

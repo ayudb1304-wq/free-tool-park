@@ -27,3 +27,21 @@ export function getRelatedTools(tool: Tool): Tool[] {
     .filter((t): t is Tool => t !== undefined)
     .slice(0, 4)
 }
+
+/** Returns same-category tools not already in relatedSlugs, for "People Also Used" */
+export function getPeopleAlsoUsed(tool: Tool): Tool[] {
+  const relatedSet = new Set(tool.relatedSlugs)
+  return TOOLS.filter(
+    (t) =>
+      t.slug !== tool.slug &&
+      t.category === tool.category &&
+      !relatedSet.has(t.slug)
+  ).slice(0, 3)
+}
+
+/** Returns the first related tool (for "Next Step" CTA) */
+export function getNextStepTool(tool: Tool): Tool | undefined {
+  return TOOLS.find(
+    (t) => t.slug === tool.relatedSlugs[0]
+  )
+}

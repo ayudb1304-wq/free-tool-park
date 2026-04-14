@@ -1,5 +1,6 @@
 import type { Tool } from "@/data/tools"
 import type { Category } from "@/data/categories"
+import type { CategorySlug } from "@/data/categories"
 
 export const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL || "https://www.freetoolpark.com"
@@ -24,6 +25,15 @@ export function websiteSchema() {
   }
 }
 
+const CATEGORY_SUB_MAP: Record<CategorySlug, string> = {
+  calculators: "FinanceApplication",
+  "developer-tools": "DeveloperApplication",
+  "text-tools": "UtilityApplication",
+  converters: "UtilityApplication",
+  "seo-tools": "WebApplication",
+  generators: "UtilityApplication",
+}
+
 export function toolSchema(tool: Tool) {
   return {
     "@context": "https://schema.org",
@@ -32,17 +42,40 @@ export function toolSchema(tool: Tool) {
     url: `${SITE_URL}/tools/${tool.slug}`,
     description: tool.metaDescription,
     applicationCategory: "UtilityApplication",
+    applicationSubCategory:
+      CATEGORY_SUB_MAP[tool.category] || "UtilityApplication",
     operatingSystem: "All",
+    permissions: "none",
+    browserRequirements: "Requires JavaScript",
+    softwareVersion: "2026.04",
     image: `${SITE_URL}/images/og-default.png`,
+    screenshot: `${SITE_URL}/images/og-default.png`,
     datePublished: "2026-04-09",
-    dateModified: new Date().toISOString().split("T")[0],
+    dateModified: tool.lastUpdated || new Date().toISOString().split("T")[0],
+    inLanguage: "en",
+    isAccessibleForFree: true,
     offers: {
       "@type": "Offer",
       price: "0",
       priceCurrency: "USD",
+      availability: "https://schema.org/InStock",
     },
     featureList: tool.keywords.join(", "),
     author: {
+      "@type": "Organization",
+      name: SITE_NAME,
+      url: SITE_URL,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: SITE_NAME,
+      url: SITE_URL,
+      logo: {
+        "@type": "ImageObject",
+        url: `${SITE_URL}/images/logo.png`,
+      },
+    },
+    maintainer: {
       "@type": "Organization",
       name: SITE_NAME,
       url: SITE_URL,
