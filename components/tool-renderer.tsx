@@ -222,6 +222,10 @@ const registry: Record<string, ComponentType> = {
     () => import("@/components/tools/body-fat-calculator"),
     { ssr: false, loading: Loading }
   ),
+  "retirement-calculator": dynamic(
+    () => import("@/components/tools/retirement-calculator"),
+    { ssr: false, loading: Loading }
+  ),
 }
 
 export function ToolRenderer({
