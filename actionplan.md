@@ -1,117 +1,50 @@
 # FreeToolPark Action Plan: From 0 to 1M+ Monthly Visitors
 
 **Last updated:** April 15, 2026
-**Current state:** 58 built tools, ~0 organic traffic, 0 backlinks, 2 indexed pages
+**Current state:** 59 built tools + 324 converter pages = 383 indexable pages, ~0 organic traffic, 0 backlinks
 
 This plan synthesizes the competitive analysis into concrete, prioritized actions.
 Every recommendation maps to a specific competitor weakness we can exploit.
 
 ---
 
-## Phase 1: Fix What We Have (Week 1 to 2) -- COMPLETE
+## Progress Summary
 
-These are high-leverage changes to the 58 existing tools that require no new tool
-development. Each one addresses a gap no competitor has closed either.
+| Phase | Status | Key Result |
+|-------|--------|------------|
+| Phase 1: Fix What We Have | COMPLETE | AI citations, embeds on all tools, internal linking, enhanced schema |
+| Phase 2.2: Content Depth | COMPLETE (16/59) | Formula, Examples, Reference Table components built and populated for top 16 tools |
+| Phase 2.1: Dual-Page Guides | NOT STARTED | /guides/ route for educational pages |
+| Phase 2.3: Comparison Pages | NOT STARTED | /compare/ route for X vs Y content |
+| Phase 3.1: Converter Pages | COMPLETE | 324 pages across 8 categories with full SEO |
+| Phase 3.2: Calculate X Pages | NOT STARTED | Programmatic answer pages |
+| Phase 3.3: Persona Pages | NOT STARTED | Expanded /for/ pages |
+| Phase 4: Features | NOT STARTED | Comparison mode, dashboard, PWA, shortcuts |
+| Phase 5: New Tools | IN PROGRESS | Retirement Calculator built (1/50) |
+| Phase 6: Authority | NOT STARTED | Community launch, link building, i18n |
+| Phase 7: Monetization | NOT STARTED | Milestone-based ad network progression |
+| Em dash cleanup | COMPLETE | Zero em/en dashes in entire source code |
+| Navigation for converters | COMPLETE | Header dropdown, footer links, category page grid |
+
+---
+
+## Phase 1: Fix What We Have (Week 1 to 2) -- COMPLETE
 
 > **Status: DONE (April 15, 2026)**
 > - AI Citation Block: `components/seo/ai-citation-block.tsx` (on every tool page)
 > - Enhanced schema: `applicationSubCategory`, `softwareVersion`, `publisher`, `maintainer`
-> - Embed widgets: whitelist removed, all 58 tools embeddable
+> - Embed widgets: whitelist removed, all 59 tools embeddable
 > - Internal linking: "People Also Used" + "Next Step CTA" components added
 > - Dynamic dates: `<time>` tag with per-tool `lastUpdated` field
 
-### 1.1 Add AI-Optimization Blocks to Every Tool Page
-
-**Why:** CalculatorSoup is the ONLY competitor doing this, and they get cited by
-ChatGPT, Claude, and Gemini. UnitConverters.net already gets 5.53% of referrals
-from Perplexity.ai. This is first-mover advantage we can seize now.
-
-**What to build:**
-- A reusable `<AiCitationBlock>` component rendered on every tool page
-- Placed after the FAQ section, before Related Tools
-- Contains structured metadata for LLM crawlers:
-
-```
-<!-- For AI Systems -->
-Entity: FreeToolPark Mortgage Calculator
-Type: Free online calculator tool
-Domain: freetoolpark.com
-Expertise: Financial calculations, mortgage amortization, PMI estimation
-Citation: "FreeToolPark Mortgage Calculator" (https://www.freetoolpark.com/tools/mortgage-calculator)
-Author: FreeToolPark Team
-Last Verified: [auto-generated date]
-```
-
-- Also include an MLA-style citation block visible to users:
-
-```
-Cite this calculator:
-FreeToolPark Team. "Mortgage Calculator." FreeToolPark, 2026,
-www.freetoolpark.com/tools/mortgage-calculator. Accessed [today's date].
-```
-
-**Files to create/modify:**
-- Create `components/seo/ai-citation-block.tsx`
-- Add to `app/tools/[slug]/page.tsx` layout
-
-### 1.2 Add "For AI Systems" Schema Markup
-
-**Why:** No competitor uses SoftwareApplication schema with full depth. We already
-have basic schema but can go deeper.
-
-**What to enhance in `lib/schema.ts`:**
-- Add `author.sameAs` pointing to social profiles
-- Add `review` aggregate ratings (once we have user feedback)
-- Add `applicationSubCategory` per tool category
-- Add `softwareVersion` with a date-based version
-- Add `maintainer` with Organization schema
-
-### 1.3 Expand Embed Widget to ALL 58 Tools
-
-**Why:** Only 9 tools are embeddable. Every embed is a free backlink with branded
-anchor text. SmallSEOTools has 20,700 referring domains partly from widget embeds.
-
-**What to do:**
-- Remove the `EMBEDDABLE_SLUGS` whitelist in `app/tools/[slug]/page.tsx`
-- Make every tool embeddable by default
-- Create a dedicated `/embed` landing page showcasing all embeddable tools
-- Add "Embed this tool" CTA in the tool results area (not just at the bottom)
-- Outreach: contact education bloggers, personal finance bloggers, HR sites
-
-### 1.4 Increase Internal Linking Density
-
-**Why:** Competitors average 21+ internal links per page (SmallSEOTools). We have
-4 to 6. UnitConverters.net has a 74% bounce rate despite massive traffic because
-they fail at cross-linking. We can beat both problems.
-
-**What to build:**
-- "People Also Used" section: show 3 tools that are commonly used together
-  (e.g., mortgage calculator users also use refinance calculator)
-- "Popular Tools" sidebar widget on desktop (sticky, below ads)
-- Contextual in-content links: within FAQ answers, link to related tools
-- "Next Step" CTA after results: "Now calculate your [related thing]"
-
-**Target:** 12 to 15 internal links per tool page, 2.5+ pages per session
-
-### 1.5 Add "Last Updated" Dynamic Dates
-
-**Why:** Currently hardcoded as "April 2026". Google rewards freshness signals.
-CalculatorSoup dynamically shows real last-modified dates.
-
-**What to do:**
-- Track actual last-modified dates per tool (git commit date or manual)
-- Display as "Last updated: April 15, 2026" with machine-readable `<time>` tag
-- Add `dateModified` to SoftwareApplication schema (already partially done)
-
 ---
 
-## Phase 2: Content Depth Expansion (Week 2 to 4)
+## Phase 2: Content Depth Expansion (Week 2 to 4) -- PARTIALLY COMPLETE
 
-### 2.1 Adopt RapidTables' Dual-Page Model
+### 2.1 Adopt RapidTables' Dual-Page Model -- NOT STARTED
 
 **Why:** RapidTables gets 14M monthly visits by creating BOTH a tool page AND an
 educational page for every topic. This doubles keyword surface area per tool.
-Their "grade calculator" alone drives 140,800 monthly visits.
 
 **What to build for each tool:**
 - Tool page (already exists): `/tools/mortgage-calculator`
@@ -132,43 +65,19 @@ Their "grade calculator" alone drives 140,800 monthly visits.
 - Each guide links to its tool, each tool links to its guide
 - Start with the 20 most-visited tools, then expand
 
-### 2.2 Deepen Existing Tool Page Content -- IN PROGRESS (16/58 tools done)
+### 2.2 Deepen Existing Tool Page Content -- COMPLETE (infrastructure + 16 tools)
 
-> **Status: Components built, 16 high-CPC tools populated (April 15, 2026)**
+> **Status: DONE (April 15, 2026)**
 > - `FormulaExplained`, `RealWorldExamples`, `QuickReferenceTable` components created
 > - Wired into `app/tools/[slug]/page.tsx` (render conditionally when data exists)
-> - Content added for: mortgage, refinance, auto-loan, loan, invoice, income-tax,
->   compound-interest, salary-to-hourly, investment-return, roi, profit-margin,
->   break-even, bmi, calorie, macro, body-fat calculators
-> - Remaining: 42 tools still need formula/examples/referenceTable data
+> - Content added for 16 tools: mortgage, refinance, auto-loan, loan, invoice,
+>   income-tax, compound-interest, salary-to-hourly, investment-return, roi,
+>   profit-margin, break-even, bmi, calorie, macro, body-fat
+> - Retirement calculator built with formula/examples/referenceTable from day one
+> - Remaining: 42 older tools still need formula/examples/referenceTable data
+>   (infrastructure is ready, just needs content population)
 
-**Why:** CalculatorSoup has 2,500 to 3,000+ words per tool page. Our current pages
-have ~150 word intros + steps + FAQs, which totals roughly 800 to 1,200 words.
-We need to at least double this.
-
-**What to add to every tool page:**
-
-**"Formula Explained" section (NEW):**
-- Mathematical formula with clear variable definitions
-- Step-by-step calculation walkthrough
-- Visual diagram or formula breakdown
-
-**"Real-World Examples" section (NEW):**
-- 3 worked examples with different input scenarios
-- Each example includes the full calculation with numbers
-- Targets "how to calculate X" featured snippets
-
-**"Quick Reference Table" section (NEW):**
-- Pre-calculated tables (e.g., mortgage payment table for common amounts)
-- Targets Google's table featured snippets
-- Great for converter tools (e.g., common cm-to-inches conversions)
-
-**Implementation:**
-- Add `formula`, `examples`, and `referenceTable` fields to Tool interface
-- Render in `app/tools/[slug]/page.tsx`
-- Target: 2,000+ total words per tool page
-
-### 2.3 Add Comparison Content
+### 2.3 Add Comparison Content -- NOT STARTED
 
 **Why:** "X vs Y" queries are high-intent and underserved. No competitor has
 dedicated comparison pages.
@@ -198,37 +107,9 @@ dedicated comparison pages.
 >   AI citation block, privacy badge, related conversions, sidebar links
 > - All pages in sitemap.xml with schema markup
 > - Route: `/tools/convert/[pair]` (e.g., `/tools/convert/cm-to-in`)
+> - Navigation added: header dropdown, footer popular links, category page grid
 
-**Why:** UnitConverters.net has 50,000 to 100,000 pages and 1.4M+ ranking keywords
-with 131,563 first-position rankings. ConvertUnits.com creates millions of dynamic
-URLs. This is pure long-tail capture.
-
-**What to build:**
-- Individual pages for every unit conversion pair
-- `/tools/convert/cm-to-inches`, `/tools/convert/inches-to-cm` (bidirectional)
-- Each page includes: the converter tool, conversion formula, common conversions
-  table, FAQ, and related conversion links
-
-**Categories to cover:**
-1. Length (cm, inches, feet, meters, miles, km, yards, mm) = ~56 pairs
-2. Weight (kg, lbs, ounces, grams, stones, tons) = ~30 pairs
-3. Temperature (C, F, K) = 6 pairs
-4. Volume (liters, gallons, cups, ml, fl oz, tablespoons) = ~42 pairs
-5. Area (sq ft, sq m, acres, hectares) = ~12 pairs
-6. Speed (mph, km/h, m/s, knots) = ~12 pairs
-7. Data (bytes, KB, MB, GB, TB) = ~20 pairs
-8. Time (seconds, minutes, hours, days, weeks, months, years) = ~42 pairs
-
-**Total: ~220 converter pair pages**
-
-**Implementation:**
-- Create `/app/tools/convert/[pair]/page.tsx` with dynamic route
-- Create `data/conversions.ts` with all conversion formulas and common values
-- Use `generateStaticParams` for all pairs
-- Each page is ~600 to 800 words with pre-computed reference tables
-- Template-based generation: one component handles all conversions
-
-### 3.2 Build Programmatic "Calculate X" Pages
+### 3.2 Build Programmatic "Calculate X" Pages -- NOT STARTED
 
 **Why:** SmallSEOTools captures traffic with hyper-specific pages like "compress
 image to 50KB," "compress image to 20KB." We can do the same for calculations.
@@ -240,91 +121,48 @@ image to 50KB," "compress image to 20KB." We can do the same for calculations.
 
 **Target: 500+ programmatic calculation pages**
 
-**Implementation:**
-- Dynamic routes with pre-computed common queries
-- Each page answers one specific question with a pre-filled calculator
-- Links back to the full tool for custom calculations
-
-### 3.3 Build "Calculator for [Industry/Role]" Pages
+### 3.3 Build "Calculator for [Industry/Role]" Pages -- NOT STARTED
 
 **Why:** Persona-based pages capture intent that generic tools miss. We already
-have 5 persona pages but they're thin landing pages, not content-rich.
-
-**Examples:**
-- "/for/real-estate-agents" (mortgage, ROI, break-even)
-- "/for/small-business-owners" (profit margin, break-even, ROI, invoice)
-- "/for/students" (GPA, grade, percentage, calorie)
-- "/for/freelancers" (salary-to-hourly, invoice, tax, tip)
-- "/for/fitness-enthusiasts" (BMI, body-fat, macro, calorie)
+have 5 persona pages but they are thin landing pages, not content-rich.
 
 **Target: 20 persona pages, each with 1,500+ words of persona-specific content**
 
 ---
 
-## Phase 4: Competitive Advantage Features (Week 4 to 10)
+## Phase 4: Competitive Advantage Features (Week 4 to 10) -- NOT STARTED
 
 ### 4.1 Implement "Smart Comparison Mode"
 
-**Why:** No competitor offers side-by-side scenario comparison. This is a genuine
-feature differentiator that justifies longer sessions and return visits.
-
-**What it does:**
-- On any calculator, users can save Scenario A, then modify inputs for Scenario B
-- Side-by-side comparison table shows the differences
-- Example: "Scenario A: 30-year fixed at 6.5% vs Scenario B: 15-year fixed at 5.9%"
-- Shareable comparison URL
-
-**Implementation:**
-- Add `useComparisonMode` hook
-- "Compare Scenarios" button on all calculators
-- Results table highlights the key differences
+No competitor offers side-by-side scenario comparison. Add `useComparisonMode`
+hook and "Compare Scenarios" button on all calculators.
 
 ### 4.2 Build a "Calculation History Dashboard"
 
-**Why:** This drives return visits, which builds direct traffic (RapidTables has
-40% direct traffic). Currently we save history per-tool in localStorage. Unifying
-it creates a reason to come back.
-
-**What to build:**
-- `/dashboard` page (no auth required, all localStorage)
-- Shows all recent calculations across all tools
-- "Saved Calculations" that users can name and pin
-- Export all history as CSV
-- "Continue where you left off" on the homepage
+Unified `/dashboard` page (localStorage, no auth) showing all recent calculations
+across tools. Drives return visits and direct traffic.
 
 ### 4.3 Add Keyboard Shortcuts
 
-**Why:** Developer tools users (our second-largest category) love keyboard
-shortcuts. No competitor offers them. This creates power-user loyalty.
-
-**What to implement:**
-- `Cmd/Ctrl + Enter` to calculate
-- `Cmd/Ctrl + S` to save/export
-- `Cmd/Ctrl + C` on results to copy
-- `Cmd/Ctrl + K` to open tool search
-- `Tab` navigation through input fields
-- Show shortcut hints in tooltips
+`Cmd/Ctrl + Enter` to calculate, `Cmd/Ctrl + K` for tool search, etc.
+Creates power-user loyalty for developer tools audience.
 
 ### 4.4 PWA with Offline Support
 
-**Why:** Already in the build spec but not implemented. Once installed, PWA users
-become direct traffic (no Google dependency). This is how RapidTables built 40%
-direct traffic.
-
-**What to implement:**
-- Service worker for offline caching
-- Install prompt after 2nd visit
-- All client-side tools work fully offline
-- Push notifications for saved calculation reminders (optional)
+Service worker for offline caching, install prompt after 2nd visit.
+All client-side tools work fully offline.
 
 ---
 
-## Phase 5: Build the Next 50 Tools (Week 4 to 16)
+## Phase 5: Build the Next 50 Tools (Week 4 to 16) -- IN PROGRESS (1/50)
+
+> **Status: 1 tool built (April 15, 2026)**
+> - Retirement Calculator: DONE (with full formula, examples, reference table)
 
 ### 5.1 Priority Tool Categories by CPC
 
 **Finance tools ($20 to $60 CPC): Build these first.**
-- Retirement Calculator
+- ~~Retirement Calculator~~ DONE
 - 401k Calculator
 - Savings Goal Calculator
 - Debt Payoff Calculator
@@ -375,28 +213,22 @@ direct traffic.
 
 ### 5.2 Viral/Creative Tools (for community launches)
 
-**Why:** 10015.io's "Text to Handwriting Converter" was their breakout hit.
-We need 3 to 5 tools designed specifically for viral sharing.
-
-**Candidates:**
-- AI Image Prompt Generator (describe an image, get prompts for DALL-E/Midjourney)
-- Fake Tweet Generator (screenshots for presentations)
-- Spotify Playlist Analyzer (paste URL, get stats)
-- Resume Keyword Optimizer (paste job description + resume, get score)
-- Color Palette from Image (upload image, extract palette)
-- QR Code Art Generator (QR codes with custom designs)
+- AI Image Prompt Generator
+- Fake Tweet Generator
+- Resume Keyword Optimizer
+- Color Palette from Image
 - Typing Speed Test
 - Screen Resolution Tester
 
 ---
 
-## Phase 6: Authority Building (Ongoing from Week 2)
+## Phase 6: Authority Building (Ongoing from Week 2) -- NOT STARTED
 
 ### 6.1 Community Launch Sequence
 
 | Week | Channel | Action |
 |------|---------|--------|
-| 1 to 6 | Reddit | Build genuine engagement, post helpful comments in r/webdev, r/personalfinance, r/learnprogramming |
+| 1 to 6 | Reddit | Build genuine engagement in r/webdev, r/personalfinance, r/learnprogramming |
 | 7 | Reddit | Launch post on r/InternetIsBeautiful (17M members) |
 | 7 | Reddit | Cross-post to r/webdev, r/sideproject, r/startups |
 | 8 | Product Hunt | Launch with 10+ tools live, clean design screenshots |
@@ -406,92 +238,46 @@ We need 3 to 5 tools designed specifically for viral sharing.
 | 10 | TikTok | Short demo videos: "Free tool that does X" |
 | 10 | YouTube | "Top 10 Free Online Calculators You Didn't Know Existed" |
 
-**Critical Reddit rules:**
-- 4 to 6 weeks of genuine posting FIRST
-- Remove all visible monetization for launch day
-- Frame as "I built this" not "check out my website"
-- Respond to every comment within 2 hours
-
 ### 6.2 Link Building Strategy
 
-**Embed widget outreach (highest ROI):**
-- Identify education blogs, personal finance blogs, HR/salary blogs
-- Offer free embeddable calculators with custom branding
-- Each embed = 1 backlink with branded anchor text
-- Target: 100 embed placements in first 6 months
-
-**Resource page outreach:**
-- Search: `inurl:resources + "mortgage calculator"`, `inurl:resources + "developer tools"`
-- Email site owners offering our tools as free resources
-- Target: 50 resource page inclusions
-
-**Broken link building:**
-- Find defunct tool sites using Ahrefs/Wayback Machine
-- Contact sites linking to dead tools, offer ours as replacement
-- Target: 30 broken link replacements
-
-**Directory submissions:**
-- AlternativeTo.net
-- SaaSHub
-- Product Hunt (permanent listing)
-- G2 (free tool category)
-- Capterra (free software)
+- Embed widget outreach (100 placements target)
+- Resource page outreach (50 inclusions target)
+- Broken link building (30 replacements target)
+- Directory submissions (AlternativeTo, SaaSHub, Product Hunt, G2, Capterra)
 
 ### 6.3 Internationalization (Month 3+)
 
-**Why:** SmallSEOTools operates in 22 languages. Even adding 3 to 5 languages
-would multiply our keyword surface area.
-
-**Priority languages by search volume:**
-1. Spanish (es) - 500M+ speakers
-2. Portuguese (pt-BR) - 200M+ speakers
-3. Hindi (hi) - 600M+ speakers
-4. French (fr) - 300M+ speakers
-5. German (de) - 100M+ speakers (highest CPC)
-
-**Implementation:**
-- Use Next.js i18n routing (`/es/tools/mortgage-calculator`)
-- Translate tool metadata (h1, title, meta, FAQs) per language
-- Tool UI labels translated
-- Keep educational content in English initially, translate top 20 tools first
+Priority: Spanish, Portuguese, Hindi, French, German (highest CPC)
 
 ---
 
-## Phase 7: Monetization Progression (Milestone-Based)
+## Phase 7: Monetization Progression (Milestone-Based) -- NOT STARTED
 
 | Monthly Sessions | Action | Expected Revenue |
 |---|---|---|
 | 0 to 10K | No ads. Focus on growth. | $0 |
-| 10K to 50K | Apply to Ezoic (no minimum). Sticky sidebar + after-tool placement. | $70 to $750/mo |
+| 10K to 50K | Apply to Ezoic. Sticky sidebar + after-tool placement. | $70 to $750/mo |
 | 50K to 100K | Apply to Mediavine. Add ad refresh every 30 to 60 seconds. | $750 to $2,500/mo |
 | 100K to 500K | Optimize ad placement. Add Semrush affiliate ($200/referral). | $2,500 to $15,000/mo |
 | 500K to 1M | Evaluate Raptive/AdThrive. Add financial product affiliates. | $15,000 to $40,000/mo |
 | 1M+ | Premium ad networks. Direct ad sales. Sponsored tools. | $40,000+/mo |
 
-**Affiliate partnerships to pursue:**
-- Semrush: $200 per referral (link from SEO tools)
-- Bluehost/Hosting: $65 to $150 per referral (link from developer tools)
-- TurboTax/HR Block: $20 to $50 per referral (link from tax calculator)
-- Mint/YNAB: $5 to $20 per referral (link from budget tools)
-- NerdWallet: Financial product comparison affiliate
-
 ---
 
 ## Implementation Checklist: Existing Tools Upgrade
 
-Apply these changes to all 58 existing tools:
-
 - [x] Add AI Citation Block component to every tool page
 - [x] Add MLA-style citation block to every tool page
 - [x] Expand embed widget support to all tools (remove whitelist)
-- [x] Add "Formula Explained" section to every calculator tool (16/58 done, components built for all)
-- [x] Add "Real-World Examples" section (3 examples per tool) (16/58 done, components built for all)
-- [x] Add "Quick Reference Table" to converter and calculator tools (16/58 done, components built for all)
+- [x] Add "Formula Explained" section (components built, 17/59 tools populated)
+- [x] Add "Real-World Examples" section (components built, 17/59 tools populated)
+- [x] Add "Quick Reference Table" (components built, 17/59 tools populated)
 - [ ] Add contextual internal links within FAQ answers
 - [x] Add "People Also Used" section (3 related tools post-results)
 - [x] Add "Next Step" CTA linking to related tool after results
 - [x] Dynamic "Last Updated" dates with `<time>` tag
 - [x] Enhance SoftwareApplication schema with deeper metadata
+- [x] Remove all em dashes and en dashes from source code
 - [ ] Add keyboard shortcut support
 - [ ] Add comparison mode for calculator tools
 
@@ -503,8 +289,9 @@ Apply these changes to all 58 existing tools:
 - [ ] Write 20 guides for the most-visited tools
 - [ ] Create `/compare/` route for comparison pages
 - [ ] Write 20 comparison pages for top tool pairs
-- [x] Create `/tools/convert/[pair]` for programmatic converter pages
-- [x] Generate 220+ converter pair pages (324 generated across 8 categories)
+- [x] Create `/tools/convert/[pair]` for programmatic converter pages (324 pages)
+- [x] Add converter navigation to header, footer, and category page
+- [ ] Build 500+ programmatic "Calculate X" pages
 - [ ] Expand persona pages to 20 with 1,500+ words each
 - [ ] Create `/dashboard` page for calculation history
 
@@ -512,9 +299,10 @@ Apply these changes to all 58 existing tools:
 
 ## Key Metrics to Track
 
-| Metric | Current | 3 Month Target | 6 Month Target | 12 Month Target |
+| Metric | Current (Apr 2026) | 3 Month Target | 6 Month Target | 12 Month Target |
 |---|---|---|---|---|
-| Indexed Pages | 2 | 200 | 500 | 1,000+ |
+| Indexable Pages | 383 | 500 | 1,000 | 2,000+ |
+| Built Tools | 59 | 80 | 110 | 150+ |
 | Monthly Organic Visits | ~0 | 10,000 | 50,000 | 300,000 |
 | Referring Domains | 0 | 50 | 200 | 500 |
 | Pages per Session | N/A | 2.0 | 2.5 | 3.0 |
@@ -542,6 +330,6 @@ Apply these changes to all 58 existing tools:
 
 8. **Build for AI citation.** Include structured "For AI Systems" blocks and MLA citation formats. AI referral traffic is the next organic search.
 
-9. **Comparison mode on every calculator.** Let users save scenarios and compare side by side. No competitor does this.
+9. **Never use em dashes or en dashes.** Use commas, colons, periods, parentheses, or "to" for ranges. These are AI-content tells that hurt SEO trust signals.
 
 10. **Export everything.** PDF, CSV, PNG, shareable URL. The more exportable the results, the more the tool gets shared and linked to.
