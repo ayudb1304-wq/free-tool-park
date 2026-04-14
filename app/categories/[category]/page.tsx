@@ -1,7 +1,9 @@
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
+import Link from "next/link"
 import { CATEGORIES, getCategoryBySlug } from "@/data/categories"
 import { getToolsByCategory } from "@/lib/tools"
+import { CONVERSION_CATEGORIES } from "@/data/conversions"
 import { JsonLd } from "@/components/seo/json-ld"
 import { categorySchema, faqSchema, breadcrumbSchema, SITE_URL } from "@/lib/schema"
 import { Breadcrumb } from "@/components/layout/breadcrumb"
@@ -96,6 +98,47 @@ export default async function CategoryPage({
         <p className="mb-8 text-muted-foreground">{category.longDescription}</p>
 
         <ToolsGrid tools={tools} showSearch showCategoryFilter={false} />
+
+        {/* Unit Converter Quick Links (only on converters category) */}
+        {slug === "converters" && (
+          <section className="mt-12">
+            <h2 className="font-heading mb-6 text-2xl font-bold">
+              Unit Converters
+            </h2>
+            <p className="mb-6 text-muted-foreground">
+              Instantly convert between hundreds of units across {CONVERSION_CATEGORIES.length} categories. Every converter runs in your browser with no signup required.
+            </p>
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {CONVERSION_CATEGORIES.map((cat) => (
+                <div key={cat.slug} className="rounded-xl border bg-card p-4">
+                  <h3 className="mb-3 font-semibold">{cat.name}</h3>
+                  <ul className="space-y-1.5 text-sm">
+                    {cat.units.slice(0, 4).flatMap((from) =>
+                      cat.units
+                        .filter((to) => to.key !== from.key)
+                        .slice(0, 1)
+                        .map((to) => (
+                          <li key={`${from.key}-${to.key}`}>
+                            <Link
+                              href={`/tools/convert/${from.key}-to-${to.key}`}
+                              className="text-muted-foreground hover:text-primary hover:underline"
+                            >
+                              {from.abbr} to {to.abbr}
+                            </Link>
+                          </li>
+                        ))
+                    )}
+                    <li>
+                      <span className="text-xs text-muted-foreground">
+                        +{cat.units.length * (cat.units.length - 1) - 4} more
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
 
         {/* Category FAQ */}
         <section className="mt-12">

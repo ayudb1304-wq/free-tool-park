@@ -2,11 +2,22 @@ import Link from "next/link"
 import Image from "next/image"
 import { CATEGORIES } from "@/data/categories"
 
+const POPULAR_CONVERSIONS = [
+  { slug: "cm-to-in", label: "cm to inches" },
+  { slug: "kg-to-lb", label: "kg to lbs" },
+  { slug: "mi-to-km", label: "miles to km" },
+  { slug: "c-to-f", label: "Celsius to Fahrenheit" },
+  { slug: "gal-to-l", label: "gallons to liters" },
+  { slug: "ft-to-m", label: "feet to meters" },
+  { slug: "oz-to-g", label: "ounces to grams" },
+  { slug: "gb-to-mb", label: "GB to MB" },
+]
+
 export function Footer() {
   return (
     <footer className="border-t bg-muted/30">
       <div className="mx-auto max-w-7xl px-4 py-12">
-        <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
+        <div className="grid grid-cols-2 gap-8 md:grid-cols-5">
           <div>
             <div className="mb-3">
               <Image
@@ -47,6 +58,21 @@ export function Footer() {
                     className="hover:text-foreground"
                   >
                     {cat.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h3 className="mb-3 text-sm font-semibold">Unit Converters</h3>
+            <ul className="space-y-2 text-sm text-muted-foreground">
+              {POPULAR_CONVERSIONS.map((c) => (
+                <li key={c.slug}>
+                  <Link
+                    href={`/tools/convert/${c.slug}`}
+                    className="hover:text-foreground"
+                  >
+                    {c.label}
                   </Link>
                 </li>
               ))}

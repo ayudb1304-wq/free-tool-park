@@ -6,6 +6,7 @@ import { useTheme } from "next-themes"
 import { HugeiconsIcon } from "@hugeicons/react"
 import { Sun01Icon, MoonIcon, Menu01Icon } from "@hugeicons/core-free-icons"
 import { CATEGORIES } from "@/data/categories"
+import { CONVERSION_CATEGORIES } from "@/data/conversions"
 import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
@@ -64,6 +65,24 @@ export function Header() {
                   <DropdownMenuItem key={cat.slug} asChild>
                     <Link href={`/categories/${cat.slug}`}>
                       <HugeiconsIcon icon={cat.icon} size={16} />
+                      {cat.name}
+                    </Link>
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" size="sm">
+                  Unit Converters
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="start">
+                {CONVERSION_CATEGORIES.map((cat) => (
+                  <DropdownMenuItem key={cat.slug} asChild>
+                    <Link
+                      href={`/tools/convert/${cat.units[0].key}-to-${cat.units[1].key}`}
+                    >
                       {cat.name}
                     </Link>
                   </DropdownMenuItem>
@@ -163,6 +182,24 @@ export function Header() {
                   >
                     <Link href={`/categories/${cat.slug}`}>
                       <HugeiconsIcon icon={cat.icon} size={16} />
+                      {cat.name}
+                    </Link>
+                  </Button>
+                ))}
+                <div className="mt-4 mb-2 px-3 text-xs font-medium text-muted-foreground">
+                  Unit Converters
+                </div>
+                {CONVERSION_CATEGORIES.map((cat) => (
+                  <Button
+                    key={cat.slug}
+                    variant="ghost"
+                    className="justify-start"
+                    asChild
+                    onClick={() => setOpen(false)}
+                  >
+                    <Link
+                      href={`/tools/convert/${cat.units[0].key}-to-${cat.units[1].key}`}
+                    >
                       {cat.name}
                     </Link>
                   </Button>

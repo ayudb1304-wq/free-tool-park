@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next"
 import { TOOLS } from "@/data/tools"
 import { CATEGORIES } from "@/data/categories"
 import { getAllPersonaSlugs } from "@/data/personas"
+import { ALL_CONVERSION_PAIRS } from "@/data/conversions"
 import { SITE_URL } from "@/lib/schema"
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -63,5 +64,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }))
 
-  return [...staticPages, ...personaPages, ...categoryPages, ...toolPages]
+  const converterPages: MetadataRoute.Sitemap = ALL_CONVERSION_PAIRS.map(
+    (pair) => ({
+      url: `${SITE_URL}/tools/convert/${pair.slug}`,
+      lastModified: now,
+      changeFrequency: "monthly" as const,
+      priority: 0.6,
+    }),
+  )
+
+  return [
+    ...staticPages,
+    ...personaPages,
+    ...categoryPages,
+    ...toolPages,
+    ...converterPages,
+  ]
 }
