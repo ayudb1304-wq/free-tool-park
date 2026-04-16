@@ -5272,4 +5272,463 @@ export const TOOLS: Tool[] = [
       note: "Based on the withdrawal rate rule. For example, at a 4% withdrawal rate, you need 25x your desired annual income saved. More conservative rates (3% to 3.5%) are recommended for early retirees with 35+ year retirements.",
     },
   },
+
+  // 56. 401k Calculator
+  {
+    slug: "401k-calculator",
+    name: "401(k) Calculator",
+    category: "calculators",
+    icon: Dollar01Icon,
+    componentName: "401k-calculator",
+    h1: "Free 401(k) Calculator: Employer Match, Growth & Tax Savings",
+    titleTag:
+      "401(k) Calculator: Employer Match, Growth & Projections | FreeToolPark",
+    metaDescription:
+      "Calculate your 401(k) balance at retirement with employer matching, salary increases, and tax savings. See year-by-year growth projections. Free, instant, no signup.",
+    introduction:
+      "A 401(k) calculator helps you project how much your employer-sponsored retirement account will be worth when you retire. Enter your salary, contribution percentage, employer match details, and expected return to see your projected balance at retirement. This calculator factors in annual salary increases so your contributions grow over time, models employer matching with configurable match rates and limits, accounts for IRS contribution limits (including catch-up contributions for workers 50 and older and the SECURE 2.0 super catch-up for ages 60 to 63), and estimates your annual tax savings from pre-tax contributions. The year-by-year schedule shows exactly how your contributions, employer match, and investment growth combine to build your retirement nest egg. Everything runs in your browser, nothing is stored, and no signup is required.",
+    whyUse: [
+      "Models employer matching with configurable match rate and salary limit",
+      "Accounts for 2026 IRS contribution limits ($23,500 base, $7,500 catch-up for 50+, $11,250 super catch-up for ages 60 to 63)",
+      "Projects salary growth so your contributions increase realistically over time",
+      "Calculates annual tax savings from pre-tax 401(k) contributions at your federal bracket",
+      "Shows inflation-adjusted values so you see your balance in today's purchasing power",
+      "Smart insights panel warns you if you are leaving employer match money on the table",
+      "Year-by-year schedule breaks down your contributions, employer match, and investment growth",
+      "Visual growth chart shows your 401(k) balance at each milestone age",
+      "Applies the 4% withdrawal rule to estimate sustainable retirement income from your 401(k)",
+      "100% private, runs in your browser, no signup or email required",
+    ],
+    whyUseSummary:
+      "A 401(k) calculator projects your retirement account balance by combining your contributions, employer matching, salary growth, and investment returns over time. Our calculator shows you whether you are capturing your full employer match, estimates your tax savings, and gives a year-by-year breakdown of how your 401(k) grows. All calculations run in your browser with no signup required.",
+    steps: [
+      {
+        title: "Enter your age and target retirement age",
+        description:
+          "Type in your current age and the age you plan to retire. The calculator uses the difference to project how many years of contributions and growth your 401(k) will accumulate. Most people use 65, but you can model early retirement at 55 or later retirement at 70.",
+      },
+      {
+        title: "Enter your current 401(k) balance and annual salary",
+        description:
+          "Input your existing 401(k) balance as the starting point and your current annual salary. If you have balances in multiple 401(k) accounts from previous employers, add them together. Your salary determines how much you and your employer contribute each year.",
+      },
+      {
+        title: "Set your contribution percentage",
+        description:
+          "Enter the percentage of your salary that you contribute to your 401(k). For example, if you earn $75,000 and contribute 10%, that is $7,500 per year ($625/month). The calculator caps contributions at the IRS annual limit and adds catch-up amounts automatically when your age qualifies.",
+      },
+      {
+        title: "Configure your employer match",
+        description:
+          "Enter two values: the match rate (what percentage of your contribution your employer matches, such as 50%) and the match limit (up to what percentage of your salary the match applies, such as 6%). A common match is 50% of contributions up to 6% of salary, meaning the employer adds 3% of your salary if you contribute at least 6%.",
+      },
+      {
+        title: "Adjust return, salary growth, and inflation rates",
+        description:
+          "The default 7% return matches the long-term stock market average. The 3% salary increase reflects typical annual raises. Adjust these to model optimistic or conservative scenarios. The inflation rate lets you see your balance in today's purchasing power.",
+      },
+      {
+        title: "Review your results and year-by-year schedule",
+        description:
+          "Check the summary cards for your projected balance, total contributions, employer match, and estimated retirement income. The smart insights panel tells you if you are leaving match money on the table. Click the Year-by-Year tab to see exactly how your salary, contributions, match, and growth change each year.",
+      },
+    ],
+    faqs: [
+      {
+        question: "How much should I contribute to my 401(k)?",
+        answer:
+          "At minimum, contribute enough to get your full employer match, because that is an immediate 50% to 100% return on your money. Beyond that, financial advisors generally recommend saving 10% to 15% of your gross salary for retirement (including the employer match). If you started saving late, aim for 15% to 20%. The IRS allows up to $23,500 in employee contributions for 2026, plus catch-up contributions if you are 50 or older.",
+      },
+      {
+        question: "What is an employer match and how does it work?",
+        answer:
+          "An employer match is free money your company adds to your 401(k) based on your own contributions. A common formula is '50% match up to 6% of salary.' This means if you earn $75,000 and contribute at least 6% ($4,500), your employer adds 50% of that ($2,250). If you contribute less than 6%, you lose part of the match. Always contribute at least enough to capture the full match.",
+      },
+      {
+        question: "What are the 2026 401(k) contribution limits?",
+        answer:
+          "For 2026, the IRS allows $23,500 in employee elective deferrals. If you are 50 or older, you can add a $7,500 catch-up contribution for a total of $31,000. Under the SECURE 2.0 Act, workers aged 60 to 63 get an enhanced super catch-up of $11,250 (instead of $7,500) for a total of $34,750. Employer contributions are separate and do not count toward these limits.",
+      },
+      {
+        question: "Should I choose a traditional 401(k) or Roth 401(k)?",
+        answer:
+          "A traditional 401(k) reduces your taxable income now (you pay taxes when you withdraw in retirement). A Roth 401(k) is funded with after-tax dollars (you pay taxes now but withdrawals in retirement are tax-free). If you expect to be in a higher tax bracket in retirement, Roth may save you more. If you expect a lower bracket in retirement, traditional may be better. This calculator models traditional 401(k) tax savings, since that is the more common default.",
+      },
+      {
+        question: "How does salary growth affect my 401(k)?",
+        answer:
+          "When your salary increases, your contribution amount increases automatically (since you contribute a percentage of salary). For example, at 10% contribution on a $75,000 salary, you contribute $7,500/year. After a 3% raise to $77,250, you contribute $7,725/year. Over 35 years of compounding, these incremental increases add up significantly. This calculator models annual salary growth to give you a realistic projection.",
+      },
+      {
+        question: "What happens to my 401(k) if I change jobs?",
+        answer:
+          "You have several options: leave the money in your old employer's plan, roll it over to your new employer's 401(k), roll it into a traditional IRA, or cash it out (which triggers taxes and a 10% penalty if you are under 59 and a half). Rolling over to an IRA or new 401(k) keeps your tax-deferred growth intact. When using this calculator, include all your 401(k) balances (current and previous) in the 'Current Balance' field.",
+      },
+      {
+        question: "What rate of return should I expect from my 401(k)?",
+        answer:
+          "Returns depend on your investment choices within the plan. A portfolio of stock index funds has historically returned about 10% before inflation (7% after). A balanced stock/bond mix typically returns 6% to 8%. Target-date funds, which many 401(k) plans offer as defaults, gradually shift from stocks to bonds as you approach retirement. For conservative planning, use 6%; for moderate, use 7%; for aggressive, use 8%.",
+      },
+      {
+        question: "How much tax do I save with a 401(k)?",
+        answer:
+          "Traditional 401(k) contributions reduce your taxable income dollar for dollar. If you are in the 22% federal tax bracket and contribute $10,000, you save $2,200 in federal taxes that year. State taxes may add additional savings. This calculator estimates your annual federal tax savings based on your contribution and tax bracket. Note that you will pay income tax on withdrawals in retirement.",
+      },
+      {
+        question: "Is my data private?",
+        answer:
+          "Yes. Every calculation runs entirely in your browser using JavaScript. Your salary, balance, and contribution details are never sent to any server, stored in any database, or shared with anyone. You can safely enter your real financial information.",
+      },
+    ],
+    relatedSlugs: [
+      "retirement-calculator",
+      "compound-interest-calculator",
+      "investment-return-calculator",
+      "income-tax-calculator",
+    ],
+    keywords: [
+      "401k calculator",
+      "401k retirement calculator",
+      "401k employer match calculator",
+      "401k contribution calculator",
+      "401k growth calculator",
+      "how much will my 401k be worth",
+      "401k savings calculator",
+      "401k projection calculator",
+      "retirement savings calculator",
+    ],
+    lastUpdated: "2026-04-17",
+    formula: {
+      name: "401(k) Future Value with Employer Match",
+      expression:
+        "FV = PV(1 + r)^n + (Employee + Employer) x [((1 + r)^n - 1) / r]",
+      variables: [
+        {
+          symbol: "FV",
+          meaning: "Future value (your 401(k) balance at retirement)",
+        },
+        {
+          symbol: "PV",
+          meaning: "Present value (your current 401(k) balance)",
+        },
+        {
+          symbol: "r",
+          meaning: "Monthly rate of return (annual return divided by 12)",
+        },
+        {
+          symbol: "n",
+          meaning: "Total months until retirement",
+        },
+        {
+          symbol: "Employee",
+          meaning: "Your monthly contribution (salary x contribution % / 12, capped at IRS limit)",
+        },
+        {
+          symbol: "Employer",
+          meaning: "Monthly employer match (based on match rate and match limit)",
+        },
+      ],
+      walkthrough: [
+        "Start with your current 401(k) balance (PV). Example: $25,000.",
+        "Calculate your annual employee contribution: $75,000 salary x 10% = $7,500/year ($625/month).",
+        "Calculate the employer match: employer matches 50% of contributions up to 6% of salary. You contribute 10%, so the matchable portion is 6% of $75,000 = $4,500. Employer adds 50% of $4,500 = $2,250/year ($187.50/month).",
+        "Total monthly additions: $625 + $187.50 = $812.50.",
+        "At 7% annual return (0.5833% monthly) over 35 years (420 months): FV of $25,000 = $288,163.",
+        "FV of $812.50/month for 420 months = $1,715,180.",
+        "Total 401(k) at retirement: $288,163 + $1,715,180 = $2,003,343.",
+        "At 4% withdrawal: $2,003,343 x 0.04 = $80,134/year sustainable retirement income.",
+      ],
+    },
+    examples: [
+      {
+        title: "New grad with standard employer match",
+        scenario:
+          "A 25-year-old earning $55,000, contributing 6%, employer matches 100% of first 3% of salary, 7% return, retiring at 65.",
+        steps: [
+          "Annual employee contribution: $55,000 x 6% = $3,300.",
+          "Employer match: 100% of first 3% = $55,000 x 3% = $1,650/year.",
+          "Total annual additions: $3,300 + $1,650 = $4,950 ($412.50/month).",
+          "With 3% annual raises, contributions grow each year.",
+          "Over 40 years at 7% return: approximately $1,800,000.",
+          "At 4% withdrawal rate: $72,000/year sustainable income.",
+        ],
+        result: "Approximately $1,800,000 at age 65",
+      },
+      {
+        title: "Mid-career professional maximizing contributions",
+        scenario:
+          "A 40-year-old earning $120,000 with $150,000 saved, contributing 15%, employer matches 50% up to 6%, 7% return, retiring at 65.",
+        steps: [
+          "Annual employee contribution: $120,000 x 15% = $18,000 (under $23,500 limit).",
+          "Employer match: 50% of contributions up to 6% of salary = 50% x $7,200 = $3,600/year.",
+          "Total annual additions: $18,000 + $3,600 = $21,600 ($1,800/month).",
+          "Starting balance of $150,000 compounds for 25 years.",
+          "With 3% raises, catch-up contributions kick in at age 50.",
+          "Projected balance at 65: approximately $2,400,000.",
+        ],
+        result: "Approximately $2,400,000 at age 65",
+      },
+      {
+        title: "Late starter catching up aggressively",
+        scenario:
+          "A 50-year-old earning $90,000 with $100,000 saved, contributing 20% (using catch-up), employer matches 50% up to 6%, 6% return, retiring at 67.",
+        steps: [
+          "Annual employee contribution: $90,000 x 20% = $18,000. With catch-up ($7,500): up to $23,500 base + $7,500 = $31,000 allowed.",
+          "Actual contribution: $18,000 (under limit, room for more).",
+          "Employer match: 50% x ($90,000 x 6%) = $2,700/year.",
+          "At ages 60 to 63, super catch-up allows $34,750 total.",
+          "Over 17 years at 6% with $100,000 starting balance.",
+          "Projected balance at 67: approximately $750,000.",
+        ],
+        result: "Approximately $750,000 at age 67",
+      },
+    ],
+    referenceTable: {
+      title: "401(k) Balance at Age 65 by Monthly Contribution and Start Age",
+      headers: [
+        "Start Age",
+        "$200/mo",
+        "$500/mo",
+        "$750/mo",
+        "$1,000/mo",
+        "$1,500/mo",
+      ],
+      rows: [
+        ["25", "$526,687", "$1,316,718", "$1,975,077", "$2,633,436", "$3,950,155"],
+        ["30", "$365,991", "$914,978", "$1,372,467", "$1,829,956", "$2,744,934"],
+        ["35", "$249,382", "$623,454", "$935,181", "$1,246,908", "$1,870,363"],
+        ["40", "$164,845", "$412,113", "$618,170", "$824,226", "$1,236,339"],
+        ["45", "$104,185", "$260,464", "$390,696", "$520,928", "$781,391"],
+        ["50", "$60,776", "$151,940", "$227,910", "$303,880", "$455,820"],
+      ],
+      note: "Assumes 7% annual return, $0 starting balance, no employer match (employee contributions only). Actual balances will be higher with employer matching. Contributions are assumed constant (no salary growth modeled in this table).",
+    },
+  },
+
+  // 57. Savings Goal Calculator
+  {
+    slug: "savings-goal-calculator",
+    name: "Savings Goal Calculator",
+    category: "calculators",
+    icon: ChartUpIcon,
+    componentName: "savings-goal-calculator",
+    h1: "Free Savings Goal Calculator: How Long to Reach Your Target?",
+    titleTag:
+      "Savings Goal Calculator: Time, Deposits & Interest | FreeToolPark",
+    metaDescription:
+      "Calculate how long it takes to reach your savings goal. See the monthly deposit needed, interest earned, and milestone timeline. Free, instant, no signup.",
+    introduction:
+      "A savings goal calculator helps you figure out how long it will take to save a specific amount of money and how much you need to deposit each month to get there on time. Enter your target amount, current savings, monthly deposit, and expected interest rate to see whether you are on track. The calculator shows you exactly when you will hit 25%, 50%, 75%, and 100% of your goal, tells you the monthly deposit required to reach your target within your timeframe, and breaks down how much comes from your deposits versus interest earned. Whether you are saving for an emergency fund, a down payment, a vacation, or a major purchase, this tool helps you build a clear, realistic savings plan. Everything runs in your browser, nothing is stored, and no signup is required.",
+    whyUse: [
+      "Calculates exactly how many months until you reach your savings goal",
+      "Shows the monthly deposit needed to hit your target within your chosen timeframe",
+      "Milestone tracker visualizes your progress at 25%, 50%, 75%, and 100%",
+      "Breaks down total deposits versus interest earned so you see how compound interest helps",
+      "Smart insights tell you if you are ahead of schedule and can reduce deposits",
+      "Works for any savings goal: emergency fund, down payment, vacation, car, education",
+      "Supports any return rate from 0% (cash) to 10%+ (index funds)",
+      "Growth chart shows your balance building over time with a clear goal line",
+      "Monthly schedule table shows deposit and interest for every period",
+      "100% private, runs in your browser, no signup or email required",
+    ],
+    whyUseSummary:
+      "A savings goal calculator tells you how long it takes to save a specific amount and what monthly deposit you need. Our calculator tracks milestones at 25%, 50%, 75%, and 100% of your goal, shows how much interest helps, and tells you the exact deposit needed to hit your target on time. All calculations run in your browser with no signup required.",
+    steps: [
+      {
+        title: "Enter your savings goal",
+        description:
+          "Type in the total amount you want to save. This could be an emergency fund (3 to 6 months of expenses), a house down payment ($40,000 to $80,000 for most markets), a car ($25,000 to $50,000), a vacation ($3,000 to $10,000), or any other target. The calculator works for any amount.",
+      },
+      {
+        title: "Enter your current savings",
+        description:
+          "Input how much you have already saved toward this goal. If you are starting from zero, leave this at 0. If you have been saving for a while, enter your current balance. This amount earns interest from day one, giving you a head start.",
+      },
+      {
+        title: "Set your monthly deposit",
+        description:
+          "Enter how much you plan to add to your savings each month. Start with what you can afford, then check whether it gets you to your goal on time. The calculator will tell you the exact deposit needed if your current amount falls short.",
+      },
+      {
+        title: "Set the annual return rate",
+        description:
+          "Enter the interest rate you expect to earn. High-yield savings accounts typically offer 4% to 5% APY. CDs offer 4% to 5%. Bond funds offer 3% to 5%. Stock index funds historically return 7% to 10% but with more volatility. Use a lower rate for short-term goals (where you need certainty) and a higher rate for long-term goals (where you can ride out dips).",
+      },
+      {
+        title: "Set your target timeframe",
+        description:
+          "Enter how many years you want to reach your goal. The calculator will tell you whether your monthly deposit is enough to get there on time, or exactly how much more you need to deposit each month. Try different timeframes to find the right balance between deposit size and time.",
+      },
+      {
+        title: "Review milestones and adjust your plan",
+        description:
+          "Check the milestone tracker to see when you hit 25%, 50%, 75%, and 100% of your goal. Read the smart insights for personalized advice. If you are behind schedule, increase your monthly deposit or extend your timeframe. If you are ahead, consider reducing deposits or setting a more ambitious goal.",
+      },
+    ],
+    faqs: [
+      {
+        question: "How much should I save each month?",
+        answer:
+          "The 50/30/20 rule suggests putting 20% of your after-tax income toward savings and debt repayment. If your take-home pay is $4,000/month, that is $800/month for savings. However, the right amount depends on your specific goal and timeline. Use this calculator to find the exact monthly deposit needed to reach your target. Start with what you can afford and increase it over time as your income grows.",
+      },
+      {
+        question: "What return rate should I use for a savings account?",
+        answer:
+          "As of 2026, high-yield savings accounts offer approximately 4% to 5% APY. Traditional bank savings accounts offer much less (0.01% to 0.50%). If you are saving in a HYSA, use 4% to 5%. For money market accounts, use 4% to 5%. For CDs, check current rates (typically 4% to 5% for 1-year terms). For index fund investments, the historical average is about 7% after inflation, but returns are not guaranteed and can be negative in any given year.",
+      },
+      {
+        question: "How long does it take to save for an emergency fund?",
+        answer:
+          "Financial advisors recommend 3 to 6 months of essential expenses. If your monthly expenses are $3,000, you need $9,000 to $18,000. At $500/month deposited into a 4.5% HYSA, it takes about 17 months to reach $9,000 or about 33 months to reach $18,000. Use this calculator with your specific numbers to get an exact timeline.",
+      },
+      {
+        question: "Should I save in a regular account or invest for my goal?",
+        answer:
+          "For short-term goals (under 3 years), use a high-yield savings account or CD. Your money is FDIC-insured and you will not lose principal. For medium-term goals (3 to 7 years), consider a mix of bonds and conservative stock funds. For long-term goals (7+ years), stock index funds historically deliver the highest returns. The key factor is whether you can afford to wait out a market downturn before you need the money.",
+      },
+      {
+        question: "What is the difference between APY and interest rate?",
+        answer:
+          "APY (Annual Percentage Yield) includes the effect of compound interest, while a simple interest rate does not. A 4.5% APY on a savings account means you earn 4.5% over a full year, including interest on your interest. This calculator uses annual return rate, which is equivalent to APY for savings accounts. The monthly compounding in the calculator automatically accounts for the compounding effect.",
+      },
+      {
+        question: "How much should I save for a house down payment?",
+        answer:
+          "A conventional mortgage typically requires 5% to 20% down. On a $400,000 home, that is $20,000 to $80,000. Putting 20% down avoids PMI (private mortgage insurance), which saves you $100 to $300/month. FHA loans allow as little as 3.5% down. Use this calculator to plan your down payment savings timeline based on home prices in your target market.",
+      },
+      {
+        question: "Does compound interest really make a big difference?",
+        answer:
+          "Yes, especially over longer timeframes. If you save $500/month at 0% for 10 years, you have $60,000. At 5% APY, you have about $77,600, which is $17,600 in free interest. Over 20 years, the same $500/month at 5% grows to about $205,500, with $85,500 from interest alone. The longer your timeline, the more compound interest works in your favor. This calculator shows you exactly how much interest you earn.",
+      },
+      {
+        question: "Can I use this calculator for debt payoff goals?",
+        answer:
+          "This calculator is designed for savings goals where your balance grows over time. For debt payoff, the math is different because you are reducing a balance that accrues interest against you. You can use this calculator to plan a sinking fund strategy, where you save toward a lump-sum debt payoff. Enter the debt amount as your goal and 0% as the return rate to see how long it takes to save enough to pay it off.",
+      },
+      {
+        question: "Is my data private?",
+        answer:
+          "Yes. Every calculation runs entirely in your browser using JavaScript. Your savings amounts and financial goals are never sent to any server, stored in any database, or shared with anyone. You can safely enter your real financial information.",
+      },
+    ],
+    relatedSlugs: [
+      "compound-interest-calculator",
+      "investment-return-calculator",
+      "retirement-calculator",
+      "401k-calculator",
+    ],
+    keywords: [
+      "savings goal calculator",
+      "how long to save",
+      "savings calculator",
+      "how much to save each month",
+      "monthly savings calculator",
+      "savings plan calculator",
+      "down payment savings calculator",
+      "emergency fund calculator",
+      "savings timeline calculator",
+    ],
+    lastUpdated: "2026-04-17",
+    formula: {
+      name: "Future Value of Savings with Regular Deposits",
+      expression:
+        "FV = PV(1 + r)^n + PMT x [((1 + r)^n - 1) / r]",
+      variables: [
+        {
+          symbol: "FV",
+          meaning: "Future value (your savings balance at the target date)",
+        },
+        {
+          symbol: "PV",
+          meaning: "Present value (your current savings)",
+        },
+        {
+          symbol: "r",
+          meaning: "Monthly interest rate (annual rate divided by 12)",
+        },
+        {
+          symbol: "n",
+          meaning: "Total number of months in your savings plan",
+        },
+        {
+          symbol: "PMT",
+          meaning: "Monthly deposit amount",
+        },
+      ],
+      walkthrough: [
+        "Start with your current savings (PV). Example: $5,000 already saved.",
+        "Determine your monthly rate. For a 4.5% HYSA: r = 0.045 / 12 = 0.00375.",
+        "Set your timeframe. For a 5-year goal: n = 5 x 12 = 60 months.",
+        "Calculate future value of current savings: $5,000 x (1.00375)^60 = $6,261.",
+        "Calculate future value of $500/month deposits: $500 x [((1.00375)^60 - 1) / 0.00375] = $33,454.",
+        "Total at 5 years: $6,261 + $33,454 = $39,715.",
+        "To find the deposit needed for a $50,000 goal: solve PMT = ($50,000 - $6,261) x 0.00375 / ((1.00375)^60 - 1) = $654/month.",
+      ],
+    },
+    examples: [
+      {
+        title: "Emergency fund in 18 months",
+        scenario:
+          "Building a $10,000 emergency fund with $1,000 already saved, depositing $500/month in a 4.5% HYSA.",
+        steps: [
+          "Goal: $10,000. Current savings: $1,000. Monthly deposit: $500.",
+          "Monthly rate: 4.5% / 12 = 0.375%.",
+          "After 18 months: FV of $1,000 = $1,069. FV of $500/month = $9,328.",
+          "Total at 18 months: $1,069 + $9,328 = $10,397.",
+          "Goal reached in about 18 months with $397 to spare.",
+          "Interest earned: approximately $397 on top of $10,000 in deposits.",
+        ],
+        result: "$10,397 in 18 months (goal reached with $397 extra)",
+      },
+      {
+        title: "House down payment in 5 years",
+        scenario:
+          "Saving $60,000 for a 20% down payment with $8,000 saved, depositing $800/month in a balanced fund at 5%.",
+        steps: [
+          "Goal: $60,000. Current savings: $8,000. Monthly deposit: $800.",
+          "Monthly rate: 5% / 12 = 0.4167%.",
+          "After 60 months: FV of $8,000 = $10,210. FV of $800/month = $54,420.",
+          "Total at 5 years: $10,210 + $54,420 = $64,630.",
+          "Goal reached in about 56 months (4 months ahead of schedule).",
+          "Interest earned: approximately $8,630.",
+        ],
+        result: "$64,630 in 5 years (goal reached 4 months early)",
+      },
+      {
+        title: "Vacation fund in 1 year",
+        scenario:
+          "Saving $5,000 for a vacation starting from zero, depositing $400/month in a 4.5% HYSA.",
+        steps: [
+          "Goal: $5,000. Current savings: $0. Monthly deposit: $400.",
+          "Monthly rate: 4.5% / 12 = 0.375%.",
+          "After 12 months: FV of $400/month = $4,899.",
+          "Slightly short of $5,000 at 12 months.",
+          "Need $409/month to hit exactly $5,000 in 12 months.",
+          "Interest earned over 12 months: approximately $99.",
+        ],
+        result: "$4,899 in 12 months (increase to $409/mo to hit $5,000 exactly)",
+      },
+    ],
+    referenceTable: {
+      title: "Months to Save Common Goal Amounts (at $500/month, 4.5% APY)",
+      headers: [
+        "Goal Amount",
+        "Starting $0",
+        "Starting $2,000",
+        "Starting $5,000",
+        "Starting $10,000",
+      ],
+      rows: [
+        ["$5,000", "10 months", "6 months", "Already there", "Already there"],
+        ["$10,000", "19 months", "16 months", "10 months", "Already there"],
+        ["$15,000", "28 months", "25 months", "19 months", "10 months"],
+        ["$25,000", "45 months", "42 months", "37 months", "28 months"],
+        ["$50,000", "85 months", "82 months", "77 months", "69 months"],
+        ["$75,000", "120 months", "117 months", "113 months", "105 months"],
+        ["$100,000", "152 months", "149 months", "146 months", "139 months"],
+      ],
+      note: "Assumes $500/month deposits and 4.5% APY (high-yield savings account). Actual time varies with deposit amount and interest rate. Use the calculator above with your specific numbers for an exact timeline.",
+    },
+  },
 ]

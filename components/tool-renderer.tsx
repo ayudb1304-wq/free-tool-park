@@ -226,6 +226,14 @@ const registry: Record<string, ComponentType> = {
     () => import("@/components/tools/retirement-calculator"),
     { ssr: false, loading: Loading }
   ),
+  "401k-calculator": dynamic(
+    () => import("@/components/tools/401k-calculator"),
+    { ssr: false, loading: Loading }
+  ),
+  "savings-goal-calculator": dynamic(
+    () => import("@/components/tools/savings-goal-calculator"),
+    { ssr: false, loading: Loading }
+  ),
 }
 
 export function ToolRenderer({

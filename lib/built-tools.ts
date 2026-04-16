@@ -56,6 +56,8 @@ export const BUILT_TOOL_NAMES = [
   "macro-calculator",
   "body-fat-calculator",
   "retirement-calculator",
+  "401k-calculator",
+  "savings-goal-calculator",
 ] as const
 
 export const BUILT_TOOL_SLUGS = new Set<string>(BUILT_TOOL_NAMES)
