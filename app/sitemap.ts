@@ -4,6 +4,7 @@ import { CATEGORIES } from "@/data/categories"
 import { getAllPersonaSlugs } from "@/data/personas"
 import { ALL_CONVERSION_PAIRS } from "@/data/conversions"
 import { getAllBlogPosts, isBlogPostPublished } from "@/data/blog-posts"
+import { getAllAnswers } from "@/data/answers"
 import { SITE_URL } from "@/lib/schema"
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -30,6 +31,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${SITE_URL}/blog`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    {
+      url: `${SITE_URL}/answers`,
       lastModified: now,
       changeFrequency: "weekly",
       priority: 0.8,
@@ -113,6 +120,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     }))
 
+  const answerPages: MetadataRoute.Sitemap = getAllAnswers().map((a) => ({
+    url: `${SITE_URL}/answers/${a.slug}`,
+    lastModified: new Date(a.lastUpdated + "T00:00:00"),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }))
+
   return [
     ...staticPages,
     ...personaPages,
@@ -120,5 +134,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...toolPages,
     ...converterPages,
     ...blogPages,
+    ...answerPages,
   ]
 }

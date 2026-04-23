@@ -178,6 +178,59 @@ export function blogPostingSchema(post: BlogPost) {
   }
 }
 
+export function answerPageSchema(input: {
+  question: string
+  url: string
+  answerText: string
+  datePublished: string
+  dateModified: string
+  keywords: string[]
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "QAPage",
+    mainEntity: {
+      "@type": "Question",
+      name: input.question,
+      text: input.question,
+      answerCount: 1,
+      datePublished: input.datePublished,
+      dateModified: input.dateModified,
+      inLanguage: "en",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: input.answerText,
+        url: input.url,
+        datePublished: input.datePublished,
+        author: {
+          "@type": "Organization",
+          name: SITE_NAME,
+          url: SITE_URL,
+        },
+      },
+      author: {
+        "@type": "Organization",
+        name: SITE_NAME,
+        url: SITE_URL,
+      },
+    },
+    url: input.url,
+    datePublished: input.datePublished,
+    dateModified: input.dateModified,
+    inLanguage: "en",
+    keywords: input.keywords.join(", "),
+    publisher: {
+      "@type": "Organization",
+      name: SITE_NAME,
+      url: SITE_URL,
+      logo: {
+        "@type": "ImageObject",
+        url: `${SITE_URL}/images/logo.png`,
+      },
+    },
+  }
+}
+
 export function blogIndexSchema(posts: BlogPost[]) {
   return {
     "@context": "https://schema.org",

@@ -57,6 +57,9 @@ export function Header() {
             <Button variant="ghost" size="sm" asChild>
               <Link href="/blog">Blog</Link>
             </Button>
+            <Button variant="ghost" size="sm" asChild>
+              <Link href="/answers">Answers</Link>
+            </Button>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" size="sm">
@@ -179,6 +182,14 @@ export function Header() {
                   onClick={() => setOpen(false)}
                 >
                   <Link href="/blog">Blog</Link>
+                </Button>
+                <Button
+                  variant="ghost"
+                  className="justify-start"
+                  asChild
+                  onClick={() => setOpen(false)}
+                >
+                  <Link href="/answers">Answers</Link>
                 </Button>
                 <div className="mt-4 mb-2 px-3 text-xs font-medium text-muted-foreground">
                   Categories
