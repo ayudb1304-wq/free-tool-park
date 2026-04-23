@@ -30,6 +30,8 @@ export interface BlogPost {
   keywords: string[]
   /** FAQ block rendered at the bottom of the post (also used for FAQPage schema). */
   faqs: { question: string; answer: string }[]
+  /** Table of contents entries, one per H2 in the post. Used for the sticky side nav. */
+  tableOfContents: { id: string; label: string }[]
 }
 
 /**
@@ -130,6 +132,18 @@ export const BLOG_POSTS: BlogPost[] = [
           "Historical S&P 500 returns average around 10% nominal or 7% after inflation. For planning, 6 to 7% real return is a conservative assumption for a stock-heavy portfolio. Use 4 to 5% if you want to stress-test or if you are close to retirement with a bond-heavier allocation.",
       },
     ],
+    tableOfContents: [
+      { id: "why-salary-multiples", label: "Why salary multiples beat dollar targets" },
+      { id: "in-your-20s", label: "In your 20s" },
+      { id: "age-30", label: "By 30: 1x salary" },
+      { id: "age-40", label: "By 40: 3x salary" },
+      { id: "age-50", label: "By 50: 6x salary + catch-up" },
+      { id: "age-60", label: "By 60: 8x salary" },
+      { id: "catch-up", label: "How to catch up" },
+      { id: "mistakes", label: "Common mistakes" },
+      { id: "catch-up-numbers", label: "Contribution reference table" },
+      { id: "next-steps", label: "What to do next" },
+    ],
   },
   {
     slug: "401k-vs-roth-ira-which-to-max-first",
@@ -214,6 +228,22 @@ export const BLOG_POSTS: BlogPost[] = [
         answer:
           "Always get the full 401(k) employer match first, even if that is all you can afford. If you have room beyond the match, direct the next dollars into a Roth IRA up to $7,500 because you get better investment options and tax-free withdrawals. Go back to the 401(k) only after the Roth is full.",
       },
+    ],
+    tableOfContents: [
+      { id: "order-of-operations", label: "The order of operations" },
+      { id: "tax-treatment", label: "How the tax math works" },
+      { id: "2026-limits", label: "2026 contribution limits" },
+      { id: "roth-income-limits", label: "Roth IRA income limits + backdoor" },
+      { id: "scenario-middle", label: "Scenario: $85k salary" },
+      { id: "scenario-high", label: "Scenario: $240k combined" },
+      { id: "when-roth-wins", label: "When Roth beats traditional" },
+      { id: "when-traditional-wins", label: "When traditional beats Roth" },
+      { id: "roth-401k", label: "Roth 401(k) vs Roth IRA" },
+      { id: "mega-backdoor", label: "Mega backdoor Roth" },
+      { id: "state-tax", label: "State tax considerations" },
+      { id: "cannot-max-both", label: "If you can't max both" },
+      { id: "decision-framework", label: "Decision framework" },
+      { id: "next-steps", label: "What to do this week" },
     ],
   },
   {
@@ -301,6 +331,18 @@ export const BLOG_POSTS: BlogPost[] = [
           "Target 25% of take-home pay or less for total PITI. That is more conservative than the 28% of gross rule, because it accounts for taxes and retirement contributions. On a $100k salary with $6,500 monthly take-home, that works out to $1,625/month.",
       },
     ],
+    tableOfContents: [
+      { id: "the-28-36-rule", label: "The 28/36 rule" },
+      { id: "piti", label: "What PITI includes" },
+      { id: "down-payment", label: "Down payment reality" },
+      { id: "100k-scenario", label: "Walkthrough: $100k salary" },
+      { id: "75k-150k", label: "$75k and $150k salaries" },
+      { id: "hidden-costs", label: "Costs nobody mentions" },
+      { id: "rate-sensitivity", label: "Rate sensitivity" },
+      { id: "priced-out", label: "If you're priced out" },
+      { id: "stress-test", label: "Stress-test your budget" },
+      { id: "next-steps", label: "What to do next" },
+    ],
   },
   {
     slug: "is-refinancing-worth-it-in-2026",
@@ -386,6 +428,18 @@ export const BLOG_POSTS: BlogPost[] = [
           "Usually not. Most of each payment is already going to principal, so a lower rate saves very little. You are better off making extra principal payments instead of paying $6,000 or more in closing costs for marginal savings.",
       },
     ],
+    tableOfContents: [
+      { id: "rate-environment", label: "The 2026 rate environment" },
+      { id: "break-even-math", label: "Break-even math ($400k example)" },
+      { id: "closing-costs", label: "What closing costs look like" },
+      { id: "cash-out-vs-rate-term", label: "Cash-out vs rate-and-term" },
+      { id: "no-cost-trap", label: "The \"no-cost\" refi trap" },
+      { id: "amortization-reset", label: "The amortization reset" },
+      { id: "arm-to-fixed", label: "ARM to fixed refi" },
+      { id: "when-refi-fails", label: "When refi doesn't work" },
+      { id: "checklist", label: "The 6-line checklist" },
+      { id: "next-steps", label: "What to do next" },
+    ],
   },
   {
     slug: "15-year-vs-30-year-mortgage-math",
@@ -470,6 +524,19 @@ export const BLOG_POSTS: BlogPost[] = [
         answer:
           "Using the 28% front-end ratio and adding roughly $650/month for taxes and insurance, the $3,430 P&I pushes housing cost to about $4,080. That needs gross income of at least $175,000. A 30-year on the same loan only requires about $140,000 gross, which is why it is more accessible.",
       },
+    ],
+    tableOfContents: [
+      { id: "the-raw-numbers", label: "Raw numbers on $400k" },
+      { id: "why-most-people-take-the-30", label: "Why 30-year wins for most" },
+      { id: "invest-the-difference", label: "Invest-the-difference math" },
+      { id: "cash-flow-math", label: "Cash flow: the 22% gap" },
+      { id: "who-should-take-15", label: "Who should take the 15-year" },
+      { id: "who-should-take-30", label: "Who should take the 30-year" },
+      { id: "thirty-paid-like-fifteen", label: "30-year paid like a 15" },
+      { id: "refi-path", label: "Refi path: start 30, refi to 15" },
+      { id: "tax-deduction", label: "The mortgage interest deduction" },
+      { id: "decision-framework", label: "Decision framework" },
+      { id: "next-steps", label: "Run your actual numbers" },
     ],
   },
 ]

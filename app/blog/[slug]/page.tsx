@@ -18,6 +18,7 @@ import {
 } from "@/data/blog-posts"
 import { PostRenderer } from "@/components/blog/post-renderer"
 import { CalculatorCta } from "@/components/blog/calculator-cta"
+import { TableOfContents } from "@/components/blog/table-of-contents"
 
 export function generateStaticParams() {
   return getAllBlogPosts()
@@ -98,7 +99,7 @@ export default async function BlogPostPage({
         ])}
       />
 
-      <div className="mx-auto max-w-3xl px-4 py-8">
+      <div className="mx-auto max-w-6xl px-4 py-8">
         <Breadcrumb
           items={[
             { label: "Home", href: "/" },
@@ -107,86 +108,113 @@ export default async function BlogPostPage({
           ]}
         />
 
-        <article className="prose prose-neutral dark:prose-invert max-w-none">
-          <header className="not-prose mb-6">
-            <h1 className="font-heading mb-3 text-3xl font-bold tracking-tight">
-              {post.h1}
-            </h1>
-            <AuthorByline
-              lastUpdatedIso={post.lastUpdated}
-              lastUpdatedDisplay={lastUpdatedDisplay}
-              authorName={post.author}
-              className="mb-1"
-            />
-            <p className="mt-1 text-sm text-muted-foreground">
-              {post.readingTimeMinutes} min read
-            </p>
-          </header>
+        <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_16rem]">
+          <article className="prose prose-neutral dark:prose-invert max-w-none lg:max-w-[42rem]">
+            <header className="not-prose mb-8">
+              <h1 className="font-heading mb-3 text-3xl font-bold tracking-tight sm:text-4xl">
+                {post.h1}
+              </h1>
+              <AuthorByline
+                lastUpdatedIso={post.lastUpdated}
+                lastUpdatedDisplay={lastUpdatedDisplay}
+                authorName={post.author}
+                className="mb-1"
+              />
+              <p className="mt-1 text-sm text-muted-foreground">
+                {post.readingTimeMinutes} min read
+              </p>
+            </header>
 
-          <PostRenderer slug={post.slug} />
+            {/* Mobile ToC: inline collapsible, before content on small screens */}
+            {post.tableOfContents.length > 0 && (
+              <details className="not-prose mb-8 rounded-lg border bg-card p-4 lg:hidden">
+                <summary className="cursor-pointer text-sm font-semibold">
+                  On this page
+                </summary>
+                <ul className="mt-3 space-y-2 text-sm">
+                  {post.tableOfContents.map((item) => (
+                    <li key={item.id}>
+                      <a
+                        href={`#${item.id}`}
+                        className="text-muted-foreground hover:text-foreground hover:underline"
+                      >
+                        {item.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </details>
+            )}
 
-          {post.primaryToolSlug && (
-            <CalculatorCta
-              toolSlug={post.primaryToolSlug}
-              headline="Ready to run your own numbers?"
-            />
-          )}
+            <PostRenderer slug={post.slug} />
 
-          <section className="not-prose mt-10 border-t pt-8">
-            <h2 className="font-heading mb-4 text-2xl font-bold">
-              Frequently asked questions
-            </h2>
-            <div className="space-y-4">
-              {post.faqs.map((faq, i) => (
-                <details
-                  key={i}
-                  className="group rounded-lg border bg-card p-4"
-                >
-                  <summary className="cursor-pointer text-base font-semibold">
-                    {faq.question}
-                  </summary>
-                  <p className="mt-3 text-sm text-muted-foreground">
-                    {faq.answer}
-                  </p>
-                </details>
-              ))}
-            </div>
-          </section>
+            {post.primaryToolSlug && (
+              <CalculatorCta
+                toolSlug={post.primaryToolSlug}
+                headline="Ready to run your own numbers?"
+              />
+            )}
 
-          {related.length > 0 && (
-            <section className="not-prose mt-10 border-t pt-8">
-              <h2 className="font-heading mb-4 text-2xl font-bold">
-                More from the blog
+            <section className="not-prose mt-12 border-t pt-10">
+              <h2 className="font-heading mb-5 text-2xl font-bold">
+                Frequently asked questions
               </h2>
-              <ul className="space-y-3">
-                {related.map((r) => (
-                  <li key={r.slug}>
-                    <Link
-                      href={`/blog/${r.slug}`}
-                      className="group block rounded-lg border bg-card p-4 transition-shadow hover:shadow-sm"
-                    >
-                      <p className="font-semibold group-hover:text-primary">
-                        {r.title}
-                      </p>
-                      <p className="mt-1 text-sm text-muted-foreground">
-                        {r.excerpt}
-                      </p>
-                    </Link>
-                  </li>
+              <div className="space-y-4">
+                {post.faqs.map((faq, i) => (
+                  <details
+                    key={i}
+                    className="group rounded-lg border bg-card p-4"
+                  >
+                    <summary className="cursor-pointer text-base font-semibold">
+                      {faq.question}
+                    </summary>
+                    <p className="mt-3 text-sm text-muted-foreground">
+                      {faq.answer}
+                    </p>
+                  </details>
                 ))}
-              </ul>
+              </div>
             </section>
-          )}
 
-          <p className="not-prose mt-10 text-center text-sm">
-            <Link
-              href="/blog"
-              className="font-medium text-primary hover:underline"
-            >
-              &larr; Back to all posts
-            </Link>
-          </p>
-        </article>
+            {related.length > 0 && (
+              <section className="not-prose mt-12 border-t pt-10">
+                <h2 className="font-heading mb-5 text-2xl font-bold">
+                  More from the blog
+                </h2>
+                <ul className="space-y-3">
+                  {related.map((r) => (
+                    <li key={r.slug}>
+                      <Link
+                        href={`/blog/${r.slug}`}
+                        className="group block rounded-lg border bg-card p-4 transition-shadow hover:shadow-sm"
+                      >
+                        <p className="font-semibold group-hover:text-primary">
+                          {r.title}
+                        </p>
+                        <p className="mt-1 text-sm text-muted-foreground">
+                          {r.excerpt}
+                        </p>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            )}
+
+            <p className="not-prose mt-12 text-center text-sm">
+              <Link
+                href="/blog"
+                className="font-medium text-primary hover:underline"
+              >
+                &larr; Back to all posts
+              </Link>
+            </p>
+          </article>
+
+          <aside className="hidden lg:block">
+            <TableOfContents items={post.tableOfContents} />
+          </aside>
+        </div>
       </div>
     </>
   )
