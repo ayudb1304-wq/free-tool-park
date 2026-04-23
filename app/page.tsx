@@ -35,25 +35,30 @@ export default function HomePage() {
       <JsonLd data={organizationSchema} />
       <div className="mx-auto max-w-7xl px-4 py-12">
       <section className="mb-12 text-center">
-        <div aria-hidden="true">
-          <Image
-            src="/images/FreeToolpark-namelogo.png"
-            alt=""
-            width={400}
-            height={400}
-            className="mx-auto hidden h-auto w-[280px] sm:w-[400px] dark:block"
-            priority
+        {/*
+         * Hero logo is hidden on mobile to improve LCP: the H1 below is a
+         * much faster paint than a 400x400 PNG, and the header already shows
+         * the logo. On md and up we render a single variant via <picture>
+         * with a prefers-color-scheme media query so only one PNG is
+         * requested per render (previously both were fetched regardless of
+         * theme).
+         */}
+        <picture className="mx-auto hidden h-auto w-[400px] md:block">
+          <source
+            srcSet="/images/FreeToolpark-namelogo.png"
+            media="(prefers-color-scheme: dark)"
           />
           <Image
             src="/images/FreeToolpark-balcktext-lighttheme.png"
             alt=""
             width={400}
             height={400}
-            className="mx-auto block h-auto w-[280px] sm:w-[400px] dark:hidden"
-            priority
+            className="h-auto w-full"
+            sizes="400px"
+            loading="eager"
           />
-        </div>
-        <h1 className="mt-6 text-3xl font-bold tracking-tight text-foreground md:text-5xl">
+        </picture>
+        <h1 className="mt-2 text-3xl font-bold tracking-tight text-foreground md:mt-6 md:text-5xl">
           Free Online Tools That{" "}
           <span className="text-primary">Respect Your Privacy</span>
         </h1>
