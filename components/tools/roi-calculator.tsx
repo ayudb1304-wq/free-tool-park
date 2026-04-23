@@ -1,6 +1,7 @@
 "use client"
 
 import { useMemo, useState } from "react"
+import Link from "next/link"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
@@ -276,7 +277,8 @@ export default function RoiCalculator() {
           not investment or business advice
         </strong>
         . Consult a qualified professional before making decisions based on
-        these numbers.
+        these numbers.{" "}
+        <Link href="/methodology#compound-interest" className="underline hover:no-underline">See our methodology</Link>.
       </div>
     </div>
   )

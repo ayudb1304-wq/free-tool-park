@@ -1,6 +1,7 @@
 "use client"
 
 import { useMemo, useState } from "react"
+import Link from "next/link"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -843,7 +844,8 @@ export default function CompoundInterestCalculator() {
         for planning purposes and is{" "}
         <strong className="text-foreground">not financial advice</strong>.
         Consult a qualified financial advisor before making investment
-        decisions.
+        decisions.{" "}
+        <Link href="/methodology#compound-interest" className="underline hover:no-underline">See our methodology</Link>.
       </div>
     </div>
   )

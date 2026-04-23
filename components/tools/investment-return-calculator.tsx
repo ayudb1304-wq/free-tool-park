@@ -1,6 +1,7 @@
 "use client"
 
 import { useMemo, useState } from "react"
+import Link from "next/link"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
@@ -764,7 +765,8 @@ export default function InvestmentReturnCalculator() {
         rules, or your specific tax situation. Results are{" "}
         <strong className="text-foreground">not tax or investment advice</strong>
         . Consult a CPA or financial advisor before making decisions based on
-        these numbers.
+        these numbers.{" "}
+        <Link href="/methodology#compound-interest" className="underline hover:no-underline">See our methodology</Link>.
       </div>
     </div>
   )

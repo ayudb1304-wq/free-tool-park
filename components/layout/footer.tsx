@@ -46,6 +46,16 @@ export function Footer() {
                   All Tools
                 </Link>
               </li>
+              <li>
+                <Link href="/about" className="hover:text-foreground">
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="hover:text-foreground">
+                  Contact
+                </Link>
+              </li>
             </ul>
           </div>
           <div>
@@ -122,6 +132,11 @@ export function Footer() {
                   className="hover:text-foreground"
                 >
                   Request a Tool
+                </Link>
+              </li>
+              <li>
+                <Link href="/methodology" className="hover:text-foreground">
+                  Methodology
                 </Link>
               </li>
               <li>

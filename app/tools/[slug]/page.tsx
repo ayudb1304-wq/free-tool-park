@@ -23,6 +23,7 @@ import { AdUnit } from "@/components/ads/ad-unit"
 import { PrivacyBadge } from "@/components/tools/privacy-badge"
 import { EmbedCodeGenerator } from "@/components/embed/embed-code-generator"
 import { AiCitationBlock } from "@/components/seo/ai-citation-block"
+import { AuthorByline } from "@/components/seo/author-byline"
 import { PeopleAlsoUsed } from "@/components/tools/people-also-used"
 import { NextStepCta } from "@/components/tools/next-step-cta"
 import { FormulaExplained } from "@/components/tools/formula-explained"
@@ -141,10 +142,11 @@ export default async function ToolPage({
               {tool.h1}
             </h1>
 
-            <p className="mb-1 text-sm text-muted-foreground">
-              Last updated:{" "}
-              <time dateTime={lastUpdatedIso}>{lastUpdatedDisplay}</time>
-            </p>
+            <AuthorByline
+              lastUpdatedIso={lastUpdatedIso}
+              lastUpdatedDisplay={lastUpdatedDisplay}
+              className="mb-1"
+            />
 
             <p className="mb-8 max-w-3xl text-lg leading-relaxed text-muted-foreground">
               {tool.introduction}

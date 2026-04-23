@@ -1,6 +1,7 @@
 "use client"
 
 import { useMemo, useState } from "react"
+import Link from "next/link"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -480,7 +481,8 @@ export default function SalaryToHourlyCalculator() {
         calculator does not account for payroll taxes, health insurance, 401(k)
         contributions, or bonuses. Your actual take-home pay will be lower
         than the numbers shown here. To estimate taxes and take-home pay, use
-        the Income Tax Calculator.
+        the Income Tax Calculator.{" "}
+        <Link href="/methodology" className="underline hover:no-underline">See our methodology</Link>.
       </div>
     </div>
   )

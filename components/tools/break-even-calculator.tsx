@@ -1,6 +1,7 @@
 "use client"
 
 import { useMemo, useState } from "react"
+import Link from "next/link"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -170,7 +171,8 @@ export default function BreakEvenCalculator() {
         <strong className="text-foreground">Estimates only.</strong> This
         calculator provides approximate break-even analysis for educational
         purposes. It does not account for taxes, financing, seasonality, or
-        volume-dependent cost changes. Not financial or accounting advice.
+        volume-dependent cost changes. Not financial or accounting advice.{" "}
+        <Link href="/methodology" className="underline hover:no-underline">See our methodology</Link>.
       </div>
     </div>
   )

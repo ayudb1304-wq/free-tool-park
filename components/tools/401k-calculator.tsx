@@ -1,6 +1,7 @@
 "use client"
 
 import { useMemo, useState } from "react"
+import Link from "next/link"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -190,7 +191,8 @@ export default function FourOhOneKCalculator() {
     <div className="space-y-6">
       {/* Disclaimer */}
       <div className="rounded-lg border border-amber-300 bg-amber-500/5 p-3 text-sm text-amber-800 dark:border-amber-700 dark:text-amber-300">
-        Estimates only. Not financial advice. 2026 IRS contribution limits used ($23,500 base, $7,500 catch-up for 50+, $11,250 super catch-up for ages 60 to 63). Consult a financial advisor for personalized guidance.
+        Estimates only. Not financial advice. 2026 IRS contribution limits used ($23,500 base, $7,500 catch-up for 50+, $11,250 super catch-up for ages 60 to 63). Consult a financial advisor for personalized guidance.{" "}
+        <Link href="/methodology#retirement" className="underline hover:no-underline">See our methodology</Link>.
       </div>
 
       {/* Inputs */}

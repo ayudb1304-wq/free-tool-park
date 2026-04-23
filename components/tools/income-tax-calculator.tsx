@@ -1,6 +1,7 @@
 "use client"
 
 import { useMemo, useState } from "react"
+import Link from "next/link"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -677,7 +678,8 @@ export default function IncomeTaxCalculator() {
         effective rates. It does not model every deduction, credit, AMT, QBI,
         or phase-out rule. Results are for planning purposes and are{" "}
         <strong className="text-foreground">not tax advice</strong>. Consult a
-        CPA or tax professional before filing.
+        CPA or tax professional before filing.{" "}
+        <Link href="/methodology#income-tax" className="underline hover:no-underline">See our methodology</Link>.
       </div>
     </div>
   )
