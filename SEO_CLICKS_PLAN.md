@@ -11,7 +11,7 @@
 | Phase | Status | Completed |
 |---|---|---|
 | Phase 1: Fix E-E-A-T gaps | COMPLETE | 2026-04-23 |
-| Phase 2: Ship the blog | NOT STARTED | |
+| Phase 2: Ship the blog | COMPLETE | 2026-04-23 |
 | Phase 3: Content depth on top queries | NOT STARTED | |
 | Phase 4: Categories and structure | NOT STARTED | |
 | Phase 5: Technical SEO fixes | NOT STARTED | |
@@ -89,55 +89,75 @@ Summary of what shipped:
 
 Purpose: build a content surface Google does not answer with a widget, designed to link into your money tools.
 
-### 2.1 Scaffold the blog route
-- [ ] Create `app/blog/page.tsx` (blog index) listing all posts with excerpt, date, category.
-- [ ] Create `app/blog/[slug]/page.tsx` with SSG (`generateStaticParams`).
-- [ ] Decide on content source: MDX in `content/blog/*.mdx` OR data array in `data/blog-posts.ts` + markdown renderer. MDX recommended for speed.
-- [ ] Install `@next/mdx` and `gray-matter` if going the MDX route.
-- [ ] Add `<BlogPostJsonLd>` emitting `Article` / `BlogPosting` schema.
-- [ ] Add breadcrumbs (Home > Blog > Post Title).
-- [ ] Add "Last updated" + author byline on each post.
-- [ ] Add "Try the calculator" CTA component that embeds or links to the relevant tool.
-- [ ] Update `app/sitemap.ts` to include all blog URLs.
-- [ ] Update `lib/schema.ts` with `BlogPosting` helper if not present.
-- **Done when:** `/blog` lists posts, `/blog/[slug]` renders with proper schema, sitemap includes them.
+### 2.1 Scaffold the blog route - DONE
 
-### 2.2 Ship the first blog post: "How much should you have in your 401(k) by age 30, 40, 50, and 60?"
+Decision: went with TSX post components + `data/blog-posts.ts` registry instead of MDX. Mirrors the existing tools pattern, avoids turbopack/MDX config churn, lets posts embed `<CalculatorCta>` directly. No new npm dependencies needed.
+
+- [x] Create `app/blog/page.tsx` (blog index) listing all posts with excerpt, date, category.
+- [x] Create `app/blog/[slug]/page.tsx` with SSG (`generateStaticParams`).
+- [x] Decide on content source: TSX post components registered in `components/blog/post-renderer.tsx`, metadata in `data/blog-posts.ts`.
+- [x] Install `@next/mdx` and `gray-matter` if going the MDX route. (Not needed, dropped MDX path.)
+- [x] Add `<BlogPostJsonLd>` emitting `Article` / `BlogPosting` schema. (`blogPostingSchema` + `blogIndexSchema` added to `lib/schema.ts`.)
+- [x] Add breadcrumbs (Home > Blog > Post Title).
+- [x] Add "Last updated" + author byline on each post. (Reuses `<AuthorByline>` from Phase 1.)
+- [x] Add "Try the calculator" CTA component that embeds or links to the relevant tool. (`components/blog/calculator-cta.tsx`, usable inline inside posts.)
+- [x] Update `app/sitemap.ts` to include all blog URLs.
+- [x] Update `lib/schema.ts` with `BlogPosting` helper if not present.
+- [x] Add "Blog" link to footer.
+- **Done when:** `/blog` lists posts, `/blog/[slug]` renders with proper schema, sitemap includes them. (Verified with `next build`: 465 static pages generated, including `/blog` and `/blog/how-much-should-you-have-in-401k-by-age`.)
+
+### 2.2 Ship the first blog post: "How much should you have in your 401(k) by age 30, 40, 50, and 60?" - DONE
+
+Live at `/blog/how-much-should-you-have-in-401k-by-age`. ~2,100 words, 2 inline calculator CTAs (401k + retirement), 10 FAQs with FAQPage schema, internal links to all 4 related finance tools.
+
 - Target primary keyword: `how much should i have in my 401k by age 30`
 - Target secondary keywords: `401k by age`, `average 401k balance by age`, `401k benchmarks`
-- Internal links: `/tools/401k-calculator` (primary CTA), `/tools/retirement-calculator`, `/tools/compound-interest-calculator`
-- Word count: 2,000-2,500
+- Internal links: `/tools/401k-calculator` (primary CTA), `/tools/retirement-calculator`, `/tools/compound-interest-calculator`, `/tools/savings-goal-calculator`
+- Word count: ~2,100
 - Structure:
-  - [ ] TL;DR table of target balances by age
-  - [ ] Why age-based benchmarks matter (Fidelity's 1x/3x/6x/8x/10x rule)
-  - [ ] Ages 25, 30, 35, 40, 45, 50, 55, 60, 65 sections with realistic numbers
-  - [ ] How to catch up if you are behind
-  - [ ] Common mistakes
-  - [ ] 8-10 FAQ questions (use `FAQPage` schema)
-  - [ ] Clear CTA to 401(k) calculator
-- **Done when:** Post is live, indexed (check via `site:` search after 48h), linked from blog index.
+  - [x] TL;DR table of target balances by age
+  - [x] Why age-based benchmarks matter (Fidelity's 1x/3x/6x/8x/10x rule)
+  - [x] Ages 20s, 30, 40, 50, 60 sections with realistic numbers
+  - [x] How to catch up if you are behind (5-step action list)
+  - [x] Common mistakes (5 items)
+  - [x] 10 FAQ questions (FAQPage schema emitted)
+  - [x] Clear CTA to 401(k) calculator (inline + primary CTA near end)
+  - [x] Quick-reference table: monthly contribution needed to hit $1M at each starting age
+- **Done when:** Post is live, indexed (check via `site:` search after 48h), linked from blog index. (Live and in sitemap. GSC indexing request pending: submit `/blog/how-much-should-you-have-in-401k-by-age` in GSC URL Inspection.)
 
-### 2.3 Ship post #2: "401(k) vs Roth IRA: which should you max out first in 2026?"
-- Target: `401k vs roth ira`, `should i invest in 401k or roth ira`
-- Internal links: `/tools/401k-calculator`, `/tools/retirement-calculator`
-- Structure: comparison table, decision tree, scenarios (high-income, low-income, young, old, employer match), FAQ.
+### 2.3 Ship post #2: "401(k) vs Roth IRA: which should you max out first in 2026?" - DONE
 
-### 2.4 Ship post #3: "How much house can I afford on a $75k / $100k / $150k salary?"
-- Target: `how much house can i afford on 100k salary` and variants
-- Consider making this programmatic: `app/blog/how-much-house-[salary]/page.tsx` generating pages for $50k, $60k, $75k, $100k, $125k, $150k, $200k, $250k.
-- Internal link: `/tools/mortgage-calculator`, `/tools/loan-calculator`.
-- **Done when:** at least one salary bucket published.
+Live at `/blog/401k-vs-roth-ira-which-to-max-first`. ~2,250 words, 2 inline calculator CTAs, 10 FAQs with FAQPage schema, covers 2026 contribution and income limits, traditional vs Roth decision framework, backdoor and mega backdoor Roth.
 
-### 2.5 Ship post #4: "Is refinancing worth it in 2026? The break-even walkthrough"
-- Target: `is refinancing worth it`, `refinance break even calculator`
-- Internal link: `/tools/refinance-calculator`, `/tools/mortgage-calculator`.
+- [x] Target: `401k vs roth ira`, `should i invest in 401k or roth ira`
+- [x] Internal links: `/tools/401k-calculator`, `/tools/retirement-calculator`, `/tools/compound-interest-calculator`, `/tools/investment-return-calculator`
+- [x] Structure: comparison table, decision tree, scenarios (high-income, low-income, young, old, employer match), FAQ.
 
-### 2.6 Ship post #5: "15-year vs 30-year mortgage: the real math on a $400k loan"
-- Target: `15 year vs 30 year mortgage`
-- Internal link: `/tools/mortgage-calculator`, `/tools/loan-calculator`.
+### 2.4 Ship post #3: "How much house can I afford on a $75k / $100k / $150k salary?" - DONE
+
+Live at `/blog/how-much-house-can-i-afford`. ~2,280 words, 2 inline calculator CTAs, 10 FAQs (one per salary bucket), full PITI breakdown, 28/36 rule, rate sensitivity math, closing cost breakdown.
+
+- [x] Target: `how much house can i afford on 100k salary` and variants
+- [ ] Consider making this programmatic: `app/blog/how-much-house-[salary]/page.tsx` generating pages for $50k, $60k, $75k, $100k, $125k, $150k, $200k, $250k. (Decision: deferred. Current post covers $75k, $100k, $150k in one URL. Programmatic variants can be added as a follow-up if the base post ranks well.)
+- [x] Internal link: `/tools/mortgage-calculator`, `/tools/loan-calculator`, `/tools/auto-loan-calculator`, `/tools/compound-interest-calculator`.
+- **Done when:** at least one salary bucket published. (Three in one post.)
+
+### 2.5 Ship post #4: "Is refinancing worth it in 2026? The break-even walkthrough" - DONE
+
+Live at `/blog/is-refinancing-worth-it-in-2026`. ~2,180 words, 2 inline calculator CTAs, 10 FAQs, worked $400k example with closing-cost breakdown, covers the amortization reset trap and the no-closing-cost refi illusion.
+
+- [x] Target: `is refinancing worth it`, `refinance break even calculator`
+- [x] Internal link: `/tools/refinance-calculator`, `/tools/mortgage-calculator`, `/tools/loan-calculator`, `/tools/compound-interest-calculator`.
+
+### 2.6 Ship post #5: "15-year vs 30-year mortgage: the real math on a $400k loan" - DONE
+
+Live at `/blog/15-year-vs-30-year-mortgage-math`. ~2,180 words, 2 inline calculator CTAs, 10 FAQs, head-to-head $400k loan math at 6.25% / 7.00%, invest-the-difference scenario, 5-question decision framework, 30-year-paid-like-15-year strategy.
+
+- [x] Target: `15 year vs 30 year mortgage`
+- [x] Internal link: `/tools/mortgage-calculator`, `/tools/loan-calculator`, `/tools/compound-interest-calculator`, `/tools/refinance-calculator`.
 
 ### Ship rate target
-Minimum 5 posts live by end of week 2. Continue at 2 posts per week after that.
+Minimum 5 posts live by end of week 2. Continue at 2 posts per week after that. (Hit target on day 1. Phase 7 queue has 20+ additional topics.)
 
 ---
 

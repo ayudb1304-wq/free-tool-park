@@ -1,6 +1,7 @@
 import type { Tool } from "@/data/tools"
 import type { Category } from "@/data/categories"
 import type { CategorySlug } from "@/data/categories"
+import type { BlogPost } from "@/data/blog-posts"
 
 export const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL || "https://www.freetoolpark.com"
@@ -139,6 +140,59 @@ export function howToSchema(tool: Tool) {
       position: i + 1,
       name: step.title,
       text: step.description,
+    })),
+  }
+}
+
+export function blogPostingSchema(post: BlogPost) {
+  const url = `${SITE_URL}/blog/${post.slug}`
+  return {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.metaDescription,
+    url,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": url,
+    },
+    datePublished: post.publishedDate,
+    dateModified: post.lastUpdated,
+    inLanguage: "en",
+    keywords: post.keywords.join(", "),
+    image: `${SITE_URL}/images/og-default.png`,
+    author: {
+      "@type": "Organization",
+      name: SITE_NAME,
+      url: SITE_URL,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: SITE_NAME,
+      url: SITE_URL,
+      logo: {
+        "@type": "ImageObject",
+        url: `${SITE_URL}/images/logo.png`,
+      },
+    },
+  }
+}
+
+export function blogIndexSchema(posts: BlogPost[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    name: `${SITE_NAME} Blog`,
+    url: `${SITE_URL}/blog`,
+    description:
+      "Guides, benchmarks, and worked examples for finance, developer, and unit conversion tools on FreeToolPark.",
+    blogPost: posts.map((post) => ({
+      "@type": "BlogPosting",
+      headline: post.title,
+      url: `${SITE_URL}/blog/${post.slug}`,
+      datePublished: post.publishedDate,
+      dateModified: post.lastUpdated,
+      description: post.metaDescription,
     })),
   }
 }

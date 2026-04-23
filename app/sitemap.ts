@@ -3,6 +3,7 @@ import { TOOLS } from "@/data/tools"
 import { CATEGORIES } from "@/data/categories"
 import { getAllPersonaSlugs } from "@/data/personas"
 import { ALL_CONVERSION_PAIRS } from "@/data/conversions"
+import { getAllBlogPosts, isBlogPostPublished } from "@/data/blog-posts"
 import { SITE_URL } from "@/lib/schema"
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -26,6 +27,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now,
       changeFrequency: "weekly",
       priority: 0.7,
+    },
+    {
+      url: `${SITE_URL}/blog`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.8,
     },
     {
       url: `${SITE_URL}/about`,
@@ -97,11 +104,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }),
   )
 
+  const blogPages: MetadataRoute.Sitemap = getAllBlogPosts()
+    .filter((p) => isBlogPostPublished(p.slug))
+    .map((post) => ({
+      url: `${SITE_URL}/blog/${post.slug}`,
+      lastModified: new Date(post.lastUpdated + "T00:00:00"),
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    }))
+
   return [
     ...staticPages,
     ...personaPages,
     ...categoryPages,
     ...toolPages,
     ...converterPages,
+    ...blogPages,
   ]
 }
