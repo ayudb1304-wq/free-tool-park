@@ -19,6 +19,7 @@ import {
 import { PostRenderer } from "@/components/blog/post-renderer"
 import { CalculatorCta } from "@/components/blog/calculator-cta"
 import { TableOfContents } from "@/components/blog/table-of-contents"
+import { BlogNav } from "@/components/blog/blog-nav"
 
 export function generateStaticParams() {
   return getAllBlogPosts()
@@ -98,6 +99,8 @@ export default async function BlogPostPage({
           { name: post.title, url: `${SITE_URL}/blog/${slug}` },
         ])}
       />
+
+      <BlogNav activeCategory={post.category} />
 
       <div className="mx-auto max-w-6xl px-4 py-8">
         <Breadcrumb

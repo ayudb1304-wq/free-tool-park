@@ -551,6 +551,30 @@ export function getAllBlogPosts(): BlogPost[] {
   )
 }
 
+export const BLOG_CATEGORY_LABELS: Record<BlogCategory, string> = {
+  finance: "Finance",
+  developer: "Developer",
+  conversions: "Conversions",
+  health: "Health",
+  general: "General",
+}
+
+export function getPopulatedBlogCategories(): BlogCategory[] {
+  const seen = new Set<BlogCategory>()
+  for (const post of getAllBlogPosts()) {
+    if (isBlogPostPublished(post.slug)) seen.add(post.category)
+  }
+  // Preserve a stable display order.
+  const order: BlogCategory[] = [
+    "finance",
+    "developer",
+    "conversions",
+    "health",
+    "general",
+  ]
+  return order.filter((c) => seen.has(c))
+}
+
 export function getRelatedBlogPosts(post: BlogPost, limit = 3): BlogPost[] {
   const explicit = (post.relatedPostSlugs ?? [])
     .map(getBlogPostBySlug)
