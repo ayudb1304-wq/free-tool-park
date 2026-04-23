@@ -38,26 +38,31 @@ export default function HomePage() {
         {/*
          * Hero logo is hidden on mobile to improve LCP: the H1 below is a
          * much faster paint than a 400x400 PNG, and the header already shows
-         * the logo. On md and up we render a single variant via <picture>
-         * with a prefers-color-scheme media query so only one PNG is
-         * requested per render (previously both were fetched regardless of
-         * theme).
+         * the logo. On md and up, both theme variants ship but only one is
+         * visible based on the `dark` class from next-themes (we cannot use
+         * prefers-color-scheme here because the site supports a manual
+         * theme toggle that may differ from the OS preference).
          */}
-        <picture className="mx-auto hidden h-auto w-[400px] md:block">
-          <source
-            srcSet="/images/FreeToolpark-namelogo.png"
-            media="(prefers-color-scheme: dark)"
+        <div aria-hidden="true" className="hidden md:block">
+          <Image
+            src="/images/FreeToolpark-namelogo.png"
+            alt=""
+            width={400}
+            height={400}
+            className="mx-auto hidden h-auto w-[400px] dark:block"
+            sizes="400px"
+            loading="eager"
           />
           <Image
             src="/images/FreeToolpark-balcktext-lighttheme.png"
             alt=""
             width={400}
             height={400}
-            className="h-auto w-full"
+            className="mx-auto block h-auto w-[400px] dark:hidden"
             sizes="400px"
             loading="eager"
           />
-        </picture>
+        </div>
         <h1 className="mt-2 text-3xl font-bold tracking-tight text-foreground md:mt-6 md:text-5xl">
           Free Online Tools That{" "}
           <span className="text-primary">Respect Your Privacy</span>
