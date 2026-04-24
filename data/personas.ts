@@ -76,18 +76,19 @@ export const PERSONAS: Record<string, Persona> = {
   },
   finance: {
     title: "Finance Tools",
-    metaTitle: "Free Financial Calculators - Mortgage, EMI, Tip & More",
+    metaTitle: "Free Financial Calculators - Mortgage, 401(k), Loan & Retirement",
     metaDescription:
-      "Free financial calculators: mortgage, EMI, tip, and percentage calculators. 100% private - your financial data never leaves your browser.",
+      "Free financial calculators: mortgage, 401(k), retirement, loan, refinance, and tax. 100% private, your financial data never leaves your browser.",
     headline: "Free Financial Calculators You Can Trust",
     subheadline:
-      "Calculate mortgage payments, EMIs, tips, and more. Your financial data stays on your device.",
-    categories: ["calculators"],
+      "Calculate mortgage payments, retirement projections, loan EMIs, and more. Your financial data stays on your device.",
+    categories: ["finance"],
     keywords: [
       "financial calculators free",
       "mortgage calculator",
-      "emi calculator",
-      "tip calculator online",
+      "401k calculator",
+      "retirement calculator",
+      "refinance calculator",
     ],
   },
 }

@@ -122,7 +122,7 @@ export const TOOLS: Tool[] = [
   {
     slug: "mortgage-calculator",
     name: "Mortgage Calculator",
-    category: "calculators",
+    category: "finance",
     icon: Home01Icon,
     componentName: "mortgage-calculator",
     h1: "Free Mortgage Calculator: Monthly Payment, PMI & Amortization",
@@ -310,7 +310,7 @@ export const TOOLS: Tool[] = [
   {
     slug: "refinance-calculator",
     name: "Refinance Calculator",
-    category: "calculators",
+    category: "finance",
     icon: Calculator01Icon,
     componentName: "refinance-calculator",
     h1: "Free Refinance Calculator: Should You Refinance Your Mortgage?",
@@ -500,7 +500,7 @@ export const TOOLS: Tool[] = [
   {
     slug: "auto-loan-calculator",
     name: "Auto Loan Calculator",
-    category: "calculators",
+    category: "finance",
     icon: CalculatorIcon,
     componentName: "auto-loan-calculator",
     h1: "Free Auto Loan Calculator: Car Payment, Interest & Total Cost",
@@ -703,7 +703,7 @@ export const TOOLS: Tool[] = [
   {
     slug: "loan-calculator",
     name: "Loan Calculator",
-    category: "calculators",
+    category: "finance",
     icon: Dollar01Icon,
     componentName: "loan-calculator",
     h1: "Free Loan Calculator: Monthly Payment for Any Loan Type",
@@ -1384,7 +1384,7 @@ export const TOOLS: Tool[] = [
   {
     slug: "emi-calculator",
     name: "Loan EMI Calculator",
-    category: "calculators",
+    category: "finance",
     icon: Calculator01Icon,
     componentName: "emi-calculator",
     h1: "Loan EMI Calculator - Free Monthly Installment Calculator",
@@ -2120,7 +2120,7 @@ export const TOOLS: Tool[] = [
   {
     slug: "interest-calculator",
     name: "Interest Calculator",
-    category: "calculators",
+    category: "finance",
     icon: Dollar01Icon,
     componentName: "interest-calculator",
     h1: "Interest Calculator - Free Compound & Simple Interest Calculator",
@@ -3176,7 +3176,7 @@ export const TOOLS: Tool[] = [
   {
     slug: "income-tax-calculator",
     name: "Income Tax Calculator",
-    category: "calculators",
+    category: "finance",
     icon: TaxesIcon,
     componentName: "income-tax-calculator",
     h1: "Free US Income Tax Calculator: Federal & State Tax Estimator",
@@ -3389,7 +3389,7 @@ export const TOOLS: Tool[] = [
   {
     slug: "compound-interest-calculator",
     name: "Compound Interest Calculator",
-    category: "calculators",
+    category: "finance",
     icon: ChartUpIcon,
     componentName: "compound-interest-calculator",
     h1: "Free Compound Interest Calculator: Investment Growth Over Time",
@@ -3635,7 +3635,7 @@ export const TOOLS: Tool[] = [
   {
     slug: "salary-to-hourly-calculator",
     name: "Salary to Hourly Calculator",
-    category: "calculators",
+    category: "finance",
     icon: Dollar01Icon,
     componentName: "salary-to-hourly-calculator",
     h1: "Salary to Hourly Calculator: Convert Annual Pay to Hourly Wage",
@@ -3832,7 +3832,7 @@ export const TOOLS: Tool[] = [
   {
     slug: "investment-return-calculator",
     name: "Investment Return Calculator",
-    category: "calculators",
+    category: "finance",
     icon: ChartUpIcon,
     componentName: "investment-return-calculator",
     h1: "Investment Return Calculator: ROI, CAGR & Total Gain",
@@ -4030,7 +4030,7 @@ export const TOOLS: Tool[] = [
   {
     slug: "roi-calculator",
     name: "ROI Calculator",
-    category: "calculators",
+    category: "finance",
     icon: PercentIcon,
     componentName: "roi-calculator",
     h1: "ROI Calculator: Return on Investment for Any Project",
@@ -4232,7 +4232,7 @@ export const TOOLS: Tool[] = [
   {
     slug: "profit-margin-calculator",
     name: "Profit Margin Calculator",
-    category: "calculators",
+    category: "finance",
     icon: PercentIcon,
     componentName: "profit-margin-calculator",
     h1: "Profit Margin Calculator: Gross, Operating & Net Margin",
@@ -4436,7 +4436,7 @@ export const TOOLS: Tool[] = [
   {
     slug: "break-even-calculator",
     name: "Break-Even Calculator",
-    category: "calculators",
+    category: "finance",
     icon: PercentIcon,
     componentName: "break-even-calculator",
     h1: "Break-Even Calculator: Units and Revenue Required to Break Even",
@@ -5041,7 +5041,7 @@ export const TOOLS: Tool[] = [
   {
     slug: "retirement-calculator",
     name: "Retirement Calculator",
-    category: "calculators",
+    category: "finance",
     icon: ChartUpIcon,
     componentName: "retirement-calculator",
     h1: "Free Retirement Calculator: How Much Do You Need to Retire?",
@@ -5277,7 +5277,7 @@ export const TOOLS: Tool[] = [
   {
     slug: "401k-calculator",
     name: "401(k) Calculator",
-    category: "calculators",
+    category: "finance",
     icon: Dollar01Icon,
     componentName: "401k-calculator",
     h1: "Free 401(k) Calculator: Employer Match, Growth & Tax Savings",
@@ -5509,7 +5509,7 @@ export const TOOLS: Tool[] = [
   {
     slug: "savings-goal-calculator",
     name: "Savings Goal Calculator",
-    category: "calculators",
+    category: "finance",
     icon: ChartUpIcon,
     componentName: "savings-goal-calculator",
     h1: "Free Savings Goal Calculator: How Long to Reach Your Target?",

@@ -13,7 +13,7 @@
 | Phase 1: Fix E-E-A-T gaps | COMPLETE | 2026-04-23 |
 | Phase 2: Ship the blog | COMPLETE | 2026-04-23 |
 | Phase 3: Content depth on top queries | NOT STARTED | |
-| Phase 4: Categories and structure | NOT STARTED | |
+| Phase 4: Categories and structure | COMPLETE | 2026-04-24 |
 | Phase 5: Technical SEO fixes | NOT STARTED | |
 | Phase 6: Backlinks | NOT STARTED | |
 | Phase 7: Blog ship queue | NOT STARTED | |
@@ -187,21 +187,24 @@ Purpose: move from position 60-70 into top 20 on queries that do not have Google
 
 Purpose: create a `finance` category so Google (and users) see topical concentration.
 
-### 4.1 Add `finance` category
-- [ ] Edit `data/categories.ts`: add `"finance"` to `CATEGORY_SLUGS`, add `Category` entry with name, description, longDescription, icon (`MoneyBag01Icon` or similar from hugeicons), 3 FAQs.
-- [ ] Edit `data/tools.ts`: move these 16 tools from `category: "calculators"` to `category: "finance"`:
+### 4.1 Add `finance` category - DONE
+
+- [x] Edit `data/categories.ts`: added `"finance"` to `CATEGORY_SLUGS`, new `Category` entry with name "Finance Calculators", MoneyBag01Icon, 4 FAQs, a longDescription that explicitly references the methodology page for trust signals.
+- [x] Edit `data/tools.ts`: moved 16 tools from `category: "calculators"` to `category: "finance"`:
   - mortgage-calculator, refinance-calculator, auto-loan-calculator, loan-calculator
   - emi-calculator, interest-calculator, compound-interest-calculator
   - investment-return-calculator, retirement-calculator, 401k-calculator, savings-goal-calculator
   - income-tax-calculator, salary-to-hourly-calculator, roi-calculator, profit-margin-calculator, break-even-calculator
-- [ ] Verify `app/sitemap.ts` picks up `/categories/finance` automatically.
-- [ ] Verify `/categories/calculators` still renders (reduced but non-empty).
-- [ ] Run `npx tsc --noEmit` and `npx eslint` on changed files.
-- **Done when:** `/categories/finance` returns 200, lists all 16 tools, `npx tsc --noEmit` passes.
+- [x] Verify `app/sitemap.ts` picks up `/categories/finance` automatically. (Generator iterates `CATEGORIES`, no change needed.)
+- [x] Verify `/categories/calculators` still renders (reduced but non-empty). 9 tools remain: bmi, age, tip, percentage, calorie, grade, gpa, macro, body-fat.
+- [x] Run `npx tsc --noEmit` and `npx eslint` on changed files. Clean.
+- [x] `CATEGORY_SUB_MAP` in `lib/schema.ts` now maps `finance` to `FinanceApplication` and `calculators` to `UtilityApplication` (was inverted).
+- [x] Updated the `/for/finance` persona page to point at the new `finance` category instead of `calculators`.
+- **Done when:** `/categories/finance` returns 200, lists all 16 tools, `npx tsc --noEmit` passes. Verified via production build (486 static pages, including the new /categories/finance).
 
 ### 4.2 Link finance category from homepage
-- [ ] Add a "Finance tools" section on the homepage above the fold (or in the categories block).
-- [ ] Add a "Finance" link to the top nav if there is one.
+- [x] Header + footer automatically pick up the new category via the existing `CATEGORIES` iteration.
+- [ ] Add a dedicated "Finance tools" section on the homepage above the fold. (Deferred. Current BrowseByCategory block already surfaces all 7 categories.)
 
 ---
 

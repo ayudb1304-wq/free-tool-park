@@ -27,7 +27,8 @@ export function websiteSchema() {
 }
 
 const CATEGORY_SUB_MAP: Record<CategorySlug, string> = {
-  calculators: "FinanceApplication",
+  finance: "FinanceApplication",
+  calculators: "UtilityApplication",
   "developer-tools": "DeveloperApplication",
   "text-tools": "UtilityApplication",
   converters: "UtilityApplication",

@@ -2,12 +2,14 @@ import {
   ArrowLeftRightIcon,
   CalculatorIcon,
   CodeIcon,
+  MoneyBag01Icon,
   SeoIcon,
   SparklesIcon,
   TextFontIcon,
 } from "@hugeicons/core-free-icons"
 
 export const CATEGORY_SLUGS = [
+  "finance",
   "calculators",
   "developer-tools",
   "text-tools",
@@ -34,12 +36,43 @@ export interface Category {
 
 export const CATEGORIES: Category[] = [
   {
+    slug: "finance",
+    name: "Finance Calculators",
+    description:
+      "Free online mortgage, loan, retirement, 401(k), tax, and investment calculators.",
+    longDescription:
+      "FreeToolPark's finance calculators cover every major personal-finance question: mortgage payments, refinance break-even, loan and EMI, 401(k) projections, retirement planning, compound interest, investment returns, income tax, and small-business metrics like ROI, profit margin, and break-even. Every calculator runs entirely in your browser, so your salary, loan amount, and account balances never touch a server. Formulas match what banks, lenders, and financial planners use. See our methodology page for the exact math behind each tool.",
+    icon: MoneyBag01Icon,
+    faqs: [
+      {
+        question: "Are your finance calculators free to use?",
+        answer:
+          "Yes, every finance calculator on FreeToolPark is free with no signup, no subscription, and no usage limits. Your inputs stay in your browser and are never transmitted to our servers.",
+      },
+      {
+        question: "How accurate are the financial results?",
+        answer:
+          "Calculators use the same amortization, compound-interest, and tax-bracket formulas banks and financial planners use. Results are accurate for planning and comparison. For decisions that affect taxes, retirement accounts, or large loans, confirm with a licensed professional.",
+      },
+      {
+        question: "Do the calculators save my financial data?",
+        answer:
+          "No. All finance tools run client-side in JavaScript. Your salary, loan balance, and retirement numbers are not logged, stored, or transmitted. You can verify this by checking your browser's Network tab while using any calculator.",
+      },
+      {
+        question: "Which finance calculator should I use for retirement planning?",
+        answer:
+          "Start with the Retirement Calculator for a full projection, or use the 401(k) Calculator if you just want to see your 401(k) balance at retirement. Pair either with the Compound Interest Calculator to understand how rate assumptions change outcomes.",
+      },
+    ],
+  },
+  {
     slug: "calculators",
     name: "Calculators",
     description:
-      "Free online calculators for mortgage, BMI, percentage, and more.",
+      "Free online calculators for BMI, percentages, grades, calories, and everyday math.",
     longDescription:
-      "Our free online calculators help you solve financial, health, and math problems instantly without installing any software. From mortgage payments and loan EMIs to BMI and percentage calculations, every calculator runs entirely in your browser for maximum privacy. Bookmark this page to access all calculators in one place.",
+      "Our free online calculators cover everyday math and health-related calculations: BMI and body fat, calorie and macro needs, percentage and tip math, age calculations, grades, and GPA. For mortgage, loan, and retirement math, see our dedicated Finance Calculators category. Every tool runs entirely in your browser with no signup and no usage limits.",
     icon: CalculatorIcon,
     faqs: [
       {
@@ -50,7 +83,7 @@ export const CATEGORIES: Category[] = [
       {
         question: "How accurate are the calculator results?",
         answer:
-          "Our calculators use standard financial and mathematical formulas used by banks and professionals. Results are accurate for estimation purposes. For critical financial decisions, verify with a qualified professional.",
+          "Our calculators use standard formulas used by health professionals, educators, and mathematicians. Results are accurate for informational and planning purposes.",
       },
       {
         question: "Do the calculators work on mobile?",
