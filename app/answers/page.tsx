@@ -49,11 +49,18 @@ export default function AnswersIndexPage() {
           url: `${SITE_URL}/answers`,
           description:
             "Direct answers to common unit conversion questions, each with a free converter.",
-          hasPart: allAnswers.map((a) => ({
-            "@type": "QAPage",
-            name: a.question,
-            url: `${SITE_URL}/answers/${a.slug}`,
-          })),
+          inLanguage: "en",
+          mainEntity: {
+            "@type": "ItemList",
+            name: "FreeToolPark Answers",
+            numberOfItems: allAnswers.length,
+            itemListElement: allAnswers.map((a, i) => ({
+              "@type": "ListItem",
+              position: i + 1,
+              url: `${SITE_URL}/answers/${a.slug}`,
+              name: a.question,
+            })),
+          },
         }}
       />
 

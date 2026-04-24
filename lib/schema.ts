@@ -106,11 +106,18 @@ export function categorySchema(category: Category, tools: Tool[]) {
     name: `Free ${category.name} Online`,
     description: category.description,
     url: `${SITE_URL}/categories/${category.slug}`,
-    hasPart: tools.map((tool) => ({
-      "@type": "SoftwareApplication",
-      name: tool.name,
-      url: `${SITE_URL}/tools/${tool.slug}`,
-    })),
+    inLanguage: "en",
+    mainEntity: {
+      "@type": "ItemList",
+      name: `Free ${category.name}`,
+      numberOfItems: tools.length,
+      itemListElement: tools.map((tool, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        url: `${SITE_URL}/tools/${tool.slug}`,
+        name: tool.name,
+      })),
+    },
   }
 }
 
@@ -239,6 +246,27 @@ export function blogIndexSchema(posts: BlogPost[]) {
     url: `${SITE_URL}/blog`,
     description:
       "Guides, benchmarks, and worked examples for finance, developer, and unit conversion tools on FreeToolPark.",
+    inLanguage: "en",
+    publisher: {
+      "@type": "Organization",
+      name: SITE_NAME,
+      url: SITE_URL,
+      logo: {
+        "@type": "ImageObject",
+        url: `${SITE_URL}/images/logo.png`,
+      },
+    },
+    mainEntity: {
+      "@type": "ItemList",
+      name: `${SITE_NAME} Blog posts`,
+      numberOfItems: posts.length,
+      itemListElement: posts.map((post, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        url: `${SITE_URL}/blog/${post.slug}`,
+        name: post.title,
+      })),
+    },
     blogPost: posts.map((post) => ({
       "@type": "BlogPosting",
       headline: post.title,
