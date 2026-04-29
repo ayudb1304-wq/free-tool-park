@@ -126,9 +126,9 @@ export const TOOLS: Tool[] = [
     icon: Home01Icon,
     componentName: "mortgage-calculator",
     h1: "Free Mortgage Calculator: Monthly Payment, PMI & Amortization",
-    titleTag: "Mortgage Calculator: Payment, PMI, Amortization | FreeToolPark",
+    titleTag: "Mortgage Calculator 2026: PMI, Taxes & Amortization | FreeToolPark",
     metaDescription:
-      "Calculate your mortgage payment with PMI, taxes, insurance, and full amortization. Free, instant, no signup. See your true monthly cost.",
+      "Calculate your mortgage payment with PMI, taxes, insurance, and full amortization. State-specific tax rates, biweekly toggle. Updated April 2026.",
     introduction:
       "A mortgage calculator helps you estimate your monthly home loan payment including principal, interest, property taxes, homeowners insurance, PMI, and HOA fees. Use our free mortgage calculator to see exactly what your monthly mortgage payment will be, how much interest you'll pay over the life of your loan, and when you can expect PMI to be removed from your payment. Unlike basic mortgage calculators that only show principal and interest, this tool gives you the complete picture, including tax deductions, biweekly payment savings, and the impact of extra payments. Whether you're buying your first home, refinancing, or shopping for the best mortgage rate, this calculator will help you make a confident, informed decision.",
     whyUse: [
@@ -216,7 +216,14 @@ export const TOOLS: Tool[] = [
           "Conventional loans typically require a minimum credit score of 620, while FHA loans accept scores as low as 580 with 3.5% down. However, the best interest rates go to borrowers with scores of 740+. Every 20-point improvement in your score can save 0.125-0.25% on your rate, which translates to thousands over the life of the loan.",
       },
     ],
-    relatedSlugs: ["refinance-calculator", "emi-calculator", "interest-calculator", "percentage-calculator"],
+    relatedSlugs: [
+      "refinance-calculator",
+      "loan-calculator",
+      "compound-interest-calculator",
+      "emi-calculator",
+      "interest-calculator",
+      "percentage-calculator",
+    ],
     keywords: [
       "mortgage calculator",
       "monthly mortgage payment",
@@ -227,7 +234,7 @@ export const TOOLS: Tool[] = [
       "30 year mortgage calculator",
       "15 year mortgage calculator",
     ],
-    lastUpdated: "2026-04-15",
+    lastUpdated: "2026-04-29",
     formula: {
       name: "Mortgage Payment Formula Explained",
       expression: "M = P [ r(1 + r)^n ] / [ (1 + r)^n - 1 ]",
@@ -707,9 +714,9 @@ export const TOOLS: Tool[] = [
     icon: Dollar01Icon,
     componentName: "loan-calculator",
     h1: "Free Loan Calculator: Monthly Payment for Any Loan Type",
-    titleTag: "Loan Calculator: Payment, Interest & Amortization | FreeToolPark",
+    titleTag: "Loan Calculator 2026: Personal, Auto, Student, HELOC | FreeToolPark",
     metaDescription:
-      "Calculate monthly payments for personal, student, business, medical, and home equity loans. Free loan calculator with full amortization, comparison & payoff tips.",
+      "See monthly payments and total interest for personal, student, auto, business, and home equity loans. Compare 4 scenarios side by side. Updated 2026.",
     introduction:
       "A loan calculator helps you figure out the monthly payment, total interest, and full payoff timeline for any installment loan. Whether you're shopping for a personal loan, student loan, business loan, medical loan, RV or boat loan, home equity loan, or just trying to model a debt consolidation, this tool handles it all in one place. Pick your loan type and the calculator pre-fills typical interest rate ranges so you can sanity-check the quote in front of you. Add an extra monthly payment to see how much faster you'd pay it off. Save up to four scenarios side-by-side to compare lenders directly. Unlike basic loan calculators that only spit out a number, this one gives you a payoff strategy optimizer, biweekly payment savings, refinance suggestions, and a clear amortization schedule, everything you need to make a confident borrowing decision before you sign anything.",
     whyUse: [
@@ -801,6 +808,7 @@ export const TOOLS: Tool[] = [
     relatedSlugs: [
       "mortgage-calculator",
       "auto-loan-calculator",
+      "compound-interest-calculator",
       "refinance-calculator",
       "emi-calculator",
       "interest-calculator",
@@ -816,6 +824,7 @@ export const TOOLS: Tool[] = [
       "loan payoff calculator",
       "loan interest calculator",
     ],
+    lastUpdated: "2026-04-29",
     formula: {
       name: "Loan Payment Formula Explained",
       expression: "M = P [ r(1 + r)^n ] / [ (1 + r)^n - 1 ]",
@@ -3394,9 +3403,9 @@ export const TOOLS: Tool[] = [
     componentName: "compound-interest-calculator",
     h1: "Free Compound Interest Calculator: Investment Growth Over Time",
     titleTag:
-      "Compound Interest Calculator: Daily, Monthly, Yearly | FreeToolPark",
+      "Compound Interest Calculator 2026: With Monthly Contributions | FreeToolPark",
     metaDescription:
-      "Calculate compound interest with monthly contributions, any compounding frequency. See your investment grow with charts and a full year-by-year schedule.",
+      "See how investments grow with monthly contributions and any compounding frequency. Goal mode, inflation toggle, year by year chart. Updated 2026.",
     introduction:
       "A compound interest calculator shows you exactly how much a one-time deposit plus recurring contributions will grow to over time. Enter your starting amount, how much you plan to add each period, your expected annual return, and the number of years. This tool runs a full month-by-month simulation and shows you the final future value, total contributions, total interest earned, a stacked growth chart, and a complete year-by-year breakdown. Unlike basic compound interest formulas that assume one compounding period per year, this calculator supports every compounding frequency from daily to continuously and lets you contribute yearly, monthly, biweekly, or weekly. Toggle inflation adjustment to see your real (today's dollars) future value, enable tax drag to model a taxable brokerage account, or switch to Goal mode to solve the reverse problem: how much do I need to save per month to reach $1 million in 25 years? Whether you're planning retirement, a college fund, an emergency fund, or any long-term savings goal, this is the fastest way to see compound interest in action.",
     whyUse: [
@@ -3501,7 +3510,9 @@ export const TOOLS: Tool[] = [
       "interest-calculator",
       "mortgage-calculator",
       "loan-calculator",
-      "income-tax-calculator",
+      "401k-calculator",
+      "retirement-calculator",
+      "savings-goal-calculator",
     ],
     keywords: [
       "compound interest calculator",
@@ -3513,6 +3524,7 @@ export const TOOLS: Tool[] = [
       "future value calculator",
       "compounding calculator",
     ],
+    lastUpdated: "2026-04-29",
     formula: {
       name: "Compound Interest Formula Explained",
       expression: "A = P(1 + r/n)^(nt)",
